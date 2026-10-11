@@ -105,7 +105,9 @@ Before finalizing the Briefing, run a de-duplication check across `What Matters 
 - Use only the **Eligible Now** set for routine active-card coverage; never leak a future-`revisit` Snoozed card into a routine Briefing slot.
 - Use Weather / Source Status only when useful.
 - Surface behavioural patterns only when `rules.md` evidence thresholds are met.
-- Apply Daily Flavour lightly.
+- Include **exactly one non-weather Daily Flavour item in every Morning Briefing** if any non-weather flavour category remains enabled in `profile.md`. Choose from `humour`, `fun_fact`, `inspiration` and `tiny_challenge`; do not interpret “all enabled” as including all four each day. Add a short `## Daily Flavour` section (normally 1–2 lines) after practical content. Never disguise operational follow-ups as a tiny challenge.
+- Rotate categories across days when prior approved Daily Briefings reveal the recent categories; prefer a category not used in the last three Briefings. If history is unavailable, pick a suitable category without claiming novelty. Do not invent factual claims for fun facts; use safe, verifiable general knowledge or omit unsupported details and choose a different category. Humour should be considerate and low-key; inspiration should be a concrete thought, not fabricated quotations; tiny challenges are strictly optional and require no saved follow-up.
+- Weather is **separate** from the one daily non-weather flavour slot: include weather only when the user approved web/weather and it is useful or plan-linked. Do not count weather toward the daily flavour slot. If all non-weather categories are explicitly disabled, omit the section and honor that preference.
 
 Outside the Markdown artifact, when new candidates exist, state clearly that they were **detected but not written to the Action Ledger during the scheduled run**.
 

@@ -26,7 +26,7 @@ Daily Companion can help you preview your day, review your evening, maintain an 
    Read System/setup.md from my GitHub repository <YOUR_USERNAME>/<YOUR_PRIVATE_REPOSITORY> and guide me through Daily Companion setup, asking only one question at a time. Do not change files or create scheduled tasks before I approve the summary.
    ```
 
-4. Answer the onboarding questions. Calendar and Gmail are **optional**. Grant each only if you want it used. ChatGPT must verify a source is accessible before treating it as connected.
+4. Answer the streamlined onboarding questions. Preferred-name usage, Daily Flavour, vault folders and Daily filenames have editable defaults, so they are not asked separately. Morning includes one short rotating non-weather Daily Flavour item when enabled; weather requires source permission. Calendar and Gmail are **optional**. Grant each only if you want it used. ChatGPT must verify a source is accessible before treating it as connected.
 5. Review the proposed configuration, then explicitly approve setup writes. ChatGPT commits the profile first with `setup_complete: false`, initializes and verifies each state file in a separate commit, and only then changes `setup_complete` to `true`. Confirm the post-write read-back checks for each file.
 6. After the repository setup is verified, separately confirm whether to activate Scheduled Tasks. If supported, create/verify Morning, Evening and Extra checks according to `System/setup.md`. Scheduled runs are **read-and-output only by design**; saving notes and action changes happens after interactive approval.
 7. Optional: clone your **private** repository into Obsidian and configure desktop Git / mobile sync using `Resources/Obsidian GitHub GitSync Setup.md`.

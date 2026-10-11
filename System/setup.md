@@ -9,7 +9,7 @@ schema_version: 2
 
 This folder is the clean Daily Companion installation package. All runtime files are intentionally generic and contain no user-specific personal information before setup. It is the canonical clean installation package: maintainers must keep it structurally and behaviourally aligned with the current Daily Companion system without copying any user's personal configuration or state into it.
 
-Use this file only for onboarding, setup verification and initial Scheduled Task creation. After `profile.md` has `setup_complete: true`, the daily Scheduled Tasks start from the Morning/Evening workflow entrypoints and the Companion Surprise engine. Each runtime file then loads `instructions.md` and the shared policies; normal runs do not use this setup file.
+Use this file only for onboarding, setup verification and initial Scheduled Task creation. After all required state files have passed verification and `profile.md` has `setup_complete: true`, the daily Scheduled Tasks start from the Morning/Evening workflow entrypoints and the Companion Surprise engine. Each runtime file then loads `instructions.md` and the shared policies; normal runs do not use this setup file.
 
 ## 0. Getting started — first-run bootstrap
 
@@ -47,7 +47,7 @@ Read `profile.md` and check the required package, not `setup_complete` alone. Th
 - `policies/rules.md`;
 - `policies/artifacts.md`.
 
-- If all required files exist/read correctly and `profile.md` has `setup_complete: true`, tell the user setup is already complete and ask whether they want to continue using it, review/change selected settings, or intentionally re-run onboarding.
+- If all required files exist/read correctly and `profile.md` has `setup_complete: true`, also validate the Action Ledger and Companion Surprise state before treating setup as complete. Scheduled Task activation is a separate verified step. If state is valid, ask whether to continue, review selected settings, or intentionally re-run onboarding.
 - If `setup_complete: true` but one or more required files are missing/unreadable, treat the installation as incomplete/repairable rather than claiming setup is complete. Preserve existing files and offer to restore only the missing/incomplete package pieces.
 - Do not overwrite a completed setup without explicit approval.
 - When reviewing or re-running onboarding, preserve the existing `action_ledger.md` by default. Never erase operational or Closed history merely because profile settings are being changed.
@@ -181,17 +181,23 @@ Only sources that require connector access may appear as connected sources after
 
 Only continue after explicit approval.
 
-## 6. Personalize `profile.md`
+## 6. Commit profile configuration, without completing setup
 
-Replace every `<SETUP_REQUIRED...>` placeholder with the approved configuration, populate fixed work-schedule days/hours, and set:
+After the user explicitly approves the summary, update **only** `profile.md` in the user's private repository. Replace every `<SETUP_REQUIRED...>` placeholder with the approved configuration and populate the fixed work-schedule days/hours. Keep:
 
 ```yaml
-setup_complete: true
+setup_complete: false
 ```
+
+This value means the full installation is not verified yet, even if the personal profile is complete. Never turn it true as part of the initial profile write.
 
 Do not insert personal configuration into `instructions.md`, workflow files or policy files. `profile.md` is the single source of truth for user-specific runtime configuration. Save the confirmed canonical `github_repository` together with the repository-relative vault paths. Populate `approved_data_sources` only from the user's approved source choices after any applicable connector preflight has succeeded; `ChatGPT surfaced conversation context` requires explicit permission but no connector preflight. A source the user declined or that remains technically unverified must not be listed as approved. Save the confirmed location as `normal_location`, the confirmed state/province/region as `region` (or null when not useful), the resolved timezone as `timezone`, and the weather lookup location separately as `weather_location`. Runtime regional-holiday decisions must use `normal_location` / `region`, not infer location from `weather_location`. For Calendar scope, use `calendar_scope.mode: include_all` and save only explicitly excluded stable calendar IDs under `calendar_scope.excluded_calendar_ids`. Newly visible calendars are therefore included automatically unless the user later excludes them. Calendar discovery is configuration plumbing, not permission to read Calendar when Google Calendar is absent from `approved_data_sources`. Add other stable profile fields only when the user explicitly provided them and they materially help planning; do not infer them from connected sources.
 
-## 7. Initialize state files
+**Write and verify boundary:** Fetch the current file and blob SHA; update this single file with the supported GitHub file-update operation and an informative commit message. Fetch it again from the same repository and branch. Confirm the saved fields match the approved summary, no required placeholders remain, and `setup_complete` is still false. Record the verified commit SHA only in the session report, not in stable profile preferences. Never assume success from a prepared Git blob/tree alone.
+
+On a write error, safety block, read-back mismatch or concurrent SHA conflict, **stop** and report the exact failed stage. Do not claim that data was saved, change method to evade a safety block, initialize other state, or create tasks. A later user-authorized retry may resume from the current verified files without duplicating completed writes.
+
+## 7. Initialize and verify state, one file at a time
 
 - Initialize `action_ledger.md` as an Obsidian Kanban Markdown file using the fixed lists `Action`, `Waiting`, `Upcoming`, `Closed`, the schema/card format in `policies/rules.md`, and clean Kanban plugin metadata/settings.
 - Keep all four lists empty unless the user explicitly asks to seed current/historical operational items.
@@ -202,13 +208,19 @@ Do not insert personal configuration into `instructions.md`, workflow files or p
 - `memory.md` is no longer a required runtime file. For an older installation with non-empty `memory.md`, preserve it as legacy/reference material until the user explicitly chooses to archive/delete/migrate its useful domain context. Do not silently discard user data. A clean new installation does not create `memory.md`.
 - Initialize `daily_companion_extra.md` as the default-on Companion Surprise engine/state file without asking a separate onboarding question. Preserve its engine body exactly, set `enabled: true`, keep the configured cadence bounds, and choose `next_due` randomly within the inclusive `min_gap_days`-`max_gap_days` window after the setup local date. This initialization is part of the already-approved setup write, not a separate consent prompt, and it is the only write to this file that setup performs. Do not reveal the chosen date or preview the feature. Auto Mode is read-only and delivers only when the local date exactly equals `next_due`; each delivery asks the user to `approve` the next one (an interactive write that advances `next_due`) or `stop surprise` (which sets `enabled: false`). If the user has already explicitly opted out of automatic surprises, record `enabled: false` and do not initialize an active due date; explicit Manual Mode requests may still be honoured as one-off requests.
 
-## 8. Verify the installation
+For a clean installation, initialize `action_ledger.md` **first**. Then read it back and verify the four required lists and valid schema, without erasing existing cards. Initialize `daily_companion_extra.md` **second** according to the approved setup contract; preserve the engine body and existing valid state on resumed setups. Read it back and verify `enabled`, cadence/state fields, and the engine body. Neither step may modify `profile.md` or any other file in the same GitHub write.
+
+Use a fresh content SHA for each existing file; one file per commit, followed immediately by a read-back from the intended repository and branch. Skip an already-correct file on resume. Never overwrite an existing personalized or non-empty ledger, surprise state, or historical Daily artifact to force setup forward. Report a blocker and request approval for a specific repair.
+
+**Stop gate:** If either state write or verification fails, leave `setup_complete: false`. Report what is committed versus pending; do not activate scheduled tasks. A platform safety block must be surfaced, not bypassed by alternate APIs or repeated writes.
+
+## 8. Verify readiness, then finalize setup status
 
 Verify that this System folder contains and can read:
 
 - `setup.md`;
 - `instructions.md`;
-- `profile.md` with `setup_complete: true`;
+- `profile.md` with approved fields populated; keep `setup_complete: false` until final readiness commit;
 - `action_ledger.md`;
 - `daily_companion_extra.md`;
 - `workflows/morning.md`;
@@ -216,13 +228,19 @@ Verify that this System folder contains and can read:
 - `policies/rules.md`;
 - `policies/artifacts.md`.
 
-Confirm `profile.md` has `setup_complete: true`, all required approved configuration fields are populated, `github_repository` identifies the canonical runtime repository, `normal_location` / `region` are present as applicable, Calendar scope is present when applicable, and all referenced repository-relative vault/System/Daily/Action-Ledger paths are valid or clearly report any unresolved path issue. For a clean install that has not opted out, verify `daily_companion_extra.md` is enabled, has a valid `next_due` on or after the setup local date, and is configured for read-only Auto Mode; do not surface that date to the user. Reconfirm that each connected source listed in final `approved_data_sources` passed the applicable Section 4 preflight during this onboarding session; do not rely on a stale historical “verified” claim. If `ChatGPT surfaced conversation context` is listed, verify that the user explicitly approved it; no connector preflight or same-day conversation availability is required during setup. When Google Calendar is approved, verify that Calendar scope uses include-all-by-default semantics with only explicit exclusions stored. Do not claim setup is complete until the required runtime package is readable and the intended approved connected sources are verified. Confirm the configured `daily_folder` is a valid, writable location: the folder may not exist yet, but the first approved Daily Briefing or Daily Memory save must be able to create or use it; if there is any doubt, ask the user to create or confirm the folder before finishing setup.
+Confirm `profile.md` has all required approved configuration fields are populated, `github_repository` identifies the canonical runtime repository, `normal_location` / `region` are present as applicable, Calendar scope is present when applicable, and all referenced repository-relative vault/System/Daily/Action-Ledger paths are valid or clearly report any unresolved path issue. For a clean install that has not opted out, verify `daily_companion_extra.md` is enabled, has a valid `next_due` on or after the setup local date, and is configured for read-only Auto Mode; do not surface that date to the user. Reconfirm that each connected source listed in final `approved_data_sources` passed the applicable Section 4 preflight during this onboarding session; do not rely on a stale historical “verified” claim. If `ChatGPT surfaced conversation context` is listed, verify that the user explicitly approved it; no connector preflight or same-day conversation availability is required during setup. When Google Calendar is approved, verify that Calendar scope uses include-all-by-default semantics with only explicit exclusions stored. Do not claim setup is complete until the required runtime package is readable and the intended approved connected sources are verified. Confirm the configured `daily_folder` is a valid, writable location: the folder may not exist yet, but the first approved Daily Briefing or Daily Memory save must be able to create or use it; if there is any doubt, ask the user to create or confirm the folder before finishing setup.
+
+After all the above read-only checks succeed, perform a **separate final single-file update** to `profile.md` setting `setup_complete: true`, changing no other approved settings. Fetch it again and confirm the exact saved flag and approved configuration. This flag means the *repository installation* is complete; it does **not** mean Scheduled Tasks exist or are enabled. If the final update or verification fails, installation remains unconfirmed and tasks must not be activated.
+
+If `setup_complete: true` is found on a resumed or legacy install while state is incomplete, treat it as an inconsistent state: report it and ask before repairing it. Never infer completion from the flag alone.
+
+Show a concise installation report distinguishing (1) profile configured, (2) state initialized, (3) repository verified and finalized, and (4) scheduled task activation pending/verified. Do not conflate these statuses.
 
 ## 9. Create Scheduled Tasks
 
-Do **not** create Scheduled Tasks until the installation verification above has passed and connector preflight is satisfied for every connected source in final `approved_data_sources`. The configured GitHub repository must be readable and the approved setup commit must have proved interactive write access. Any approved Gmail, Google Calendar or other connected source that Morning/Evening will rely on must have passed its harmless read check. If a desired source remains blocked, let the user fix access and retry or explicitly revise the approved-source set; never silently create tasks that assume unavailable access.
+Request explicit user confirmation to activate Scheduled Tasks after reporting verified repository readiness. Do **not** create Scheduled Tasks until the user confirms activation and the installation verification above has passed and connector preflight is satisfied for every connected source in final `approved_data_sources`. The configured GitHub repository must be readable and the approved setup commit must have proved interactive write access. Any approved Gmail, Google Calendar or other connected source that Morning/Evening will rely on must have passed its harmless read check. If a desired source remains blocked, let the user fix access and retry or explicitly revise the approved-source set; never silently create tasks that assume unavailable access.
 
-After file and access verification, create three ongoing daily tasks using the timezone from `profile.md`:
+Only after that separate activation confirmation, create three ongoing daily tasks using the timezone from `profile.md`:
 
 - `Morning Companion` — exact-time daily at the approved Morning time.
 - `Evening Companion` — exact-time daily at the approved Evening time.
@@ -261,7 +279,7 @@ These instruction patterns are part of the installation contract. If behaviour e
 
 After creating the tasks, verify all three internally: title, enabled status, daily recurrence, local timing/timezone and correct entrypoint. Report only `Morning Companion` and `Evening Companion` to the user; do not announce the extra check or reveal the hidden Surprise `next_due` date.
 
-If any task cannot be created or verified, say exactly what failed instead of claiming setup is complete. If Scheduled Task creation is unavailable in the current environment, provide the exact titles/schedules and stable entrypoint prompts so the user can create them elsewhere; do not pretend they were created.
+If any task cannot be created or verified, state precisely that repository installation is complete but scheduled activation is incomplete; do not claim tasks are active. If Scheduled Task creation is unavailable in the current environment, provide the exact titles/schedules and stable entrypoint prompts so the user can create them elsewhere; do not pretend they were created.
 
 ## 10. Setup safety
 

@@ -60,7 +60,7 @@ Set expectations early: the user answers a short set of questions, then setup pe
 
 Run setup conversationally. At the beginning, tell the user there are only a handful of questions and setup should normally be quick.
 
-- ask exactly one user-facing question per turn and wait for the user's answer before asking the next question; never bundle multiple onboarding questions into the same message;
+- ask one topic per turn and wait for the answer before continuing; the paired Morning/Evening times are deliberately collected together in one schedule question;
 - briefly explain why a question matters when useful;
 - accept natural-language answers and do not force the user into fixed-choice answers;
 - keep setup friendly and lightweight rather than making it feel like a long form;
@@ -70,7 +70,7 @@ Run setup conversationally. At the beginning, tell the user there are only a han
 
 ## 3. Collect required configuration
 
-Collect and confirm the fields below. The suggested questions are reference wording, not a rigid script: keep the meaning stable while adapting naturally to the conversation. Ask exactly one user-facing question per turn and wait for the answer before continuing. Never present multiple onboarding questions in one message or present the whole list as a form.
+Collect and confirm the fields below. Use the specified defaults without separate questions, disclosing them in the final approval summary. The suggested questions are reference wording, not a rigid script: keep the meaning stable while adapting naturally to the conversation. Ask exactly one user-facing question per turn and wait for the answer before continuing. Never present multiple onboarding questions in one message or present the whole list as a form.
 
 1. **Preferred name**  
    Collect `preferred_name`.  
@@ -92,12 +92,8 @@ Collect and confirm the fields below. The suggested questions are reference word
 5. **Communication style**  
    Suggested question: **“How would you like the Companion to sound? For example warm, direct, concise, gentle, playful, detailed or practical — or describe it in your own words.”**
 
-6. **Preferred-name usage frequency**  
-   Suggested question: **“How often should I use your name — occasionally, greetings only, often, or rarely/never?”**
-
-7. **Daily Flavour**  
-   Suggested question: **“Would you like any light extras in the daily companion — for example useful local weather, weather tied to plans, dry/clever humour, fun facts, short inspiration, tiny challenges, or none?”**  
-   Allow any combination and keep flavour secondary to useful content.
+6. **Default personalisation (no separate questions)**
+   Set `preferred_name_usage: occasionally`. Enable all Daily Flavour categories by default: `weather`, `weather_tied_to_plans`, `humour`, `fun_fact`, `inspiration`, `tiny_challenge`. Treat weather as separately permission-gated, and select exactly one non-weather Daily Flavour item in each Morning Briefing according to `workflows/morning.md`. The user may change or disable any category later. Show these defaults in the final summary for approval, but do not ask individual questions about them.
 
 8. **Runtime data-source permission**  
    Explain first that the configured GitHub repository is required as Daily Companion storage and is separate from optional information sources. Then collect optional source permissions **one question per turn**, in this order:
@@ -110,21 +106,13 @@ Collect and confirm the fields below. The suggested questions are reference word
     The default scope is include-all with no exclusions; no exclusion question is asked during the configuration phase. Exclusions are collected in Section 4.2 only after the Calendar preflight enumeration succeeds.
 
 10. **GitHub repository**  
-    Confirm the repository in `owner/repository` form and store it as `github_repository`.
+    Prefer the repository explicitly named in the entry prompt and successfully used to read this setup file. State the detected `owner/repository` and ask for confirmation only if ambiguous; do not ask the user to retype a verified repository. Record it as `github_repository` and include in final approval summary.
 
-11. **Obsidian storage paths inside the repository**  
-    Suggested question: **“I’ll treat the repository root as your Obsidian vault root, with `System/` for the System folder and `Daily/` for Daily notes. Is that the structure you want?”**  
-    Default `vault_root` to `.` when the repository root is the vault root, `system_folder` to `System`, `daily_folder` to `Daily`, and `action_ledger_file` to `System/action_ledger.md`. If the vault lives in a repository subfolder, confirm that exact relative path instead.
+11. **Storage defaults (no questions)**
+    Use `vault_root: .`, `system_folder: System`, `daily_folder: Daily`, and `action_ledger_file: System/action_ledger.md`. Set filenames to `YYYY-MM-DD Daily Briefing.md` and `YYYY-MM-DD Daily Memory.md`. Only ask about deviations if the detected repository layout makes these defaults invalid or the user requests customization. Include defaults in final summary.
 
-12. **Daily filenames**  
-    Suggested question: **“Are the default filenames `YYYY-MM-DD Daily Briefing.md` and `YYYY-MM-DD Daily Memory.md` okay?”**  
-    Use those defaults unless the user requests otherwise.
-
-13. **Morning Companion time**  
-    Suggested question: **“What local time would you like your Morning Companion to run — for example 8:00am or 8:30am?”**
-
-14. **Evening Companion time**  
-    Suggested question: **“What local time would you like your Evening Companion to run — for example 9:00pm?”**
+12. **Daily schedule (one combined question)**
+    Suggested question: **“What local times would you like Morning and Evening Companion to run? I suggest 8:00 AM and 8:00 PM.”** Collect both times together; do not assume suggested times without approval. Store them separately as `morning_companion_time` and `evening_companion_time`.
 
 There is no separate global `memory.md` onboarding setting. Stable configuration belongs in `profile.md`; operational continuity belongs in the Action Ledger; project/domain context stays with its source/area.
 

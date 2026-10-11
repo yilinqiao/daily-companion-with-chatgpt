@@ -18,19 +18,19 @@ regular_work_schedule:
   sunday: null
 output_language: "<SETUP_REQUIRED>"
 communication_style: "<SETUP_REQUIRED>"
-preferred_name_usage: "<SETUP_REQUIRED>"
-daily_flavour: []
+preferred_name_usage: occasionally
+daily_flavour: [weather, weather_tied_to_plans, humour, fun_fact, inspiration, tiny_challenge]
 approved_data_sources: []
 calendar_scope:
   mode: include_all
   excluded_calendar_ids: []
 github_repository: "<SETUP_REQUIRED: owner/repository>"
-vault_root: "<SETUP_REQUIRED>"
-system_folder: "<SETUP_REQUIRED>"
-daily_folder: "<SETUP_REQUIRED>"
+vault_root: "."
+system_folder: System
+daily_folder: Daily
 daily_briefing_filename: "YYYY-MM-DD Daily Briefing.md"
 daily_memory_filename: "YYYY-MM-DD Daily Memory.md"
-action_ledger_file: "<SETUP_REQUIRED>"
+action_ledger_file: System/action_ledger.md
 morning_companion_time: "<SETUP_REQUIRED>"
 evening_companion_time: "<SETUP_REQUIRED>"
 ---

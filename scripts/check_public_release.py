@@ -24,6 +24,9 @@ patterns = {
     "Drive document id": r"(?:drive\.google\.com/(?:file/d/|drive/folders/)|docs\.google\.com/[^\s]+/d/)[A-Za-z0-9_\-]{20,}",
 }
 for p in root.rglob("*"):
+    # A checkout always contains .git objects, which are binary and not release files.
+    if ".git" in p.relative_to(root).parts:
+        continue
     if not p.is_file():
         continue
     path = p.relative_to(root).as_posix()

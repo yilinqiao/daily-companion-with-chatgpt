@@ -16,7 +16,7 @@ Paste in ChatGPT:
 
 ## 3. Complete setup
 
-The setup asks about normal location/timezone, work pattern, language, communication and preferred-name usage, optional extras and approved information sources, paths and Daily filenames, and Morning/Evening times. It must ask one question per turn. It must show a complete summary and receive explicit approval before writing. It updates System/profile.md with `setup_complete: false`, then initializes and reads back each state file through separate commits. Only after all required files and source checks pass should it set `setup_complete: true` in a final verified commit. If a write is blocked, stop and report which files are saved versus pending; do not work around a safety block.
+The streamlined setup asks about name, location/timezone, work pattern, language, communication style, approved information sources and Morning/Evening times together. Preferred-name usage defaults to occasionally; all Daily Flavour categories are enabled by default, with one rotating non-weather item in each Morning Briefing. Storage paths and Daily filenames use template defaults without extra questions. All defaults are disclosed for final approval; weather retrieval still requires permission. It must ask one question per turn. It must show a complete summary and receive explicit approval before writing. It updates System/profile.md with `setup_complete: false`, then initializes and reads back each state file through separate commits. Only after all required files and source checks pass should it set `setup_complete: true` in a final verified commit. If a write is blocked, stop and report which files are saved versus pending; do not work around a safety block.
 
 ## 4. Scheduling
 

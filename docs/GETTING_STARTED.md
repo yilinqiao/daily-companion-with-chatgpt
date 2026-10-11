@@ -16,11 +16,11 @@ Paste in ChatGPT:
 
 ## 3. Complete setup
 
-The setup asks about normal location/timezone, work pattern, language, communication and preferred-name usage, optional extras and approved information sources, paths and Daily filenames, and Morning/Evening times. It must ask one question per turn. It must show a complete summary and receive explicit approval before personalizing System/profile.md and initializing state. Check that a write is actually committed to **your private repository** and read back the result.
+The setup asks about normal location/timezone, work pattern, language, communication and preferred-name usage, optional extras and approved information sources, paths and Daily filenames, and Morning/Evening times. It must ask one question per turn. It must show a complete summary and receive explicit approval before writing. It updates System/profile.md with `setup_complete: false`, then initializes and reads back each state file through separate commits. Only after all required files and source checks pass should it set `setup_complete: true` in a final verified commit. If a write is blocked, stop and report which files are saved versus pending; do not work around a safety block.
 
 ## 4. Scheduling
 
-If supported, set up the three Scheduled Tasks using the stable prompts in System/setup.md. Scheduled runs generate output only. They do not save Daily notes or update the Ledger: approve each intended save interactively and verify the committed file. If scheduled GitHub reads or notifications fail, use manual check-ins rather than claiming a task ran.
+Only after repository setup verification and a separate activation confirmation, set up the three Scheduled Tasks using the stable prompts in System/setup.md. Scheduled runs generate output only. They do not save Daily notes or update the Ledger: approve each intended save interactively and verify the committed file. If scheduled GitHub reads or notifications fail, use manual check-ins rather than claiming a task ran.
 
 ## 5. Obsidian is optional
 
@@ -38,6 +38,6 @@ Clone your private repo and open it as an Obsidian vault, using GitHub Desktop o
 ## Troubleshooting
 
 **Repo inaccessible:** recheck owner/repo and installation permissions. Never substitute this public template.
-**Write unavailable:** do not mark setup complete until an authorized write is verified.
+**Write unavailable:** stop at the failed stage; report the exact error, committed changes and pending changes. Do not mark setup complete or activate tasks until all required writes are independently read back and verified.
 **Highlights missing:** ChatGPT cross-chat availability can be incomplete; add a missed topic manually.
 **Duplicate obligations:** Closed/standing Ledger history prevents repeatedly treating the same already-handled obligation as new.

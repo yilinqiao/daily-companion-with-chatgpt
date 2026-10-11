@@ -22,6 +22,10 @@ The streamlined setup asks about name, location/timezone, work pattern, language
 
 Only after repository setup verification and a separate activation confirmation, set up the three Scheduled Tasks using the stable prompts in System/setup.md. Scheduled runs generate output only. They do not save Daily notes or update the Ledger: approve each intended save interactively and verify the committed file. If scheduled GitHub reads or notifications fail, use manual check-ins rather than claiming a task ran.
 
+Surprise continues automatically each week from the week after setup, with no `approve` reply. Saying `pause surprises` pauses it. Its private state stores only a random seed and start week in `System/daily_companion_extra.md`; each read-only daily check calculates the current week's date rather than storing a future calendar. The scheduled environment must be able to execute the exact calculation. If that capability cannot be verified, setup reports Extra as inactive while verified Morning/Evening tasks may proceed.
+
+The blank-template CI check runs only in the public source repository. An initialized private copy automatically skips that job; the source template still rejects personal configuration and initialized state.
+
 ## 5. Obsidian is optional
 
 Clone your private repo and open it as an Obsidian vault, using GitHub Desktop or Git on desktop. Kanban and Slurp are optional community plugins. On mobile, see Resources/Obsidian GitHub GitSync Setup.md. Test sync in both directions. Do not run two sync tools on the same vault simultaneously.

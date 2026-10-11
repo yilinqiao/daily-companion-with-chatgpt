@@ -44,9 +44,9 @@ for p in root.rglob("*"):
     for label, regex in patterns.items():
         for match in re.finditer(regex, text):
             problems.append(f"{path}: potential {label}")
-profile = (root / "System/profile.md").read_text()
-ledger = (root / "System/action_ledger.md").read_text()
-extra = (root / "System/daily_companion_extra.md").read_text()
+profile = (root / "System/profile.md").read_text(encoding="utf-8")
+ledger = (root / "System/action_ledger.md").read_text(encoding="utf-8")
+extra = (root / "System/daily_companion_extra.md").read_text(encoding="utf-8")
 if "setup_complete: false" not in profile or "SETUP_REQUIRED" not in profile:
     problems.append("Profile is not unconfigured")
 if re.search(r"^- \[[xX ]\]", ledger, re.M) or "<!-- dc:" in ledger:
@@ -54,21 +54,21 @@ if re.search(r"^- \[[xX ]\]", ledger, re.M) or "<!-- dc:" in ledger:
 for status in ("Action", "Waiting", "Upcoming", "Closed"):
     if "## " + status not in ledger:
         problems.append("Missing Ledger section: " + status)
-# The public starter must hold a blank weekly calendar and no personal
-# delivery/feedback history. Do not reject the new schema-v4 blank list.
-if not re.search(r"(?m)^schema_version: 4\s*$", extra):
-    problems.append("Surprise schema must be v4")
-if not re.search(r"(?m)^weekly_due_dates: \[\]\s*$", extra):
-    problems.append("Surprise calendar must be uninitialized")
+# The public starter has no initialized seed/start week or feedback history.
+if not re.search(r"(?m)^schema_version: 5\s*$", extra):
+    problems.append("Surprise schema must be v5")
+for field in ("start_week", "schedule_seed"):
+    if not re.search(r"(?m)^" + field + r": null\s*$", extra):
+        problems.append("Surprise has an initialized " + field)
 for field in ("last_approved_auto_delivery", "last_mode", "last_type"):
     if not re.search(r"(?m)^" + field + r": null\s*$", extra):
         problems.append("Surprise has an initialized " + field)
 for field in ("recent_types", "recent_themes"):
     if not re.search(r"(?m)^" + field + r": \[\]\s*$", extra):
         problems.append("Surprise has initialized " + field)
-if re.search(r"(?m)^(?:next_due|min_gap_days|max_gap_days):", extra):
+if re.search(r"(?m)^(?:weekly_due_dates|next_due|min_gap_days|max_gap_days):", extra):
     problems.append("Surprise still uses legacy cadence fields")
-if "Use this template" not in (root / "README.md").read_text():
+if "Use this template" not in (root / "README.md").read_text(encoding="utf-8"):
     problems.append("README must recommend private template copy")
 print("Public template static check")
 if problems:

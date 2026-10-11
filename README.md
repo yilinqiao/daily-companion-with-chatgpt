@@ -13,7 +13,7 @@ Daily Companion can help you preview your day, review your evening, maintain an 
 | Morning Companion | A short, source-aware day briefing with calendar, mail, actionable follow-ups, and useful weather when enabled |
 | Evening Companion | A conversational review that drafts a Daily Memory for your approval; includes tomorrow preparation and available same-day discussion highlights |
 | Action Ledger | An Obsidian Kanban board tracking Action, Waiting, Upcoming, and Closed with lasting handling history |
-| Daily Companion Extra | Optional lightweight surprises with a controlled schedule and manual approval for state changes |
+| Daily Companion Extra | A random surprise each week from the week after setup; continues without approval until paused |
 | Private vault | Your own independent private GitHub repository stores the configuration and Markdown notes |
 
 ## Quick start
@@ -38,6 +38,7 @@ Daily Companion can help you preview your day, review your evening, maintain an 
 - A GitHub account and a **private** repository generated from this public template.
 - A ChatGPT account with a GitHub connection capable of reading and writing your own repository. Connector permissions must be confirmed in practice; some connections are read-only or limited to selected repositories.
 - Scheduled Tasks, Gmail, Calendar, cross-chat context, and file writes may differ by ChatGPT plan, platform, runtime and permission. **Do not assume they work merely because they are described here.** If a capability is unavailable, follow the reduced-source/manual workflow; the setup must not claim success it cannot verify.
+- Weekly Surprise uses a seed to calculate only the current week's random date. Its scheduled environment must support exact code execution for this read-only calculation; fetching a GitHub script alone is insufficient. Setup verifies this separately and reports Extra inactive if unavailable, while verified Morning/Evening tasks may proceed.
 - Automated chat runs cannot guarantee complete access to all previous conversations. Evening notes should disclose material gaps and ask you for missing details rather than inventing them.
 - Version control is not a replacement for backup. Keep an independent backup of private personal information.
 

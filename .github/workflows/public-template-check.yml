@@ -6,8 +6,12 @@ permissions:
   contents: read
 jobs:
   static-check:
+    # Initialized private copies are vaults, not blank public templates.
+    if: ${{ github.repository == 'yilinqiao/daily-companion-with-chatgpt' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - name: Static release check
         run: python3 scripts/check_public_release.py
+      - name: Surprise schedule regression checks
+        run: python3 -B -m unittest discover -s scripts -p 'test_*.py'

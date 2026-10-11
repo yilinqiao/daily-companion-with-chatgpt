@@ -42,7 +42,7 @@ If setup is incomplete, do not run the normal Morning or Evening workflow; direc
 - Morning Companion → follow `System/workflows/morning.md`.
 - Evening Companion → follow `System/workflows/evening.md`.
 - Explicit request for a Companion Surprise → fresh-read `System/daily_companion_extra.md` and execute **Manual Mode** exactly as defined there.
-- Companion Surprise delivery approval (`approve` / `stop surprise` after an automatic delivery) → follow the **Approval Handoff** in `System/daily_companion_extra.md`.
+- Companion Surprise pause/resume or explicit style-feedback request → follow **Interactive Controls** in `System/daily_companion_extra.md`. Surprise needs no `approve` to continue each week.
 - Shared evidence, Action Ledger meaning, lifecycle and continuity → follow `System/policies/rules.md`.
 - Daily Briefing / Daily Memory structure, approval and save behaviour → follow `System/policies/artifacts.md`.
 
@@ -52,7 +52,7 @@ Do not duplicate detailed workflow or policy rules in this file.
 
 By Daily Companion design, Scheduled Morning, Evening and extra-check runs are **read-and-output only**. They may read the configured GitHub repository and approved connected sources, but they must not commit, create, update or delete repository files during the scheduled run. Persistent repository writes happen only in an interactive follow-up turn under the applicable approval/write protocol.
 
-Companion Surprise Auto Mode is strictly read-only: it never advances its own state. Its next delivery is scheduled only when the user replies `approve` (or a clear equivalent) in an interactive turn, and `stop surprise` pauses it. Follow the Approval Handoff in `System/daily_companion_extra.md`.
+Companion Surprise Auto Mode is strictly read-only. It calculates only the current week's random date from stable setup state and continues each week without `approve`. An explicit `pause`/stop request pauses it under Interactive Controls in `System/daily_companion_extra.md`.
 
 ## Global Retrieval Principles
 
@@ -67,4 +67,4 @@ Companion Surprise Auto Mode is strictly read-only: it never advances its own st
 - Do not invent facts or continuity.
 - Distinguish known facts from inference and missing evidence.
 - Sources discover signals; the Action Ledger supplies durable operational continuity.
-- Scheduled runs never mutate the GitHub repository; every repository write requires an interactive turn under the active workflow/policy authorization. Companion Surprise cadence updates follow the Approval Handoff in `System/daily_companion_extra.md`.
+- Scheduled runs never mutate the GitHub repository; every repository write requires an interactive turn under the active workflow/policy authorization. Companion Surprise controls follow Interactive Controls in `System/daily_companion_extra.md`.

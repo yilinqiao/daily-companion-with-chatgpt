@@ -5,7 +5,7 @@ schema_version: 2
 
 # Daily Companion Setup
 
-*Package revision: 2026-10-11 - GitHub/GitSync architecture, Action Ledger schema v6, read-only Companion Surprise engine with interactive cadence approval.*
+*Package revision: 2026-10-11 - GitHub/GitSync architecture, Action Ledger schema v6, read-only Companion Surprise engine with one randomized date each calendar week.*
 
 This folder is the clean Daily Companion installation package. All runtime files are intentionally generic and contain no user-specific personal information before setup. It is the canonical clean installation package: maintainers must keep it structurally and behaviourally aligned with the current Daily Companion system without copying any user's personal configuration or state into it.
 

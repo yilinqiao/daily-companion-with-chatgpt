@@ -27,8 +27,8 @@ Daily Companion can help you preview your day, review your evening, maintain an 
    ```
 
 4. Answer the onboarding questions. Calendar and Gmail are **optional**. Grant each only if you want it used. ChatGPT must verify a source is accessible before treating it as connected.
-5. Review the proposed configuration, then explicitly approve the setup writes. Confirm ChatGPT actually updated `System/profile.md`, initialized `System/action_ledger.md`, and verified those GitHub changes.
-6. If your ChatGPT account supports Scheduled Tasks, create/verify Morning, Evening and Extra checks according to `System/setup.md`. Scheduled runs are **read-and-output only by design**; saving notes and action changes happens after interactive approval.
+5. Review the proposed configuration, then explicitly approve setup writes. ChatGPT commits the profile first with `setup_complete: false`, initializes and verifies each state file in a separate commit, and only then changes `setup_complete` to `true`. Confirm the post-write read-back checks for each file.
+6. After the repository setup is verified, separately confirm whether to activate Scheduled Tasks. If supported, create/verify Morning, Evening and Extra checks according to `System/setup.md`. Scheduled runs are **read-and-output only by design**; saving notes and action changes happens after interactive approval.
 7. Optional: clone your **private** repository into Obsidian and configure desktop Git / mobile sync using `Resources/Obsidian GitHub GitSync Setup.md`.
 
 **Start without Obsidian:** ChatGPT can use the Markdown files in your private GitHub repository. Obsidian is an optional, useful editor, not a requirement for the first setup conversation.

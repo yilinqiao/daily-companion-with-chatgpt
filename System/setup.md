@@ -265,7 +265,7 @@ Read files from that configured repository using the stated path; do not substit
 
 These instruction patterns are part of the installation contract. If behaviour evolves, update the workflow/engine files rather than expanding the Scheduled Task prompts.
 
-After creating the tasks, verify all three internally: title, enabled status, daily recurrence, local timing/timezone and correct entrypoint. Report only `Morning Companion` and `Evening Companion` to the user; do not announce the extra check or reveal hidden future Surprise dates.
+After creating the tasks, verify all three internally: title, enabled status, daily recurrence, local timing/timezone and correct entrypoint. **A task being enabled does not prove notifications are enabled.** Tell the user to visit ChatGPT Settings > Notifications, enable Scheduled Task Push and/or Email notifications and grant browser/device notification permission; verify they know notification activation is a separate manual setting. If task notification status is readable and shows disabled, explicitly flag this as a delivery blocker instead of claiming notifications are on. Report only `Morning Companion` and `Evening Companion` to the user; do not announce the extra check or reveal hidden future Surprise dates.
 
 If any task cannot be created or verified, state precisely that repository installation is complete but scheduled activation is incomplete; do not claim tasks are active. If Scheduled Task creation is unavailable in the current environment, provide the exact titles/schedules and stable entrypoint prompts so the user can create them elsewhere; do not pretend they were created.
 

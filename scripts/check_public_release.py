@@ -56,15 +56,15 @@ for status in ("Action", "Waiting", "Upcoming", "Closed"):
         problems.append("Missing Ledger section: " + status)
 # The public starter must hold a blank weekly calendar and no personal
 # delivery/feedback history. Do not reject the new schema-v4 blank list.
-if not re.search(r"(?m)^schema_version: 4\\s*$", extra):
+if not re.search(r"(?m)^schema_version: 4\s*$", extra):
     problems.append("Surprise schema must be v4")
-if not re.search(r"(?m)^weekly_due_dates: \\[\\]\\s*$", extra):
+if not re.search(r"(?m)^weekly_due_dates: \[\]\s*$", extra):
     problems.append("Surprise calendar must be uninitialized")
 for field in ("last_approved_auto_delivery", "last_mode", "last_type"):
-    if not re.search(r"(?m)^" + field + r": null\\s*$", extra):
+    if not re.search(r"(?m)^" + field + r": null\s*$", extra):
         problems.append("Surprise has an initialized " + field)
 for field in ("recent_types", "recent_themes"):
-    if not re.search(r"(?m)^" + field + r": \\[\\]\\s*$", extra):
+    if not re.search(r"(?m)^" + field + r": \[\]\s*$", extra):
         problems.append("Surprise has initialized " + field)
 if re.search(r"(?m)^(?:next_due|min_gap_days|max_gap_days):", extra):
     problems.append("Surprise still uses legacy cadence fields")

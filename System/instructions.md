@@ -52,9 +52,9 @@ Do not duplicate detailed workflow or policy rules in this file.
 
 ## Scheduled Task Write Boundary
 
-By Daily Companion design, Scheduled Morning, Evening and extra-check runs are **read-and-output only**. They may read the configured GitHub repository and approved connected sources, but they must not commit, create, update or delete repository files during the scheduled run. Persistent repository writes happen only in an interactive follow-up turn under the applicable approval/write protocol.
+Scheduled Morning/Evening are **read-and-output only** and may not mutate repository files, Gmail or Calendar. Their persistent writes require an interactive follow-up under the applicable approval/write protocol. Scheduled Extra has one explicit exception: after standing user consent it may update only its own engine file's scheduling/delivery fields under `System/daily_companion_extra.md`; never profile, Daily, Ledger, other notes, Gmail or Calendar.
 
-Companion Surprise Auto Mode is strictly read-only. It calculates only the current week's random date from stable setup state and continues each week without `approve`. An explicit `pause`/stop request pauses it under Interactive Controls in `System/daily_companion_extra.md`.
+Companion Surprise Auto reads one stored next_due_date, stays silent before it, and on/after it reserves an attempt, verifies a date in the week after that attempt, then renders once in the final response. No code/hash calculation or weekly approve. Pending claims block repeats and need interactive recovery. Explicit pause/stop pauses it; its engine owns detailed state and write rules.
 
 ## Global Retrieval Principles
 
@@ -69,4 +69,4 @@ Companion Surprise Auto Mode is strictly read-only. It calculates only the curre
 - Do not invent facts or continuity.
 - Distinguish known facts from inference and missing evidence.
 - Sources discover signals; the Action Ledger supplies durable operational continuity.
-- Scheduled runs never mutate the GitHub repository; every repository write requires an interactive turn under the active workflow/policy authorization. Companion Surprise controls follow Interactive Controls in `System/daily_companion_extra.md`.
+- Scheduled Morning/Evening never mutate the repository. Extra may change only its expressly authorized scheduling/delivery fields; all other writes follow interactive authorization. Surprise controls/recovery follow its engine contract.

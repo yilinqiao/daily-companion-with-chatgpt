@@ -14,7 +14,7 @@
 - [ ] Use **Use this template** to create a test **Private** repository.
 - [ ] Test GitHub read and approved write into that private repository.
 - [ ] Test one-question onboarding, source permissions, Calendar/Gmail reduced-source mode, Morning, Evening, Ledger and persistence.
-- [ ] Test schedules and time zones only if supported by the test ChatGPT account.
+- [ ] Test schedules/time zones only when supported; verify Extra's standing consent, private write scope, before-date silence, overdue delivery, next-week selection, failed claim/completion, competing runs, pause/revoke and pending-claim recovery. Distinguish task enabled from actual scheduled persistence; do not require the retired hash-calculation test.
 - [ ] Test Obsidian sync separately on the devices actually supported.
 - [ ] Record remaining limitations rather than declaring an untested production launch.
 

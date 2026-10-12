@@ -67,11 +67,20 @@ if re.search(r"^- \[[xX ]\]", ledger, re.M) or "<!-- dc:" in ledger:
 for status in ("Action", "Waiting", "Upcoming", "Closed"):
     if "## " + status not in ledger:
         problems.append("Missing Ledger section: " + status)
-# The public starter has no initialized seed/start week or feedback history.
-if not re.search(r"(?m)^schema_version: 5\s*$", extra):
-    problems.append("Surprise schema must be v5")
-for field in ("start_week", "schedule_seed"):
-    if not re.search(r"(?m)^" + field + r": null\s*$", extra):
+# The public starter contains no chosen date, claim or delivery history.
+extra_state = extra.split("---", 2)[1] if extra.startswith("---\n") else ""
+state_keys = re.findall(r"(?m)^([A-Za-z_][A-Za-z0-9_]*):", extra_state)
+for key in set(state_keys):
+    if state_keys.count(key) > 1:
+        problems.append("Duplicate Surprise state field: " + key)
+if not re.search(r"(?m)^schema_version: 6\s*$", extra_state):
+    problems.append("Surprise schema must be v6")
+if not re.search(r"(?m)^delivery_status: idle\s*$", extra_state):
+    problems.append("Surprise delivery status must be idle")
+if not re.search(r"(?m)^scheduled_writes_authorized: false\s*$", extra_state):
+    problems.append("Public Surprise must not contain private scheduled-write consent")
+for field in ("next_due_date", "delivery_due_date", "delivery_claimed_at", "last_attempt_date"):
+    if not re.search(r"(?m)^" + field + r": null\s*$", extra_state):
         problems.append("Surprise has an initialized " + field)
 for field in ("last_approved_auto_delivery", "last_mode", "last_type"):
     if not re.search(r"(?m)^" + field + r": null\s*$", extra):
@@ -79,7 +88,7 @@ for field in ("last_approved_auto_delivery", "last_mode", "last_type"):
 for field in ("recent_types", "recent_themes"):
     if not re.search(r"(?m)^" + field + r": \[\]\s*$", extra):
         problems.append("Surprise has initialized " + field)
-if re.search(r"(?m)^(?:weekly_due_dates|next_due|min_gap_days|max_gap_days):", extra):
+if re.search(r"(?m)^(?:weekly_due_dates|next_due|min_gap_days|max_gap_days|schedule_seed|start_week):", extra_state):
     problems.append("Surprise still uses legacy cadence fields")
 if "Use this template" not in (root / "README.md").read_text(encoding="utf-8"):
     problems.append("README must recommend private template copy")

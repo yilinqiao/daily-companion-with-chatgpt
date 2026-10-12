@@ -111,7 +111,7 @@ If nothing from today carries forward, say so briefly rather than importing olde
 
 Scheduled Morning/Evening execution is **read-and-output only**. It must not create, update, delete or commit Daily artifacts, `action_ledger.md`, or any other repository file. It also must not modify Gmail or Calendar.
 
-A repository write may happen only after the user interacts in a follow-up turn and the applicable interactive authorization/approval rule permits it.
+Within Morning/Evening, a repository write may happen only after an interactive follow-up and applicable authorization/approval. Extra's separate engine permits only its own expressly authorized scheduling/delivery state writes; that exception never permits Daily artifacts or Ledger changes.
 
 ## 5. Approval and Save Protocols
 

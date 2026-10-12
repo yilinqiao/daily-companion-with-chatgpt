@@ -13,7 +13,7 @@ Read `System/maintenance.md` before changing the public template. These instruct
 - Every public template update must include an appropriate monotonic `MAJOR.MINOR.PATCH` bump in root `VERSION` and a dated entry in `CHANGELOG.md`, in the same commit as the final changed files. The first versioned release starts at 0.1.0; earlier copies are unversioned.
 - Describe the actual behaviour, affected files, compatibility, state migration and verification. Do not use `schema_version` as the template version or reuse a shipped release number for new instructions.
 - Read and update `System/upgrade.md` whenever the change affects migration, file ownership, preserved state or required capabilities. Preserve its routing from `System/instructions.md`, and keep README/setup/upgrade instructions consistent.
-- Keep `System/profile.md` unconfigured with installed metadata null, the Ledger empty and Surprise state uninitialized. Update reusable rules without copying personal values into them.
+- Keep `System/profile.md` unconfigured with installed metadata null, the Ledger empty and Surprise state uninitialized with scheduled-write consent false. Update reusable rules without copying personal values into them.
 - Run `python -B scripts/check_public_release.py`, applicable tests, and `python -B scripts/check_release_version.py --base <previous-public-commit>` on the staged release commit. Verify CI and remote read-back before reporting publication complete. A read-only pre-commit review may inspect the same proposed files; the version gate checks committed changes.
 - Use a normal versioned commit with a verified expected branch head. Never force-push, replace Git history or bypass a write/safety block.
 

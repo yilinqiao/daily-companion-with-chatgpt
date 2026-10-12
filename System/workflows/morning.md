@@ -61,6 +61,8 @@ Partition Ledger cards **before priority selection or Briefing composition**:
 
 Only **Eligible Now** cards may enter routine Morning output, including `What Matters Today`, `Open Loops / Carry Forward`, or any other routine reminder section.
 
+After this gate, apply the **yesterday handoff** in `rules.md` Section 4: omit a routine reminder for one morning when yesterday's approved Daily Memory records the user's explicit acknowledgement and next step. Do not omit today's due actions, explicit morning reminders or material new developments. Unmentioned items keep normal daily coverage.
+
 Snoozed-card override, re-snooze and return-to-eligibility semantics follow `policies/rules.md` Section 4 (`revisit`): material new evidence may surface a Snoozed card before its `revisit` date only as a **state-change signal**, never as routine eligibility.
 
 When a `Waiting` card reaches or passes its `revisit` date, do not treat it as unchanged: surface it for ownership reassessment under `rules.md` (still genuinely external -> remain `Waiting`; the user's follow-up is now due -> propose `MOVE -> Action`; materially changed -> the normal lifecycle). Scheduled Morning surfaces and proposes; the interactive write follows the usual authorization rules.

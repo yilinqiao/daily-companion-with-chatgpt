@@ -36,6 +36,12 @@ Use these ownership rules; do not copy the entire template over the vault:
 
 When source, baseline and local rules differ, show the meaningful conflict and propose a merged result. If the baseline is unknown, distinguish obvious generic additions from uncertain personalized rules; retain local text unless the user approves its exact replacement. File additions must not overwrite same-named personal files. Upstream deletions are proposals, not permission to delete private content.
 
+For release 0.3.0 (optional interactive approval presentation):
+
+- This release adds a preferred two-choice UI presentation, free-text corrections, independently scoped approvals and mandatory plain-text fallback for Morning Briefing + Ledger / Evening Memory + Ledger. This changes neither file schemas nor the meaning of existing approvals, Ledger evidence, state permissions or Scheduled Task write boundaries.
+- On a separately approved private installation upgrade, propose and merge source-owned `System/policies/artifacts.md` plus `System/workflows/morning.md` and `System/workflows/evening.md`. Preserve user customizations, existing Ledger/Daily files, profile, dates, Surprise state, schedule and task activation. Do not infer consent from default-selected checkboxes; only an explicit interactive submission can authorize each write.
+- No state migration or task prompt change is required solely for the approval UI. ChatGPT controls may not render in Scheduled Tasks or all clients; preserve paired-text approvals. Public repository release does not upgrade private copies. Versions older than 0.2.0 still need their applicable Surprise migration and separate explicit consent.
+
 For release 0.2.1 (documentation update):
 
 - Update the selected source-owned sync guide and setup bootstrap conservatively, preserving customized paths/text. No runtime schema, permissions, task prompt or schedule changes relative to 0.2.0; do not redraw dates, clear claims, rerun onboarding or touch existing task settings for this documentation-only update. Normal verified version-marker completion still applies.

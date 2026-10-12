@@ -2,6 +2,24 @@
 
 Versions describe the reusable template, not a user's personal vault contents. The current source version is in `VERSION`; a private installation records its verified installed version and public-source commit in `System/profile.md`. File `schema_version` fields describe individual data formats and are not template versions.
 
+## 0.3.0 — 2026-10-13
+
+### Changed
+
+- Prefer an interactive approval panel after a complete Morning Briefing or post-check-in Evening Memory. Independent default-selected choices apply to the Daily artifact and an explicitly previewed Action Ledger delta; a checkbox is not approval until submitted in the interactive conversation.
+- Add optional correction feedback, partial approvals, per-item result verification and a mandatory text-only fallback when interactive controls are unsupported. No Ledger checkbox is shown without a specific proposed change.
+- Preserve exact user-visible artifact save semantics, explicit state-change authorization, fresh Ledger review, concurrency checks, and scheduled Morning/Evening read-only boundaries. Private users' Daily data and Ledger belong only in their private GitHub repository, never this public source.
+
+### Files, migration and limitations
+
+- `System/policies/artifacts.md`, `System/workflows/morning.md`, `System/workflows/evening.md`, `System/upgrade.md`, `README.md`, `VERSION`, `CHANGELOG.md`.
+- No schema, permission, scheduled-task, profile, Surprise-engine or stored-data migration. Existing private installations may apply the new approval instructions selectively under the normal interactive upgrade process, preserving custom behavior/history. Older Surprise migrations still apply where needed.
+- UI rendering depends on ChatGPT client and scheduled-task capabilities; falling back to paired text is required. Publishing source does not automatically upgrade any private copy or validate an actual future task.
+
+### Verification
+
+- File-level approval/regression invariants and scoped public-state/privacy review; automated public CI/release checks and live production UI behavior are tracked separately.
+
 ## 0.2.1 — 2026-10-12
 
 ### Changed

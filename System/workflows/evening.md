@@ -146,7 +146,7 @@ After answers, compose the complete Daily Memory using the exact schema in `arti
 
 Use `rules.md` for evidence/state meaning. `Done Today` uses confirmed closures plus meaningful evidence-supported events/experiences. `Carry Forward from Today` is limited to unresolved matters newly opened/materially updated/worked on today, moved into Waiting today, or explicitly intended for today and still unfinished. Older untouched active Ledger items stay only in the Action Ledger and return through Morning eligibility/reminders.
 
-Outside the artifact, show any concise **inferred** Ledger changes still requiring approval; reflect explicit user-authorized state changes without asking for a redundant second approval. Then follow `artifacts.md`.
+Outside the artifact, show any concise **inferred** Ledger changes still requiring approval; reflect explicit user-authorized state changes without asking for a redundant second approval. After presenting the full Memory and concrete Ledger delta, prefer the **two-choice interactive approval panel** from `artifacts.md` (Memory + Ledger, selected by default only when applicable), with its text fallback. Do not ask for approval before the Evening questions are answered, and do not treat a default selection as authorization. Then follow `artifacts.md`.
 
 
 ## 6. Write Boundary

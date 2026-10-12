@@ -4,7 +4,7 @@ An open starter kit for a personal daily companion built with **ChatGPT, a priva
 
 Current template version: see [VERSION](VERSION). See [release changes](CHANGELOG.md) and the [upgrade entrypoint](System/upgrade.md).
 
-Daily Companion can help you preview your day, review your evening, maintain an action ledger, and keep approved daily notes. Its instructions are plain Markdown files that you can inspect and change. **This public repository is a clean template. Do not put your personal data here.**
+Daily Companion can help you preview your day, review your evening, maintain an action ledger, and keep approved daily notes. When the ChatGPT client supports it, Morning and Evening prefer a small interactive approval panel with separate choices for the daily note and proposed Ledger changes. A text approval fallback always remains available, and nothing is saved by merely showing or checking a box. Its instructions are plain Markdown files that you can inspect and change. **This public repository is a clean template. Do not put your personal data here.**
 
 > **Privacy first:** Choose **Use this template → Create a new repository → Private**. **Do not Fork this public repository to store your personal information.** GitHub forks of public repositories are public, and their visibility cannot be changed independently.
 

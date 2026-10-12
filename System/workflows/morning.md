@@ -113,8 +113,8 @@ Outside the Markdown artifact, when new candidates exist, state clearly that the
 
 ## 5. Approval Handoff
 
-Follow the Morning approval/save protocol in `policies/artifacts.md`. Artifact approval and Ledger-state authorization are separate.
+Follow the Morning approval/save protocol in `policies/artifacts.md`. After displaying the complete Briefing and any concrete inferred Ledger delta, prefer its **two-choice interactive approval panel** (Briefing + Ledger, each selected by default only when applicable), with a mandatory separate text-choice fallback. A panel selection alone never writes; only submitted interactive approval authorizes the selected operation. Artifact approval and Ledger-state authorization remain separate.
 
 ## 6. Write Boundary
 
-Follow the Scheduled Run Write Boundary in `policies/artifacts.md`: Scheduled Morning is read/output only and performs no Drive, Gmail or Calendar mutation.
+Follow the Scheduled Run Write Boundary in `policies/artifacts.md`: Scheduled Morning is read/output only and performs no repository, Gmail or Calendar mutation.

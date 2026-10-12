@@ -36,6 +36,11 @@ Use these ownership rules; do not copy the entire template over the vault:
 
 When source, baseline and local rules differ, show the meaningful conflict and propose a merged result. If the baseline is unknown, distinguish obvious generic additions from uncertain personalized rules; retain local text unless the user approves its exact replacement. File additions must not overwrite same-named personal files. Upstream deletions are proposals, not permission to delete private content.
 
+For release 0.3.2 (Extra completion notification preference):
+
+- New-user setup and documentation now recommend `Notify when complete` for **Daily Companion Extra**, in addition to Morning and Evening, so a generated Surprise has a chance to proactively alert the user. The engine retains silent pre-due-day behavior; client-level completion alerts on no-op checks are possible and must not be falsely ruled out. Check manually or verify supported settings; never pretend an unavailable switch was enabled.
+- No task prompt, state/schema, consent, schedule, notification-state or stored-data migration. Existing private installations retain task switches, paused/enabled status, dates/claims, history, profile, Ledger and Daily notes. Do not rerun onboarding or change existing notifications during an upgrade; offer the new preference only if explicitly requested.
+
 For release 0.3.1 (first-run notification guidance):
 
 - Update source-owned `System/setup.md`, README, getting-started and HTML setup guides to give new users a one-time, manual `Notify when complete` check for Morning and Evening, plus ChatGPT notification preferences and device permissions. The switch may not exist or be controllable in every client; verify observed state or obtain user confirmation instead of claiming automatic enablement. Preserve Extra's quiet no-op checks.

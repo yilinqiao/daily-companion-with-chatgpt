@@ -2,6 +2,23 @@
 
 Versions describe the reusable template, not a user's personal vault contents. The current source version is in `VERSION`; a private installation records its verified installed version and public-source commit in `System/profile.md`. File `schema_version` fields describe individual data formats and are not template versions.
 
+## 0.3.2 — 2026-10-13
+
+### Changed
+
+- Default new-user recommendation now enables `Notify when complete` on Daily Companion Extra (when available), as well as Morning and Evening, to prioritize a proactive alert when a Surprise is generated.
+- Keep the engine's pre-due-day silence. Note that ChatGPT may nevertheless deliver completion notifications for silent daily checks; observe unwanted alerts before changing the design.
+
+### Files, migration and limitations
+
+- `System/setup.md`, `System/upgrade.md`, `README.md`, `docs/GETTING_STARTED.md`, `docs/setup-guide.html`, `scripts/test_setup_notifications.py`, `VERSION`, `CHANGELOG.md`.
+- Setup guidance and tests only: no schema, permissions, task prompts, schedules, private profiles, Ledger or Daily artifact migration. Existing private installations retain notification preferences and task states; the source update does not automatically apply to private copies.
+- Task-level notification controls may be absent or manual. Completion alerts and surprise receipt remain platform-dependent and are not proof of successful persistence.
+
+### Verification
+
+- Regression tests cover the on-by-default recommendation, silent pre-due-day engine behavior, and uncertainty about no-op platform alerts; static CI cannot verify device notification delivery.
+
 ## 0.3.1 — 2026-10-13
 
 ### Changed

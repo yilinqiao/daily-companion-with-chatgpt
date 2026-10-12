@@ -2,6 +2,8 @@
 type: companion-profile
 schema_version: 4
 setup_complete: false
+installed_template_version: null
+installed_template_commit: null
 preferred_name: "<SETUP_REQUIRED>"
 normal_location: "<SETUP_REQUIRED>"
 region: "<SETUP_REQUIRED_OR_NULL>"

@@ -9,3 +9,5 @@ Thumbs.db
 *.p12
 *.pfx
 __pycache__/
+.daily-companion-upgrade/
+*.bak

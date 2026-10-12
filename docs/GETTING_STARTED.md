@@ -39,6 +39,14 @@ Clone your private repo and open it as an Obsidian vault, using GitHub Desktop o
 - Run Evening manually and verify that unobservable cross-chat topics are not fabricated.
 - Confirm task names, timing/timezone and availability before relying on notifications.
 
+## Updates after setup
+
+The current public template version is in root `VERSION`; [CHANGELOG.md](../CHANGELOG.md) describes each release. Your verified installed version/source commit are recorded in your private profile. New public releases do not automatically update that private copy.
+
+Use [System/upgrade.md](../System/upgrade.md) for “check for updates” or “upgrade Daily Companion”. It compares a pinned source commit, preserves personal configuration, notes, Ledger/history and custom rules, and proposes any state migration before approved writes. Older copies without this file can use the public-entrypoint prompt in [README](../README.md#upgrade-an-existing-private-copy). No new onboarding is required just to update template rules.
+
+Root `AGENTS.md`, maintenance docs and CI are copied intentionally. Public-release requirements apply to the canonical public repository; private personalization does not bump the upstream version or run the public blank-template gate. `.gitignore` excludes untracked temporary files, not files already included in the template.
+
 ## Troubleshooting
 
 **Repo inaccessible:** recheck owner/repo and installation permissions. Never substitute this public template.

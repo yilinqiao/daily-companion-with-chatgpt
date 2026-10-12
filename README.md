@@ -2,6 +2,8 @@
 
 An open starter kit for a personal daily companion built with **ChatGPT, a private GitHub repository, and optionally Obsidian, Google Calendar, and Gmail**.
 
+Current template version: see [VERSION](VERSION). See [release changes](CHANGELOG.md) and the [upgrade entrypoint](System/upgrade.md).
+
 Daily Companion can help you preview your day, review your evening, maintain an action ledger, and keep approved daily notes. Its instructions are plain Markdown files that you can inspect and change. **This public repository is a clean template. Do not put your personal data here.**
 
 > **Privacy first:** Choose **Use this template → Create a new repository → Private**. **Do not Fork this public repository to store your personal information.** GitHub forks of public repositories are public, and their visibility cannot be changed independently.
@@ -99,6 +101,31 @@ After uploading this clean package to the public repository, the repository owne
 - The Action Ledger is the single source of truth for operational state; approved Daily Memory is historical context, not evidence an action was completed.
 - Saved daily notes must match the user-approved visible Markdown. Hidden metadata may be added only where expressly permitted by the artifact policy.
 - New releases of this public template do **not** automatically update private copies. Review changes before selectively applying them.
+
+### Upgrade an existing private copy
+
+Say **“Check for updates”** for a read-only comparison, or **“Upgrade Daily Companion”** to prepare a specific upgrade through [System/upgrade.md](System/upgrade.md). It preserves configuration, notes, Ledger/history and custom rules; it shows proposed changes and migrations before applying an approved upgrade. `profile.md` records the verified installed template version and public-source baseline commit. Individual `schema_version` fields are separate data-format versions.
+
+Older copies without that entrypoint can paste:
+
+```text
+Read System/upgrade.md from the public template repository
+yilinqiao/daily-companion-with-chatgpt and help upgrade my private
+Daily Companion repository <owner>/<private-repo>.
+Show the version comparison and proposed changes before writing.
+Preserve my configuration, notes, Ledger, histories and custom rules.
+```
+
+### Maintain the public template through Codex or GPT web
+
+Follow root [AGENTS.md](AGENTS.md) and [System/maintenance.md](System/maintenance.md). Every public update includes a version bump, dated changelog entry and any required upgrade migration; CI checks version/release-note changes. For GPT web, start with:
+
+```text
+Before changing yilinqiao/daily-companion-with-chatgpt,
+read AGENTS.md and System/maintenance.md and follow the release rules.
+```
+
+These files are intentionally included in template copies so users retain upgrade guidance. The maintenance rules distinguish the public source from a private vault; private settings/notes/customizations do not require an upstream release, and private copies skip public-template CI. `.gitignore` protects untracked secrets, caches and temporary upgrade files; it cannot exclude already tracked documentation from a GitHub template copy. Installed metadata and private notes remain tracked in the user's private vault by design.
 
 A browser-friendly [HTML setup guide](docs/setup-guide.html) is also included. See [`docs/GETTING_STARTED.md`](docs/GETTING_STARTED.md) for the full onboarding path and troubleshooting, and [`docs/RELEASE_REVIEW.md`](docs/RELEASE_REVIEW.md) for the pre-publication checklist.
 

@@ -39,6 +39,8 @@ If setup is incomplete, do not run the normal Morning or Evening workflow; direc
 
 ## Workflow Routing
 
+- Check for updates / upgrade Daily Companion → read `System/upgrade.md` and follow its interactive comparison/upgrade protocol. Never rerun setup or replace private state with the public template.
+- Maintaining or editing the public template → read root `AGENTS.md` and `System/maintenance.md` before writing; every public update includes a version bump, dated release notes and any required upgrade migration. Private personalization does not publish a new template release.
 - Morning Companion → follow `System/workflows/morning.md`.
 - Evening Companion → follow `System/workflows/evening.md`.
 - Explicit request for a Companion Surprise → fresh-read `System/daily_companion_extra.md` and execute **Manual Mode** exactly as defined there.

@@ -11,6 +11,8 @@ required = [
     "System/daily_companion_extra.md", "System/workflows/morning.md",
     "System/workflows/evening.md", "System/policies/rules.md",
     "System/policies/artifacts.md", "docs/PRIVACY.md",
+    "VERSION", "CHANGELOG.md", "AGENTS.md", "System/upgrade.md",
+    "System/maintenance.md", "scripts/check_release_version.py",
 ]
 problems = []
 for name in required:
@@ -49,6 +51,17 @@ ledger = (root / "System/action_ledger.md").read_text(encoding="utf-8")
 extra = (root / "System/daily_companion_extra.md").read_text(encoding="utf-8")
 if "setup_complete: false" not in profile or "SETUP_REQUIRED" not in profile:
     problems.append("Profile is not unconfigured")
+for field in ("installed_template_version", "installed_template_commit"):
+    if not re.search(r"(?m)^" + field + r": null\s*$", profile):
+        problems.append("Public profile has initialized " + field)
+version_path = root / "VERSION"
+changelog_path = root / "CHANGELOG.md"
+if version_path.is_file() and changelog_path.is_file():
+    version = version_path.read_text(encoding="utf-8").strip()
+    if not re.fullmatch(r"(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)", version):
+        problems.append("Invalid template VERSION")
+    if not re.search(r"(?m)^## " + re.escape(version) + r" [—-] \d{4}-\d{2}-\d{2}\s*$", changelog_path.read_text(encoding="utf-8")):
+        problems.append("Missing matching template changelog entry")
 if re.search(r"^- \[[xX ]\]", ledger, re.M) or "<!-- dc:" in ledger:
     problems.append("Ledger contains real cards")
 for status in ("Action", "Waiting", "Upcoming", "Closed"):

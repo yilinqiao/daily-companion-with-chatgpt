@@ -140,6 +140,8 @@ Then ask these three general questions:
 
 Treat answers as first-party additive/corrective evidence. Question 3 is for Daily Memory by default, not a separate global memory store.
 
+In the approved Daily Memory, state any explicitly agreed next step for a still-open issue under `Carry Forward from Today` in one short line. Do not treat casual mentions as decisions; this record supports the next Morning's handoff gate in `rules.md`.
+
 ## 5. Approval Handoff
 
 After answers, compose the complete Daily Memory using the exact schema in `artifacts.md`; do not duplicate that saved schema here. Carry the exact Slurped Page set surfaced in the Evening Check-in into `Saved Today — Slurped Pages`; do not re-filter or omit those pages during synthesis. If no Slurped Pages were captured today, omit that section as defined in `artifacts.md`. **Preserve every distinct, reliably same-day meaningful highlight surfaced under `Things I Explored Today` in the check-in**, merged concisely without silently dropping topics; incorporate user corrections or explicit omissions. Also include first-party-confirmed additions from the capture question. Omit the section only if no qualifying highlights remain; do not guess dates from merely recent recall, and never place source-coverage diagnostics inside the saved artifact. If the Evening Check-in surfaced a `Tomorrow — Gentle Heads-up`, carry a concise version into the Daily Memory unless the user's follow-up materially corrects or invalidates the underlying plan.

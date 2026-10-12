@@ -5,7 +5,7 @@ schema_version: 2
 
 # Daily Companion Setup
 
-*Package revision: 2026-10-12 - template version in root VERSION, Action Ledger schema v6, Surprise schema v6 with one saved date and narrowly authorized scheduled state writes.*
+*Package revision: 2026-10-13 - template version in root VERSION, Action Ledger schema v6, Surprise schema v6 with one saved date, narrowly authorized scheduled state writes, and a first-run notification handoff.*
 
 This folder is the clean Daily Companion installation package. All runtime files are intentionally generic and contain no user-specific personal information before setup. It is the canonical clean installation package: maintainers must keep it structurally and behaviourally aligned with the current Daily Companion system without copying any user's personal configuration or state into it.
 
@@ -279,6 +279,13 @@ Read files from that configured repository using the stated path; do not substit
 These instruction patterns are part of the installation contract. If behaviour evolves, update the workflow/engine files rather than expanding the Scheduled Task prompts.
 
 After creating/reusing each task, verify its title, enabled status, daily recurrence, local timing/timezone and correct entrypoint. Extra additionally requires verified standing consent and honest scheduled-persistence status as above. **A task being enabled does not prove notifications are enabled.** Tell the user to visit ChatGPT Settings > Notifications, enable Scheduled Task Push and/or Email notifications and grant browser/device notification permission; verify they know notification activation is a separate manual setting. If readable notification status shows disabled, flag this blocker rather than claiming notifications are on. Normally report Morning/Evening and keep the built-in extra check unobtrusive. This must never conceal an Extra activation failure: disclose that it remains inactive and why, without revealing chosen dates or claim bookkeeping.
+
+**First-run completion-notification handoff (after task creation, not an onboarding preference question):** A task's enabled status, its output and its notification delivery are three separate outcomes. When Morning and Evening are successfully created or reused, give the user this one-time checklist:
+1. In **ChatGPT Settings > Notifications**, enable Scheduled Task **Push**, **Email**, or both as preferred. On the intended mobile/browser device, allow ChatGPT notifications when prompted.
+2. In **Scheduled** (or **Settings > Notifications > Manage tasks**), open **Morning Companion** and **Evening Companion** separately. **If a task-level `Notify when complete` option is shown, turn it on for each**. If the client uses different task-notification controls, use the controls actually visible; if no per-task control is available, explain that and retain the global notification guidance.
+3. Ask **one** concise confirmation after the user has checked the applicable controls, rather than introducing more configuration questions. Report **notifications confirmed by user**, **verified from an available task setting**, or **not verified** separately for Morning and Evening. Never infer this switch is enabled merely because task creation succeeded, and never claim to have changed or verified the switch unless a supported control actually returned that result.
+
+**Daily Companion Extra** intentionally stays quiet on ordinary no-op checks: do not recommend turning on a notification for every daily check. Leave any task-specific notification preference alone unless the user explicitly requests a change. In particular, a silent Extra check must not generate a completion alert just because it ran. Completion alerts also do **not** guarantee successful GitHub writes, artifact approvals, task execution quality or delivery receipt. Missing/unsupported notification settings are a user-facing follow-up, not a reason to reset `setup_complete`, recreate tasks or misreport task activation.
 
 If a task cannot be created or verified, report installation separately from **each task's** activation status. Verified Morning/Evening tasks may be reported active while Extra remains inactive; do not claim full activation or label an unverified task active. If Scheduled Task creation is unavailable, provide the exact titles/schedules and stable prompts for another supported environment; do not pretend tasks were created. Preserve the Extra consent, scoped-write and pending-persistence guidance.
 

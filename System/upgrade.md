@@ -36,6 +36,11 @@ Use these ownership rules; do not copy the entire template over the vault:
 
 When source, baseline and local rules differ, show the meaningful conflict and propose a merged result. If the baseline is unknown, distinguish obvious generic additions from uncertain personalized rules; retain local text unless the user approves its exact replacement. File additions must not overwrite same-named personal files. Upstream deletions are proposals, not permission to delete private content.
 
+For release 0.3.1 (first-run notification guidance):
+
+- Update source-owned `System/setup.md`, README, getting-started and HTML setup guides to give new users a one-time, manual `Notify when complete` check for Morning and Evening, plus ChatGPT notification preferences and device permissions. The switch may not exist or be controllable in every client; verify observed state or obtain user confirmation instead of claiming automatic enablement. Preserve Extra's quiet no-op checks.
+- This release changes onboarding guidance only: no profile/state schema, consent, Scheduled Task prompt, schedule, active task, Ledger or Daily artifact migration. Existing private installations do not rerun setup or change notifications during an upgrade. If an existing user separately requests a notification review, guide them through the same optional manual checklist without changing task settings by default.
+
 For release 0.3.0 (optional interactive approval presentation):
 
 - This release adds a preferred two-choice UI presentation, free-text corrections, independently scoped approvals and mandatory plain-text fallback for Morning Briefing + Ledger / Evening Memory + Ledger. This changes neither file schemas nor the meaning of existing approvals, Ledger evidence, state permissions or Scheduled Task write boundaries.

@@ -22,6 +22,8 @@ The streamlined setup asks about name, location/timezone, work pattern, language
 
 Only after repository setup verification and a separate activation confirmation, set up the three Scheduled Tasks using the stable prompts in System/setup.md. Morning/Evening scheduled runs generate output only. They do not save Daily notes or update the Ledger: approve each intended save interactively and verify the committed file. If scheduled GitHub reads or notifications fail, use manual check-ins rather than claiming a task ran.
 
+**One-time completion notification check:** after creating or reusing the tasks, go to **ChatGPT Settings > Notifications** and enable Scheduled Task Push and/or Email as desired; allow the app/browser permission on your device. Then open **Scheduled** (or **Settings > Notifications > Manage tasks**), inspect **Morning Companion** and **Evening Companion** separately, and enable **Notify when complete** for each *if the switch is available*. If it is absent, use the notification controls available in your ChatGPT version. The assistant should ask for one confirmation and report the status as verified, user-confirmed, or unverified, never assume the setting was switched on during task creation. Do not enable an everyday completion alert for a silent **Daily Companion Extra** check. Notifications do not verify GitHub writes or Daily approvals.
+
 Surprise starts with one saved next_due_date in the week after setup. Daily Extra is silent before it, eligible on/after it, and chooses and verifies a date in the week after the attempt before the final response. No Python/hash or weekly approve; pause surprises pauses it. Activating Extra grants a narrow standing permission to update only its own engine scheduling/delivery fields. Morning/Evening remain read-only. Task creation and scheduled write verification are separate: report configured/enabled with persistence unverified until its actual due run demonstrates the writes. A pending claim blocks repeats and needs interactive recovery after interruption; see the engine's Interactive Controls and Recovery. Existing v5 copies require the approved migration and removal of the old read-only task-prompt clause through upgrade.md; do not rerun setup.
 
 The blank-template CI check runs only in the public source repository. An initialized private copy automatically skips that job; the source template still rejects personal configuration and initialized state.
@@ -37,7 +39,7 @@ Clone your private repo and open it as an Obsidian vault, using GitHub Desktop o
 - Run Morning manually and check Calendar/Gmail gaps are reported accurately.
 - Approve a harmless Daily artifact and verify it exists in GitHub.
 - Run Evening manually and verify that unobservable cross-chat topics are not fabricated.
-- Confirm task names, timing/timezone and availability before relying on notifications.
+- Confirm task names, timing/timezone and availability. For Morning and Evening, manually check `Notify when complete` when offered, ChatGPT Settings > Notifications (Push/Email), and device permission. Do not assume a created task can notify you.
 
 ## Updates after setup
 

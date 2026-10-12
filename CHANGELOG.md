@@ -2,6 +2,23 @@
 
 Versions describe the reusable template, not a user's personal vault contents. The current source version is in `VERSION`; a private installation records its verified installed version and public-source commit in `System/profile.md`. File `schema_version` fields describe individual data formats and are not template versions.
 
+## 0.3.1 — 2026-10-13
+
+### Changed
+
+- Add a one-time post-activation notification handoff for new installations: check the task-level `Notify when complete` control (where available) on Morning and Evening separately, ChatGPT Scheduled Task Push/Email preferences, and device/browser permissions.
+- Require status reporting as observed, user-confirmed or unverified. Creating/enabling a task does not mean its per-task completion notifications are on; unsupported controls are handled with manual instructions. Do not recommend routine completion alerts for silent Daily Companion Extra checks.
+
+### Files, migration and limitations
+
+- `System/setup.md`, `System/upgrade.md`, `README.md`, `docs/GETTING_STARTED.md`, `docs/setup-guide.html`, `scripts/test_setup_notifications.py`, `VERSION`, `CHANGELOG.md`.
+- Guidance-only release. No schema/permissions/task-prompt/schedule/notification-state migration, no automatic changes to existing tasks, and no effect on users' private Ledger, Daily artifacts or profile. Private copies require a separately approved selective upgrade, and task-level controls may be absent depending on client and plan.
+- A successful task or a completion notification does not prove GitHub persistence or successful approvals.
+
+### Verification
+
+- Added regression checks for the notification handoff and consistency across starter guides. Public privacy/release checks and remote CI remain distinct from end-to-end mobile notification delivery, which cannot be certified by static tests.
+
 ## 0.3.0 — 2026-10-13
 
 ### Changed

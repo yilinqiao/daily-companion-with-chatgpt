@@ -29,13 +29,19 @@ Use these ownership rules; do not copy the entire template over the vault:
 | `System/profile.md` | Preserve configuration, repository, paths, permissions, Calendar scope, times and setup status. Add only required new fields or explicit migrations, plus verified upgrade metadata. Never copy the placeholder profile or collect setup answers again. |
 | `System/action_ledger.md` | Preserve every card, ID, list order, Closed history, metadata and user settings. Perform only a separately described, approved schema migration when required. Never replace it with an empty board. |
 | `System/daily_companion_extra.md` | Merge the engine body with custom rules and preserve live frontmatter/history. Migrate only under the selected release's contract; never copy null dates/history or false consent from the public starter over initialized private state. |
+| `Resources/Obsidian GitHub GitSync Setup.md` | This named source-owned guide may receive an approved selective documentation update; preserve local customization and never replace the whole Resources folder. |
 | `Daily/`, `Archives/`, `Area/`, `Projects/`, user `Resources/`, legacy state or any unlisted user files | Preserve by default. Do not delete, move, regenerate or send these files to the public source. A specific requested change requires its own proposed diff. |
 | `scripts/`, `.github/workflows/`, `.gitignore`, template README/docs | Apply only the selected source file changes, preserving private customizations. No directory-wide replacement, inherited Git history, visibility change, credential change or automatic deletion. |
 | `VERSION` | Set the candidate label only with the verified completion step below; never use it alone to certify installed state. |
 
 When source, baseline and local rules differ, show the meaningful conflict and propose a merged result. If the baseline is unknown, distinguish obvious generic additions from uncertain personalized rules; retain local text unless the user approves its exact replacement. File additions must not overwrite same-named personal files. Upstream deletions are proposals, not permission to delete private content.
 
-For release 0.2.0 (Surprise schema v6):
+For release 0.2.1 (documentation update):
+
+- Update the selected source-owned sync guide and setup bootstrap conservatively, preserving customized paths/text. No runtime schema, permissions, task prompt or schedule changes relative to 0.2.0; do not redraw dates, clear claims, rerun onboarding or touch existing task settings for this documentation-only update. Normal verified version-marker completion still applies.
+- Copies older than the date-based engine still require the applicable migration below; the patch label does not eliminate a pending v5/older migration.
+
+For the 0.2.0 runtime change included in this release (Surprise schema v6):
 
 - Preserve profile preferences/paths, setup_complete, Ledger cards/history, Daily notes, feedback, custom rules and paused task status. This is not onboarding. Adding missing version metadata does not authorize resetting setup.
 - A valid v6 date/claim is preserved on repeated upgrade checks; never redraw a live date or clear a pending claim. A pending claim needs the engine's explicit interactive recovery, independent of a documentation upgrade.

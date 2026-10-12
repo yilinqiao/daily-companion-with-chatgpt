@@ -31,7 +31,7 @@ Daily Companion can help you preview your day, review your evening, maintain an 
 4. Answer the streamlined onboarding questions. Preferred-name usage, Daily Flavour, vault folders and Daily filenames have editable defaults, so they are not asked separately. Morning includes one short rotating non-weather Daily Flavour item when enabled; weather requires source permission. Calendar and Gmail are **optional**. Grant each only if you want it used. ChatGPT must verify a source is accessible before treating it as connected.
 5. Review the proposed configuration, then explicitly approve setup writes. ChatGPT commits the profile first with `setup_complete: false`, initializes and verifies each state file in a separate commit, and only then changes `setup_complete` to `true`. Confirm the post-write read-back checks for each file.
 6. After the repository setup is verified, separately confirm whether to activate Scheduled Tasks. If supported, create/verify Morning, Evening and Extra checks according to `System/setup.md`. Morning/Evening are **read-and-output only**; note/action changes keep their interactive approval rules. Extra may update only its own scheduling state after explicit standing consent.
-7. Optional: clone your **private** repository into Obsidian and configure desktop Git / mobile sync using `Resources/Obsidian GitHub GitSync Setup.md`.
+7. Optional: clone your **private** repository into Obsidian and configure desktop Git / mobile sync using [the Obsidian/GitSync guide](Resources/Obsidian%20GitHub%20GitSync%20Setup.md).
 
 **Start without Obsidian:** ChatGPT can use the Markdown files in your private GitHub repository. Obsidian is an optional, useful editor, not a requirement for the first setup conversation.
 

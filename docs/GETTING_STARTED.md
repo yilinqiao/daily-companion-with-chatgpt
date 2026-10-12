@@ -28,7 +28,7 @@ The blank-template CI check runs only in the public source repository. An initia
 
 ## 5. Obsidian is optional
 
-Clone your private repo and open it as an Obsidian vault, using GitHub Desktop or Git on desktop. Kanban and Slurp are optional community plugins. On mobile, see Resources/Obsidian GitHub GitSync Setup.md. Test sync in both directions. Do not run two sync tools on the same vault simultaneously.
+Clone your private repo and open it as an Obsidian vault, using GitHub Desktop or Git on desktop. Kanban and Slurp are optional community plugins. On mobile, follow [the Obsidian/GitSync guide](../Resources/Obsidian%20GitHub%20GitSync%20Setup.md), including the shared-vault folder and verified sync steps. Test sync in both directions. Do not run two sync tools on the same vault simultaneously.
 
 ## First-use checklist
 

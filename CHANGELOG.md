@@ -2,6 +2,19 @@
 
 Versions describe the reusable template, not a user's personal vault contents. The current source version is in `VERSION`; a private installation records its verified installed version and public-source commit in `System/profile.md`. File `schema_version` fields describe individual data formats and are not template versions.
 
+## 0.2.1 — 2026-10-12
+
+### Changed
+
+- Rewrite Resources/Obsidian GitHub GitSync Setup.md around creating one private template copy, completing ChatGPT setup first and optionally adding Obsidian devices. Existing installations keep their setup/data and use the upgrade entrypoint.
+- Align System/setup.md bootstrap and guide links; document current Extra-only scheduled state writes, device sync versus template upgrades, existing ignore rules, conflict handling and private-state preservation.
+- Correct iOS cloning to a newly created empty Obsidian-accessible local vault, and reference the GitSync author's current mobile/app-trigger instructions. Automation is not proof of completed sync.
+
+### Upgrade and verification
+
+- Documentation only relative to 0.2.0: no runtime schema, permission, task-prompt or schedule migration. Preserve all private configuration, notes, Ledger/history, dates/claims, customizations and paused tasks. Apply only approved source-owned guide/bootstrap changes and normal verified version markers; older runtime versions still follow their applicable migration.
+- Public privacy/structure and release-version checks, 21 existing validation tests, documentation links and process consistency reviewed. Mobile procedures were checked against primary documentation; no actual phone sync or private-vault upgrade is claimed.
+
 ## 0.2.0 — 2026-10-12
 
 ### Changed

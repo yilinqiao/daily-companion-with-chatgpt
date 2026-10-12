@@ -5,7 +5,7 @@ schema_version: 2
 
 # Daily Companion Setup
 
-*Package revision: 2026-10-12 - template 0.2.0, Action Ledger schema v6, Surprise schema v6 with one saved date and narrowly authorized scheduled state writes.*
+*Package revision: 2026-10-12 - template version in root VERSION, Action Ledger schema v6, Surprise schema v6 with one saved date and narrowly authorized scheduled state writes.*
 
 This folder is the clean Daily Companion installation package. All runtime files are intentionally generic and contain no user-specific personal information before setup. It is the canonical clean installation package: maintainers must keep it structurally and behaviourally aligned with the current Daily Companion system without copying any user's personal configuration or state into it.
 
@@ -17,17 +17,18 @@ This setup file is the entry point for a new user, but Markdown does not run its
 
 For a new installation:
 
-1. create a private GitHub repository for the user's Daily Companion vault (recommended: the repository root is the Obsidian vault root);
-2. copy the contents of `Daily Companion Starter` into that repository, preserving the `System/`, `Daily/`, `Archives/`, `Area/`, `Projects/` and `Resources/` structure, then commit and push;
-3. clone/sync that repository to each device and open the local repository folder as the Obsidian vault. On phones use GitSync; on desktop use GitHub Desktop or another normal Git client;
-4. connect ChatGPT to GitHub and grant it access to the intended repository;
-5. start setup with a prompt such as:
+1. on the canonical public template, choose **Use this template → Create a new repository → Private**; copy only the default branch. Template creation supplies the root package files and preserved System/Daily/Archives/Area/Projects/Resources structure; a separate empty repo/manual Starter upload is unnecessary;
+2. connect ChatGPT to GitHub and grant access to that exact private repository. Verify identity/visibility before writing personal configuration; never personalize the canonical public source;
+3. start setup with the prompt below, complete the approved writes/read-back, then separately confirm task activation. ChatGPT uses the private repository directly; Obsidian/device sync is optional;
+4. optionally clone/sync the same private repo to devices and open its configured local vault root. Follow Resources/Obsidian GitHub GitSync Setup.md for desktop Git and mobile GitSync. Do not overwrite an existing personalized vault with a new starter.
 
 ```text
-Read `System/setup.md` from GitHub repository `<owner>/<repo>` and start Daily Companion setup.
+Read System/setup.md from my GitHub repository <OWNER>/<PRIVATE_REPO>
+and guide me through Daily Companion setup, asking one question at a time.
+Do not change files or create scheduled tasks before I approve the summary.
 ```
 
-If the package is still in the shared/reference clean-package location rather than the user's own repository, stop and ask the user to install/copy it first. Do not personalize the shared `Daily Companion Starter` source in place.
+If this is only the public/shared reference package, stop before personal writes and direct the user to create/select their own private copy. An already initialized private installation is preserved and uses upgrade.md when its package needs updating; adding Obsidian is not onboarding.
 
 In the shared "User instructions" bundle, the clean package folder is named `Daily Companion Starter` so it cannot be mistaken for a live runtime vault. The user's GitHub repository becomes the canonical remote copy and version history. Each device keeps a local working copy for Obsidian; GitSync (mobile) or a normal desktop Git client synchronizes local edits with GitHub. ChatGPT reads the configured GitHub repository directly. Normal note/action writes require interactive authorization; Extra alone may maintain its own scheduling/delivery state after explicit standing consent. Device sync and ChatGPT repository access are separate paths that converge on the same GitHub repository.
 

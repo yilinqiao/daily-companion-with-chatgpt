@@ -151,7 +151,7 @@ A future `revisit` date snoozes **routine Morning reminders** until that local d
 
 ### Yesterday handoff
 
-For the next Morning only, suppress a routine repeat when yesterday's **approved Daily Memory** records that the user explicitly acknowledged an open issue and decided its next step (including waiting or deferring without a date). Do not infer acknowledgement from a mere mention or an unapproved draft. Keep the Ledger card open and resume normal daily reminders afterward. A due action today, an explicit request to remind this morning, or material new evidence overrides this one-morning suppression. A confirmed later `revisit` continues to follow the normal snooze rule. Closed/no-action items stay excluded under their existing rules.
+If yesterday's **approved Daily Memory** records an explicit next-step decision for an existing open Ledger card, omit its unchanged routine reminder **this Morning only**. A mere mention is not a decision. Today's due/revisit action, requested morning reminder or material new evidence still surfaces. Keep the card open and resume normal reminders the following morning; future `revisit` and Closed rules remain unchanged.
 
 ### Dates
 

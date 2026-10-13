@@ -59,9 +59,7 @@ Partition Ledger cards **before priority selection or Briefing composition**:
 - Open card with `revisit` later than today's local date → **Snoozed**.
 - Every other open `Action` / `Waiting` / `Upcoming` card → **Eligible Now**.
 
-Only **Eligible Now** cards may enter routine Morning output, including `What Matters Today`, `Open Loops / Carry Forward`, or any other routine reminder section.
-
-After this gate, apply the **yesterday handoff** in `rules.md` Section 4: omit a routine reminder for one morning when yesterday's approved Daily Memory records the user's explicit acknowledgement and next step. Do not omit today's due actions, explicit morning reminders or material new developments. Unmentioned items keep normal daily coverage.
+Set **Visible Now** = Eligible Now minus the one-morning handoff exclusions in `rules.md` Section 4. Only Visible Now cards receive routine reminders, across all Briefing sections; exceptions still surface.
 
 Snoozed-card override, re-snooze and return-to-eligibility semantics follow `policies/rules.md` Section 4 (`revisit`): material new evidence may surface a Snoozed card before its `revisit` date only as a **state-change signal**, never as routine eligibility.
 
@@ -75,9 +73,9 @@ Before finalizing, account for yesterday's approved-Briefing candidates under `r
 
 ### 3.3 Active Coverage
 
-Surface every **Eligible Now** active card exactly once **at the underlying-issue level, not once per source section**. Coverage is satisfied when that issue is rendered substantively in exactly one of `What Matters Today`, `Email`, or `Open Loops / Carry Forward`. A material Gmail update to an existing eligible Ledger card may therefore satisfy that card's Morning coverage in `Email`; it must not then be repeated in `Open Loops / Carry Forward`.
+Surface every **Visible Now** active card exactly once **at the underlying-issue level, not once per source section**. Coverage is satisfied when that issue is rendered substantively in exactly one of `What Matters Today`, `Email`, or `Open Loops / Carry Forward`. A material Gmail update to an existing Visible Now Ledger card may therefore satisfy that card's Morning coverage in `Email`; it must not then be repeated in `Open Loops / Carry Forward`.
 
-Select the highest-value eligible issues for the Briefing's priority slot. Any eligible active issue not already consumed by a higher-priority slot or a material Email update falls through to `Open Loops / Carry Forward`, using the exact structure and cardinality defined in `policies/artifacts.md`.
+Select the highest-value Visible Now issues for the Briefing's priority slot. Any Visible Now active issue not already consumed by a higher-priority slot or a material Email update falls through to `Open Loops / Carry Forward`, using the exact structure and cardinality defined in `policies/artifacts.md`.
 
 ## 4. Output Composition
 
@@ -90,21 +88,21 @@ Before rendering sections, build one Briefing-level issue set after Ledger recon
 Assign every substantive operational issue exactly one **primary home**, then mark it **consumed** for operational coverage. Use this allocation order:
 
 1. `What Matters Today` — up to 3 highest-value issues.
-2. `Email` — material Gmail changes or genuinely new Gmail candidates not already consumed by `What Matters Today`. A material Gmail update to an existing eligible Ledger item counts as that item's one Morning appearance.
-3. `Open Loops / Carry Forward` — only remaining Eligible Now Ledger items not already consumed above. Treat this section as the remainder/catch-all, never as a second full rendering of the Ledger.
+2. `Email` — material Gmail changes or genuinely new Gmail candidates not already consumed by `What Matters Today`. A material Gmail update to an existing Visible Now Ledger item counts as that item's one Morning appearance.
+3. `Open Loops / Carry Forward` — only remaining Visible Now Ledger items not already consumed above. Treat this section as the remainder/catch-all, never as a second full rendering of the Ledger.
 
 Section observability may still require minimal source text without creating a second substantive issue. For example, a Calendar event may still appear as its event line when Calendar is approved, and the Email section must still report Gmail status when Gmail is approved. If the substantive issue already lives elsewhere, keep that source text minimal and do not restate the action/wait/background.
 
 For Gmail specifically:
 
 - A new reply, decision, request, failure, confirmation or other material state change may justify an Email issue.
-- **No new reply / continued silence is not itself an Email issue.** If the underlying Waiting card is still eligible, its unchanged state belongs only in its primary operational home, normally `Open Loops / Carry Forward`.
+- **No new reply / continued silence is not itself an Email issue.** If the underlying Waiting card is still Visible Now, its unchanged state belongs only in its primary operational home, normally `Open Loops / Carry Forward`.
 - If all material Gmail issues were already consumed by `What Matters Today`, the Email section may say briefly that important email updates are reflected there and that there are no additional Email items. Never falsely say Gmail was clear when a material update was surfaced elsewhere.
 
-Before finalizing the Briefing, run a de-duplication check across `What Matters Today`, `Email`, and `Open Loops / Carry Forward` using the underlying issue/card identity. If the same issue appears substantively more than once, keep the earliest allocated primary home and remove the later occurrence. Then verify that every Eligible Now Ledger card is still covered exactly once.
+Before finalizing the Briefing, run a de-duplication check across `What Matters Today`, `Email`, and `Open Loops / Carry Forward` using the underlying issue/card identity. If the same issue appears substantively more than once, keep the earliest allocated primary home and remove the later occurrence. Then verify that every Visible Now Ledger card is still covered exactly once.
 
 - Give each substantive issue one primary home.
-- Use only the **Eligible Now** set for routine active-card coverage; never leak a future-`revisit` Snoozed card into a routine Briefing slot.
+- Use only the **Visible Now** set for routine active-card coverage; never leak a future-`revisit` Snoozed card into a routine Briefing slot.
 - Use Weather / Source Status only when useful.
 - Surface behavioural patterns only when `rules.md` evidence thresholds are met.
 - Include **exactly one non-weather Daily Flavour item in every Morning Briefing** if any non-weather flavour category remains enabled in `profile.md`. Choose from `humour`, `fun_fact`, `inspiration` and `tiny_challenge`; do not interpret “all enabled” as including all four each day. Add a short `## Daily Flavour` section (normally 1–2 lines) after practical content. Never disguise operational follow-ups as a tiny challenge.

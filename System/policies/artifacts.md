@@ -35,7 +35,7 @@ generated_at: "<local ISO-8601 datetime>"
 <Morning-selected Email result; classification comes from rules.md>
 
 ## Open Loops / Carry Forward
-<remaining Morning-eligible Action Ledger items>
+<remaining Visible Now Action Ledger items>
 
 ## Weather
 <optional; only when useful and approved>
@@ -47,7 +47,7 @@ generated_at: "<local ISO-8601 datetime>"
 <optional; only material limitations/uncertainty>
 ```
 
-Required: date; configured-timezone generation time; available Calendar events/conflicts; max 3 priorities; explicit Email result whenever Gmail is approved; complete coverage of Morning-eligible active Ledger items; one non-weather Daily Flavour item each Morning when enabled; weather is independently permission-gated. Eligibility/classification criteria come from Morning + `rules.md`, not this schema.
+Required: date; configured-timezone generation time; available Calendar events/conflicts; max 3 priorities; explicit Email result whenever Gmail is approved; complete coverage of Visible Now active Ledger items; one non-weather Daily Flavour item each Morning when enabled; weather is independently permission-gated. Eligibility/classification criteria come from Morning + `rules.md`, not this schema.
 
 ### Slot observability
 

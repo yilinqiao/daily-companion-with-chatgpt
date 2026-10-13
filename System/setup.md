@@ -245,7 +245,7 @@ Only after that separate activation confirmation, create or reuse the ongoing da
 - `Evening Companion` — exact-time daily at the approved Evening time.
 - `Daily Companion Extra` — a daily **condition-watch** in the evening, approximately 19:00 local unless requested otherwise. Before the saved date it is silent; on/after it, Auto may reserve an attempt, update only its own scheduling state, then render once under the engine contract.
 
-Scheduled Task instructions are deliberately **minimal and stable**. Morning/Evening point to their workflow entrypoints; the extra check points directly to the canonical Surprise engine. The Morning prompt also carries one stable approval-handoff guardrail so an interactive `approve` reads the artifact policy before saving. Do not copy other evolving runtime rules into task prompts.
+Scheduled Task instructions are deliberately **minimal and stable**. Morning/Evening point to their workflow entrypoints; the extra check points directly to the canonical Surprise engine. The Morning prompt carries an approval-handoff guardrail; Evening carries a short three-question stop gate. Do not copy other evolving runtime rules into task prompts.
 
 Morning/Evening remain read-and-output only. **Extra is the sole scheduled repository-write exception**: it may change only `next_due_date`, `delivery_status`, `delivery_due_date`, `delivery_claimed_at`, `last_attempt_date` in its own engine file. Explain this exact scope and claim/advance-before-final-output failure/recovery tradeoff in the activation summary and obtain explicit consent; existing consent to a read-only Extra is insufficient. After consent, set `scheduled_writes_authorized: true` in an interactive single-file commit and verify, preserving dates/history/paused choice. Never grant this from connector access alone. No weekly approve is required and no other file/source may be modified by Extra.
 
@@ -267,6 +267,7 @@ Interactive approval handoff: if the user later approves the generated Morning B
 ```text
 Using GitHub repository `<github_repository>`, read `<system_folder>/workflows/evening.md` and run the Evening Companion exactly as instructed there.
 Read files from that configured repository using the stated path; do not substitute a same-named file from another repository.
+Required handoff: end the scheduled check-in by asking all three questions in evening.md §4 and inviting a reply here; never sign off early. After the answers, follow §5 and policies/artifacts.md for Memory/Ledger preview, independent approval and verified interactive save. The scheduled run remains read-only.
 ```
 
 ### Daily Companion Extra task instruction

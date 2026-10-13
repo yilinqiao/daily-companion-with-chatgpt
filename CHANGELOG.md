@@ -2,6 +2,22 @@
 
 Versions describe the reusable template, not a user's personal vault contents. The current source version is in `VERSION`; a private installation records its verified installed version and public-source commit in `System/profile.md`. File `schema_version` fields describe individual data formats and are not template versions.
 
+## 0.3.3 — 2026-10-13
+
+### Changed
+
+- Strengthen the Evening check-in stop gate: every scheduled Evening check-in ends by asking the three capture questions and inviting a reply. The task must not sign off before that handoff; after the answers, the existing Memory/Ledger preview, approval and interactive save contract applies.
+- Add the same concise handoff guard to the new-user Evening Scheduled Task setup prompt and a focused regression test. No change to independent approvals or read-only scheduled execution.
+
+### Files, migration and limitations
+
+- `System/workflows/evening.md`, `System/setup.md`, `System/upgrade.md`, `scripts/test_evening_handoff.py`, `VERSION`, `CHANGELOG.md`.
+- No state/schema, permission, task timing, notification, Ledger or Daily file migration. Updating an already-created Evening task's prompt is a separate, explicitly requested action; this source release does not auto-upgrade private installations. Scheduled execution and notifications remain platform-dependent.
+
+### Verification
+
+- Static regression guards the three questions, explicit reply handoff and post-answer approval flow; real scheduled-run compliance still requires a future production check.
+
 ## 0.3.2 — 2026-10-13
 
 ### Changed

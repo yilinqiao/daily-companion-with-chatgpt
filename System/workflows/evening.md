@@ -138,6 +138,8 @@ Then ask these three general questions:
 2. Did anything new open, close, get cancelled, get scheduled, or otherwise change today that I may not know about?
 3. Anything else from today worth capturing?
 
+**Scheduled handoff:** End the check-in with these three questions and an invitation to reply here. Do not sign off or say Evening is finished before the user answers; wait for their reply before §5.
+
 Treat answers as first-party additive/corrective evidence. Question 3 is for Daily Memory by default, not a separate global memory store.
 
 Record any explicitly agreed next step for an open Ledger issue concisely in approved Daily Memory `Carry Forward from Today`; mere mentions do not count. This enables the next Morning handoff in `rules.md`.

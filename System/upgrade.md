@@ -36,6 +36,11 @@ Use these ownership rules; do not copy the entire template over the vault:
 
 When source, baseline and local rules differ, show the meaningful conflict and propose a merged result. If the baseline is unknown, distinguish obvious generic additions from uncertain personalized rules; retain local text unless the user approves its exact replacement. File additions must not overwrite same-named personal files. Upstream deletions are proposals, not permission to delete private content.
 
+For release 0.3.3 (Evening check-in completion guard):
+
+- Reinforce the three-question stop gate in `System/workflows/evening.md` and the new-user Evening Scheduled Task instruction in `System/setup.md`. The scheduled run must invite answers rather than sign off; only later interactive turns present Memory/Ledger approvals and save.
+- No file schema, state, permission, Daily artifact, Ledger or schedule migration. Existing private users keep task time, enabled/paused and notification settings; update an existing Evening task prompt only when explicitly requested, preserving those settings. Do not recreate tasks. This source release does not automatically change a private installation.
+
 For release 0.3.2 (Extra completion notification preference):
 
 - New-user setup and documentation now recommend `Notify when complete` for **Daily Companion Extra**, in addition to Morning and Evening, so a generated Surprise has a chance to proactively alert the user. The engine retains silent pre-due-day behavior; client-level completion alerts on no-op checks are possible and must not be falsely ruled out. Check manually or verify supported settings; never pretend an unavailable switch was enabled.

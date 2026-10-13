@@ -35,7 +35,7 @@ Classify Calendar meaning, action eligibility and evidence only through `policie
 
 ### 2.2 Gmail
 
-Morning is not an inbox digest. Classify Gmail meaning/action eligibility only through `rules.md`. Omit routine low-signal mail, consolidate duplicate threads/updates to the same underlying issue, and prefer targeted reads.
+Morning is not an inbox digest. Classify Gmail meaning/action eligibility only through `rules.md`. Omit routine low-signal or previously handled unchanged mail even if found again in the rolling search window; consolidate issues and prefer targeted reads.
 
 When Gmail is approved, pass the selected Gmail result/status into the Daily Briefing according to the required artifact schema in `policies/artifacts.md`.
 
@@ -59,7 +59,7 @@ Partition Ledger cards **before priority selection or Briefing composition**:
 - Open card with `revisit` later than today's local date → **Snoozed**.
 - Every other open `Action` / `Waiting` / `Upcoming` card → **Eligible Now**.
 
-Set **Visible Now** = Eligible Now minus the one-morning handoff exclusions in `rules.md` Section 4. Only Visible Now cards receive routine reminders, across all Briefing sections; exceptions still surface.
+Set **Visible Now** = Eligible Now minus yesterday's confirmed-decision exclusions in `rules.md` Section 4. Only Visible Now cards receive routine reminders; the same handoff also filters non-Ledger information across the Briefing.
 
 Snoozed-card override, re-snooze and return-to-eligibility semantics follow `policies/rules.md` Section 4 (`revisit`): material new evidence may surface a Snoozed card before its `revisit` date only as a **state-change signal**, never as routine eligibility.
 
@@ -99,7 +99,7 @@ For Gmail specifically:
 - **No new reply / continued silence is not itself an Email issue.** If the underlying Waiting card is still Visible Now, its unchanged state belongs only in its primary operational home, normally `Open Loops / Carry Forward`.
 - If all material Gmail issues were already consumed by `What Matters Today`, the Email section may say briefly that important email updates are reflected there and that there are no additional Email items. Never falsely say Gmail was clear when a material update was surfaced elsewhere.
 
-Before finalizing the Briefing, run a de-duplication check across `What Matters Today`, `Email`, and `Open Loops / Carry Forward` using the underlying issue/card identity. If the same issue appears substantively more than once, keep the earliest allocated primary home and remove the later occurrence. Then verify that every Visible Now Ledger card is still covered exactly once.
+Before finalizing, dedupe by underlying issue across `What Matters Today`, `Email`, and `Open Loops / Carry Forward`; keep its first primary home and verify every Visible Now card appears once. Also scan **the entire Briefing** (including opening, Calendar, Weather and Flavour): remove unchanged issues already handled in yesterday's approved Memory or earlier approved Briefings, unless `rules.md` permits a new reminder. Never use a priority, recap, or “no action needed” paragraph to explain a suppressed item. Prior Briefings suppress stale FYI/email replays, not the ordinary daily reminder of an unresolved Ledger card. Keep required Calendar/source-status facts concise.
 
 - Give each substantive issue one primary home.
 - Use only the **Visible Now** set for routine active-card coverage; never leak a future-`revisit` Snoozed card into a routine Briefing slot.

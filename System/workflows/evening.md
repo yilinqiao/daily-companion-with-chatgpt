@@ -142,7 +142,7 @@ Then ask these three general questions:
 
 Treat answers as first-party additive/corrective evidence. Question 3 is for Daily Memory by default, not a separate global memory store.
 
-Record any explicitly agreed next step for an open Ledger issue concisely in approved Daily Memory `Carry Forward from Today`; mere mentions do not count. This enables the next Morning handoff in `rules.md`.
+Record meaningful confirmed outcomes and handling decisions (including non-Ledger emails/FYIs) briefly in the appropriate Daily Memory slot; explicit unresolved next steps go in `Carry Forward from Today`. Do not confuse mere mentions with decisions or create Ledger cards from FYIs. This supports the next Morning handoff in `rules.md`.
 
 ## 5. Approval Handoff
 

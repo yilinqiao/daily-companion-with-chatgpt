@@ -151,7 +151,7 @@ A future `revisit` date snoozes **routine Morning reminders** until that local d
 
 ### Yesterday handoff
 
-If yesterday's **approved Daily Memory** records an explicit next-step decision for an existing open Ledger card, omit its unchanged routine reminder **this Morning only**. A mere mention is not a decision. Today's due/revisit action, requested morning reminder or material new evidence still surfaces. Keep the card open and resume normal reminders the following morning; future `revisit` and Closed rules remain unchanged.
+Yesterday's **approved Daily Memory** is a one-morning checkpoint for confirmed outcomes, handled information and explicit next-step decisions, whether or not an issue has a Ledger card. Do not repeat an unchanged item anywhere in the next Briefing, including to say no action is needed. Mere mention of an unresolved Ledger item is not a decision; its normal daily reminder remains. Today's due/revisit action, requested reminder, material new evidence or essential Calendar/source status still surfaces. Keep Ledger state unchanged and resume ordinary open-item reminders afterward; Closed and future-`revisit` rules remain. A rolling Gmail look-back does not make a previously handled, unchanged notice new.
 
 ### Dates
 

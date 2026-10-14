@@ -2,6 +2,23 @@
 
 Versions describe the reusable template, not a user's personal vault contents. The current source version is in `VERSION`; a private installation records its verified installed version and public-source commit in `System/profile.md`. File `schema_version` fields describe individual data formats and are not template versions.
 
+## 0.3.4 — 2026-10-14
+
+### Changed
+
+- Complete the previously pushed Morning repeat-suppression update: yesterday's approved Daily Memory suppresses unchanged handled decisions and informational mail (including non-Ledger items) for one Morning; previous Briefings also prevent stale FYI/email replays. Mere mentions of unresolved Ledger cards do not silence ordinary reminders. Today's due/revisit actions, requested reminders, material new evidence and required Calendar/source status still surface.
+- Align Morning's full-Briefing deduplication, Evening's recording of confirmed handling decisions, and the Daily Briefing Visible Now coverage contract. Keep existing operational state and approval boundaries.
+- Run Regression checks even if the independent version/release-notes CI gate fails, so release mistakes do not hide regression results; add focused static contract tests.
+
+### Files, migration and limitations
+
+- `System/policies/rules.md`, `System/workflows/morning.md`, `System/workflows/evening.md`, `System/policies/artifacts.md` (included from four previously pushed commits); `System/upgrade.md`, `.github/workflows/public-template-check.yml`, `scripts/test_morning_repeat_suppression.py`, `VERSION`, `CHANGELOG.md`.
+- No state/schema, permissions, scheduled-task prompt/timing, private profile, Action Ledger or Daily artifact migration. Existing installations require a separately approved selective merge of source-owned instructions; private data and active tasks remain unchanged. This public template release does not update them automatically.
+
+### Verification
+
+- Static tests cover handled FYIs without Ledger cards, unchanged unresolved reminders, exceptions, whole-Briefing deduplication, Evening recording and independent CI regression execution. They cannot establish actual future scheduled-run compliance; that needs production observation.
+
 ## 0.3.3 — 2026-10-13
 
 ### Changed

@@ -36,6 +36,12 @@ Use these ownership rules; do not copy the entire template over the vault:
 
 When source, baseline and local rules differ, show the meaningful conflict and propose a merged result. If the baseline is unknown, distinguish obvious generic additions from uncertain personalized rules; retain local text unless the user approves its exact replacement. File additions must not overwrite same-named personal files. Upstream deletions are proposals, not permission to delete private content.
 
+For release 0.3.4 (Morning handled-information handoff and CI diagnostics):
+
+- Selectively merge the source-owned `policies/rules.md`, `workflows/morning.md`, `workflows/evening.md` and `policies/artifacts.md` changes: approved yesterday handling decisions quiet unchanged issues for one Morning, including informational mail without a Ledger card; earlier approved Briefings suppress stale FYI/email replays. Do not suppress routine reminders merely because an unresolved card was mentioned; preserve due/revisit, requested reminder, material evidence and essential Calendar/source-status exceptions.
+- No state/schema, permission, Ledger, Daily artifact, task-prompt, schedule, notification or consent migration. Preserve user customizations and all private history. These runtime instructions may be selectively upgraded under the usual approval/read-back flow; a public source push does not update an existing private installation or its already-created tasks.
+- Public-only regression/CI improvements add static guard checks and allow tests to run despite a failed release-notes gate. Existing private repositories need not copy CI changes unless expressly requested. Static checks cannot guarantee a Scheduled Task will follow the new guidance.
+
 For release 0.3.3 (Evening check-in completion guard):
 
 - Reinforce the three-question stop gate in `System/workflows/evening.md` and the new-user Evening Scheduled Task instruction in `System/setup.md`. The scheduled run must invite answers rather than sign off; only later interactive turns present Memory/Ledger approvals and save.

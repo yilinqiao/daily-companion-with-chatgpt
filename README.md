@@ -12,10 +12,11 @@ Daily Companion can help you preview your day, review your evening, maintain an 
 
 | Feature | Description |
 | --- | --- |
-| Morning Companion | A short, source-aware day briefing with calendar, mail, actionable follow-ups, and useful weather when enabled |
-| Evening Companion | A conversational review that drafts a Daily Memory for your approval; includes tomorrow preparation and available same-day discussion highlights |
+| Morning Companion | A day briefing with calendar, mail, follow-ups and optional Sunday weekly recap and grounded personal insights |
+| Evening Companion | A conversational review that drafts a Daily Memory for approval, including optional same-day personal reflections |
 | Action Ledger | An Obsidian Kanban board tracking Action, Waiting, Upcoming, and Closed with lasting handling history |
 | Daily Companion Extra | A random surprise each week from the week after setup; continues without approval until paused |
+| Daily Companion Update Watch | Optional read-only 06:00 local release check; offers an interactive upgrade review when a newer version is verified |
 | Private vault | Your own independent private GitHub repository stores the configuration and Markdown notes |
 
 ## Quick start
@@ -30,7 +31,7 @@ Daily Companion can help you preview your day, review your evening, maintain an 
 
 4. Answer the streamlined onboarding questions. Preferred-name usage, Daily Flavour, vault folders and Daily filenames have editable defaults, so they are not asked separately. Morning includes one short rotating non-weather Daily Flavour item when enabled; weather requires source permission. Calendar and Gmail are **optional**. Grant each only if you want it used. ChatGPT must verify a source is accessible before treating it as connected.
 5. Review the proposed configuration, then explicitly approve setup writes. ChatGPT commits the profile first with `setup_complete: false`, initializes and verifies each state file in a separate commit, and only then changes `setup_complete` to `true`. Confirm the post-write read-back checks for each file.
-6. After the repository setup is verified, separately confirm whether to activate Scheduled Tasks. If supported, create/verify Morning, Evening and Extra checks according to `System/setup.md`. **After creating Morning, Evening and Extra, recommend `Notify when complete` for all three (where the client offers it), plus Settings > Notifications and device permissions.** Prioritize a notification when Extra actually generates a Surprise. Depending on the client, no-output daily Extra checks may also trigger completion alerts; test before adjusting. ChatGPT must not claim it automatically enabled a switch without verification. Morning/Evening are **read-and-output only**; note/action changes keep their interactive approval rules. Extra may update only its own scheduling state after explicit standing consent.
+6. After the repository setup is verified, separately confirm whether to activate Scheduled Tasks. If supported, create/verify Morning, Evening, Extra and read-only Update Watch checks according to `System/setup.md`. **After creating Morning, Evening and Extra, recommend `Notify when complete` for all three (where offered); separately review Update Watch alerts and their potential no-change notification noise.** Check Settings > Notifications and device permissions. Prioritize a notification when Extra actually generates a Surprise. Depending on the client, no-output daily Extra checks may also trigger completion alerts; test before adjusting. ChatGPT must not claim it automatically enabled a switch without verification. Morning/Evening are **read-and-output only**; note/action changes keep their interactive approval rules. Extra may update only its own scheduling state after explicit standing consent.
 7. Optional: clone your **private** repository into Obsidian and configure desktop Git / mobile sync using [the Obsidian/GitSync guide](Resources/Obsidian%20GitHub%20GitSync%20Setup.md).
 
 **Start without Obsidian:** ChatGPT can use the Markdown files in your private GitHub repository. Obsidian is an optional, useful editor, not a requirement for the first setup conversation.

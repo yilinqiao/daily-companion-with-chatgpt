@@ -2,6 +2,25 @@
 
 Versions describe the reusable template, not a user's personal vault contents. The current source version is in `VERSION`; a private installation records its verified installed version and public-source commit in `System/profile.md`. File `schema_version` fields describe individual data formats and are not template versions.
 
+## 0.3.7 — 2026-10-16
+
+### Changed
+
+- Evening Daily Memory can optionally preserve personally meaningful emotions, joys, worries and open questions, including approved cross-chat context with reliable same-day dates. Keep the three existing questions and user approval of the final note.
+- Sunday Morning reviews the preceding Monday–Saturday through saved Daily Memories. It may offer specific, tentative, evidence-grounded personal observations; ChatGPT native Memory is optional background, not proof of the week's events.
+- New installations offer a fourth Scheduled Task: **Daily Companion Update Watch**, a read-only 06:00 local condition-watch that checks the official public VERSION and release notes against the private installed markers. On verified new versions, invite the user to start a separate interactive, diff-reviewed upgrade. Never write or auto-upgrade from the scheduled check.
+- Update quick-start and setup guides; add regression tests for new slots, approval boundaries and watch configuration.
+
+### Files, migration and limitations
+
+- `System/workflows/morning.md`, `System/workflows/evening.md`, `System/policies/artifacts.md`, `System/setup.md`, `System/upgrade.md`, `README.md`, `docs/GETTING_STARTED.md`, `docs/setup-guide.html`, `scripts/test_reflections_update_watch.py`, `VERSION`, `CHANGELOG.md`.
+- No profile/state schema change, no Ledger migration or rewriting existing notes. Existing private installations retain their tasks and data; a newly offered update-watch task requires independent activation approval. Existing task prompts are not silently changed.
+- Cross-chat context and native Memory may be incomplete; exact 06:00 execution, GitHub availability and silent no-change notifications depend on the platform. A change in the public repo without a verified release entry is not automatically an upgrade candidate.
+
+### Verification
+
+- Static regression tests cover Sunday scope, optional approved reflections, the three-question handoff and read-only update watch; real scheduled execution, update notification delivery and private upgrades still require observed end-to-end tests.
+
 ## 0.3.6 — 2026-10-16
 
 ### Changed

@@ -63,6 +63,8 @@ From reliably same-day conversations, consolidate meaningful personal/exploratio
 
 Before presenting the check-in, compare the reliably dated themes accessible in this run against the proposed highlight bullets and check that no meaningful, distinct theme was silently skipped. The check covers **available** conversations only, never unseen account history. Keep a small internal set of the highlights actually surfaced so they survive the approval handoff.
 
+For reliably same-day cross-chat highlights that include a meaningful feeling, worry, uncertainty, joy or personal question, proactively prepare a concise `Reflections` candidate for the Evening check-in and Daily Memory draft. Use the user's own meaning, not a psychological label or unsupported interpretation. Native ChatGPT Memory alone cannot establish the date. The user can remove or revise any candidate before the normal approval-based save.
+
 ### 2.6 Tomorrow Preparation
 
 Perform a tomorrow-preparation scan from the approved sources that are available. If Calendar is approved and readable, scan tomorrow across all included calendars. If web/weather information is approved and available, compare tomorrow's local forecast with today's conditions/forecast even when Calendar plans are mostly indoors or routine. Assess whether anything tomorrow would be materially easier, safer, more comfortable or less rushed if prepared tonight.
@@ -136,7 +138,7 @@ Then ask these three general questions:
 
 1. What got done today that may not be visible in Calendar, Gmail or the vault?
 2. Did anything new open, close, get cancelled, get scheduled, or otherwise change today that I may not know about?
-3. Anything else from today worth capturing?
+3. Anything else from today worth capturing, including feelings, worries or questions on your mind?
 
 **Scheduled handoff (mandatory on every run):** End with all three questions above, in order, followed by one invitation to reply here. This applies even when no changes, Slurped Pages or cross-chat highlights are found, or a source cannot be read. Put any `Closing Thought` **before** the questions. Do not sign off, add a farewell, or finish with a source/unsaved-Memory status instead of or after the questions. Before sending, check the final lines and repair any missing question. Do not proceed to §5; wait for their reply.
 
@@ -147,6 +149,8 @@ Record meaningful confirmed outcomes and handling decisions (including non-Ledge
 ## 5. Approval Handoff
 
 After answers, compose the complete Daily Memory using the exact schema in `artifacts.md`; do not duplicate that saved schema here. Carry the exact Slurped Page set surfaced in the Evening Check-in into `Saved Today — Slurped Pages`; do not re-filter or omit those pages during synthesis. If no Slurped Pages were captured today, omit that section as defined in `artifacts.md`. **Preserve every distinct, reliably same-day meaningful highlight surfaced under `Things I Explored Today` in the check-in**, merged concisely without silently dropping topics; incorporate user corrections or explicit omissions. Also include first-party-confirmed additions from the capture question. Omit the section only if no qualifying highlights remain; do not guess dates from merely recent recall, and never place source-coverage diagnostics inside the saved artifact. If the Evening Check-in surfaced a `Tomorrow — Gentle Heads-up`, carry a concise version into the Daily Memory unless the user's follow-up materially corrects or invalidates the underlying plan.
+
+Carry relevant, reliably same-day emotional/reflection candidates into the optional `Reflections` slot, including from surfaced cross-chat context; show them in the full preview and honor user corrections or omissions. Do not require a separate reflection question or treat approval of the draft as approval of any unrelated Ledger change.
 
 Use `rules.md` for evidence/state meaning. `Done Today` uses confirmed closures plus meaningful evidence-supported events/experiences. `Carry Forward from Today` is limited to unresolved matters newly opened/materially updated/worked on today, moved into Waiting today, explicitly intended for today and still unfinished, or explicitly agreed on tonight. Older untouched active Ledger items stay only in the Action Ledger and return through Morning eligibility/reminders.
 

@@ -1,5 +1,24 @@
 # Changelog
 
+## 0.3.8 — 2026-10-17
+
+### Changed
+
+- Run the public privacy/structure and regression checks for pull requests and pushes to `main`, while the strict version/changelog comparison checks the entire pull request against its base. In-progress commits on a feature branch no longer trigger failing release checks or email noise.
+- Verify on every CI run that the checked-in VERSION has one valid, dated CHANGELOG entry, even when no version bump is demanded for a work-in-progress push. Keep the strict PR check that requires a monotonic new version and updated release notes.
+- Align the Extra-notification regression test with the existing setup wording. The notification recommendation itself is unchanged.
+- Update contributor instructions to allow sequential GitHub file edits on a branch followed by a tested squash merge, which produces one complete release commit on `main`.
+
+### Files, migration and limitations
+
+- `.github/workflows/public-template-check.yml`, `scripts/test_setup_notifications.py`, `scripts/test_release_version.py`, `AGENTS.md`, `System/maintenance.md`, `VERSION`, `CHANGELOG.md`.
+- No runtime instruction, profile/state schema, permissions, scheduled-task prompt or notification change. Existing private installations need no migration.
+- A direct push to `main` still bypasses the *version-increase* comparison; use a PR and optional branch protection for reliable release enforcement. GitHub Actions alone does not block unprotected direct pushes.
+
+### Verification
+
+- CI runs the static privacy heuristic, regression tests (including current metadata consistency) and strict version/changelog comparison on the complete pull request. Static checks cannot prove actual scheduled-task or mobile-notification behavior.
+
 Versions describe the reusable template, not a user's personal vault contents. The current source version is in `VERSION`; a private installation records its verified installed version and public-source commit in `System/profile.md`. File `schema_version` fields describe individual data formats and are not template versions.
 
 ## 0.3.7 — 2026-10-16

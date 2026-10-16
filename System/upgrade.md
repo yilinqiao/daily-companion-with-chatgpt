@@ -36,6 +36,12 @@ Use these ownership rules; do not copy the entire template over the vault:
 
 When source, baseline and local rules differ, show the meaningful conflict and propose a merged result. If the baseline is unknown, distinguish obvious generic additions from uncertain personalized rules; retain local text unless the user approves its exact replacement. File additions must not overwrite same-named personal files. Upstream deletions are proposals, not permission to delete private content.
 
+For release 0.3.5 (Evening scheduled handoff reliability):
+
+- Merge the shorter, explicit last-block guard in `workflows/evening.md` and the three verbatim capture questions in the Evening task template in `setup.md`. The Scheduled Evening check-in must finish with the questions and a reply invitation even when nothing new was found; any Closing Thought comes first.
+- **Existing task check is required for this fix:** inspect the already-created Evening Scheduled Task prompt and its repository target, independently of the private Markdown files. Report whether it includes all three capture questions, a no-signoff final-block instruction and the correct private repo. If not, propose replacing only that task's prompt with the current `setup.md` template, applying it **only with the user's explicit approval**. Preserve title, time, timezone, enabled/paused state and notification preferences; never duplicate or recreate the task. If task inspection/editing is unavailable, record the prompt as unverified and do not claim the scheduled-run fix is complete simply because the repository upgrade succeeded.
+- No schema, profile, Ledger, Daily artifact, consent or task-schedule migration. Preserve all user data and customizations. Static tests cannot verify compliance by a future scheduled run.
+
 For release 0.3.4 (Morning handled-information handoff and CI diagnostics):
 
 - Selectively merge the source-owned `policies/rules.md`, `workflows/morning.md`, `workflows/evening.md` and `policies/artifacts.md` changes: approved yesterday handling decisions quiet unchanged issues for one Morning, including informational mail without a Ledger card; earlier approved Briefings suppress stale FYI/email replays. Do not suppress routine reminders merely because an unresolved card was mentioned; preserve due/revisit, requested reminder, material evidence and essential Calendar/source-status exceptions.

@@ -267,7 +267,11 @@ Interactive approval handoff: if the user later approves the generated Morning B
 ```text
 Using GitHub repository `<github_repository>`, read `<system_folder>/workflows/evening.md` and run the Evening Companion exactly as instructed there.
 Read files from that configured repository using the stated path; do not substitute a same-named file from another repository.
-Required handoff: end the scheduled check-in by asking all three questions in evening.md §4 and inviting a reply here; never sign off early. After the answers, follow §5 and policies/artifacts.md for Memory/Ledger preview, independent approval and verified interactive save. The scheduled run remains read-only.
+Required handoff: end every scheduled check-in with all three questions below, including when sources are missing or there is nothing new. Phrase them in the user's configured output language:
+1. What got done today that may not be visible in Calendar, Gmail or the vault?
+2. Did anything new open, close, get cancelled, get scheduled, or otherwise change today that I may not know about?
+3. Anything else from today worth capturing?
+Finish by inviting a reply here. Put any Closing Thought before these questions; never sign off early or append a farewell/status after them. Check the final answer for all three before sending. After the answers, follow evening.md §5 and policies/artifacts.md for Memory/Ledger preview, independent approval and verified interactive save. The scheduled run remains read-only.
 ```
 
 ### Daily Companion Extra task instruction

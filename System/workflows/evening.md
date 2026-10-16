@@ -138,7 +138,7 @@ Then ask these three general questions:
 2. Did anything new open, close, get cancelled, get scheduled, or otherwise change today that I may not know about?
 3. Anything else from today worth capturing?
 
-**Scheduled handoff:** End the check-in with these three questions and an invitation to reply here. Do not sign off or say Evening is finished before the user answers; wait for their reply before §5.
+**Scheduled handoff (mandatory on every run):** End with all three questions above, in order, followed by one invitation to reply here. This applies even when no changes, Slurped Pages or cross-chat highlights are found, or a source cannot be read. Put any `Closing Thought` **before** the questions. Do not sign off, add a farewell, or finish with a source/unsaved-Memory status instead of or after the questions. Before sending, check the final lines and repair any missing question. Wait for their reply before §5.
 
 Treat answers as first-party additive/corrective evidence. Question 3 is for Daily Memory by default, not a separate global memory store.
 

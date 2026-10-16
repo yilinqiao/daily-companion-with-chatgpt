@@ -2,6 +2,23 @@
 
 Versions describe the reusable template, not a user's personal vault contents. The current source version is in `VERSION`; a private installation records its verified installed version and public-source commit in `System/profile.md`. File `schema_version` fields describe individual data formats and are not template versions.
 
+## 0.3.5 — 2026-10-16
+
+### Changed
+
+- Make the Evening three-question handoff the mandatory final block on every scheduled run, including when external sources yield no results. Any Closing Thought must appear before the questions, and no farewell/status may replace them.
+- Put all three capture questions directly in the new Evening Scheduled Task prompt as a short fail-safe; keep the current read-only scheduled boundary and post-answer interactive approval/save flow.
+- During upgrades, explicitly check the **existing** Evening task prompt as well as repository files. Propose a prompt-only repair with separate approval when missing or stale, without changing schedule, task enablement or notifications.
+
+### Files, migration and limitations
+
+- `System/workflows/evening.md`, `System/setup.md`, `System/upgrade.md`, `scripts/test_evening_handoff.py`, `VERSION`, `CHANGELOG.md`.
+- No state/schema, personal configuration, Ledger, Daily notes, consent or schedule migration. Private installations and previously created tasks do not automatically receive the new instructions. If a task cannot be inspected or updated, report that independently from repository upgrade status.
+
+### Verification
+
+- Regression checks require the three questions in the task prompt, the missing-source final-block rule and an explicit existing-task upgrade check. Future Scheduled Task behavior needs a real run to verify.
+
 ## 0.3.4 — 2026-10-14
 
 ### Changed

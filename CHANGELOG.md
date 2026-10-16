@@ -2,6 +2,20 @@
 
 Versions describe the reusable template, not a user's personal vault contents. The current source version is in `VERSION`; a private installation records its verified installed version and public-source commit in `System/profile.md`. File `schema_version` fields describe individual data formats and are not template versions.
 
+## 0.3.6 — 2026-10-16
+
+### Changed
+
+- Align Evening handoff wording and the existing regression assertions with the mandatory final-block heading from 0.3.5. The three capture questions and scheduled-task prompt are unchanged.
+
+### Files, migration and limitations
+
+- `System/workflows/evening.md`, `scripts/test_evening_handoff.py`, `VERSION`, `CHANGELOG.md`. No schema, state, permissions, notification, schedule or task migration; existing private copies still require a separately approved selective upgrade.
+
+### Verification
+
+- Check old and new three-question handoff regression expectations together; actual scheduled-run compliance still requires observing a real run.
+
 ## 0.3.5 — 2026-10-16
 
 ### Changed

@@ -18,7 +18,7 @@ class EveningHandoffTests(unittest.TestCase):
         for prompt in ("1. What got done today", "2. Did anything new open",
                        "3. Anything else from today"):
             self.assertIn(prompt, questions)
-        for guard in ("**Scheduled handoff:**", "invitation to reply here",
+        for guard in ("**Scheduled handoff (mandatory on every run):**", "invitation to reply here",
                       "Do not sign off", "wait for their reply"):
             self.assertIn(guard, questions)
         self.assertIn("After answers, compose the complete Daily Memory", following)

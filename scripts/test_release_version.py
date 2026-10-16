@@ -1,11 +1,25 @@
 """Release gate rejects incomplete or misleading version announcements."""
 import unittest
+from pathlib import Path
 from types import SimpleNamespace
 
 from check_release_version import comparison_base, release_problems
 
 
 class ReleaseVersionTests(unittest.TestCase):
+    def test_checked_in_version_has_current_dated_changelog(self):
+        root = Path(__file__).resolve().parents[1]
+        version = (root / "VERSION").read_text(encoding="utf-8").strip()
+        notes = (root / "CHANGELOG.md").read_text(encoding="utf-8")
+        self.assertEqual(release_problems(None, version, {"VERSION", "CHANGELOG.md"}, notes), [])
+
+    def test_pr_release_gate_uses_full_base_without_checking_each_push(self):
+        workflow = (Path(__file__).resolve().parents[1] / ".github/workflows/public-template-check.yml").read_text(encoding="utf-8")
+        self.assertIn("push:\n    branches: [main]", workflow)
+        self.assertIn("pull_request:\n    branches: [main]", workflow)
+        self.assertIn("if: github.event_name == 'pull_request'", workflow)
+        self.assertNotIn("github.event.before", workflow)
+
     def test_first_versioned_release(self):
         self.assertEqual(release_problems(None, "0.1.0", {"VERSION", "CHANGELOG.md", "System/upgrade.md"},
                                           "## 0.1.0 — 2026-10-11\n"), [])

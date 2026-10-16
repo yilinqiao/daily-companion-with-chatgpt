@@ -16,7 +16,7 @@ This is the entrypoint for maintaining the canonical public template `yilinqiao/
 ## Every public update
 
 - Change the requested rules and their routing together. Keep setup, runtime entrypoints and user documentation consistent.
-- Bump root `VERSION` and add a dated `CHANGELOG.md` entry containing actual user-visible changes, affected files, migrations, limitations and verification. Do not change previously released behaviour under the same version. Commit the release files and markers together.
+- Bump root `VERSION` and add a dated `CHANGELOG.md` entry containing actual user-visible changes, affected files, migrations, limitations and verification. Do not change previously released behaviour under the same version. Stage related files in a branch, then squash-merge a complete, tested release into `main`.
 - Check whether `System/upgrade.md` needs a new migration: list old/new formats, preserve configuration/cards/history/customizations, describe authorized fields and handle partial failure. If no migration is needed, say so in the release entry. Maintain the upgrade entrypoint and its links even for a small rule edit.
 - For new required files, update setup readiness and the public release checker. For new tool dependencies, update capability verification and honest activation reporting.
 - Do not modify the public profile's installed markers; those are populated only when a private user's installation or approved upgrade is verified.
@@ -24,9 +24,9 @@ This is the entrypoint for maintaining the canonical public template `yilinqiao/
 ## Verify and publish
 
 - Run `python -B scripts/check_public_release.py` and regression checks appropriate to the change. Inspect diffs for private data; automated heuristics do not prove complete PII removal.
-- On a release commit, run `python -B scripts/check_release_version.py --base <previous-public-commit>`. CI runs this gate for default-branch pushes and PRs using the complete push/PR base SHA; source changes without a version bump and updated notes fail the check. Feature-branch pushes still run privacy/structure/tests; their release comparison happens against the complete PR base. A new branch with existing history and no dependable prior head requires an explicit baseline, never a tip-only comparison.
+- On a release PR, run `python -B scripts/check_release_version.py --base <target-main-commit>`. CI checks privacy/structure and regressions on PRs and `main` pushes, and checks the cumulative version/notes delta on PRs only. Work-in-progress feature-branch pushes do not trigger CI. The version unit test checks that the current `VERSION` has exactly one valid dated changelog entry on every run. Direct-to-main pushes do not enforce a version bump, so use PRs for releases; do not mistake source commits for a published version. A branch with history but no dependable baseline requires an explicit base, never a tip-only comparison.
 - CI reports a failing check; repository protection settings determine whether that blocks merging. A workflow does not undo an already accepted direct push. Do not describe these checks as automatic branch protection.
-- Use a normal commit/ref update with an expected current head; inspect concurrency conflicts rather than overwriting them. Stop and report any safety/access block.
+- GitHub can package multiple changed files into one commit; GPT integrations that update files sequentially should stage those commits on a branch and squash-merge after successful PR CI. Use a normal commit/ref update with an expected current head; inspect concurrency conflicts rather than overwriting them. Stop and report any safety/access block.
 - Verify remote files and CI. Report the version, changed behaviour, migration requirements and any unverified runtime capability. Source publication never means private copies were automatically updated.
 
 ## GPT web entry prompt

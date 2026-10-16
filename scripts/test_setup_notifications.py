@@ -26,7 +26,7 @@ class SetupNotificationTests(unittest.TestCase):
     def test_extra_default_notify_and_unverified_platform_noop_alerts(self):
         handoff = self.setup.split("**First-run completion-notification handoff", 1)[1]
         for phrase in ("Daily Companion Extra", "recommend turning it on for all three",
-                       "proactive notification", "condition-watch", "do not promise suppression",
+                       "Prioritize notification of a real Surprise", "condition-watch", "do not promise suppression",
                        "not a reason to reset"):
             self.assertIn(phrase, handoff)
         self.assertIn("before the date or already claimed, stop silently", self.engine)

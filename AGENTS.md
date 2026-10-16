@@ -10,11 +10,11 @@ Read `System/maintenance.md` before changing the public template. These instruct
 
 ## Public template changes are releases
 
-- Every public template update must include an appropriate monotonic `MAJOR.MINOR.PATCH` bump in root `VERSION` and a dated entry in `CHANGELOG.md`, in the same commit as the final changed files. The first versioned release starts at 0.1.0; earlier copies are unversioned.
+- Every published public template release needs a monotonic `MAJOR.MINOR.PATCH` bump in `VERSION` and a matching dated `CHANGELOG.md` entry. Stage multi-file work on a branch, validate the complete pull request, and squash-merge the release into one commit on `main`. In-progress commits may be incomplete; direct-to-main releases must bundle code, VERSION and notes together. The first versioned release starts at 0.1.0; earlier copies are unversioned.
 - Describe the actual behaviour, affected files, compatibility, state migration and verification. Do not use `schema_version` as the template version or reuse a shipped release number for new instructions.
 - Read and update `System/upgrade.md` whenever the change affects migration, file ownership, preserved state or required capabilities. Preserve its routing from `System/instructions.md`, and keep README/setup/upgrade instructions consistent.
 - Keep `System/profile.md` unconfigured with installed metadata null, the Ledger empty and Surprise state uninitialized with scheduled-write consent false. Update reusable rules without copying personal values into them.
-- Run `python -B scripts/check_public_release.py`, applicable tests, and `python -B scripts/check_release_version.py --base <previous-public-commit>` on the staged release commit. Verify CI and remote read-back before reporting publication complete. A read-only pre-commit review may inspect the same proposed files; the version gate checks committed changes.
+- Run `python -B scripts/check_public_release.py` and applicable tests during development; check the full release pull request against its target base with `python -B scripts/check_release_version.py --base <target-main-commit>`. Verify PR CI, squash-merge, and remote read-back before reporting publication complete. A read-only pre-commit review may inspect proposed files.
 - Use a normal versioned commit with a verified expected branch head. Never force-push, replace Git history or bypass a write/safety block.
 
 ## Existing private installations

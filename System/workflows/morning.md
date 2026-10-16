@@ -81,6 +81,8 @@ Select the highest-value Visible Now issues for the Briefing's priority slot. An
 
 Compose one concise Daily Briefing using the exact schema and required-slot/cardinality rules in `policies/artifacts.md`; do not restate those artifact constraints here.
 
+On Sundays, also recap the preceding local Monday–Saturday from approved Daily Memories in the conditional weekly slots. Show the date range and material coverage gaps. Offer only grounded, tentative personal patterns; never invent an insight, turn one into an Action Ledger item, or let the recap repeat routine reminders. ChatGPT native Memory may add long-term context when surfaced, but cannot independently date or verify this week's events.
+
 ### 4.1 Briefing-level issue allocation and de-duplication
 
 Before rendering sections, build one Briefing-level issue set after Ledger reconciliation. Key an existing operational issue by its stable Ledger card ID; key an untracked candidate by the same underlying obligation/dependency/commitment rather than by source, thread, message or section. Merge Calendar/Gmail/recovery evidence that belongs to the same underlying issue into that one issue record.

@@ -40,6 +40,12 @@ generated_at: "<local ISO-8601 datetime>"
 ## Weather
 <optional; only when useful and approved>
 
+## This Week
+<Sunday only: completed Monday–Saturday recap from approved Daily Memories; show covered dates/gaps>
+
+## Something You May Not Have Noticed
+<Sunday only and conditional: specific evidence-grounded tentative observation; omit if unsupported>
+
 ## Daily Flavour
 <one brief non-weather item per Morning Briefing when enabled; omit only when all non-weather categories are disabled>
 
@@ -93,6 +99,9 @@ date: YYYY-MM-DD
 ## Day Summary
 <2–5 natural synthesis sentences>
 
+## Reflections
+<optional: emotions, concerns, joys or unresolved personal questions expressed today, including reliably dated cross-chat context; draft subject to user approval>
+
 ## Tomorrow — Gentle Heads-up
 _As things stand tonight:_
 <optional preparation advice from tomorrow Calendar + relevant approved/available weather>
@@ -104,6 +113,8 @@ _As things stand tonight:_
 Tomorrow is optional. `Saved Today — Slurped Pages` is conditional: if Evening surfaced one or more approved Slurped Pages captured on this date, the Daily Memory must preserve that complete set under this section and may not drop items during synthesis. Keep each item concise, normally the page title plus one short context line. Omit the section only when no Slurped Pages were captured today.
 
 `Things I Explored Today` is conditional but **mandatory when at least one qualifying highlight was surfaced in the Evening Check-in or confirmed by the user**. Preserve every distinct qualifying theme into the approved Daily Memory; merge related discussions concisely and avoid duplicating `Done Today` or `Carry Forward from Today`. It may contain only personal/exploration highlights that Evening can reliably assign to this local date using thread/conversation timestamp metadata, or that the user explicitly confirms belong to today. The conversation text need not say `today` when reliable metadata establishes the date. Topic-only recall, ChatGPT native Memory, or vague `recently` context is insufficient for date assignment: omit it or ask for confirmation rather than guessing. Omit the section only if no qualifying highlights remain after user corrections. This section is not a transcript, must never be described as complete coverage of the user's chats, and cannot by itself authorize or imply Action Ledger changes. Retrieval coverage/failure remarks belong in the Evening Check-in, not the saved Daily Memory. User corrections during the Evening check-in take precedence.
+
+`Reflections` is optional. Proactively include concise, reliably same-day emotional/personal reflections surfaced from approved conversation context or the Evening check-in, even without a separate user prompt. Preserve the user's meaning, avoid diagnosing emotions or inventing motives, and allow correction/removal in the normal full-preview approval. Omit if nothing qualifies; neither native ChatGPT Memory alone nor an undated recollection establishes a same-day reflection. Sunday weekly slots use saved Daily Memories as primary evidence; native Memory is optional background, never sole proof of a weekly event or pattern.
 
 If nothing from today carries forward, say so briefly rather than importing older untouched Ledger items. Do not repeat facts or create routine long-term-memory sections.
 

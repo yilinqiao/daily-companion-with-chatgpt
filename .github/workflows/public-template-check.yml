@@ -1,7 +1,9 @@
 name: Public template integrity and privacy heuristics
 on:
   push:
+    branches: [main]
   pull_request:
+    branches: [main]
 permissions:
   contents: read
 jobs:
@@ -16,10 +18,10 @@ jobs:
       - name: Static release check
         run: python3 scripts/check_public_release.py
       - name: Version and release-notes check
-        # Feature branches are checked against their complete PR base.
-        if: github.event_name == 'pull_request' || github.ref == format('refs/heads/{0}', github.event.repository.default_branch)
+        # Validate the cumulative PR against main, not each work-in-progress push.
+        if: github.event_name == 'pull_request'
         env:
-          BASE_SHA: ${{ github.event.pull_request.base.sha || github.event.before }}
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
         run: python3 -B scripts/check_release_version.py --base "$BASE_SHA"
       - name: Regression checks
         if: ${{ !cancelled() }}

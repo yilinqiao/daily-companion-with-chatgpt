@@ -23,7 +23,7 @@ GitHub holds the shared remote files and history; devices edit local copies. Cha
 
 Fetch lets you inspect incoming commits; pull brings them into the local working copy. A commit saves a local snapshot, while push uploads it. Wait for the complete sync/pull result before treating local files as current.
 
-Morning/Evening scheduled runs produce previews; note and Ledger saves follow their interactive authorization rules. After explicit standing consent, **Extra alone** may update its own engine's scheduling/attempt fields. It cannot write other notes, the profile, Ledger, Gmail or Calendar. See [setup](../System/setup.md) and the [Surprise engine](../System/daily_companion_extra.md) for the exact scope.
+Morning/Evening scheduled runs produce previews; note and Ledger saves follow their interactive authorization rules. Extra and Update Watch also remain read-only; only explicit interactive controls change the Extra state. See [setup](../System/setup.md) and the [Surprise engine](../System/daily_companion_extra.md) for the exact scope.
 
 ## 1. Create the private copy once
 
@@ -50,11 +50,11 @@ Follow the approved setup stages:
 
 1. Answer the onboarding questions and choose optional data sources. ChatGPT verifies approved connector access before treating it as available.
 2. Review the summary, including repository, paths, timezone and preferences; approve the concrete setup writes.
-3. Verify the saved profile with setup_complete still false, then verify Ledger and Extra initialization through their separate commits. A new Extra stores one chosen next_due_date in the week after setup, not a seed or future-date list.
+3. Verify the saved profile with setup_complete still false, then verify Ledger and Extra initialization through their separate commits. A new Extra stores a private Monday anchor and 104-week weekday pattern per the shared engine.
 4. After package/state checks and any provisional-date alignment, verify the final profile commit with setup_complete true and the installation version/baseline markers when known. This verifies installation, not task activation.
-5. Separately confirm activation. Morning/Evening keep their read-only scheduled boundary. Extra requires explicit consent to update only its own scheduling state; connector availability alone is not consent. Reuse matching existing tasks and preserve paused choices.
+5. Separately confirm activation. Morning/Evening keep their read-only scheduled boundary. Extra remains read-only; connector availability alone is not consent for other changes. Reuse matching existing tasks and preserve paused choices.
 
-Extra compares the saved date daily: earlier means silence; on/after it, an eligible run reserves an attempt, verifies the next week's date save, then sends the final surprise. No Python/hash test or weekly approve is required. Task enabled status is separate from actual scheduled persistence and notification settings; check the first due run before claiming the entire path works. A pending claim stops automatic repeats and needs the engine's interactive recovery. Do not manually clear claims or redraw dates to make setup pass.
+Extra evaluates the private weekly pattern on each actual local occurrence; only the selected weekday is eligible. No scheduled writes, catch-up or weekly approval. Task enabled status is separate from actual output and notification delivery; observe the first eligible run. Do not redraw a live pattern.
 
 If you already completed setup, preserve it and use the upgrade flow when old instructions need updating. Obsidian installation never requires resetting the profile, Ledger or Surprise state.
 
@@ -107,8 +107,8 @@ For normal use:
 - Before editing: pull/sync, wait for completion, and inspect any incoming changes. Fetch alone does not update the local vault.
 - After editing: save, commit/push or run GitSync sync, then verify the remote result before continuing on another device.
 - After a ChatGPT save: verify the private GitHub commit first, then pull it to Obsidian. A generated preview is not a saved note.
-- Extra can change its own state even when no Daily note was saved. Pull/sync current state before any engine edit; use ChatGPT's interactive pause/resume/recovery controls instead of editing its dates or claims casually.
-- With conflicts: stop automatic sync, preserve both versions, inspect differences and resolve deliberately. For an Extra claim/state conflict, use its recovery contract and task-run evidence; never blindly choose an old local copy, clear a claim, restore blank template state or force-push. [GitSync conflict instructions](https://gitsync.viscouspotenti.al/wiki/merge-conflict-resolution) cover its conflict UI.
+- Extra state changes only interactively. Pull/sync before engine edits; use ChatGPT's pause/resume/repair controls rather than editing the live pattern casually.
+- With conflicts: stop automatic sync, preserve both versions, inspect differences and resolve deliberately. For an Extra state conflict, preserve both copies and resolve using the approved current cadence; never restore blank template state or force-push. [GitSync conflict instructions](https://gitsync.viscouspotenti.al/wiki/merge-conflict-resolution) cover its conflict UI.
 - Keep independent backups. Git history and device sync are useful recovery aids, not a guarantee that every local edit was uploaded.
 
 ## 7. Upgrade the existing private copy
@@ -129,7 +129,7 @@ Preserve existing task timing and paused status; do not recreate working
 Morning/Evening tasks. Apply the specific changes only after I approve them.
 ```
 
-For a v5/older Extra, the current migration replaces the seed/calendar with one date, asks for its new narrow scheduled-write consent and removes the old never-write task clause. It does not automatically activate a paused or never-activated Extra. See the upgrade contract for coordinated task suspension and restoration.
+For a legacy Extra, the current migration archives existing state and replaces the cadence only after explicit approval. It removes scheduled write authorization and does not automatically activate a paused or absent task. See the upgrade contract for coordinated task suspension and restoration.
 
 Before an upgrade, finish pending local edits and verify their push; keep an independent backup. Avoid simultaneous device edits/sync while the coordinated upgrade runs. Afterwards, inspect the verified private commit and pull it to each device before resuming edits. Existing live dates/claims are preserved on a documentation-only update; installation markers must not be stamped by a device sync alone.
 
@@ -143,6 +143,6 @@ Use a harmless temporary test note in the private vault to verify device sync. T
 | GitHub edit → Obsidian | Completed pull/sync, matching content in the same local vault |
 | GitHub → ChatGPT | Read of the exact private owner/repo, branch and configured setup/runtime path |
 | Approved ChatGPT save → GitHub → device | Verified private commit/read-back, followed by a verified device pull |
-| Extra → its own state, when activated | Actual due-run claim/advance commits; task enabled status alone is insufficient |
+| Extra → conversation only | Actual eligible-day output; task enabled status alone is insufficient |
 
 When something fails, identify the layer: account/repository permission, ChatGPT write, device sync, merge conflict, task activation or notification. Keep verified Morning/Evening tasks and existing data intact while diagnosing another layer.

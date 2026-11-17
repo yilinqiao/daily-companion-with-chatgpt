@@ -33,7 +33,7 @@ Read the configured private profile and selected `System/storage/notion.md` or `
 
 Normal Morning/Evening runs use `System/profile.md`, the shared policies and the configured Action Ledger. Each workflow owns the exact retrieval sequence and decides which historical/context sources are needed.
 
-If setup is incomplete, do not run the normal Morning or Evening workflow; direct the user to the setup flow instead.
+Extra reads its own engine, profile and only narrow approved context; it does not load Morning/Evening, Ledger or shared artifact policies. Setup, upgrade and maintenance are interactive-only except the read-only Watch entrypoint. If setup is incomplete, do not run the normal Morning or Evening workflow; direct the user to the setup flow instead.
 
 ## Workflow Routing
 
@@ -50,7 +50,7 @@ Do not duplicate detailed workflow or policy rules in this file.
 
 ## Scheduled Task Write Boundary
 
-Follow artifacts.md and the selected storage adapter. Notion Morning and Evening may create only their own initial Daily pages with verified notion_daily_autosave_authorized consent; GitHub Morning/Evening remain read/output only. Notion Extra and Update Watch are read-only; GitHub Extra may update only its five authorized scheduling fields under its engine. No scheduled Ledger, Gmail or Calendar mutations. All revisions and other writes require interactive authorization.
+Follow artifacts.md and the selected storage adapter. Notion Morning and Evening may create only their own initial Daily pages with verified notion_daily_autosave_authorized consent; GitHub Morning/Evening remain read/output only. Extra and Update Watch are read-only on both backends. No scheduled Ledger, Gmail or Calendar mutations. All revisions and other writes require interactive authorization.
 
 ## Global Retrieval Principles
 

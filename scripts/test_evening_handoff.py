@@ -37,6 +37,8 @@ class EveningHandoffTests(unittest.TestCase):
         for phrase in ("1. What got done today", "2. Did anything new open",
                        "3. Anything else from today", "Closing Thought", "check the final lines"):
             self.assertIn(phrase, self.evening)
+        for phrase in ("What got done today", "Did anything new open", "Anything else from today"):
+            self.assertIn(phrase, task)
 
     def test_missing_source_does_not_remove_three_question_handoff(self):
         section = self.evening.split("**Scheduled handoff (mandatory on every run):**", 1)[1]
@@ -46,15 +48,13 @@ class EveningHandoffTests(unittest.TestCase):
             self.assertIn(phrase.lower(), section.lower())
 
     def test_upgrade_checks_live_task_separately_from_repository(self):
-        release = self.upgrade.split("For release 0.3.5", 1)[1].split("For release 0.3.4", 1)[0]
-        for phrase in ("already-created Evening Scheduled Task", "all three capture questions",
-                       "only with the user's explicit approval", "notification preferences",
-                       "do not claim the scheduled-run fix is complete"):
-            self.assertIn(phrase, release)
+        for phrase in ("actual existing task prompts", "all three Evening fallback questions",
+                       "separately approved", "notification preferences", "observed status separately"):
+            self.assertIn(phrase, self.upgrade)
 
     def test_existing_installations_require_explicit_prompt_update(self):
-        self.assertIn("For release 0.3.3 (Evening check-in completion guard)", self.upgrade)
-        self.assertIn("only when explicitly requested", self.upgrade)
+        self.assertIn("task changes and any migration", self.upgrade)
+        self.assertIn("Never rerun setup", self.upgrade)
 
 
 if __name__ == "__main__":

@@ -16,7 +16,7 @@ For 0.4.0+ verify both storage adapters, unset Notion IDs/consent, explicit plan
 - [ ] Use **Use this template** to create a test **Private** repository.
 - [ ] Test GitHub read and approved write into that private repository.
 - [ ] Test one-question onboarding, source permissions, Calendar/Gmail reduced-source mode, Morning, Evening, Ledger and persistence.
-- [ ] Test schedules/time zones only when supported; verify Extra's standing consent, private write scope, before-date silence, overdue delivery, next-week selection, failed claim/completion, competing runs, pause/revoke and pending-claim recovery. Distinguish task enabled from actual scheduled persistence; do not require the retired hash-calculation test.
+- [ ] Test schedules/time zones only when supported; verify Extra's read-only weekly pattern, before-anchor and non-eligible silence, modulo wrap, pause/resume, no catch-up and no scheduled writes. Distinguish task enabled from observed scheduled persistence.
 - [ ] Test Obsidian sync separately on the devices actually supported.
 - [ ] Record remaining limitations rather than declaring an untested production launch.
 

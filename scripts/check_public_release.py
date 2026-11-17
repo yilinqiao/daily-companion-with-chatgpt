@@ -14,6 +14,7 @@ required = [
     "VERSION", "CHANGELOG.md", "AGENTS.md", "System/upgrade.md",
     "System/maintenance.md", "scripts/check_release_version.py",
     "System/storage/notion.md", "System/storage/github.md",
+    "System/setup/notion.md", "System/setup/github.md",
 ]
 problems = []
 for name in required:
@@ -24,6 +25,7 @@ patterns = {
     "private key": r"-----BEGIN (?:RSA |OPENSSH |EC )?PRIVATE KEY-----",
     "credential": r"\b(?:ghp_|gho_|ghu_|ghs_|github_pat_|sk-|AIza)[A-Za-z0-9_\-]{12,}",
     "personal path": r"(?:[A-Za-z]:\\(?:Users|Documents and Settings)\\|/Users/[^\s/]+/|/home/[^\s/]+/)",
+    "Notion page id": r"(?:notion\\.so/|notion\\.com/(?:p/)?)[^\\s)]*[a-f0-9]{32}\\b",
     "Drive document id": r"(?:drive\.google\.com/(?:file/d/|drive/folders/)|docs\.google\.com/[^\s]+/d/)[A-Za-z0-9_\-]{20,}",
 }
 for p in root.rglob("*"):
@@ -52,10 +54,15 @@ ledger = (root / "System/action_ledger.md").read_text(encoding="utf-8")
 extra = (root / "System/daily_companion_extra.md").read_text(encoding="utf-8")
 if "setup_complete: false" not in profile or "SETUP_REQUIRED" not in profile:
     problems.append("Profile is not unconfigured")
+profile_state = profile.split("---", 2)[1] if profile.startswith("---\n") else ""
+profile_keys = re.findall(r"(?m)^([A-Za-z_][A-Za-z0-9_]*):", profile_state)
+for key in set(profile_keys):
+    if profile_keys.count(key) > 1:
+        problems.append("Duplicate profile field: " + key)
 for field in ("installed_template_version", "installed_template_commit"):
     if not re.search(r"(?m)^" + field + r": null\s*$", profile):
         problems.append("Public profile has initialized " + field)
-for field in ("notion_suite_id", "notion_system_index_id", "notion_daily_source_id", "notion_ledger_source_id"):
+for field in ("notion_suite_id", "notion_system_index_id", "notion_daily_source_id", "notion_ledger_source_id", "capture_source"):
     if not re.search(r"(?m)^" + field + r": null\s*$", profile):
         problems.append("Public profile has initialized " + field)
 if not re.search(r"(?m)^notion_daily_autosave_authorized: false\s*$", profile):
@@ -82,22 +89,18 @@ state_keys = re.findall(r"(?m)^([A-Za-z_][A-Za-z0-9_]*):", extra_state)
 for key in set(state_keys):
     if state_keys.count(key) > 1:
         problems.append("Duplicate Surprise state field: " + key)
-if not re.search(r"(?m)^schema_version: 6\s*$", extra_state):
-    problems.append("Surprise schema must be v6")
-if not re.search(r"(?m)^delivery_status: idle\s*$", extra_state):
-    problems.append("Surprise delivery status must be idle")
-if not re.search(r"(?m)^scheduled_writes_authorized: false\s*$", extra_state):
-    problems.append("Public Surprise must not contain private scheduled-write consent")
-for field in ("next_due_date", "delivery_due_date", "delivery_claimed_at", "last_attempt_date"):
+if not re.search(r"(?m)^schema_version: 7\s*$", extra_state):
+    problems.append("Surprise schema must be v7")
+for field in ("anchor_monday", "weekday_pattern"):
     if not re.search(r"(?m)^" + field + r": null\s*$", extra_state):
-        problems.append("Surprise has an initialized " + field)
+        problems.append("Surprise has an initialized or missing " + field)
 for field in ("last_approved_auto_delivery", "last_mode", "last_type"):
     if not re.search(r"(?m)^" + field + r": null\s*$", extra):
         problems.append("Surprise has an initialized " + field)
 for field in ("recent_types", "recent_themes"):
     if not re.search(r"(?m)^" + field + r": \[\]\s*$", extra):
         problems.append("Surprise has initialized " + field)
-if re.search(r"(?m)^(?:weekly_due_dates|next_due|min_gap_days|max_gap_days|schedule_seed|start_week):", extra_state):
+if re.search(r"(?m)^(?:weekly_due_dates|next_due|next_due_date|min_gap_days|max_gap_days|schedule_seed|start_week|scheduled_writes_authorized|delivery_status|delivery_due_date|delivery_claimed_at|last_attempt_date):", extra_state):
     problems.append("Surprise still uses legacy cadence fields")
 if "Use this template" not in (root / "README.md").read_text(encoding="utf-8"):
     problems.append("README must recommend private template copy")

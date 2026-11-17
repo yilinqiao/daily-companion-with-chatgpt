@@ -45,7 +45,7 @@ class MorningRepeatSuppressionTests(unittest.TestCase):
         self.assertIn("previously handled unchanged mail", self.morning)
         self.assertIn("scan **the entire Briefing**", self.morning)
         self.assertIn("including opening, Calendar, Weather and Flavour", self.morning)
-        self.assertIn("earlier approved Briefings", self.morning)
+        self.assertIn("earlier saved Briefings", self.morning)
         self.assertIn("Never use a priority, recap, or", self.morning)
 
     def test_one_operational_home_and_visible_now_coverage(self):

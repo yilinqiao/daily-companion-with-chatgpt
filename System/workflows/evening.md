@@ -12,10 +12,10 @@ Evening Scheduled Task entry point. Read `System/instructions.md`, `System/profi
 
 1. Read `profile.md` and the configured Ledger via selected storage adapter. If unavailable, report it and do not produce an authoritative inferred Ledger change set.
 2. Resolve actual scheduled occurrence local date/time; stop without writes if uncertain.
-3. Read today's approved Daily Briefing when available. If absent, continue from current evidence and say the baseline is missing only when that limitation materially matters.
+3. Read today's saved Daily Briefing when available. If absent, continue from current evidence and say the baseline is missing only when that limitation materially matters.
 4. If Calendar is approved, enumerate/apply scope and read today across all included calendars with calendar identity retained; always read tomorrow across the same included calendars for the preparation scan in **2.6 Tomorrow Preparation**. Enumeration failure means incomplete coverage.
 5. If Gmail is approved, read relevant current Gmail independently of Calendar.
-6. Read today's approved Slurped Pages when available; use the `slurped:` timestamp first and a reliably attributable repository commit timestamp only as fallback.
+6. Read today's approved capture source, if configured; use the selected adapter's reliable capture-time rules.
 7. Use recent Daily Memory and PARA only when materially useful; PARA remains pull-only.
 8. If `approved_data_sources` includes `ChatGPT surfaced conversation context`, actively attempt a date-scoped cross-chat retrieval when a supported ChatGPT conversation-context lookup is available in this run; also examine relevant context already surfaced by the runtime. Follow the date, coverage and failure rules in **2.5 Cross-chat Today Pass**. This is not guaranteed account-wide history access. If this source is not approved, do not retrieve or use cross-chat context for Daily Memory.
 9. If web/weather information is approved and available, read both today's and tomorrow's local forecast for the preparation scan in **2.6 Tomorrow Preparation**. A material weather change may independently justify a tomorrow heads-up even when Calendar plans are mostly indoors or routine.
@@ -45,51 +45,21 @@ For each Calendar/Gmail/Morning-Briefing signal, apply the complete Ledger recon
 
 ### 2.4 Slurped Pages / Supporting Context
 
-Surface every approved Slurped Page captured today, using the `slurped:` timestamp first and a reliably attributable repository commit timestamp only as fallback. Preserve the exact surfaced set through the Approval Handoff: every page surfaced here must appear in the final Daily Memory under `Saved Today — Slurped Pages`, using the title plus one short context line. Do not turn a saved page into an Action Ledger item unless separate evidence supports an action. Daily Memory is historical context only. PARA is pull-only.
+Surface every approved Slurped Page captured today, using the selected adapter's capture-time rules. Preserve the exact surfaced set through the Approval Handoff: every page surfaced here must appear in the final Daily Memory under `Saved Today — Slurped Pages`, using the title, original link and one short context line. Do not turn a saved page into an Action Ledger item unless separate evidence supports an action. Daily Memory is historical context only. PARA is pull-only.
 
 ### 2.5 Cross-chat Today Pass
 
-Run this pass only when `profile.md` lists `ChatGPT surfaced conversation context` in `approved_data_sources`. When approved, **attempt rather than passively wait**: if the current ChatGPT run offers a supported conversation-context retrieval/search capability, request relevant conversations for the current local date (00:00 through the Evening check-in, using `profile.md` timezone) and inspect the returned timestamp metadata. Also use useful same-day conversation context already surfaced by the runtime. Make a bounded, topic-focused pass; do not claim that a lookup enumerates the user's complete account history. Do not use web search, Gmail or Drive as substitutes for private ChatGPT chat-history access, and do not invent an unavailable search tool.
+Only if `ChatGPT surfaced conversation context` is approved: actively attempt a bounded topic-focused conversation lookup for today's local date (midnight through check-in), when supported, and inspect already surfaced context. Do not substitute other connectors or claim complete account history. Reliable local-date thread metadata OR explicit user confirmation is required; topic-only recall/native Memory is insufficient. No guessing. Distinguish dated highlights, no qualifying highlights and unavailable/incomplete retrieval. Mention material gaps briefly in check-in, not saved Memory; invite missing topics via the existing questions.
 
-Distinguish three internal retrieval outcomes: `dated highlights found`, `no qualifying dated highlights surfaced`, and `retrieval unavailable/incomplete`. An unavailable lookup or partial context is not evidence that no chats occurred. If no reliably dated highlights are available, say this plainly in the **Evening Check-in** and invite the user to supply a missing topic in the existing capture question. Keep the note short (for example, `I couldn't reliably review today's other ChatGPT chats, so this may miss things we explored.`). If some highlights are available, avoid completeness claims and mention material gaps only when useful. Do not put retrieval-status commentary inside the saved Daily Memory.
-
-A surfaced conversation may be assigned to **today** only when at least one of these is true:
-- the surfaced thread/conversation metadata includes a reliable timestamp/date that resolves to the current local date in the configured timezone; or
-- the user explicitly confirms in the current Evening conversation that the recalled item belongs to today.
-
-The conversation body does **not** need to contain words such as `today`, `just now` or the calendar date when reliable thread metadata already establishes the date. By contrast, topic-only recall, ChatGPT native Memory, or a vague recollection that the user discussed something `recently` is **not** sufficient to assign it to today. When the date cannot be established, omit it from today's record or ask one brief confirmation; never guess.
-
-From reliably same-day conversations, consolidate meaningful personal/exploration highlights worth remembering: ideas explored, experiments, comparisons, lessons, creative work, decisions and interests. Merge related discussions into concise topic-level bullets, normally preserving the useful conclusion where known; do not reproduce every chat or list every question. Do not duplicate a completion already covered under `Done Today` or an action already covered under `Carry Forward from Today`; a distinct insight may still be kept. When one or more qualifying highlights exist, **include** `Things I Explored Today` in the Evening Check-in. This section is not a complete chat transcript or an account-wide coverage claim. Cross-chat recall is historical/personal context only: it must not by itself create, close, move or otherwise change an Action Ledger card. Operational state still requires the normal evidence/authorization rules, including direct first-party confirmation when appropriate.
-
-Before presenting the check-in, compare the reliably dated themes accessible in this run against the proposed highlight bullets and check that no meaningful, distinct theme was silently skipped. The check covers **available** conversations only, never unseen account history. Keep a small internal set of the highlights actually surfaced so they survive the approval handoff.
-
-For reliably same-day cross-chat highlights that include a meaningful feeling, worry, uncertainty, joy or personal question, proactively prepare a concise `Reflections` candidate for the Evening check-in and Daily Memory draft. Use the user's own meaning, not a psychological label or unsupported interpretation. Native ChatGPT Memory alone cannot establish the date. The user can remove or revise any candidate before the normal approval-based save.
+Include meaningful distinct same-day cross-chat ideas, conclusions, experiments, decisions and personal highlights in Other Updates & Explorations if any; consolidate by topic and check no available distinct theme was silently lost. Preserve reliably dated feelings, worries, joys or questions as optional Reflections candidates subject to normal approval-based save. Cross-chat context alone never authorizes Ledger state changes.
 
 ### 2.6 Tomorrow Preparation
 
-Perform a tomorrow-preparation scan from the approved sources that are available. If Calendar is approved and readable, scan tomorrow across all included calendars. If web/weather information is approved and available, compare tomorrow's local forecast with today's conditions/forecast even when Calendar plans are mostly indoors or routine. Assess whether anything tomorrow would be materially easier, safer, more comfortable or less rushed if prepared tonight.
+Scan tomorrow's included Calendar and compare today's and tomorrow's approved/available local forecast. For outdoor or weather-sensitive plans (gardening, plant work, hiking, exercise, outdoor events), retrieving tomorrow's weather is mandatory when approved/available; check rain, temperature, wind/gusts and UV. Surface only material impacts.
 
-**Mandatory outdoor-weather trigger:** whenever tomorrow contains an outdoor or weather-sensitive activity and web/weather information is approved and available, retrieving tomorrow's local weather is mandatory. Do not make a second judgement about whether weather is relevant before retrieving it. This includes gardening or plant work likely to be outdoors (for example planting, transplanting and repotting), hiking, walking, outdoor exercise, beach or picnic plans, outdoor events and yard work. For these activities, inspect at least precipitation, daytime temperature, wind/gusts and UV when available, then surface only the conditions that materially affect the plan.
+Preparation signals: early starts, long/offsite events, travel, unfamiliar locations, gear/clothing changes, tight transitions or packing/charging/documents/food. A weather delta alone can qualify: roughly 6°C daytime change, smaller shift with rain/wind, dry/wet transition, storm, warnings, severe temperatures, high/extreme UV or poor air quality. Use practical judgement rather than a rigid threshold.
 
-Calendar preparation signals include:
-- early starts;
-- long or all-day commitments;
-- offsite events, travel or unfamiliar locations;
-- outdoor or weather-sensitive activities, including gardening and plant work likely to be outdoors;
-- exercise or activities requiring a change of clothes or gear;
-- tightly scheduled consecutive events with little transition time;
-- anything that benefits from packing, charging devices, checking transport, preparing documents/tickets, food, clothing or equipment tonight.
-
-A **material weather delta may qualify on its own**, without a weather-sensitive Calendar event. Strong weather signals include:
-- a large day-to-day temperature or feels-like change, with roughly **6°C or more** in the daily high/representative daytime temperature as a strong default signal;
-- a smaller temperature shift that becomes meaningful when combined with strong wind, rain or another condition change;
-- a clear dry-to-wet / wet-to-dry shift, meaningful rain or storm onset, or another precipitation change likely to affect clothing or transport;
-- substantially stronger wind/gusts or a relevant wind warning;
-- severe weather, unusual heat/cold, very high/extreme UV, materially poor air quality or another condition likely to change clothing, comfort, transport or preparation.
-
-Use judgement rather than treating the numeric threshold as the only trigger. Focus on practical impact and avoid routine weather narration.
-
-If at least one qualifying Calendar or weather signal exists, include a concise **`Tomorrow — Gentle Heads-up`** in the Evening Check-in and carry it into the Daily Memory after approval. Combine Calendar and weather advice naturally when both matter. Phrase the preview as **`As things stand tonight`**. If neither tomorrow's plans nor the weather create a meaningful preparation need, omit the section. Never dump tomorrow's whole agenda or forecast, never invent unavailable weather, and never use this preview as future-task admission.
+If preparation tonight helps, include `Tomorrow — Gentle Heads-up` (As things stand tonight) and carry into Memory unless corrected. Otherwise omit. No agenda/forecast dump, invented weather or future-task admission.
 
 ## 3. Operational State
 
@@ -118,21 +88,13 @@ Present a short conversational **Evening Check-in**:
 
 - **Since Morning** — material changes/candidates once each;
 - **Saved Today — Slurped Pages** — omit if none;
-- **Things I Explored Today** — include when one or more reliably same-day meaningful highlights are available under 2.5; consolidate related topics, omit only when none qualifies, and never present it as a complete chat log. If cross-chat retrieval is unavailable/incomplete and no highlights can be grounded, note the limitation briefly in the check-in rather than silently implying a quiet day;
+- **Other Updates & Explorations** — include when one or more reliably same-day meaningful highlights are available under 2.5; consolidate related topics, omit only when none qualifies, and never present it as a complete chat log. If cross-chat retrieval is unavailable/incomplete and no highlights can be grounded, note the limitation briefly in the check-in rather than silently implying a quiet day;
 - **Items Needing Attention** — items changed materially today, due today or at their `revisit` date today, ambiguous items, and untracked candidates needing status; never dump the full Ledger and never list a future-`revisit` Snoozed card merely because it carries a revisit date;
 - **Tomorrow — Gentle Heads-up** — include when the 2.6 preparation scan finds that preparation tonight materially helps; keep it concise and omit it otherwise.
 
 ### Conversation rendering rule
 
-Keep evidence bookkeeping strict internally and quiet externally.
-
-- **Calendar only / no contradiction:** ask a natural minimum confirmation, e.g. `You had X on your calendar today — did that happen?`
-- **Calendar + supporting evidence:** state the likely outcome naturally and ask for confirmation when needed.
-- **Confirmed reschedule by stable Calendar identity:** state the move directly and do not ask whether the original occurrence happened unless separate evidence creates a real contradiction.
-- **Real contradiction:** briefly explain the contradiction (for example, Calendar event vs cancellation/reschedule email), then ask what happened.
-- **Operational clarification:** ask the smallest useful question, e.g. `Did this happen today?` or `Is this still something you need to follow up?`
-
-Do **not** narrate internal phrases such as “I cannot treat this as completed because I lack reliable evidence” merely to justify a confirmation question. Explain evidence policy only when a contradiction, material uncertainty, source failure or consequential decision genuinely benefits from that explanation.
+Keep evidence bookkeeping internal. Calendar alone: ask if it happened when material; supporting evidence: state likely outcome and confirm if needed; exact-ID reschedule: state the move; contradiction: briefly explain and ask. Ask the smallest useful clarification. Do not narrate internal evidence thresholds.
 
 For Notion, with verified autosave consent, auto-save the provisional Diary-first Memory now using only current supported evidence and verify under storage/notion.md; no full Markdown draft yet. GitHub is read-only. Then show the ordinary conversation and end with these questions.
 
@@ -152,14 +114,9 @@ Record meaningful confirmed outcomes and handling decisions (including non-Ledge
 
 ## 5. Approval Handoff
 
-After answers, compose the complete Daily Memory using the Diary-first schema in `artifacts.md`; do not duplicate that saved schema here. Carry the exact Slurped Page set surfaced in the Evening Check-in into `Saved Today — Slurped Pages`; do not re-filter or omit those pages during synthesis. If no Slurped Pages were captured today, omit that section as defined in `artifacts.md`. **Preserve every distinct, reliably same-day meaningful highlight surfaced under `Things I Explored Today` in the check-in**, merged concisely without silently dropping topics; incorporate user corrections or explicit omissions. Also include first-party-confirmed additions from the capture question. Omit the section only if no qualifying highlights remain; do not guess dates from merely recent recall, and never place source-coverage diagnostics inside the saved artifact. If the Evening Check-in surfaced a `Tomorrow — Gentle Heads-up`, carry a concise version into the Daily Memory unless the user's follow-up materially corrects or invalidates the underlying plan.
+After answers, compose the complete Daily Memory using the six Diary-first sections in `artifacts.md`. Preserve all distinct surfaced capture links, meaningful reliably same-day highlights, reflections and corrected tomorrow preparation once, incorporating user corrections. Keep coverage diagnostics out of saved Memory. Carry forward only unresolved matters newly opened/updated/worked on today, moved into Waiting today, intended for today but unfinished, or agreed tonight; older untouched cards stay in Ledger.
 
-Carry relevant, reliably same-day emotional/reflection candidates into the optional `Reflections` slot, including from surfaced cross-chat context; show them in the full preview and honor user corrections or omissions. Do not require a separate reflection question or treat approval of the draft as approval of any unrelated Ledger change.
-
-Use `rules.md` for evidence/state meaning. `Done Today` uses confirmed closures plus meaningful evidence-supported events/experiences. `Carry Forward from Today` is limited to unresolved matters newly opened/materially updated/worked on today, moved into Waiting today, explicitly intended for today and still unfinished, or explicitly agreed on tonight. Older untouched active Ledger items stay only in the Action Ledger and return through Morning eligibility/reminders.
-
-Outside the artifact, show any concise **inferred** Ledger changes still requiring approval; reflect explicit user-authorized state changes without asking for a redundant second approval. After presenting the full Memory and concrete Ledger delta, prefer the **two-choice interactive approval panel** from `artifacts.md` (Memory + Ledger, selected by default only when applicable), with its text fallback. Do not ask for approval before the Evening questions are answered, and do not treat a default selection as authorization. Then follow `artifacts.md`.
-
+Present the full revised Markdown, independent concrete inferred Ledger delta and approval panel/text fallback under artifacts.md. Direct first-party card instructions retain their scoped authority. Do not ask for approval before answers; do not save a revision until submitted approval. For Notion edit the same initial page, or use the adapter's approved creation fallback if no page exists; verify before marking Edited.
 
 ## 6. Write Boundary
 

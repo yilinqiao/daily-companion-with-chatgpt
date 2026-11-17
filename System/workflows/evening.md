@@ -13,8 +13,8 @@ Evening Scheduled Task entry point. Read `System/instructions.md`, `System/profi
 1. Read `profile.md` and the configured Ledger via selected storage adapter. If unavailable, report it and do not produce an authoritative inferred Ledger change set.
 2. Resolve actual scheduled occurrence local date/time; stop without writes if uncertain.
 3. Read today's saved Daily Briefing when available. If absent, continue from current evidence and say the baseline is missing only when that limitation materially matters.
-4. If Calendar is approved, enumerate/apply scope and read today across all included calendars with calendar identity retained; always read tomorrow across the same included calendars for the preparation scan in **2.6 Tomorrow Preparation**. Enumeration failure means incomplete coverage.
-5. If Gmail is approved, read relevant current Gmail independently of Calendar.
+4. If Calendar is approved, apply account/calendar scope per `rules.md` and read today across all included calendars with calendar identity retained; always read tomorrow across the same included calendars for the preparation scan in **2.6 Tomorrow Preparation**. Enumeration failure means incomplete coverage.
+5. If Gmail is approved, apply account scope per `rules.md` and read relevant current Gmail independently of Calendar.
 6. Read today's approved capture source, if configured; use the selected adapter's reliable capture-time rules.
 7. Use recent Daily Memory and PARA only when materially useful; PARA remains pull-only.
 8. If `approved_data_sources` includes `ChatGPT surfaced conversation context`, actively attempt a date-scoped cross-chat retrieval when a supported ChatGPT conversation-context lookup is available in this run; also examine relevant context already surfaced by the runtime. Follow the date, coverage and failure rules in **2.5 Cross-chat Today Pass**. This is not guaranteed account-wide history access. If this source is not approved, do not retrieve or use cross-chat context for Daily Memory.

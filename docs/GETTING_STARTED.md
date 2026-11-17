@@ -10,7 +10,7 @@ Use the public repository's System/setup.md, not a private copy of someone else'
 
 **GitHub (alternative):** on the public source choose Use this template → Create a new repository → Private. Do not fork the public repository for personal information. Connect GitHub and allow read/write access to your private copy. Obsidian is optional, see the [GitSync guide](../Resources/Obsidian%20GitHub%20GitSync%20Setup.md). Setup verifies each approved private write.
 
-Calendar, Gmail, web/weather and surfaced conversation context are optional and separately approved. Connector read access must be tested before use.
+Calendar, Gmail, web/weather and surfaced conversation context are optional and separately approved. Connect and verify each Gmail/Calendar account you want included; additional accounts require your approval. Connector read access must be tested before use.
 
 ## 3. Approve setup, then activate
 

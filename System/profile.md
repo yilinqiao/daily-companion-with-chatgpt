@@ -1,6 +1,6 @@
 ---
 type: companion-profile
-schema_version: 5
+schema_version: 6
 setup_complete: false
 installed_template_version: null
 installed_template_commit: null
@@ -25,6 +25,8 @@ communication_style: "<SETUP_REQUIRED>"
 preferred_name_usage: occasionally
 daily_flavour: [weather, weather_tied_to_plans, humour, fun_fact, inspiration, tiny_challenge]
 approved_data_sources: []
+gmail_account_ids: []
+calendar_account_ids: []
 capture_source: null
 calendar_scope:
   mode: include_all

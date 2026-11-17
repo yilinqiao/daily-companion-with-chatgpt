@@ -6,13 +6,13 @@ scope: morning
 
 # Morning Companion Workflow
 
-Morning Scheduled Task entry point. Read `System/instructions.md`, `System/profile.md`, `System/policies/rules.md` and `System/policies/artifacts.md`. This file owns Morning retrieval order, reconciliation sequence, eligibility filtering and surfacing actions; shared meaning/state semantics live in `rules.md`, and saved schemas/approval/persistence live in `artifacts.md`.
+Morning Scheduled Task entry point. Read `System/instructions.md`, `System/profile.md`, `System/policies/rules.md` and `System/policies/artifacts.md`, plus the selected storage adapter. This file owns Morning retrieval order, reconciliation sequence, eligibility filtering and surfacing actions; shared meaning/state semantics live in `rules.md`, and saved schemas/approval/persistence live in `artifacts.md`.
 
 ## 1. Required Inputs
 
-1. Read `profile.md` and the configured `action_ledger_file`. If the Ledger is unavailable, report it and never reconstruct operational state from Daily Memory.
-2. Resolve local date/time in the configured timezone.
-3. Attempt each of the previous 7 local Daily Memory dates for context/history. Define **standard Calendar recovery dates** as the consecutive missing Daily Memory dates immediately before today: start yesterday, continue backward only while each date is missing, stop at the first existing Daily Memory, cap at 7. Also read yesterday's approved Daily Briefing when available for candidate continuity.
+1. Read `profile.md` and the configured Ledger via the selected storage adapter. If the Ledger is unavailable, report it and never reconstruct operational state from Daily Memory.
+2. Resolve the actual scheduled occurrence local date/time in the configured timezone; stop without writes when uncertain.
+3. Attempt each of the previous 7 local Daily Memory dates for context/history. Define **standard Calendar recovery dates** as the consecutive dates without a confirmed Daily Memory immediately before today: start yesterday, continue backward only while each date has no confirmed Memory, stop at the first existing user-approved Daily Memory (Notion Auto-Saved alone does not establish a confirmed checkpoint), cap at 7. Also read yesterday's saved Daily Briefing when available for candidate continuity.
 4. If Calendar is approved, enumerate all visible calendars, apply exclusions, and read today's full local day across every included calendar with calendar identity retained. Read standard recovery dates for unresolved-capable signals. Independently perform the narrow 7-day financial safety look-back for the financial-action class in `rules.md`, regardless of Daily Memory checkpoints. Reuse retrieved dates and dedupe recovery paths.
 5. If Gmail is approved, review relevant mail from the previous 7 days, excluding Spam/Trash; prefer targeted reads.
 6. Use PARA only when live context materially needs background. Normally retrieve at most 3 long-term vault files.
@@ -27,11 +27,11 @@ Use only approved sources.
 Classify Calendar meaning, action eligibility and evidence only through `policies/rules.md`.
 
 - Fixed work hours remain occupied unless supported evidence overrides them; do not infer free time from Calendar gaps for variable/none/unknown schedules.
-- Reason about personal availability only inside the configured planning window. When no planning window is configured (`planning_window_start` and `planning_window_end` null), do not propose focus or personal-planning time at all; day orientation still uses the configured work/rest pattern, unless the user explicitly requests such reasoning.
+- Reason about personal availability only inside the configured planning window. Show actual calendar events regardless of planning window. Missing or invalid planning window is a configuration gap: request an explicit answer interactively, and do not propose availability until resolved. When the user explicitly declined personal planning suggestions (`planning_window_start` and `planning_window_end` null), do not propose focus or personal-planning time at all; day orientation still uses the configured work/rest pattern, unless the user explicitly requests such reasoning.
 - Build a brief natural orientation from today's work/rest pattern, Calendar and useful weather; do not turn rest days into productivity plans.
 - Apply standard-recovery and financial-safety scopes above; do not replay ordinary past appointments/social/travel/context events.
 - Do not broadly mine future Calendar to manufacture candidates.
-- For every Calendar event rendered into the Daily Briefing, retain stable source identity when the connector exposes it: `calendar_id` plus `event_id`. During the scheduled Morning preview, keep this event-to-identity mapping internal to the run/conversation and **do not render IDs or `dc-calendar` comments anywhere in the user-facing Briefing or surrounding conversation**. On an approved interactive save, `policies/artifacts.md` may inject the hidden Calendar metadata into the saved Briefing as the narrowly defined machine-metadata exception to visible exact-save behaviour. Prefer the connector identity frozen during Morning generation when it is still available. If that mapping did not survive the scheduled-to-interactive handoff, perform only the narrow save-time Calendar identity refresh defined in `policies/artifacts.md`; use it to recover machine identity for exact uniquely matched approved events and never to refresh or rewrite the approved visible Briefing. If identity still cannot be matched confidently, omit the hidden metadata rather than guessing or exposing it. This identity is historical linkage for Evening reconciliation, not operational state.
+- For every Calendar event rendered into the Daily Briefing, retain stable source identity when the connector exposes it: `calendar_id` plus `event_id`. During the scheduled Morning preview, keep this event-to-identity mapping internal to the run/conversation and **do not render IDs or `dc-calendar` comments anywhere in the user-facing Briefing or surrounding conversation**. On a Notion automatic save, append the protected Calendar ID section under storage/notion.md; on an approved GitHub interactive save, `policies/artifacts.md` may inject the hidden Calendar metadata into the saved Briefing as the narrowly defined machine-metadata exception to visible exact-save behaviour. Prefer the connector identity frozen during Morning generation when it is still available. If that mapping did not survive the scheduled-to-interactive handoff, perform only the narrow save-time Calendar identity refresh defined in `policies/artifacts.md`; use it to recover machine identity for exact uniquely matched approved events and never to refresh or rewrite the approved visible Briefing. If identity still cannot be matched confidently, omit the hidden metadata rather than guessing or exposing it. This identity is historical linkage for Evening reconciliation, not operational state.
 
 ### 2.2 Gmail
 
@@ -69,7 +69,7 @@ When a `Waiting` card reaches or passes its `revisit` date, do not treat it as u
 
 For each qualifying untracked signal remaining after Ledger-first reconciliation, surface it once as a **new Action Ledger candidate** in its natural Briefing location. Scheduled Morning does not write it.
 
-Before finalizing, account for yesterday's approved-Briefing candidates under `rules.md`: every clear candidate must already be represented, reliably Closed/no-action, or re-surfaced for reconciliation.
+Before finalizing, account for yesterday's saved-Briefing candidates under `rules.md`: every clear candidate must already be represented, reliably Closed/no-action, or re-surfaced for reconciliation.
 
 ### 3.3 Active Coverage
 
@@ -81,7 +81,7 @@ Select the highest-value Visible Now issues for the Briefing's priority slot. An
 
 Compose one concise Daily Briefing using the exact schema and required-slot/cardinality rules in `policies/artifacts.md`; do not restate those artifact constraints here.
 
-On Sundays, also recap the preceding local Monday–Saturday from approved Daily Memories in the conditional weekly slots. Show the date range and material coverage gaps. Offer only grounded, tentative personal patterns; never invent an insight, turn one into an Action Ledger item, or let the recap repeat routine reminders. ChatGPT native Memory may add long-term context when surfaced, but cannot independently date or verify this week's events.
+On Sundays, also recap the preceding local Monday–Saturday from saved Daily Memories (identify provisional Auto-Saved versus user-approved Edited records) in the conditional weekly slots. Show the date range and material coverage gaps. Offer only grounded, tentative personal patterns; never invent an insight, turn one into an Action Ledger item, or let the recap repeat routine reminders. ChatGPT native Memory may add long-term context when surfaced, but cannot independently date or verify this week's events.
 
 ### 4.1 Briefing-level issue allocation and de-duplication
 
@@ -115,8 +115,8 @@ Outside the Markdown artifact, when new candidates exist, state clearly that the
 
 ## 5. Approval Handoff
 
-Follow the Morning approval/save protocol in `policies/artifacts.md`. After displaying the complete Briefing and any concrete inferred Ledger delta, prefer its **two-choice interactive approval panel** (Briefing + Ledger, each selected by default only when applicable), with a mandatory separate text-choice fallback. A panel selection alone never writes; only submitted interactive approval authorizes the selected operation. Artifact approval and Ledger-state authorization remain separate.
+For Notion, with verified autosave consent, auto-save the initial Briefing with Calendar ID section before finishing the plain conversational output; no save approval button for initial snapshot. Offer separate Ledger approval only if a concrete delta exists. For GitHub, follow the Morning approval/save protocol in `policies/artifacts.md`. After displaying the complete Briefing and any concrete inferred Ledger delta, prefer its **two-choice interactive approval panel** (Briefing + Ledger, each selected by default only when applicable), with a mandatory separate text-choice fallback. A panel selection alone never writes; only submitted interactive approval authorizes the selected operation. Artifact approval and Ledger-state authorization remain separate.
 
 ## 6. Write Boundary
 
-Follow the Scheduled Run Write Boundary in `policies/artifacts.md`: Scheduled Morning is read/output only and performs no repository, Gmail or Calendar mutation.
+Follow the Scheduled Run Write Boundary in `policies/artifacts.md`: Notion auto-saves only its initial Daily page; GitHub is read/output only. Neither may mutate Ledger, Gmail or Calendar.

@@ -5,7 +5,7 @@ Read `System/maintenance.md` before changing the public template. These instruct
 ## Identify the destination
 
 - The canonical public template is `yilinqiao/daily-companion-with-chatgpt`.
-- A private copy belongs to its user. Use the configured System path there, preserve all configuration, notes and operational history, and follow `System/upgrade.md` for template upgrades. Private personalization does not bump the upstream template version or stamp a new installed version.
+- A private installation belongs to its user (Notion or GitHub). Use the configured private System index/path there, preserve all configuration, notes and operational history, and follow `System/upgrade.md` for template upgrades. Private personalization does not bump the upstream template version or stamp a new installed version.
 - Never send private files, credentials, configuration or test-user state to the public source. Do not infer the destination from a matching filename alone.
 
 ## Public template changes are releases

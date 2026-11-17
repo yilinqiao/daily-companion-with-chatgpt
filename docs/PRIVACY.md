@@ -1,5 +1,7 @@
 # Privacy and security
 
+Notion is now the recommended private store. Keep the Daily Companion Suite, its data sources and page IDs private, with access scoped to the chosen suite. Connect only the required capabilities. The public GitHub source contains no personal state; the GitHub-specific guidance below applies only to the alternative private repository. Notion auto-save is limited to initial Daily records with explicit setup consent, never Ledger or source mutations; revisions require approval.
+
 ## Public template and private personal vault
 
 The public repository must contain only generic instructions, empty folders and unconfigured state. Each user should click **Use this template**, create a separate **Private** GitHub repository and keep the actual profile, Ledger, Daily Memory, calendars and other personal content only there. **Forking a public repository is not a private alternative.**

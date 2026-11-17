@@ -6,12 +6,12 @@ scope: evening
 
 # Evening Companion Workflow
 
-Evening Scheduled Task entry point. Read `System/instructions.md`, `System/profile.md`, `System/policies/rules.md` and `System/policies/artifacts.md`. This file owns Evening retrieval order, reconstruction/reconciliation sequence and conversational check-in; shared meaning/state semantics live in `rules.md`, and saved schemas/approval/persistence live in `artifacts.md`. Use today's approved Daily Briefing as the morning baseline when available.
+Evening Scheduled Task entry point. Read `System/instructions.md`, `System/profile.md`, `System/policies/rules.md` and `System/policies/artifacts.md`, plus the selected storage adapter. This file owns Evening retrieval order, reconstruction/reconciliation sequence and conversational check-in; shared meaning/state semantics live in `rules.md`, and saved schemas/approval/persistence live in `artifacts.md`. Use today's saved Daily Briefing as the morning baseline when available.
 
 ## 1. Required Inputs
 
-1. Read `profile.md` and the configured `action_ledger_file`. If unavailable, report it and do not produce an authoritative inferred Ledger change set.
-2. Resolve local date/time.
+1. Read `profile.md` and the configured Ledger via selected storage adapter. If unavailable, report it and do not produce an authoritative inferred Ledger change set.
+2. Resolve actual scheduled occurrence local date/time; stop without writes if uncertain.
 3. Read today's approved Daily Briefing when available. If absent, continue from current evidence and say the baseline is missing only when that limitation materially matters.
 4. If Calendar is approved, enumerate/apply scope and read today across all included calendars with calendar identity retained; always read tomorrow across the same included calendars for the preparation scan in **2.6 Tomorrow Preparation**. Enumeration failure means incomplete coverage.
 5. If Gmail is approved, read relevant current Gmail independently of Calendar.
@@ -28,7 +28,7 @@ Reconcile today's current Calendar against the Morning baseline when available. 
 
 For each Morning-baseline Calendar event that is absent from today's current Calendar:
 
-1. If the baseline carries hidden `calendar_id` + `event_id`, first read that exact event by ID from that calendar. If the same event now has a different start/end time, treat the identity match as authoritative reschedule evidence. If its new start is within the next 14 days, surface the move naturally in **Since Morning** (for example, `Your X was moved to next Wednesday at 10:00`) instead of asking whether the original occurrence happened.
+1. If the baseline carries Notion-only Calendar ID section or GitHub hidden `calendar_id` + `event_id`, first read that exact event by ID from that calendar. If the same event now has a different start/end time, treat the identity match as authoritative reschedule evidence. If its new start is within the next 14 days, surface the move naturally in **Since Morning** (for example, `Your X was moved to next Wednesday at 10:00`) instead of asking whether the original occurrence happened.
 2. If the same event ID resolves outside the next 14 days, the stable identity is strong evidence; mention the later reschedule only when materially useful rather than broad-mining future Calendar.
 3. If exact-ID lookup is unavailable, missing or inconclusive, use a targeted look-ahead up to 14 days on the same included calendar(s). A merely similar title/time is weak evidence: describe it cautiously and do not call it definitively rescheduled.
 4. If no matching future event is found, disappearance alone is not cancellation or completion evidence; use the normal minimum confirmation question when the event's outcome matters.
@@ -95,7 +95,7 @@ If at least one qualifying Calendar or weather signal exists, include a concise 
 
 ### 3.1 Candidate Reconciliation
 
-Before drafting the Ledger proposal, account for every clear candidate in today's approved Morning Briefing and any clear current-source candidate.
+Before drafting the Ledger proposal, account for every clear candidate in today's saved Morning Briefing and any clear current-source candidate.
 
 Possible outcomes under `rules.md`:
 - already represented by an active card;
@@ -110,7 +110,7 @@ Do not treat Daily Memory existence, source disappearance, silence or passage of
 
 Use `KEEP` / `UPDATE` / `MOVE` / `CLOSE` / `REOPEN` / exceptional `DELETE` from `rules.md`. Explicit first-party state statements from the user take priority and are direct authorization under `artifacts.md`; inferred/source-derived changes remain proposals until approved.
 
-Manual Kanban list position is authoritative.
+Manual status/property or Kanban list position is authoritative.
 
 ## 4. Output Composition
 
@@ -134,11 +134,13 @@ Keep evidence bookkeeping strict internally and quiet externally.
 
 Do **not** narrate internal phrases such as “I cannot treat this as completed because I lack reliable evidence” merely to justify a confirmation question. Explain evidence policy only when a contradiction, material uncertainty, source failure or consequential decision genuinely benefits from that explanation.
 
+For Notion, with verified autosave consent, auto-save the provisional Diary-first Memory now using only current supported evidence and verify under storage/notion.md; no full Markdown draft yet. GitHub is read-only. Then show the ordinary conversation and end with these questions.
+
 Then ask these three general questions:
 
 Feelings, worries or personal reflections may be shared through question 3; do not add a required fourth question.
 
-1. What got done today that may not be visible in Calendar, Gmail or the vault?
+1. What got done today that may not be visible in Calendar, Gmail or your saved notes?
 2. Did anything new open, close, get cancelled, get scheduled, or otherwise change today that I may not know about?
 3. Anything else from today worth capturing?
 
@@ -150,7 +152,7 @@ Record meaningful confirmed outcomes and handling decisions (including non-Ledge
 
 ## 5. Approval Handoff
 
-After answers, compose the complete Daily Memory using the exact schema in `artifacts.md`; do not duplicate that saved schema here. Carry the exact Slurped Page set surfaced in the Evening Check-in into `Saved Today — Slurped Pages`; do not re-filter or omit those pages during synthesis. If no Slurped Pages were captured today, omit that section as defined in `artifacts.md`. **Preserve every distinct, reliably same-day meaningful highlight surfaced under `Things I Explored Today` in the check-in**, merged concisely without silently dropping topics; incorporate user corrections or explicit omissions. Also include first-party-confirmed additions from the capture question. Omit the section only if no qualifying highlights remain; do not guess dates from merely recent recall, and never place source-coverage diagnostics inside the saved artifact. If the Evening Check-in surfaced a `Tomorrow — Gentle Heads-up`, carry a concise version into the Daily Memory unless the user's follow-up materially corrects or invalidates the underlying plan.
+After answers, compose the complete Daily Memory using the Diary-first schema in `artifacts.md`; do not duplicate that saved schema here. Carry the exact Slurped Page set surfaced in the Evening Check-in into `Saved Today — Slurped Pages`; do not re-filter or omit those pages during synthesis. If no Slurped Pages were captured today, omit that section as defined in `artifacts.md`. **Preserve every distinct, reliably same-day meaningful highlight surfaced under `Things I Explored Today` in the check-in**, merged concisely without silently dropping topics; incorporate user corrections or explicit omissions. Also include first-party-confirmed additions from the capture question. Omit the section only if no qualifying highlights remain; do not guess dates from merely recent recall, and never place source-coverage diagnostics inside the saved artifact. If the Evening Check-in surfaced a `Tomorrow — Gentle Heads-up`, carry a concise version into the Daily Memory unless the user's follow-up materially corrects or invalidates the underlying plan.
 
 Carry relevant, reliably same-day emotional/reflection candidates into the optional `Reflections` slot, including from surfaced cross-chat context; show them in the full preview and honor user corrections or omissions. Do not require a separate reflection question or treat approval of the draft as approval of any unrelated Ledger change.
 
@@ -161,4 +163,4 @@ Outside the artifact, show any concise **inferred** Ledger changes still requiri
 
 ## 6. Write Boundary
 
-Follow the Scheduled Run Write Boundary in `policies/artifacts.md`: Scheduled Evening is read/output only and performs no repository, Gmail or Calendar mutation.
+Follow the Scheduled Run Write Boundary in `policies/artifacts.md`: Notion auto-saves only its initial provisional Daily page; GitHub is read/output only. Neither mutates Ledger, Gmail or Calendar.

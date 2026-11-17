@@ -1,5 +1,7 @@
 # Initial public template release
 
+Historical release notes; current behavior is documented in root CHANGELOG.md and System/setup.md (Notion-first from 0.4.0).
+
 These are historical notes from the unversioned public packaging. Current versioned releases and migration notes are maintained in [CHANGELOG.md](../CHANGELOG.md); existing users start at [System/upgrade.md](../System/upgrade.md).
 
 This is a public-source, privacy-first packaging of the **clean** Daily Companion Starter. The canonical state design uses an unconfigured profile, Action Ledger with Closed and standing precedents, the original read-only scheduled runs and approval-based interactive persistence (historical behaviour; see CHANGELOG.md for the current Extra-only scoped write exception). Evening may summarize same-day discussions only when timestamp metadata or user confirmation supports attribution.

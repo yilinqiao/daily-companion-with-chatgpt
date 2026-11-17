@@ -26,19 +26,17 @@ class EveningHandoffTests(unittest.TestCase):
     def test_new_user_task_prompt_contains_stop_gate(self):
         prompt = self.setup.split("### Evening Companion task instruction", 1)[1]
         prompt = prompt.split("### Daily Companion Extra task instruction", 1)[0]
-        for guard in ("all three questions", "inviting a reply", "never sign off early",
-                      "independent approval", "verified interactive save",
-                      "scheduled run remains read-only"):
+        for guard in ("all three required capture questions", "invite reply",
+                      "independent approval", "current artifact and storage rules"):
             self.assertIn(guard, prompt)
 
     def test_actual_task_prompt_has_the_three_questions_and_last_block_gate(self):
         task = self.setup.split("### Evening Companion task instruction", 1)[1]
         task = task.split("### Daily Companion Extra task instruction", 1)[0]
+        self.assertIn("workflows/evening.md", task)
         for phrase in ("1. What got done today", "2. Did anything new open",
-                       "3. Anything else from today", "configured output language",
-                       "Closing Thought before these questions",
-                       "Check the final answer for all three"):
-            self.assertIn(phrase, task)
+                       "3. Anything else from today", "Closing Thought", "check the final lines"):
+            self.assertIn(phrase, self.evening)
 
     def test_missing_source_does_not_remove_three_question_handoff(self):
         section = self.evening.split("**Scheduled handoff (mandatory on every run):**", 1)[1]

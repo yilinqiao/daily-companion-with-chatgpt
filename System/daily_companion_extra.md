@@ -17,7 +17,7 @@ recent_themes: []
 
 # Companion Surprise Engine
 
-This file owns Surprise rules and state. Keep its body intact on state writes. Auto has one narrowly authorized scheduled write exception: it may update only its own scheduling/delivery fields in this file in the configured **private** repository. Morning/Evening remain read-and-output only. Extra must never write profile, Daily, Ledger, other notes, Gmail or Calendar.
+Read the private profile first and route to the selected storage adapter. For Notion, execute only the read-only Extra contract in storage/notion.md, using shared Creation Rules and Manual Mode; interactive controls use Notion adapter instead of GitHub SHA/claim fields. Do not execute the GitHub cadence, claims or migration on Notion. For GitHub, the rules below apply. This file owns Surprise rules and state. Keep its body intact on state writes. Auto has one narrowly authorized scheduled write exception: it may update only its own scheduling/delivery fields in this file in the configured **private** repository. GitHub Morning/Evening remain read-and-output only. Extra must never write profile, Daily, Ledger, other notes, Gmail or Calendar.
 
 ## Cadence and Date Selection
 

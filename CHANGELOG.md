@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.4.0 — 2026-11-17
+
+- Notion-first setup with private System/Daily/Ledger data sources, views, connection/read-back verification and selected-backend routing. GitHub/Obsidian remains optional; no dual live stores.
+- Notion auto-saves Morning and provisional Evening, protecting the Notion-only Calendar ID section, then supports interactive same-page revisions. Diary-first Memory and independent Ledger approvals. Explicit personal planning window includes before/after work, independent of work hours.
+- Short scheduled entrypoints, actual occurrence routing, independent Extra and Update Watch, read-only Notion Extra pattern; GitHub retains v6 claim protocol.
+- Updated setup, profile, instructions, storage adapters, workflows, artifact/rules policies, upgrade and docs; public checker rejects initialized Notion IDs or missing configuration placeholders. Existing installations preserve history and explicitly resolve missing planning window; no automatic backend migration.
+- Verification: static release gate and regression suite; real connector permissions and scheduled persistence require first-run user verification.
+
 ## 0.3.8 — 2026-10-17
 
 ### Changed

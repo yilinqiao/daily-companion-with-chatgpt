@@ -10,9 +10,9 @@ Canonical owner of shared meaning, evidence, Action Ledger state and continuity 
 
 ## 1. Information Model and Source Authority
 
-- **Daily Briefing**: approved Morning snapshot; historical once saved.
-- **Daily Memory**: approved human end-of-day record; historical once saved; not current operational state.
-- **Action Ledger** (`action_ledger.md`): single source of truth for unresolved and historical operational items. Fixed Kanban lists: `Action`, `Waiting`, `Upcoming`, `Closed`.
+- **Daily Briefing**: saved Morning snapshot; historical once saved.
+- **Daily Memory**: saved end-of-day record (Notion Auto-Saved is provisional; only Edited/user-approved is confirmation); historical once saved; not current operational state.
+- **Action Ledger** (selected private backend): single source of truth for unresolved and historical operational items. Fixed Kanban lists: `Action`, `Waiting`, `Upcoming`, `Closed`.
 - **PARA / other vault notes**: pull-only project/domain/context background; never auto-import task prose into the Ledger.
 - Stable user configuration belongs in `profile.md`; durable operational handling knowledge belongs in the Action Ledger; project/domain context stays with its source/area. Do not create a separate global long-term-memory state file. A feature-owned delivery/state file such as `daily_companion_extra.md` is not a long-term-memory store and does not violate this rule.
 
@@ -24,7 +24,7 @@ Native ChatGPT Memory may personalize conversation but is never the sole source 
 
 ## 2. Action Ledger Schema and Status Meaning
 
-The Kanban list is authoritative status. Do not store a duplicate `status` field in card metadata.
+The Notion Status property or GitHub Kanban list is authoritative; do not store duplicate status. Notion uses the property mapping in storage/notion.md. The file-format instructions below are GitHub-specific; shared meaning applies to both.
 
 ### `Action`
 
@@ -65,7 +65,7 @@ Core metadata:
 - `closed`: `null` while open; closure date when reliably known;
 - `source`: optional when a clear source exists.
 
-Optional metadata: `owner`, `due`, `revisit`, `resolution`, `scope`, `standing_until`.
+Optional metadata (owner is legacy GitHub-only, not required; record responsibility in Details for Notion): `owner`, `due`, `revisit`, `resolution`, `scope`, `standing_until`.
 
 Preferred `resolution`: `completed`, `no_action`, `cancelled`, `declined`, `superseded`.
 
@@ -119,7 +119,7 @@ Detection/surfacing during Scheduled Morning/Evening is not a repository write. 
 
 When a clear operational candidate is explicitly assessed and its loop is confirmed ended (`completed`, `no_action`, `cancelled`, `declined`, `superseded`), retain a Closed record when it provides useful durable operational/de-duplication history. A standing precedent should usually replace repeated per-cycle no-action cards; do not create a new Closed card for every routine recurring bill already covered by the same standing rule.
 
-Every clear candidate surfaced in an approved Morning Briefing must later have an explicit operational outcome: already represented in the Ledger, reliably Closed/no-action, approved/authorized for open admission, or still unresolved and re-surfaced for reconciliation. A Daily Memory file is not proof that candidate reconciliation succeeded.
+Every clear candidate surfaced in a saved Morning Briefing must later have an explicit operational outcome: already represented in the Ledger, reliably Closed/no-action, approved/authorized for open admission, or still unresolved and re-surfaced for reconciliation. A Daily Memory file is not proof that candidate reconciliation succeeded.
 
 ## 4. Lifecycle, User Authority and Dates
 

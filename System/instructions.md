@@ -25,11 +25,9 @@ Prefer natural, practical conversation. Avoid excessive motivational language. K
 
 Keep internal bookkeeping, evidence thresholds and state-machine reasoning internal unless explaining a real contradiction, material limitation or consequential decision helps the user. The Companion should sound like a natural daily check-in, not an audit report.
 
-## Repository and Path Convention
+## Storage and Path Convention
 
-The Obsidian vault is stored in the GitHub repository configured in `System/profile.md`. `System/...` references use `System` as a logical prefix: replace that prefix with the configured `system_folder` to obtain the repository-relative path. Scheduled Task prompts use the configured `github_repository` and the relevant file path.
-
-Read runtime files from the configured repository using their repository-relative paths. Do not substitute a same-named file from another repository. If the configured repository or requested path is unavailable, report that rather than guessing.
+Read the configured private profile and selected `System/storage/notion.md` or `System/storage/github.md`. Notion is recommended, GitHub private plus optional Obsidian is alternative. Logical System paths resolve only through the verified private index or configured repository path; never silently switch storage or use the public template as live data. Missing required destination or unclear occurrence stops writes.
 
 ## Required Context
 
@@ -52,15 +50,13 @@ Do not duplicate detailed workflow or policy rules in this file.
 
 ## Scheduled Task Write Boundary
 
-Scheduled Morning/Evening are **read-and-output only** and may not mutate repository files, Gmail or Calendar. Their persistent writes require an interactive follow-up under the applicable approval/write protocol. Scheduled Extra has one explicit exception: after standing user consent it may update only its own engine file's scheduling/delivery fields under `System/daily_companion_extra.md`; never profile, Daily, Ledger, other notes, Gmail or Calendar.
-
-Companion Surprise Auto reads one stored next_due_date, stays silent before it, and on/after it reserves an attempt, verifies a date in the week after that attempt, then renders once in the final response. No code/hash calculation or weekly approve. Pending claims block repeats and need interactive recovery. Explicit pause/stop pauses it; its engine owns detailed state and write rules.
+Follow artifacts.md and the selected storage adapter. Notion Morning and Evening may create only their own initial Daily pages with verified notion_daily_autosave_authorized consent; GitHub Morning/Evening remain read/output only. Notion Extra and Update Watch are read-only; GitHub Extra may update only its five authorized scheduling fields under its engine. No scheduled Ledger, Gmail or Calendar mutations. All revisions and other writes require interactive authorization.
 
 ## Global Retrieval Principles
 
 - Use only data sources approved in `System/profile.md`.
 - Prefer targeted retrieval over broad ingestion.
-- Do not read the entire Obsidian vault when narrower retrieval is sufficient.
+- Do not read the entire private workspace/vault when narrower retrieval is sufficient.
 - Use names, people, projects, aliases and topics from current context to guide targeted retrieval.
 - If an expected source is unavailable and the missing evidence materially affects the result, say so.
 
@@ -69,4 +65,4 @@ Companion Surprise Auto reads one stored next_due_date, stays silent before it, 
 - Do not invent facts or continuity.
 - Distinguish known facts from inference and missing evidence.
 - Sources discover signals; the Action Ledger supplies durable operational continuity.
-- Scheduled Morning/Evening never mutate the repository. Extra may change only its expressly authorized scheduling/delivery fields; all other writes follow interactive authorization. Surprise controls/recovery follow its engine contract.
+- Apply the selected storage write boundary and verify each authorized write. Surprise controls/recovery follow its engine and storage adapter.

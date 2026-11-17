@@ -5,7 +5,7 @@ schema_version: 1
 
 # Public Template Maintenance
 
-This is the entrypoint for maintaining the canonical public template `yilinqiao/daily-companion-with-chatgpt`, whether through Codex or GPT web. It does not authorize modifying someone's private vault. Private installation upgrades use `upgrade.md`; normal personal settings and note changes keep their existing approval rules.
+This is the entrypoint for maintaining the canonical public template `yilinqiao/daily-companion-with-chatgpt`, whether through Codex or GPT web. It does not authorize modifying someone's private installation. Private installation upgrades use `upgrade.md`; normal personal settings and note changes keep their existing approval rules.
 
 ## Before editing
 

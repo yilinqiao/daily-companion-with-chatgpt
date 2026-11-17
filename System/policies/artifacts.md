@@ -10,6 +10,8 @@ Canonical owner of saved Daily Briefing / Daily Memory representation, approval 
 
 ## 1. Artifact Boundary
 
+Select the private storage adapter before any save. Notion initial automatic records are explicitly authorized at setup, provisional Evening is not user-confirmed, and initial chat is ordinary text rather than a full Markdown approval preview. GitHub follows the interactive-only protocol below. The following approval requirements apply to revisions and inferred Ledger changes on both backends.
+
 The artifact shown for approval is one clean Markdown block containing exactly the **user-visible content** that will be saved if approved. Hidden machine metadata explicitly defined in this file is excluded from the approval preview and may be inserted only at save time under its own contract; apart from that narrow exception, saved user-visible Markdown must match the approved artifact exactly. Keep citations/UI markers, approval prompts, tool commentary, machine IDs and status text outside the user-facing artifact. Requested visible-content edits require the complete revised artifact to be shown again; refresh live sources only when explicitly requested.
 
 ## 2. Daily Briefing Schema
@@ -41,7 +43,7 @@ generated_at: "<local ISO-8601 datetime>"
 <optional; only when useful and approved>
 
 ## This Week
-<Sunday only: completed Monday–Saturday recap from approved Daily Memories; show covered dates/gaps>
+<Sunday only: completed Monday–Saturday recap from saved Daily Memories, distinguish provisional and confirmed; show covered dates/gaps>
 
 ## Something You May Not Have Noticed
 <Sunday only and conditional: specific evidence-grounded tentative observation; omit if unsupported>
@@ -60,7 +62,9 @@ Required: date; configured-timezone generation time; available Calendar events/c
 - **Calendar** - Calendar approved and the read succeeds: show the included events for the configured local day chronologically, with conflict/timing notes. Calendar approved, read succeeds, but no events exist on any included calendar: say explicitly that Calendar was checked and nothing is scheduled; never present an empty read as "Calendar not connected". Calendar approved but the enumeration/read fails: state that Calendar coverage is incomplete; never imply an empty day from a partial or primary-only read. Calendar not approved: do not read or enumerate it; the Calendar section may be omitted or explicitly say Calendar is not connected; never imply there are no events.
 - **Email** - when Gmail is approved the Email section always states the actual result (selected items, an explicit checked-and-clear confirmation, or an unavailable/failure statement); when Gmail is not approved, do not read it, the Email section may be omitted, and never imply Gmail was checked.
 
-### Hidden Calendar identity metadata
+### Hidden Calendar identity metadata (GitHub only; Notion uses final Calendar ID section)
+
+For Notion, follow storage/notion.md for automatic capture, Notion-only final section and preservation on every user revision. The same narrow exact-match identity-recovery rules below apply before auto-save if needed.
 
 When Calendar is approved and the connector exposes stable event identity, the saved Daily Briefing may carry one hidden HTML comment immediately after the corresponding human-readable Calendar event line in this exact logical form:
 
@@ -84,6 +88,9 @@ date: YYYY-MM-DD
 
 # Daily Memory — <date>
 
+## Diary
+<optional user narrative in their own voice; consolidate related events, feelings and insights here first, don't repeat them below>
+
 ## Done Today
 <Evening-selected confirmed completions + meaningful things that happened today>
 
@@ -96,9 +103,6 @@ date: YYYY-MM-DD
 ## Things I Explored Today
 <conditional; required if one or more meaningful, reliably same-day cross-chat highlights or first-party-confirmed exploration highlights were surfaced in Evening; merge related topics, preserve distinct highlights, omit if none>
 
-## Day Summary
-<2–5 natural synthesis sentences>
-
 ## Reflections
 <optional: emotions, concerns, joys or unresolved personal questions expressed today, including reliably dated cross-chat context; draft subject to user approval>
 
@@ -106,13 +110,11 @@ date: YYYY-MM-DD
 _As things stand tonight:_
 <optional preparation advice from tomorrow Calendar + relevant approved/available weather>
 
-## Good Night
-<one concise warm/playful/calming sign-off>
 ```
 
-Tomorrow is optional. `Saved Today — Slurped Pages` is conditional: if Evening surfaced one or more approved Slurped Pages captured on this date, the Daily Memory must preserve that complete set under this section and may not drop items during synthesis. Keep each item concise, normally the page title plus one short context line. Omit the section only when no Slurped Pages were captured today.
+Diary-first: preserve the user's own story and phrasing, not a generic rewritten summary. When a meaningful detail already appears in Diary, do not repeat it in Done Today, exploration or Reflections; preserve distinct highlights and actionable next steps once. No separate Day Summary or Good Night. Tomorrow is optional. `Saved Today — Slurped Pages` is conditional: if Evening surfaced one or more approved Slurped Pages captured on this date, the Daily Memory must preserve that complete set under this section and may not drop items during synthesis. Keep each item concise, normally the page title plus one short context line. Omit the section only when no Slurped Pages were captured today.
 
-`Things I Explored Today` is conditional but **mandatory when at least one qualifying highlight was surfaced in the Evening Check-in or confirmed by the user**. Preserve every distinct qualifying theme into the approved Daily Memory; merge related discussions concisely and avoid duplicating `Done Today` or `Carry Forward from Today`. It may contain only personal/exploration highlights that Evening can reliably assign to this local date using thread/conversation timestamp metadata, or that the user explicitly confirms belong to today. The conversation text need not say `today` when reliable metadata establishes the date. Topic-only recall, ChatGPT native Memory, or vague `recently` context is insufficient for date assignment: omit it or ask for confirmation rather than guessing. Omit the section only if no qualifying highlights remain after user corrections. This section is not a transcript, must never be described as complete coverage of the user's chats, and cannot by itself authorize or imply Action Ledger changes. Retrieval coverage/failure remarks belong in the Evening Check-in, not the saved Daily Memory. User corrections during the Evening check-in take precedence.
+`Things I Explored Today` is conditional but **mandatory when at least one qualifying highlight was surfaced in the Evening Check-in or confirmed by the user and not already captured in Diary**. Preserve every distinct qualifying theme into the approved Daily Memory; merge related discussions concisely and avoid duplicating `Done Today` or `Carry Forward from Today`. It may contain only personal/exploration highlights that Evening can reliably assign to this local date using thread/conversation timestamp metadata, or that the user explicitly confirms belong to today. The conversation text need not say `today` when reliable metadata establishes the date. Topic-only recall, ChatGPT native Memory, or vague `recently` context is insufficient for date assignment: omit it or ask for confirmation rather than guessing. Omit the section if no qualifying highlights remain after user corrections, or all are already distinctly preserved in Diary. This section is not a transcript, must never be described as complete coverage of the user's chats, and cannot by itself authorize or imply Action Ledger changes. Retrieval coverage/failure remarks belong in the Evening Check-in, not the saved Daily Memory. User corrections during the Evening check-in take precedence.
 
 `Reflections` is optional. Proactively include concise, reliably same-day emotional/personal reflections surfaced from approved conversation context or the Evening check-in, even without a separate user prompt. Preserve the user's meaning, avoid diagnosing emotions or inventing motives, and allow correction/removal in the normal full-preview approval. Omit if nothing qualifies; neither native ChatGPT Memory alone nor an undated recollection establishes a same-day reflection. Sunday weekly slots use saved Daily Memories as primary evidence; native Memory is optional background, never sole proof of a weekly event or pattern.
 
@@ -120,9 +122,7 @@ If nothing from today carries forward, say so briefly rather than importing olde
 
 ## 4. Scheduled Run Write Boundary
 
-Scheduled Morning/Evening execution is **read-and-output only**. It must not create, update, delete or commit Daily artifacts, `action_ledger.md`, or any other repository file. It also must not modify Gmail or Calendar.
-
-Within Morning/Evening, a repository write may happen only after an interactive follow-up and applicable authorization/approval. Extra's separate engine permits only its own expressly authorized scheduling/delivery state writes; that exception never permits Daily artifacts or Ledger changes.
+Notion: only own initial Daily page auto-save under storage/notion.md and setup consent. GitHub: Morning/Evening read-and-output only; Extra's narrowly authorized GitHub state exception is defined by its engine. No scheduled Ledger, Gmail or Calendar mutation. Never overwrite user-edited records during scheduled execution.
 
 ## 5. Approval and Save Protocols
 
@@ -137,11 +137,11 @@ When the client supports interactive controls, **prefer one compact approval pan
 - If the comment requests a substantive edit or is ambiguous about the content being approved, **do not save the affected artifact or apply the affected inferred Ledger proposal in the same submission**. Resolve the comment, show a complete revised artifact and/or explicit revised Ledger delta, and request a **fresh approval**. A clear correction that affects both blocks both. Never assume a default checkmark authorizes a revision the user has not seen.
 - **Independent results:** artifact selected / Ledger unselected → save only the exact approved artifact; Ledger selected / artifact unselected → apply only the displayed, approved Ledger delta; both selected → attempt both separately, fresh-read current Ledger, verify each result, and report per-item success or failure. Neither selected → no writes. Do not describe a partial failure as full success. Previously explicit first-party state instructions retain their existing direct-authorization rule; the panel does not silently revoke or expand that distinct authority.
 - **Text fallback is mandatory:** when interactive widgets are unavailable, unreliable, unsupported in Scheduled Tasks, or the user prefers text, present a concise paired text decision such as `Briefing/Memory: approve | change | skip; Ledger: approve | change | skip` (omit Ledger when no explicit delta). Accept equivalent natural-language replies such as `approve both`, `approve Memory only`, or specific corrections, but map each approval only to a fully presented, identifiable proposal. If anything is unclear, ask the minimum clarification before writing.
-- Keep the panel, response summary, citations, buttons and UI metadata **outside saved Markdown**. A Scheduled Task may display a preview and, when available, the panel, but it must never commit Daily artifacts or Ledger state itself. Actual saving happens only in an authorized interactive follow-up and must respect this installation's backing store (a configured private GitHub repository). Never save private daily artifacts or Ledger data to the public template repository.
+- Keep the panel, response summary, citations, buttons and UI metadata **outside saved Markdown**. A Scheduled Task never applies a Ledger delta; GitHub saves only interactively, Notion may auto-save the initial snapshot as specified by its adapter. Interactive revisions require fresh approval. Never save private daily artifacts or Ledger data to the public template repository.
 
 ### Shared
 
-Before approval, do not save Daily artifacts or **inferred/source-derived** Action Ledger changes. Requested artifact edits are shown again without saving. If the user explicitly refreshes live sources, the refreshed proposal needs new approval.
+Except initial Notion auto-save under standing setup authorization, do not save Daily artifacts or **inferred/source-derived** Action Ledger changes before approval. Requested artifact edits are shown again without saving. If the user explicitly refreshes live sources, the refreshed proposal needs new approval.
 
 An explicit first-party instruction about a specific existing card's state (for example “this is done”, “we're waiting”, “keep this open”, “move this to Upcoming”) is itself authorization for that specific Ledger state change in an interactive turn; do not require a redundant second approval. A manual Kanban move already present in the file is likewise authoritative state, not a proposal.
 
@@ -151,18 +151,22 @@ On an approved/authorized write:
 - do not re-retrieve/re-analyse/rewrite approved visible content for saving; only explicitly defined hidden machine metadata may be injected under its own contract;
 - apply only authorized/approved Ledger changes and preserve unrelated state/order/plugin settings where possible;
 - verify filename/location/type/non-zero/exact intended content and no conversation/citation leakage;
-- return the GitHub file or commit link outside the artifact when relevant.
+- return the verified private page or GitHub file/commit link outside the artifact when relevant.
 
-Never silently overwrite or duplicate an existing Daily filename. If `action_ledger.md` changed after a proposal was generated, reconcile against the newer file instead of overwriting it.
+Never silently overwrite or duplicate an existing Daily artifact; Notion uses date + category and exact page identity. If `action_ledger.md` changed after a proposal was generated, reconcile against the newer file instead of overwriting it.
 
 ### Morning
 
-Scheduled Morning only presents the human-readable Briefing; hidden Calendar IDs/comments are never shown in the preview. After explicit approval, save the approved user-visible Briefing exactly and inject only the hidden `dc-calendar` comments defined above. Prefer the frozen Morning identity mapping when available; if it did not survive the handoff, use the narrow identity-only Calendar refresh defined above. The refresh may recover IDs only for exact uniquely matched approved events and may not change approved visible text. If no confident unique identity is available, omit the comment for that event rather than guessing. Briefing approval does **not** implicitly admit new candidates to the Ledger; a source-derived candidate needs a separate interactive Ledger proposal/approval unless the user directly instructs the state change.
+Notion: with verified persisted autosave consent, automatically save only initial snapshot and Calendar ID section under storage/notion.md; do not require a save click. User revisions use the full revised preview and preserve the original Calendar ID section. Ledger approval remains independent.
+
+GitHub: Scheduled Morning only presents the human-readable Briefing; hidden Calendar IDs/comments are never shown in the preview. After explicit approval, save the approved user-visible Briefing exactly and inject only the hidden `dc-calendar` comments defined above. Prefer the frozen Morning identity mapping when available; if it did not survive the handoff, use the narrow identity-only Calendar refresh defined above. The refresh may recover IDs only for exact uniquely matched approved events and may not change approved visible text. If no confident unique identity is available, omit the comment for that event rather than guessing. Briefing approval does **not** implicitly admit new candidates to the Ledger; a source-derived candidate needs a separate interactive Ledger proposal/approval unless the user directly instructs the state change.
 
 ### Evening
 
-Scheduled Evening only presents the check-in. After the user answers:
-1. require a successful `action_ledger.md` read for authoritative inferred changes;
+Notion: with verified persisted autosave consent, auto-save provisional Diary-first Memory before the three-question conversational handoff. After answers, show full revised preview and independent proposal; approved Memory updates that same page and marks Edited only after content verification, as specified by storage/notion.md.
+
+GitHub: Scheduled Evening only presents the check-in. After the user answers:
+1. require a successful configured Ledger read for authoritative inferred changes;
 2. apply any explicit first-party state instructions under the direct-authorization rule above;
 3. use Evening + `rules.md` to draft the complete Daily Memory and any remaining inferred Ledger change proposal;
 4. ask approve/change/discard for the Daily Memory and inferred proposal;
@@ -171,11 +175,11 @@ Scheduled Evening only presents the check-in. After the user answers:
 
 ## 6. Interactive Action Ledger Persistence
 
-Start from a `action_ledger.md`; never reconstruct current state from Daily Memory.
+Start from the fresh configured Ledger (Notion rows or GitHub `action_ledger.md`); never reconstruct current state from Daily Memory.
 
 - Determine Ledger operation, card identity/history, status/lifecycle meaning, manual-Kanban meaning and any reliable metadata normalization only through `policies/rules.md`; do not redefine those semantics here.
 - Source-derived/inferred Ledger changes require explicit approval; direct first-party state instructions for a specific card follow the direct-authorization rule above.
 - Apply only the approved/authorized operation to the fresh Ledger and preserve unrelated state, Kanban headings/order where possible, plugin settings, hidden `dc` metadata and historical records.
 - Write only values that are reliably supported under `rules.md`; never invent missing operational metadata merely to normalize the file.
-- On an authorized interactive Ledger write, stamp the file frontmatter `updated_at` per the file contract in `rules.md` Section 2 (`File frontmatter`); scheduled runs never stamp it.
-- Do not silently create/rewrite Daily Memory outside its own approval flow.
+- For GitHub only, on an authorized interactive Ledger write, stamp the file frontmatter `updated_at` per the file contract in `rules.md` Section 2 (`File frontmatter`); scheduled runs never stamp it.
+- Do not silently create/rewrite Daily Memory outside its own storage-specific flow.

@@ -1,6 +1,6 @@
 ---
 type: companion-profile
-schema_version: 4
+schema_version: 5
 setup_complete: false
 installed_template_version: null
 installed_template_commit: null
@@ -18,6 +18,8 @@ regular_work_schedule:
   friday: null
   saturday: null
   sunday: null
+planning_window_start: "<SETUP_REQUIRED: HH:MM or explicitly no suggestions>"
+planning_window_end: "<SETUP_REQUIRED: HH:MM or explicitly no suggestions>"
 output_language: "<SETUP_REQUIRED>"
 communication_style: "<SETUP_REQUIRED>"
 preferred_name_usage: occasionally
@@ -26,6 +28,12 @@ approved_data_sources: []
 calendar_scope:
   mode: include_all
   excluded_calendar_ids: []
+storage_backend: "<SETUP_REQUIRED: notion | github>"
+notion_daily_autosave_authorized: false
+notion_suite_id: null
+notion_system_index_id: null
+notion_daily_source_id: null
+notion_ledger_source_id: null
 github_repository: "<SETUP_REQUIRED: owner/repository>"
 vault_root: "."
 system_folder: System

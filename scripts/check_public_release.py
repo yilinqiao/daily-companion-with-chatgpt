@@ -13,6 +13,7 @@ required = [
     "System/policies/artifacts.md", "docs/PRIVACY.md",
     "VERSION", "CHANGELOG.md", "AGENTS.md", "System/upgrade.md",
     "System/maintenance.md", "scripts/check_release_version.py",
+    "System/storage/notion.md", "System/storage/github.md",
 ]
 problems = []
 for name in required:
@@ -54,6 +55,14 @@ if "setup_complete: false" not in profile or "SETUP_REQUIRED" not in profile:
 for field in ("installed_template_version", "installed_template_commit"):
     if not re.search(r"(?m)^" + field + r": null\s*$", profile):
         problems.append("Public profile has initialized " + field)
+for field in ("notion_suite_id", "notion_system_index_id", "notion_daily_source_id", "notion_ledger_source_id"):
+    if not re.search(r"(?m)^" + field + r": null\s*$", profile):
+        problems.append("Public profile has initialized " + field)
+if not re.search(r"(?m)^notion_daily_autosave_authorized: false\s*$", profile):
+    problems.append("Public profile has initialized Notion write consent")
+for field in ("planning_window_start", "planning_window_end", "storage_backend"):
+    if not re.search(r"(?m)^" + field + r': "<SETUP_REQUIRED[^"\n]*>"\s*$', profile):
+        problems.append("Public profile missing required unconfigured " + field)
 version_path = root / "VERSION"
 changelog_path = root / "CHANGELOG.md"
 if version_path.is_file() and changelog_path.is_file():

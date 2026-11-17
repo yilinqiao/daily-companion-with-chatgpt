@@ -27,7 +27,7 @@ class ReflectionAndWatchTests(unittest.TestCase):
         for phrase in ("same-day cross-chat", "normal approval-based save",
                        "do not add a required fourth question"):
             self.assertIn(phrase, self.evening)
-        self.assertIn("3. Anything else from today worth capturing?", self.setup)
+        self.assertIn("3. Anything else from today worth capturing?", self.evening)
 
     def test_watch_is_read_only_and_asks_for_specific_approval(self):
         self.assertIn("Daily Companion Update Watch", self.setup)

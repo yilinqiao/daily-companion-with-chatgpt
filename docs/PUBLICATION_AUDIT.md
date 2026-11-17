@@ -1,5 +1,7 @@
 # Public publication audit
 
+Historical audit of an earlier GitHub-only template; see current AGENTS.md and System/maintenance.md for release verification.
+
 ## Provenance
 
 This release uses only the clean, unconfigured Daily Companion Starter system files. It does not copy an active user vault, filled profile, personal Ledger history, Daily Briefing / Daily Memory artifacts or historical private Git commits. The generic HTML setup guide was reviewed separately.

@@ -1,5 +1,7 @@
 # Public release checklist
 
+For 0.4.0+ verify both storage adapters, unset Notion IDs/consent, explicit planning-window placeholders, private data source/view identifiers, and independent scheduled entrypoints in addition to the historical GitHub-only checklist below.
+
 - [ ] Verify the repository is a new, separate public source, never a personal vault or imported private Git history.
 - [ ] Verify README links, System/setup.md and paths all resolve and agree.
 - [ ] Follow AGENTS.md and System/maintenance.md; bump VERSION with a dated CHANGELOG.md entry and any required System/upgrade.md migration in the same release commit.

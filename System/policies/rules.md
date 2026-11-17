@@ -12,11 +12,11 @@ Canonical owner of shared meaning, evidence, Action Ledger state and continuity 
 
 - **Daily Briefing**: saved Morning snapshot; historical once saved.
 - **Daily Memory**: saved end-of-day record (Notion Auto-Saved is provisional; only Edited/user-approved is confirmation); historical once saved; not current operational state.
-- **Action Ledger** (selected private backend): single source of truth for unresolved and historical operational items. Fixed Kanban lists: `Action`, `Waiting`, `Upcoming`, `Closed`.
+- **Action Ledger** (selected private backend): single source of truth for unresolved and historical operational items. Fixed statuses: `Action`, `Waiting`, `Upcoming`, `Closed`.
 - **PARA / other vault notes**: pull-only project/domain/context background; never auto-import task prose into the Ledger.
 - Stable user configuration belongs in `profile.md`; durable operational handling knowledge belongs in the Action Ledger; project/domain context stays with its source/area. Do not create a separate global long-term-memory state file. A feature-owned delivery/state file such as `daily_companion_extra.md` is not a long-term-memory store and does not violate this rule.
 
-Source authority: Calendar → current event details; Gmail → current email state; `profile.md` → configuration/location/region; Action Ledger → current/historical operational state and standing handling precedents; Daily artifacts → historical snapshots; PARA → project/context background; Slurped Pages → saved pages captured in the vault (Evening surfaces them; `artifacts.md` owns their Daily Memory slot). Report material conflicts.
+Source authority: Calendar → current event details; Gmail → current email state; `profile.md` → configuration/location/region; Action Ledger → current/historical operational state and standing handling precedents; Daily artifacts → historical snapshots; PARA → project/context background; Slurped Pages → pages captured in the approved source (Evening surfaces them; `artifacts.md` owns their Daily Memory slot). Report material conflicts.
 
 When Calendar is approved: enumerate all visible calendars; with `include_all`, exclude only configured stable IDs. Newly visible calendars are included automatically. Enumeration failure means incomplete coverage. Regional holiday applicability uses `normal_location` / `region`, not `weather_location`. Context events may affect orientation but do not become tasks merely by existing.
 
@@ -24,7 +24,7 @@ Native ChatGPT Memory may personalize conversation but is never the sole source 
 
 ## 2. Action Ledger Schema and Status Meaning
 
-The Notion Status property or GitHub Kanban list is authoritative; do not store duplicate status. Notion uses the property mapping in storage/notion.md. The file-format instructions below are GitHub-specific; shared meaning applies to both.
+The Notion Status property or GitHub Kanban list is authoritative; do not store duplicate status. Notion uses the property mapping in storage/notion.md. The selected adapter owns storage representation. Stable immutable ID, opened date, current description and status are core; due, revisit, closure date, source, resolution, scope and standing_until are optional when useful. Preferred resolution: completed, no_action, cancelled, declined, superseded. Do not invent dates or metadata.
 
 ### `Action`
 
@@ -40,38 +40,9 @@ Use when attention is confirmed for the future but no meaningful action is requi
 
 ### `Closed`
 
-Use when the loop has clearly ended because it was completed, resolved, confirmed no-action/automatic, cancelled, declined or superseded. Closed cards remain as durable history and are never automatically deleted. Newest Closed cards should appear first; an interactive write that closes a card inserts it at the top of the `Closed` list while preserving the relative order of the existing cards.
+Use when the loop has clearly ended because it was completed, resolved, confirmed no-action/automatic, cancelled, declined or superseded. Closed cards remain as durable history and are never automatically deleted. Newest Closed entries appear first where supported.
 
 A Closed card with `scope: "standing"` is also an active handling precedent for future similar signals until an optional `standing_until` date has passed. Standing precedents are policy-like history, not an open task.
-
-### File frontmatter
-
-`action_ledger.md` carries a small file-level contract in addition to card metadata:
-
-- `type: companion-action-ledger` and `schema_version` identify the file model and its version;
-- `kanban-plugin: board` is the Obsidian Kanban file marker;
-- `updated_at` records the local ISO-8601 time of the most recent **authorized interactive write**, stamped automatically by the assistant when that write occurs. It is never maintained manually and never updated by scheduled read-only runs. Manual user moves inside the Kanban board are not individually timestamped (the plugin emits no per-card modified date); the current Kanban list position is authoritative and is reflected at the next authorized interactive write.
-
-### Card format and metadata
-
-Each card has:
-1. a short human-readable title;
-2. a concise visible description of the current next step/wait/outcome;
-3. one hidden HTML comment `<!-- dc: {...} -->`.
-
-Core metadata:
-- `id`: unique stable kebab-case ID; immutable and never reused;
-- `opened`: date first admitted/recorded; immutable;
-- `closed`: `null` while open; closure date when reliably known;
-- `source`: optional when a clear source exists.
-
-Optional metadata (owner is legacy GitHub-only, not required; record responsibility in Details for Notion): `owner`, `due`, `revisit`, `resolution`, `scope`, `standing_until`.
-
-Preferred `resolution`: `completed`, `no_action`, `cancelled`, `declined`, `superseded`.
-
-Do not add empty optional fields. Do not expose machine fields in the visible title/description.
-
-If a manually moved Closed card has no reliable historical closure date, do not invent one merely to complete metadata; its column remains authoritative and `closed` may stay `null` until reliable evidence exists.
 
 ## 3. Admission, Reconciliation and Durable History
 
@@ -128,8 +99,8 @@ Normal lifecycle operations:
 - **KEEP**: no material change.
 - **UPDATE**: same card, meaningful content/metadata change.
 - **MOVE**: same open loop changes between `Action` / `Waiting` / `Upcoming`.
-- **CLOSE**: move the same card to `Closed`, change `[ ]` → `[x]`, set reliable `closed` date, update visible outcome and add useful `resolution`. Preserve any existing `due`/`revisit` values as historical record: they become inert while Closed and are not cleared by CLOSE.
-- **REOPEN**: when clearly the same underlying loop becomes active again, move the existing card to the correct open list, change `[x]` → `[ ]`, set `closed: null`, remove stale `resolution`, preserve original `id` and `opened`.
+- **CLOSE**: move the same card to `Closed`, set reliable `closed` date, update visible outcome and add useful `resolution`. Preserve any existing `due`/`revisit` values as historical record: they become inert while Closed and are not cleared by CLOSE.
+- **REOPEN**: when clearly the same underlying loop becomes active again, move the existing card to the correct open list, set `closed: null`, remove stale `resolution`, preserve original `id` and `opened`.
 - **DELETE**: exceptional; only for explicit removal of an erroneous/duplicate/history record. Closure never means deletion.
 
 Unmentioned existing cards default to KEEP. Valid closure evidence includes explicit user completion/no-action/cancellation/decline, reliable source confirmation, or clearly superseding later state. Absence from sources/artifacts and passage of time are not closure.
@@ -141,7 +112,7 @@ Explicit user statements about a card's state take priority over inference. Exam
 - “I don't need to do anything; it's direct debit” → CLOSE with `resolution: "no_action"`; use `scope: "standing"` when the statement clearly establishes an ongoing handling rule;
 - “remind me later; nothing to do now” → usually `Upcoming` or a `revisit` on the actual current status, depending on meaning.
 
-Manual Kanban moves are first-party state changes. Treat the current list as authoritative unless clear evidence indicates an accidental move. Do not silently undo it because older Daily Memory/source text disagrees. When later writing interactively, normalize checkbox/metadata where reliably possible without inventing dates.
+Manual status changes are first-party state changes. Treat the current status as authoritative unless clear evidence indicates an accidental move. Do not silently undo it because older Daily Memory/source text disagrees. When later writing interactively, normalize backend representation where reliably possible without inventing dates.
 
 ### `revisit`
 

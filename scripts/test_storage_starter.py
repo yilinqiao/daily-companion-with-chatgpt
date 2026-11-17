@@ -33,3 +33,9 @@ class StorageStarterTests(unittest.TestCase):
             p = root / 'System/profile.md'
             p.write_text('\n'.join(line for line in p.read_text().splitlines() if not line.startswith('planning_window_end:')))
         self.assertEqual(self.check(mutate).returncode, 1)
+
+    def test_configured_capture_source_fails_release(self):
+        def mutate(root):
+            p = root / 'System/profile.md'
+            p.write_text(p.read_text().replace('capture_source: null', 'capture_source: private-source'))
+        self.assertEqual(self.check(mutate).returncode, 1)

@@ -12,7 +12,7 @@ Morning Scheduled Task entry point. Read `System/instructions.md`, `System/profi
 
 1. Read `profile.md` and the configured Ledger via the selected storage adapter. If the Ledger is unavailable, report it and never reconstruct operational state from Daily Memory.
 2. Resolve the actual scheduled occurrence local date/time in the configured timezone; stop without writes when uncertain.
-3. Attempt each of the previous 7 local Daily Memory dates for context/history. Define **standard Calendar recovery dates** as the consecutive dates without a confirmed Daily Memory immediately before today: start yesterday, continue backward only while each date has no confirmed Memory, stop at the first existing user-approved Daily Memory (Notion Auto-Saved alone does not establish a confirmed checkpoint), cap at 7. Also read yesterday's saved Daily Briefing when available for candidate continuity.
+3. Attempt each of the previous 7 local Daily Memory dates for context/history. Define **standard Calendar recovery dates** as the consecutive dates without a successfully saved Daily Memory immediately before today: start yesterday, stop at the first successfully saved Daily Memory (including Notion Auto-Saved), cap at 7. A saved checkpoint limits retrieval only, not evidence of confirmation or closure. Unconfirmed candidate decisions remain unresolved. Also read yesterday's saved Daily Briefing when available for candidate continuity.
 4. If Calendar is approved, enumerate all visible calendars, apply exclusions, and read today's full local day across every included calendar with calendar identity retained. Read standard recovery dates for unresolved-capable signals. Independently perform the narrow 7-day financial safety look-back for the financial-action class in `rules.md`, regardless of Daily Memory checkpoints. Reuse retrieved dates and dedupe recovery paths.
 5. If Gmail is approved, review relevant mail from the previous 7 days, excluding Spam/Trash; prefer targeted reads.
 6. Use PARA only when live context materially needs background. Normally retrieve at most 3 long-term vault files.
@@ -31,7 +31,7 @@ Classify Calendar meaning, action eligibility and evidence only through `policie
 - Build a brief natural orientation from today's work/rest pattern, Calendar and useful weather; do not turn rest days into productivity plans.
 - Apply standard-recovery and financial-safety scopes above; do not replay ordinary past appointments/social/travel/context events.
 - Do not broadly mine future Calendar to manufacture candidates.
-- For every Calendar event rendered into the Daily Briefing, retain stable source identity when the connector exposes it: `calendar_id` plus `event_id`. During the scheduled Morning preview, keep this event-to-identity mapping internal to the run/conversation and **do not render IDs or `dc-calendar` comments anywhere in the user-facing Briefing or surrounding conversation**. On a Notion automatic save, append the protected Calendar ID section under storage/notion.md; on an approved GitHub interactive save, `policies/artifacts.md` may inject the hidden Calendar metadata into the saved Briefing as the narrowly defined machine-metadata exception to visible exact-save behaviour. Prefer the connector identity frozen during Morning generation when it is still available. If that mapping did not survive the scheduled-to-interactive handoff, perform only the narrow save-time Calendar identity refresh defined in `policies/artifacts.md`; use it to recover machine identity for exact uniquely matched approved events and never to refresh or rewrite the approved visible Briefing. If identity still cannot be matched confidently, omit the hidden metadata rather than guessing or exposing it. This identity is historical linkage for Evening reconciliation, not operational state.
+- Freeze exact Calendar identity for every displayed event; use artifacts.md and the selected adapter for hidden capture, persistence and narrow recovery. Never expose IDs.
 
 ### 2.2 Gmail
 
@@ -73,9 +73,7 @@ Before finalizing, account for yesterday's saved-Briefing candidates under `rule
 
 ### 3.3 Active Coverage
 
-Surface every **Visible Now** active card exactly once **at the underlying-issue level, not once per source section**. Coverage is satisfied when that issue is rendered substantively in exactly one of `What Matters Today`, `Email`, or `Open Loops / Carry Forward`. A material Gmail update to an existing Visible Now Ledger card may therefore satisfy that card's Morning coverage in `Email`; it must not then be repeated in `Open Loops / Carry Forward`.
-
-Select the highest-value Visible Now issues for the Briefing's priority slot. Any Visible Now active issue not already consumed by a higher-priority slot or a material Email update falls through to `Open Loops / Carry Forward`, using the exact structure and cardinality defined in `policies/artifacts.md`.
+Every Visible Now issue appears substantively exactly once, allocated below.
 
 ## 4. Output Composition
 
@@ -85,37 +83,29 @@ On Sundays, also recap the preceding local Monday–Saturday from saved Daily Me
 
 ### 4.1 Briefing-level issue allocation and de-duplication
 
-Before rendering sections, build one Briefing-level issue set after Ledger reconciliation. Key an existing operational issue by its stable Ledger card ID; key an untracked candidate by the same underlying obligation/dependency/commitment rather than by source, thread, message or section. Merge Calendar/Gmail/recovery evidence that belongs to the same underlying issue into that one issue record.
+Build one issue set after reconciliation, keyed by Ledger ID or underlying distinct obligation. Consolidate evidence across sources. Allocate:
 
-Assign every substantive operational issue exactly one **primary home**, then mark it **consumed** for operational coverage. Use this allocation order:
+1. `What Matters Today`: up to 3 highest-value issues.
+2. `Email`: material Gmail changes/new Gmail candidates not consumed above.
+3. `Open Loops / Carry Forward`: remaining Visible Now items only.
 
-1. `What Matters Today` — up to 3 highest-value issues.
-2. `Email` — material Gmail changes or genuinely new Gmail candidates not already consumed by `What Matters Today`. A material Gmail update to an existing Visible Now Ledger item counts as that item's one Morning appearance.
-3. `Open Loops / Carry Forward` — only remaining Visible Now Ledger items not already consumed above. Treat this section as the remainder/catch-all, never as a second full rendering of the Ledger.
+Keep required Calendar event lines and Gmail status minimal when an issue already has a home. Continued silence is not Email news; a still-visible Waiting card gets its ordinary reminder. If material emails are already covered in priorities, acknowledge that, not a falsely clear inbox.
 
-Section observability may still require minimal source text without creating a second substantive issue. For example, a Calendar event may still appear as its event line when Calendar is approved, and the Email section must still report Gmail status when Gmail is approved. If the substantive issue already lives elsewhere, keep that source text minimal and do not restate the action/wait/background.
-
-For Gmail specifically:
-
-- A new reply, decision, request, failure, confirmation or other material state change may justify an Email issue.
-- **No new reply / continued silence is not itself an Email issue.** If the underlying Waiting card is still Visible Now, its unchanged state belongs only in its primary operational home, normally `Open Loops / Carry Forward`.
-- If all material Gmail issues were already consumed by `What Matters Today`, the Email section may say briefly that important email updates are reflected there and that there are no additional Email items. Never falsely say Gmail was clear when a material update was surfaced elsewhere.
-
-Before finalizing, dedupe by underlying issue across `What Matters Today`, `Email`, and `Open Loops / Carry Forward`; keep its first primary home and verify every Visible Now card appears once. Also scan **the entire Briefing** (including opening, Calendar, Weather and Flavour): remove unchanged issues already handled in yesterday's approved Memory or earlier approved Briefings, unless `rules.md` permits a new reminder. Never use a priority, recap, or “no action needed” paragraph to explain a suppressed item. Prior Briefings suppress stale FYI/email replays, not the ordinary daily reminder of an unresolved Ledger card. Keep required Calendar/source-status facts concise.
+Before finalizing, verify every Visible Now card appears once; scan **the entire Briefing** (including opening, Calendar, Weather and Flavour) for unchanged decisions/information from yesterday's approved Memory or earlier saved Briefings. Never use a priority, recap, or “no action needed” paragraph to repeat a suppressed item. Prior Briefings suppress stale FYI/email replays, not the ordinary daily reminder of an unresolved Ledger card. Apply exceptions in rules.md.
 
 - Give each substantive issue one primary home.
 - Use only the **Visible Now** set for routine active-card coverage; never leak a future-`revisit` Snoozed card into a routine Briefing slot.
 - Use Weather / Source Status only when useful.
 - Surface behavioural patterns only when `rules.md` evidence thresholds are met.
 - Include **exactly one non-weather Daily Flavour item in every Morning Briefing** if any non-weather flavour category remains enabled in `profile.md`. Choose from `humour`, `fun_fact`, `inspiration` and `tiny_challenge`; do not interpret “all enabled” as including all four each day. Add a short `## Daily Flavour` section (normally 1–2 lines) after practical content. Never disguise operational follow-ups as a tiny challenge.
-- Rotate categories across days when prior approved Daily Briefings reveal the recent categories; prefer a category not used in the last three Briefings. If history is unavailable, pick a suitable category without claiming novelty. Do not invent factual claims for fun facts; use safe, verifiable general knowledge or omit unsupported details and choose a different category. Humour should be considerate and low-key; inspiration should be a concrete thought, not fabricated quotations; tiny challenges are strictly optional and require no saved follow-up.
+- Rotate categories across days when prior saved Daily Briefings reveal the recent categories; prefer a category not used in the last three Briefings. If history is unavailable, pick a suitable category without claiming novelty. Do not invent factual claims for fun facts; use safe, verifiable general knowledge or omit unsupported details and choose a different category. Humour should be considerate and low-key; inspiration should be a concrete thought, not fabricated quotations; tiny challenges are strictly optional and require no saved follow-up.
 - Weather is **separate** from the one daily non-weather flavour slot: include weather only when the user approved web/weather and it is useful or plan-linked. Do not count weather toward the daily flavour slot. If all non-weather categories are explicitly disabled, omit the section and honor that preference.
 
 Outside the Markdown artifact, when new candidates exist, state clearly that they were **detected but not written to the Action Ledger during the scheduled run**.
 
 ## 5. Approval Handoff
 
-For Notion, with verified autosave consent, auto-save the initial Briefing with Calendar ID section before finishing the plain conversational output; no save approval button for initial snapshot. Offer separate Ledger approval only if a concrete delta exists. For GitHub, follow the Morning approval/save protocol in `policies/artifacts.md`. After displaying the complete Briefing and any concrete inferred Ledger delta, prefer its **two-choice interactive approval panel** (Briefing + Ledger, each selected by default only when applicable), with a mandatory separate text-choice fallback. A panel selection alone never writes; only submitted interactive approval authorizes the selected operation. Artifact approval and Ledger-state authorization remain separate.
+For Notion, with verified autosave consent, auto-save the initial Briefing with Calendar ID section before finishing the plain conversational output; no save approval button for a successfully saved snapshot. If auto-save fails or is unauthorized, offer the full interactive save preview under storage/notion.md. Offer separate Ledger approval only if a concrete delta exists. For GitHub, follow the Morning approval/save protocol in `policies/artifacts.md`. Use artifacts.md for independent artifact/Ledger approvals and text fallback.
 
 ## 6. Write Boundary
 

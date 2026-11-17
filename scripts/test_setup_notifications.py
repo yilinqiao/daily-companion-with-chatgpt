@@ -29,7 +29,7 @@ class SetupNotificationTests(unittest.TestCase):
                        "Prioritize notification of a real Surprise", "condition-watch", "do not promise suppression",
                        "not a reason to reset"):
             self.assertIn(phrase, handoff)
-        self.assertIn("before the date or already claimed, stop silently", self.engine)
+        self.assertIn("before anchor, or not the chosen weekday, stop silently", self.engine)
         self.assertIn("If Auto Mode stops silently, do not notify the user.", self.setup)
         self.assertNotIn("do not recommend turning on", handoff)
         self.assertNotIn("should not produce alerts for routine silent checks", self.readme)
@@ -39,8 +39,8 @@ class SetupNotificationTests(unittest.TestCase):
             self.assertIn("Notify when complete", document)
             self.assertIn("Notifications", document)
         self.assertIn("notification guidance", self.upgrade)
-        self.assertIn("no profile/state schema", self.upgrade)
-        self.assertIn("For release 0.3.2 (Extra completion notification preference):", self.upgrade)
+        self.assertIn("notification preferences", self.upgrade)
+        self.assertIn("Earlier release migration notes", self.upgrade)
         for guide in (self.readme, self.getting_started, self.guide):
             self.assertIn("Extra", guide)
             self.assertIn("silent", guide)

@@ -28,7 +28,7 @@ Answer the questions about name, location, work schedule, personal planning hour
 | Morning | Auto-save with protected Notion-only Calendar ID section | Approve save; hidden Calendar metadata |
 | Evening | Auto-save provisional Memory; approve revision of same page | Approve full Memory before any save |
 | Ledger | Status board, unfiltered audit incl. Closed | Kanban Markdown board |
-| Surprise | Read-only weekly pattern | Verified v6 claim and advance with scoped consent |
+| Surprise | Read-only weekly pattern | Same read-only weekly pattern |
 | Setup | Connect Notion and allow required read/create/update/query/schema/view operations on private suite | Use this template → Create a new repository → Private; never use public fork |
 
 No personal GitHub repository is needed for Notion, but setup and update checks need read access to the public template. The setup creates and verifies private data sources and views where supported, or shows the missing connector operation and guides you through it. No cross-store failover. Calendar and Gmail are optional read-only sources; cross-chat context is incomplete and opt-in.
@@ -43,6 +43,7 @@ This public repository contains only generic templates. Never write personal det
 
 - [Setup](System/setup.md), [profile](System/profile.md), [instructions](System/instructions.md)
 - [Notion adapter](System/storage/notion.md), [GitHub adapter](System/storage/github.md)
+- Onboarding only: [Notion installation](System/setup/notion.md), [GitHub installation](System/setup/github.md)
 - [Morning](System/workflows/morning.md), [Evening](System/workflows/evening.md)
 - [Shared operational rules](System/policies/rules.md), [artifact/approval rules](System/policies/artifacts.md)
 - [Extra](System/daily_companion_extra.md), [upgrade](System/upgrade.md)

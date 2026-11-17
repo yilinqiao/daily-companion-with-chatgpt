@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.4.1 — 2026-11-17
+
+- Reduce runtime dependencies: separate Notion/GitHub onboarding from adapters, move Kanban representation into GitHub adapter, consolidate shared artifact and approval rules, shorten upgrade and workflow instructions.
+- Morning retrieves missing saved Memory dates (including Auto-Saved as a retrieval checkpoint, never confirmation); Evening accepts a saved Morning baseline. Retain independent financial look-back, Ledger reconciliation and all three fallback capture questions.
+- Use six Diary-first sections without duplicate completion/exploration slots. Notion queries paginated saved views, verifies exact date/category, preserves Calendar ID, uses fresh Ledger schema/options and numeric System revisions with snapshots. Capture dates use backend-specific reliable metadata.
+- Both backends use one read-only 104-week Surprise pattern; no scheduled claims, catch-up, or state updates. Legacy date/claim state is preserved privately and migrated only with explicit approval; existing valid patterns are retained. Historical records and personal configuration remain unchanged.
+- Updated setup, selected storage adapters, shared policies/workflows, Extra, upgrade, README, release review and static regression/privacy checks. No private installation or tasks are changed by this release. Static tests verify contracts, not actual scheduled connector execution.
+
 ## 0.4.0 — 2026-11-17
 
 - Notion-first setup with private System/Daily/Ledger data sources, views, connection/read-back verification and selected-backend routing. GitHub/Obsidian remains optional; no dual live stores.

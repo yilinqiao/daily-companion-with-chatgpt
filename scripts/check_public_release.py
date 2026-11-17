@@ -65,6 +65,9 @@ for field in ("installed_template_version", "installed_template_commit"):
 for field in ("notion_suite_id", "notion_system_index_id", "notion_daily_source_id", "notion_ledger_source_id", "capture_source"):
     if not re.search(r"(?m)^" + field + r": null\s*$", profile):
         problems.append("Public profile has initialized " + field)
+for field in ("gmail_account_ids", "calendar_account_ids"):
+    if not re.search(r"(?m)^" + field + r": \[\]\s*$", profile_state):
+        problems.append("Public profile has initialized or missing " + field)
 if not re.search(r"(?m)^notion_daily_autosave_authorized: false\s*$", profile):
     problems.append("Public profile has initialized Notion write consent")
 for field in ("planning_window_start", "planning_window_end", "storage_backend"):

@@ -28,17 +28,19 @@ Ask exactly one question per turn. Do not infer answers from connected sources. 
 
 ## 2. Check connectors and approve setup
 
+For each approved Gmail/Calendar service, ask whether to connect or include other accounts (one question per turn). Guide additional connections where supported. Let the user select accounts, verify each selected account's stable authenticated profile ID and the read below, and record only verified, explicitly approved IDs as quoted strings in the private `gmail_account_ids` / `calendar_account_ids` lists. One account works identically; declined services use empty lists. Never silently include newly connected accounts. Show the selected accounts and any failed access in the final approval summary; verify coverage per account on the first real scheduled run.
+
 ### Google Calendar — only after user permission
 
-- After the user grants Calendar permission, perform a harmless read by enumerating the calendars visible to the connected account. This access check and Calendar-scope discovery are the same operation.
-- On success, collect exclusions here (this is the only place they are collected): present all visible calendars as a short numbered list, including primary, shared/family and contextual calendars such as holidays when visible. Explain that all visible calendars are included by default and ask: **"Which calendars, if any, would you like Daily Companion to exclude?"** Accept numbers, names or natural-language answers such as `none`. Record exclusions by stable calendar ID, not display name; newly visible calendars are therefore included automatically unless the user later excludes them.
-- On failure, do not infer scope, do not record Google Calendar as an approved source, and do not pretend access exists. Ask the user to connect/authorize Calendar and retry, or let them explicitly revise setup to continue without Calendar.
+- Perform a harmless read by enumerating calendars across each selected account. This access check and Calendar-scope discovery are the same operation.
+- On success, collect exclusions here (this is the only place they are collected): present all visible calendars grouped by account, including primary, shared/family and contextual calendars such as holidays when visible. Explain that all calendars within approved accounts are included by default and ask: **"Which calendars, if any, would you like Daily Companion to exclude?"** Accept numbers, names or natural-language answers such as `none`. Record exclusions by stable calendar ID, not display name; newly visible calendars within approved accounts are included automatically unless excluded.
+- On failure, do not infer scope or approve the failed account. Help connect/authorize and retry, or ask the user to explicitly continue with a reduced account scope.
 - Never create/change Calendar events during setup merely to test access.
 
 ### Gmail — only after user permission
 
-- After the user grants Gmail permission, perform a harmless metadata-level read such as listing Gmail labels (or an equivalently minimal read supported by the connector). Reading message content is not required merely to prove access.
-- On failure, do not record Gmail as an approved source and do not pretend access exists. Ask the user to connect/authorize Gmail and retry, or let them explicitly revise setup to continue without Gmail.
+- On each selected account, perform a harmless metadata-level read such as listing Gmail labels (or an equivalently minimal read supported by the connector). Reading message content is not required merely to prove access.
+- On failure, do not approve the failed account. Help connect/authorize and retry, or ask the user to explicitly continue with a reduced account scope.
 - Never send, draft, archive, label, delete or otherwise modify mail during setup merely to test access.
 
 ### ChatGPT surfaced conversation context — only after user permission

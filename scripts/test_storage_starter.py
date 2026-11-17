@@ -39,3 +39,23 @@ class StorageStarterTests(unittest.TestCase):
             p = root / 'System/profile.md'
             p.write_text(p.read_text().replace('capture_source: null', 'capture_source: private-source'))
         self.assertEqual(self.check(mutate).returncode, 1)
+
+    def test_initialized_account_scope_fails_release(self):
+        for field in ('gmail_account_ids', 'calendar_account_ids'):
+            with self.subTest(field=field):
+                def mutate(root):
+                    p = root / 'System/profile.md'
+                    lines = [line for line in p.read_text().splitlines() if not line.startswith(field + ':')]
+                    lines.insert(1, field + ': [private-account-id]')
+                    p.write_text('\n'.join(lines) + '\n')
+                result = self.check(mutate)
+                self.assertEqual(result.returncode, 1, result.stdout)
+                self.assertIn(field, result.stdout)
+
+    def test_missing_account_scope_fails_release(self):
+        def mutate(root):
+            p = root / 'System/profile.md'
+            p.write_text('\n'.join(line for line in p.read_text().splitlines() if not line.startswith('gmail_account_ids:')))
+        result = self.check(mutate)
+        self.assertEqual(result.returncode, 1, result.stdout)
+        self.assertIn('gmail_account_ids', result.stdout)

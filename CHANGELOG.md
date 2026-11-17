@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.5.0 — 2026-11-18
+
+- Support one or multiple explicitly approved Gmail and Google Calendar accounts through the same Morning/Evening workflows. Verify each account, combine and deduplicate results, retain source identity, and report partial coverage without falling back to an unapproved account.
+- Setup, profile (v6), shared rules, Morning/Evening source routing, upgrade guidance, README and getting-started guide updated. Private upgrades confirm existing account scope before enabling multi-account reads; preserve all Calendar exclusions, notes, Ledger and other settings. No task, schedule, storage or approval-flow change. Public account fields remain empty; new static privacy checks reject populated or missing fields.
+- Static release and regression checks validate template consistency and blank account state. Actual multi-account access, identity routing and scheduled reads must be verified in the user's client; no private installation is automatically changed.
+
 ## 0.4.2 — 2026-11-18
 
 - Document the optional direct-edit tip for editable Markdown previews in `docs/GETTING_STARTED.md`. Clarify in `System/policies/artifacts.md` that only the final user-approved edited content may be saved; request a revised preview and approval if edits are inaccessible.

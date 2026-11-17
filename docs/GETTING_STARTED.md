@@ -22,4 +22,6 @@ For all three Morning/Evening/Extra, check **Notify when complete** under Schedu
 
 Notion: Morning creates an initial briefing containing a final protected Calendar ID section only in Notion; Evening creates a provisional Memory. Answer the three evening questions, inspect the full revised Memory, and approve it to update the same page. GitHub: inspect and approve Morning and Evening Markdown to save. Independent Ledger approval and text fallback are always available. Do not use provisional notes as confirmation.
 
+**Pro tip: Edit Markdown directly.** When an editable Markdown preview is available, double-click a word to edit it yourself instead of asking ChatGPT to rewrite minor corrections. Review and approve the final edited version before saving. If ChatGPT cannot access your edits, paste the revised Markdown or describe the changes for a new preview.
+
 Check for updates or ask to upgrade when desired. No automatic private migration or dual writes. See [storage adapters](../System/storage/notion.md), [GitHub](../System/storage/github.md) and [privacy](PRIVACY.md).

@@ -125,6 +125,7 @@ An explicit first-party instruction about a specific existing card's state (for 
 On an approved/authorized write:
 - start from a current Ledger when changing operational state;
 - freeze exact approved **user-visible** Daily artifact content before saving;
+- if the user edits an editable preview directly, save only the final approved edited content; if it is inaccessible, request the revised text or changes and fresh approval rather than saving the original;
 - do not re-retrieve/re-analyse/rewrite approved visible content for saving; only explicitly defined hidden machine metadata may be injected under its own contract;
 - apply only authorized/approved Ledger changes and preserve unrelated state/order/plugin settings where possible;
 - verify filename/location/type/non-zero/exact intended content and no conversation/citation leakage;

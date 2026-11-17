@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.4.2 — 2026-11-18
+
+- Document the optional direct-edit tip for editable Markdown previews in `docs/GETTING_STARTED.md`. Clarify in `System/policies/artifacts.md` that only the final user-approved edited content may be saved; request a revised preview and approval if edits are inaccessible.
+- No new mandatory preview, approval-flow, schema, state, permission or task change; no private migration required. Direct editing and access to edited text depend on the ChatGPT client. Static release and regression checks verify repository contracts, not client editing behavior.
+
 ## 0.4.1 — 2026-11-17
 
 - Reduce runtime dependencies: separate Notion/GitHub onboarding from adapters, move Kanban representation into GitHub adapter, consolidate shared artifact and approval rules, shorten upgrade and workflow instructions.

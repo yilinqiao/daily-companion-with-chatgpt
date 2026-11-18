@@ -10,6 +10,7 @@ For 0.4.0+ verify both storage adapters, unset Notion IDs/consent, explicit plan
 - [ ] Inspect all file contents, comments, examples and linked resources for names, emails, addresses, keys, tokens, private paths, personal amounts and identifiers.
 - [ ] Run python3 scripts/check_public_release.py and inspect any warnings.
 - [ ] Run applicable regressions and the committed-release version gate against the previous public commit; confirm the public CI job stays scoped to the source repository.
+- [ ] Review affected IDs in [Behavioral contracts](BEHAVIORAL_CONTRACTS.md) against the prior release; record scenario outcomes and distinguish static verification from observed client behavior.
 - [ ] Verify the Actions privacy-check workflow completes successfully.
 - [ ] Check GitHub public owner, commit author name/email, issue metadata and prior commits.
 - [ ] In Settings → General, enable **Template repository**.

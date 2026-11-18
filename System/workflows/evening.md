@@ -96,7 +96,7 @@ Present a short conversational **Evening Check-in**:
 
 Keep evidence bookkeeping internal. Calendar alone: ask if it happened when material; supporting evidence: state likely outcome and confirm if needed; exact-ID reschedule: state the move; contradiction: briefly explain and ask. Ask the smallest useful clarification. Do not narrate internal evidence thresholds.
 
-For Notion, with verified autosave consent, auto-save the provisional Diary-first Memory now using only current supported evidence and verify under storage/notion.md; no full Markdown draft yet. GitHub is read-only. Then show the ordinary conversation and end with these questions.
+For Notion, with verified autosave consent, auto-save the provisional Diary-first Memory now using only current supported evidence and verify under storage/notion.md; no full Markdown draft yet. If auto-save fails or is unauthorized, report that before the questions and continue the ordinary check-in; defer interactive save preview until answers. GitHub is read-only. Then show the ordinary conversation and end with these questions.
 
 Then ask these three general questions:
 
@@ -116,7 +116,7 @@ Record meaningful confirmed outcomes and handling decisions (including non-Ledge
 
 After answers, compose the complete Daily Memory using the six Diary-first sections in `artifacts.md`. Preserve all distinct surfaced capture links, meaningful reliably same-day highlights, reflections and corrected tomorrow preparation once, incorporating user corrections. Keep coverage diagnostics out of saved Memory. Carry forward only unresolved matters newly opened/updated/worked on today, moved into Waiting today, intended for today but unfinished, or agreed tonight; older untouched cards stay in Ledger.
 
-Present the full revised Markdown, independent concrete inferred Ledger delta and approval panel/text fallback under artifacts.md. Direct first-party card instructions retain their scoped authority. Do not ask for approval before answers; do not save a revision until submitted approval. For Notion edit the same initial page, or use the adapter's approved creation fallback if no page exists; verify before marking Edited.
+Preserve the user's own wording and meaning in Journal; lightly organize without replacing their voice. Before proposing a delta, fresh-read the Ledger after answers; if unavailable, continue Memory with no authoritative inferred Ledger delta. Present the full revised Markdown, independent concrete inferred Ledger delta when available, and approval panel/text fallback under artifacts.md. Direct first-party card instructions retain their scoped authority. Do not ask for approval before answers; do not save a revision until submitted approval. For Notion edit the same initial page, or use the adapter's approved creation fallback if no page exists; verify before marking Edited.
 
 ## 6. Write Boundary
 

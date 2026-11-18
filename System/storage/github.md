@@ -8,6 +8,8 @@ Scheduled runs are read/output only. Daily unique identity is configured filenam
 ```
 Keep comments hidden in previews; preserve existing historical linkage on edits. Before each write read current file and fresh SHA; stop on conflict, don't overwrite or duplicate Daily history, verify committed content/link. Capture pages use original slurped timestamp or reliably attributable repository commit timestamp; preserve links. Skip if no approved capture source.
 
+Include optional `account_id` in the same comment when the stable approved source account is known; never store session credentials. Retain older two-ID comments unchanged.
+
 ## Kanban representation
 
 Use the four fixed lists Action, Waiting, Upcoming, Closed. Current list position is authoritative; CLOSE changes [ ] to [x] and moves same card to top of Closed; REOPEN reverses checkbox and preserves ID/opened. Preserve order of unrelated cards and plugin settings.

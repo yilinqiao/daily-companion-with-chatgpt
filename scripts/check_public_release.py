@@ -14,7 +14,7 @@ required = [
     "VERSION", "CHANGELOG.md", "AGENTS.md", "System/upgrade.md",
     "System/maintenance.md", "scripts/check_release_version.py",
     "System/storage/notion.md", "System/storage/github.md",
-    "System/setup/notion.md", "System/setup/github.md",
+    "System/setup/notion.md", "System/setup/github.md", "docs/BEHAVIORAL_CONTRACTS.md",
 ]
 problems = []
 for name in required:

@@ -64,7 +64,7 @@ GitHub includes YAML and H1; Notion uses native properties and body without dupl
 
 ### Calendar identity (both backends)
 
-Freeze exact connector calendar_id + event_id for each approved Calendar line during Morning. Never show IDs, `dc-calendar` comments or the protected identity section in any user-facing preview. The selected adapter owns serialization. If frozen mapping is unavailable, re-read only the original local day across the same included calendars; match original title plus exact original start/end uniquely, with already-approved visible details only as disambiguation. If moved, disappeared, changed, incomplete or ambiguous, omit identity rather than guessing. Never refresh approved visible text. Preserve original linkage during revisions; verify exact connector IDs, visible content and original linkage after save. Identity is for Evening reconciliation, not Ledger state.
+Freeze exact connector calendar_id + event_id and stable approved account_id when available for each approved Calendar line during Morning. Older two-ID records remain valid; resolve access through approved accounts only. Never show IDs, `dc-calendar` comments or the protected identity section in any user-facing preview. The selected adapter owns serialization. If frozen mapping is unavailable, re-read only the original local day across the same included calendars; match original title plus exact original start/end uniquely, with already-approved visible details only as disambiguation. If moved, disappeared, changed, incomplete or ambiguous, omit identity rather than guessing. Never refresh approved visible text. Preserve original linkage during revisions; verify exact connector IDs, visible content and original linkage after save. Identity is for Evening reconciliation, not Ledger state.
 
 ## 3. Daily Memory Schema
 
@@ -123,6 +123,7 @@ Except initial Notion auto-save under standing setup authorization, do not save 
 An explicit first-party instruction about a specific existing card's state (for example “this is done”, “we're waiting”, “keep this open”, “move this to Upcoming”) is itself authorization for that specific Ledger state change in an interactive turn; do not require a redundant second approval. A manual Kanban move already present in the file is likewise authoritative state, not a proposal.
 
 On an approved/authorized write:
+- fresh-read private instructions, profile, relevant workflow, artifact policy, selected adapter and applicable Ledger rules; revalidate destination, current consent and scope, without broad source refresh. If required rules are unavailable, stop affected writes. If current rules, destination, artifact or delta change the approved operation, seek fresh approval before writing;
 - start from a current Ledger when changing operational state;
 - freeze exact approved **user-visible** Daily artifact content before saving;
 - if the user edits an editable preview directly, save only the final approved edited content; if it is inaccessible, request the revised text or changes and fresh approval rather than saving the original;

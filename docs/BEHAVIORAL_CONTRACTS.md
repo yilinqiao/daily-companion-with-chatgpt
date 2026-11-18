@@ -1,0 +1,26 @@
+# Behavioral contracts
+
+Maintenance-only regression baseline, not a runtime dependency. A shorter rule must preserve its outcome. Before every release, compare changed rules with the previous release and these scenarios; record affected IDs, expected/observed outcomes and remaining untested capabilities in the release review. Change a contract only for an explicitly approved behavior change. Do not copy this checklist into scheduled prompts or private runtime instructions.
+
+| ID | Canonical owner | Scenario and required outcome |
+| --- | --- | --- |
+| BC-01 | `System/setup.md` | New user starts onboarding: verify pinned release, ask only the fixed questions, one at a time; resume confirmed answers without inventing questions. |
+| BC-02 | `System/setup.md`, `System/workflows/morning.md` | Work 09:00–17:00, plan 07:00–21:00: work occupied, before/after work available subject to Calendar; show events outside window; never silently default null. |
+| BC-03 | `System/setup/notion.md`, `System/setup/github.md` | No Notion account: offer Google signup and scoped connection; verify actual data sources/views/read-write readiness. GitHub alternative private template only; no duplicate or false success. |
+| BC-04 | `System/policies/rules.md`, `System/workflows/morning.md` | Two approved accounts, one unavailable: report incomplete coverage; retain provenance, dedupe, never use an unapproved account or claim empty. |
+| BC-05 | `System/workflows/morning.md`, `System/policies/rules.md` | Yesterday has Auto-Saved Memory but Calendar was partial or candidate unresolved; or yesterday was complete but the preceding day was missed: assess every date independently, recover only coverage/reconciliation gaps, bounded seven days, independent financial look-back. Never infer closure. |
+| BC-06 | `System/policies/rules.md`, `System/workflows/morning.md` | Same issue appears in email, calendar and Ledger; a separate card is snoozed. Reconcile against all Ledger rows, show eligible issue once; do not routinely surface snoozed/closed cards. Honor confirmed decisions and standing precedents. |
+| BC-07 | `System/policies/artifacts.md`, `System/storage/notion.md`, `System/storage/github.md` | Event moved after Morning: use original protected calendar/event identity, approved account only; if ambiguous, omit identity; preserve prior linkage and never leak IDs. |
+| BC-08 | `System/workflows/evening.md` | Initial auto-save denied, missing Morning, or partial read: ordinary check-in still ends with all three questions and invitation; no full revision preview before answers. |
+| BC-09 | `System/workflows/evening.md`, `System/policies/artifacts.md` | User adds diary, corrections and capture links: preserve voice and unique meaningful content, six Diary-first slots, today-scoped carry-forward; no fabricated cross-chat coverage. |
+| BC-10 | `System/policies/artifacts.md`, `System/storage/notion.md` | Save Memory selected, Ledger not selected: only Memory write. Re-fetch current private rules and state before write, seek new approval if changed; no saving stale/inaccessible directly edited preview. |
+| BC-11 | `System/storage/notion.md`, `System/storage/github.md` | Existing Daily record or uncertain result on retry: fresh complete exact lookup, same-page/file revision only after consent; no duplicate/overwrite or false Edited/save claim. |
+| BC-12 | `System/policies/artifacts.md`, `System/storage/notion.md`, `System/policies/rules.md` | User adds a property or changes a card during check-in: inspect actual schema and fresh Ledger after answers and before writing; respect direct specific authorization; no invented options, inferred changes without consent or reconstructed state. |
+| BC-13 | `System/setup.md`, `System/daily_companion_extra.md`, `System/policies/artifacts.md` | Scheduled Extra paused/nonmatching day: silent; invalid state/unknown occurrence: report failure; no scheduled writes, catch-up or future pattern disclosure. Combined task never runs both branches. |
+| BC-14 | `System/upgrade.md` | New release detected: read-only notification; verify immutable candidate and installed baseline, compare concrete diff, preserve customization/history, stop downgrade or incompatible upgrade. No automatic install. |
+| BC-15 | `System/upgrade.md`, `System/setup/github.md` | Upgrade fails mid-write or marker mismatches: leave affected suspended tasks suspended, report partial, verify pending repair before resume; semver and SHA are distinct. No state reset. |
+| BC-16 | `System/workflows/morning.md`, `System/workflows/evening.md`, `System/policies/artifacts.md` | Sunday recap uses saved Monday–Saturday evidence with provisional/gap labels; weather is approved and useful, including tomorrow outdoor prep; one non-weather flavour if enabled. No invented observations or duplicate operational reminders. |
+
+## Verification
+
+Run the public release checker and all static regression tests. Walk through affected scenarios against the pinned candidate, including both backends where relevant and failure paths. Static checks catch missing explicit rules but do not prove an assistant follows them. Real account onboarding, connector access, interactive approval and scheduled execution require observed client runs; record these separately, never claim them from a paper walkthrough or green CI.

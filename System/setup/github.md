@@ -2,7 +2,7 @@
 
 Create a private template copy via Use this template (never fork); Obsidian optional. Confirm ownership/private visibility, scoped read/write access, canonical repository paths and approval. No Notion connection required.
 
-After approval, initialize and verify one file at a time with fresh content SHA; stop on conflict, access or read-back failure. Reuse already-correct files on retry; preserve existing cards/notes/settings. Existing installs use upgrade.md, not onboarding.
+After approval, verify the actual template copy's VERSION and source-owned files match the pinned upstream before initialization; on retry, allow only already verified approved initialization differences. Stop on mismatch and resolve the concrete diff, not just the label. Initialize and verify one file at a time with fresh content SHA; stop on conflict, access or read-back failure. Reuse already-correct files on retry; preserve existing cards/notes/settings. Existing installs use upgrade.md, not onboarding; missing files need scoped repair.
 
 1. Populate private profile with approved settings/sources and capture mapping, storage_backend: github, valid planning window, Notion IDs null and consent false; setup_complete:false. Verify all applicable approved values and no unresolved required placeholders on read-back.
 2. Initialize empty Ledger with the four lists and adapter's Kanban contract unless user explicitly approves seeding. Verify. Initialize Extra anchor_monday and weekday_pattern according to engine; keep enabled preference and existing valid state. Verify.

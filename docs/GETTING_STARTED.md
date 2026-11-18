@@ -2,7 +2,7 @@
 
 ## 1. Start onboarding
 
-Use the public repository's System/setup.md, not a private copy of someone else's notes. Copy the prompt from the [README](../README.md). Setup asks one question at a time, including your personal planning window separately from work hours, then communication style and storage.
+Use the public repository's System/setup.md, not a private copy of someone else's notes. Copy the prompt from the [README](../README.md). Setup follows a closed questionnaire, one question at a time, including the full daily planning window (e.g. 07:00–21:00) separately from work hours, then language, communication style and storage.
 
 ## 2. Choose storage
 

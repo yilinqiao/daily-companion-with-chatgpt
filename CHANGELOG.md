@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.5.4 — 2026-11-18
+
+- Require independent Evening and Extra Scheduled Tasks, removing the optional combined occurrence router. If task capacity is limited, explicitly choose and report partial activation. Evening with an uncertain target date still reports the issue and asks all three capture questions, without writes; Extra retains its independent read-only engine.
+- Update setup, upgrade and BC-13 plus static regression coverage. For existing combined tasks, propose an explicitly approved split preserving local times, pause status, notification preferences, history and Extra cadence/feedback; already separate tasks need no migration. No schema or data migration; both storage adapters and approval boundaries are unchanged.
+- Regression review: BC-08 and BC-13 cover date/connector failure, independent workflow identity, task limits and legacy split approval; local privacy/structure, release-version and static regression checks are required. Actual scheduled activation, output, notifications and connector persistence remain client validation.
+
 ## 0.5.3 — 2026-11-18
 
 - Restore bounded Calendar recovery on incomplete coverage/unsolved candidates (even after Auto-Saved Memory), reconcile all examined dates, and preserve independent financial recovery. Restore explicit Notion runtime field mapping and optional protected Calendar account provenance (old two-ID records remain valid).

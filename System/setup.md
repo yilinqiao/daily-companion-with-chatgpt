@@ -28,7 +28,7 @@ This is a closed questionnaire: ask only the listed onboarding questions in orde
 
 ## 2. Check connectors and approve setup
 
-For each approved Gmail/Calendar service, ask whether to connect or include other accounts (one question per turn). Guide additional connections where supported. Let the user select accounts, verify each selected account's stable authenticated profile ID and the read below, and record only verified, explicitly approved IDs as quoted strings in the private `gmail_account_ids` / `calendar_account_ids` lists. One account works identically; declined services use empty lists. Never silently include newly connected accounts. Show the selected accounts and any failed access in the final approval summary; verify coverage per account on the first real scheduled run.
+For each approved Gmail/Calendar service, ask whether to connect or include other accounts (one question per turn). Guide additional connections where supported. Let the user select accounts, verify each selected account's stable authenticated profile ID and the read below, and record only verified, explicitly approved IDs as quoted strings in the private `gmail_account_ids` / `calendar_account_ids` lists. Never store session tokens, credentials or verification codes. One account works identically; declined services use empty lists. Never silently include newly connected accounts. Show the selected accounts and any failed access in the final approval summary; verify coverage per account on the first real scheduled run.
 
 ### Google Calendar — only after user permission
 
@@ -77,11 +77,11 @@ Substitute actual private identifiers, never placeholders. Notion prompts pin ex
 
 ### Morning Companion task instruction
 
-Run Morning Companion from the configured private workflows/morning.md. Follow its current artifact and storage rules.
+Run Morning Companion from the configured private workflows/morning.md. Follow its current artifact and storage rules, including fresh-read before interactive writes.
 
 ### Evening Companion task instruction
 
-Run Evening Companion from the configured private workflows/evening.md. Follow its current artifact and storage rules; end with all three required capture questions and invite reply. After answers, follow independent approval protocol. If the occurrence is known but required private instructions cannot be fetched, no writes; explain briefly, ask these three questions and invite reply here; keep answers as a conversational draft until rules are accessible:
+Run Evening Companion from the configured private workflows/evening.md. Follow its current artifact and storage rules; end with all three required capture questions and invite reply. After answers, follow independent approval protocol, including fresh-read before interactive writes. If the occurrence is known but required private instructions cannot be fetched, no writes; explain briefly, ask these three questions and invite reply here; keep answers as a conversational draft until rules are accessible:
 1. What got done today that may not be visible in Calendar, Gmail or your saved notes?
 2. Did anything new open, close, get cancelled, get scheduled, or otherwise change today that I may not know about?
 3. Anything else from today worth capturing?
@@ -93,7 +93,7 @@ Fetch private daily_companion_extra.md and profile only; follow shared read-only
 
 ### Combined Evening + Extra task instruction (optional)
 
-Embed confirmed distinct local occurrence times, timezone and exact private entrypoint links. Route only by the actual scheduled occurrence, not when execution starts. On Extra occurrence use only the Extra prompt above; on Evening occurrence use the Evening prompt above, including its three-question fallback. If occurrence is unknown or matches neither/both, stop without reads beyond routing or writes. Never run both workflows at one occurrence.
+Embed confirmed distinct local occurrence times, timezone and exact private entrypoint links. Route only by the actual scheduled occurrence, not when execution starts. On Extra occurrence use only the Extra prompt above; on Evening occurrence use the Evening prompt above, including its three-question fallback. If occurrence is unknown or matches neither/both, report the material routing failure without reads beyond routing or writes. Never run both workflows at one occurrence. The combined task shares one notification setting; confirm that trade-off before activation.
 
 ### Daily Companion Update Watch task instruction
 

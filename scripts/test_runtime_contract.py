@@ -33,7 +33,7 @@ class RuntimeContracts(unittest.TestCase):
 
     def test_saved_checkpoint_is_not_confirmation(self):
         morning = (ROOT / 'System/workflows/morning.md').read_text()
-        self.assertIn('first successfully saved Daily Memory', morning)
+        self.assertIn('saved Daily Memory with positive evidence', morning)
         self.assertIn('not evidence of confirmation or closure', morning)
         self.assertIn('independent', morning.lower())
 

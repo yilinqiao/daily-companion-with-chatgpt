@@ -12,6 +12,7 @@ This is the entrypoint for maintaining the canonical public template `yilinqiao/
 1. Verify the destination is the intended public source. Read root `AGENTS.md`, `VERSION`, `CHANGELOG.md`, `System/upgrade.md` and the existing files affected by the request. Resolve the current branch head and pin reads to that commit.
 2. Understand the requested behaviour, compatibility and state ownership. Keep public examples generic and state fields null/empty. User customization and active data belong only in private copies.
 3. Choose the next template version under the changelog's policy. Runtime file schema versions are independent. Older unversioned installations must remain supported through a conservative file comparison.
+4. Read `docs/BEHAVIORAL_CONTRACTS.md` and compare affected behaviors with the previous release; preserve contracts unless the user explicitly approves a behavioral change. This is a maintenance check, not a runtime dependency.
 
 ## Every public update
 
@@ -24,6 +25,7 @@ This is the entrypoint for maintaining the canonical public template `yilinqiao/
 ## Verify and publish
 
 - Run `python -B scripts/check_public_release.py` and regression checks appropriate to the change. Inspect diffs for private data; automated heuristics do not prove complete PII removal.
+- Review affected behavioral scenarios, including failure paths and both backends where relevant. Record contract IDs, results and untested runtime capabilities in release notes/review; static tests are not live execution evidence.
 - On a release PR, run `python -B scripts/check_release_version.py --base <target-main-commit>`. CI checks privacy/structure and regressions on PRs and `main` pushes, and checks the cumulative version/notes delta on PRs only. Work-in-progress feature-branch pushes do not trigger CI. The version unit test checks that the current `VERSION` has exactly one valid dated changelog entry on every run. Direct-to-main pushes do not enforce a version bump, so use PRs for releases; do not mistake source commits for a published version. A branch with history but no dependable baseline requires an explicit base, never a tip-only comparison.
 - CI reports a failing check; repository protection settings determine whether that blocks merging. A workflow does not undo an already accepted direct push. Do not describe these checks as automatic branch protection.
 - GitHub can package multiple changed files into one commit; GPT integrations that update files sequentially should stage those commits on a branch and squash-merge after successful PR CI. Use a normal commit/ref update with an expected current head; inspect concurrency conflicts rather than overwriting them. Stop and report any safety/access block.

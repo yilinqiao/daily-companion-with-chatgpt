@@ -2,6 +2,12 @@
 
 Use only the configured private suite, System index and source IDs. Never switch stores on failure. For installation see `System/setup/notion.md` (not a runtime dependency).
 
+## Runtime field mapping
+
+- Daily: `File name` = title, `As of` = local artifact date, `Category` = exactly one of `Morning briefing` / `Evening memory`, `Status` = Auto-Saved / Edited / Imported. Native Created and Last edited are storage timestamps; do not substitute them for an original generation date/time.
+- Ledger: `Name` = title, `Task ID` = immutable id, `Details` = next step/context, `Status` = lifecycle list, `Opened` = opened, `Closed On` = closed, `Due` = due, `Revisit` = revisit, `Resolution` = resolution, `Scope` = scope, `Standing Until` = standing_until, `Source` = source, `Category` / `Tag` = user-defined classification. Responsibility belongs in Details where useful.
+- System: `System file name` = logical path, `version` = numeric page revision. Use verified private mappings for customized properties; never guess missing mappings or change schema during runtime.
+
 ## Read and identity
 
 - Prefer verified saved views and paginate every page using has_more / next_cursor or the equivalent connector mechanism. Read recent Daily records via Last 7 days when available; ensure all seven previous local dates are covered. For exact identity use the unfiltered Daily Briefing & Memory view sorted newest first, query the specific dates/category or scan until past the target; never infer absence from a truncated or filtered view. Use targeted SQL only if necessary and supported.
@@ -13,9 +19,9 @@ Use only the configured private suite, System index and source IDs. Never switch
 
 With persisted notion_daily_autosave_authorized:true, create only the run's initial Daily page (Status Auto-Saved, date, category, title and body). No overwrite on replay, including existing Auto-Saved, Edited or Imported pages. Verify exact row identity, date, category, status and body before claiming saved. If missing consent, use approved interactive save only. Never scheduled Ledger mutations. Report actual partial failure and offer interactive recovery; never cross-store backup.
 
-Notion uses native title/date/category/status properties; omit GitHub YAML and duplicate H1 from its body. Preview the exact visible body for interactive approval.
+Notion uses native title/date/category/status properties; omit GitHub YAML and duplicate H1 from its body. For new Morning Briefings retain the configured-timezone generation timestamp as a short visible line in the body; preserve original timestamps on revisions, never invent missing historical values. Preview the exact visible body for interactive approval.
 
-Morning: append a final Notion-only `Calendar ID` section with original title/start/end, exact calendar_id + event_id and provider link when available, one per confidently mapped event. Use the common narrow identity-recovery contract in artifacts.md. If no identity, distinguish no events from incomplete retrieval/identity. Never expose this section or its IDs in chat. Preserve it unchanged on every revision; Evening reads it for exact event lookup first. If missing on an old page, report incomplete linkage; repair only with explicit approval and uniquely recoverable original identity.
+Morning: append a final Notion-only `Calendar ID` section with original title/start/end, exact calendar_id + event_id, stable approved account_id and provider link when available, one per confidently mapped event. Use the common narrow identity-recovery contract in artifacts.md. If no identity, distinguish no events from incomplete retrieval/identity. Never expose this section or its IDs in chat. Preserve it unchanged on every revision; Evening reads it for exact event lookup first. If missing on an old page, report incomplete linkage; repair only with explicit approval and uniquely recoverable original identity.
 
 Evening: initial Auto-Saved Diary-first Memory before ordinary check-in; no initial full Markdown preview. Interactive revision after answers follows artifacts.md: fresh-read correct page, reconcile intervening edits with fresh approval, update same page and verify exact normalized visible content and protected metadata before setting Status Edited; read back status and identity. Do not claim Edited on partial failure. Same revision procedure for Morning. Keep provisional evidence distinct from confirmation.
 

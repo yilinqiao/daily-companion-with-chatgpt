@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.5.3 — 2026-11-18
+
+- Restore bounded Calendar recovery on incomplete coverage/unsolved candidates (even after Auto-Saved Memory), reconcile all examined dates, and preserve independent financial recovery. Restore explicit Notion runtime field mapping and optional protected Calendar account provenance (old two-ID records remain valid).
+- Keep all three Evening questions when auto-save fails; defer preview, preserve diary voice, fresh-read Ledger after answers and private rules/consent before interactive writes. Distinguish Extra no-op silence from actionable failure, and clarify combined-task notification trade-off.
+- Tighten pinned setup and upgrade integrity, semver/SHA markers and partial-failure task suspension. No mandatory schema or state migration; private installs may adopt updated instructions and prompts through approved upgrade, preserving existing data.
+- Add maintenance-only behavioral contracts (BC-01–16), release review and static regression sentinels. Review BC-04/05/07–15 for this release; unchanged onboarding/planning, dedupe and weekly/flavour contracts remain covered by existing regressions. Actual onboarding, scheduled access and approval behavior remain unverified in a live client.
+
 ## 0.5.2 — 2026-11-18
 
 - Enforce a closed onboarding questionnaire, verify and identify the public release before asking questions, and resume from valid confirmed answers without invented preferences. Align startup prompts across setup, README and HTML; update the getting-started guide.

@@ -6,6 +6,22 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 class RuntimeContracts(unittest.TestCase):
+    def test_onboarding_bootstrap_uses_closed_questionnaire(self):
+        setup = (ROOT / 'System/setup.md').read_text()
+        prompt = setup.split('```text\n', 1)[1].split('\n```', 1)[0]
+        self.assertIn('Do not invent questions', prompt)
+        self.assertIn('stop if you cannot verify the current source', prompt)
+        for name in ('README.md', 'docs/setup-guide.html'):
+            self.assertIn(prompt, (ROOT / name).read_text())
+        self.assertIn('closed questionnaire', setup)
+        self.assertIn('preserve valid confirmed answers', setup)
+
+    def test_day_planning_question_keeps_existing_fields(self):
+        setup = (ROOT / 'System/setup.md').read_text()
+        question = next(line for line in setup.splitlines() if line.startswith('4. '))
+        for phrase in ('Daily planning window', 'help you plan your day', '07:00–21:00', 'planning_window_start', 'planning_window_end', 'never default either to null', 'Fixed working hours'):
+            self.assertIn(phrase, question)
+
     def test_notion_signup_at_storage_choice(self):
         setup = (ROOT / 'System/setup.md').read_text()
         choice = next(line for line in setup.splitlines() if line.startswith('7. Storage choice:'))

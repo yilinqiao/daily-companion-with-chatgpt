@@ -5,20 +5,20 @@ schema_version: 3
 
 # Daily Companion Setup
 
-Read the canonical public release at one verified immutable commit, including VERSION, CHANGELOG.md, AGENTS.md, maintenance.md and upgrade.md. Never personalize the public source. Notion is recommended; private GitHub with optional Obsidian remains an alternative. A new user can start with:
+Before asking the first question, fetch this file and the canonical public release at one verified immutable default-branch commit, including VERSION, CHANGELOG.md, AGENTS.md, maintenance.md and upgrade.md. Report the verified version and short commit SHA. If retrieval or verification fails, stop and explain how to restore source access; never reconstruct the questionnaire. Never personalize the public source. Notion is recommended; private GitHub with optional Obsidian remains an alternative. A new user can start with:
 
 ```text
-Read System/setup.md from yilinqiao/daily-companion-with-chatgpt and guide me through setup, one question at a time. Do not write personal data or activate tasks until I approve the respective summary.
+Read the current System/setup.md from https://github.com/yilinqiao/daily-companion-with-chatgpt/blob/main/System/setup.md, verify its release, and guide me through exactly its onboarding questions, one at a time. Do not invent questions; stop if you cannot verify the current source. Do not write personal data or activate tasks until I approve the respective summary.
 ```
 
 ## 1. Onboarding
 
-Ask exactly one question per turn. Do not infer answers from connected sources. Explain defaults and obtain confirmation. If an existing installation is detected, preserve it and use upgrade.md; never reset or duplicate state. Do not preview surprise dates. Collect in this order:
+This is a closed questionnaire: ask only the listed onboarding questions in order, the specified connector/setup/approval questions, and necessary clarifications of those fields. Adapt wording, not meaning. Do not add preference surveys (weekend activities, briefing topics, news, learning, fitness or long-term goals); do not turn defaults into questions. User-requested customization is separate from setup. Ask exactly one question per turn and wait for the answer. On resume or drift, re-read the verified setup, preserve valid confirmed answers, ignore unrequested extra fields and continue with the next unanswered required question. Do not infer answers from connected sources. Explain defaults and obtain confirmation. If an existing installation is detected, preserve it and use upgrade.md; never reset or duplicate state. Do not preview surprise dates. Collect in this order:
 
 1. Preferred name: What would you like me to call you?
 2. Normal location: Where are you normally based? Resolve/confirm region and IANA timezone; weather_location defaults to normal_location.
 3. Regular work schedule: fixed hours, variable shifts, or no regular schedule? For fixed, separately ask usual working days/hours. Never infer work times.
-4. Personal planning window: What hours of the day should I consider when suggesting personal activities, including before and after work? Example 07:00–21:00. Obtain an explicit start/end (local HH:MM, start before end); never default either to null. Only if the user explicitly declines personal time suggestions, save both null. Fixed working hours and Calendar commitments still occupy time; all actual Calendar events are shown regardless of window. For variable/unknown shifts don't assume availability.
+4. Daily planning window: From what time to what time would you like Daily Companion to help you plan your day? For example, 07:00–21:00. This covers the whole day, including work and before/after work, not just free time. Obtain an explicit local HH:MM start/end (start before end); store `planning_window_start` and `planning_window_end`, never default either to null. Only if the user explicitly declines planning suggestions, save both null. Fixed working hours and Calendar commitments still occupy time; all actual Calendar events are shown regardless of window. For variable/unknown shifts don't assume availability.
 5. Output language: Which language should I normally use?
 6. Communication style: How would you like the Companion to sound?
 7. Storage choice: Would you like to use Notion (recommended) or GitHub? Explain Notion's auto-save and native databases/views vs private GitHub's interactive Markdown saves and optional Obsidian. If the user has no Notion account, offer signup with a Google account and guide them through setup/notion.md if they choose Notion. Follow only the selected onboarding guide; help connect and verify access. If GitHub selected, guide creation of private template copy (never fork); if Notion chosen, identify the private parent/suite. No dual writes.

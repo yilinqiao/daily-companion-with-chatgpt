@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.5.2 — 2026-11-18
+
+- Enforce a closed onboarding questionnaire, verify and identify the public release before asking questions, and resume from valid confirmed answers without invented preferences. Align startup prompts across setup, README and HTML; update the getting-started guide.
+- Reword the daily planning window as the full day to plan (e.g. 07:00–21:00, including work); keep the existing start/end fields, explicit confirmation, occupancy rules and opt-out. No runtime, schema, schedule or private migration required. Static regression checks cover the prompt contract; actual ChatGPT onboarding behavior requires interactive testing.
+
 ## 0.5.1 — 2026-11-18
 
 - Offer Google-account Notion signup at the storage-choice question; guide new Notion users through their own signup before connection and scoped permission verification. GitHub remains optional.

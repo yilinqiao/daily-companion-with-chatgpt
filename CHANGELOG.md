@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.5.1 — 2026-11-18
+
+- Offer Google-account Notion signup at the storage-choice question; guide new Notion users through their own signup before connection and scoped permission verification. GitHub remains optional.
+- Update setup, Notion onboarding, README and both getting-started guides. No runtime, schema, schedule or private migration required; signup and connector access are confirmed by the user. Static release and regression checks cover the onboarding contract.
+
 ## 0.5.0 — 2026-11-18
 
 - Support one or multiple explicitly approved Gmail and Google Calendar accounts through the same Morning/Evening workflows. Verify each account, combine and deduplicate results, retain source identity, and report partial coverage without falling back to an unapproved account.

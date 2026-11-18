@@ -6,7 +6,7 @@ Use the public repository's System/setup.md, not a private copy of someone else'
 
 ## 2. Choose storage
 
-**Notion (recommended):** connect Notion in ChatGPT and grant the private suite the necessary full read/write and schema/view access. Setup verifies access, requests approval, creates or reuses the System, Daily Briefing & Memory, and Action Ledger data sources and their views, and checks read-back. If the connector cannot create/verify views, setup guides you through the missing operation. You do not need a private GitHub repository.
+**Notion (recommended):** no account yet? [Sign up for Notion](https://app.notion.com/signup) using your Google account. Then connect Notion in ChatGPT and grant the private suite the necessary full read/write and schema/view access. Setup verifies access, requests approval, creates or reuses the System, Daily Briefing & Memory, and Action Ledger data sources and their views, and checks read-back. If the connector cannot create/verify views, setup guides you through the missing operation. You do not need a private GitHub repository.
 
 **GitHub (alternative):** on the public source choose Use this template → Create a new repository → Private. Do not fork the public repository for personal information. Connect GitHub and allow read/write access to your private copy. Obsidian is optional, see the [GitSync guide](../Resources/Obsidian%20GitHub%20GitSync%20Setup.md). Setup verifies each approved private write.
 

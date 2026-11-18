@@ -33,6 +33,19 @@ class BehavioralContracts(unittest.TestCase):
         self.require('System/daily_companion_extra.md', 'report a material failure',
                      'before anchor, or not the chosen weekday, stop silently')
 
+    def test_evening_and_extra_have_independent_task_identity(self):
+        setup = (ROOT / 'System/setup.md').read_text()
+        activation = setup.split('## 4. Activate Scheduled Tasks', 1)[1]
+        self.assertIn('Never combine Evening and Extra', activation)
+        self.assertIn('report partial activation', activation)
+        self.assertNotIn('### Combined Evening + Extra task instruction', activation)
+        evening = activation.split('### Evening Companion task instruction', 1)[1].split('### Daily Companion Extra task instruction', 1)[0]
+        self.assertIn('target date cannot be verified', evening)
+        self.assertIn('no writes', evening)
+        self.assertIn('ask these three questions', evening)
+        self.require('System/upgrade.md', 'existing combined Evening + Extra',
+                     'explicit task-activation approval', 'preserve Extra state')
+
     def test_upgrade_pins_and_labels(self):
         self.require('System/upgrade.md', 'same immutable candidate SHA',
                      'stop on downgrade', 'installed_template_version to the verified candidate semver',

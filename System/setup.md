@@ -67,7 +67,7 @@ Follow System/setup/notion.md or System/setup/github.md exclusively, with its se
 
 ## 4. Activate Scheduled Tasks
 
-After reporting verified readiness, obtain separate explicit task activation approval. Inspect existing tasks and reuse correct matches with same private destination/entrypoint. Do not duplicate, enable paused tasks, or claim enabled equals working. Recommended four tasks: Morning at confirmed time; Evening at confirmed time; Daily Companion Extra daily 19:00 local condition-watch; Daily Companion Update Watch daily 06:00 local condition-watch. Confirm actual time zones and schedules. If slots are limited, user may explicitly approve combining Evening + Extra with distinct daily occurrences only if actual scheduled occurrence is reliably distinguishable (even if delayed), otherwise keep separate; if unavailable report partial activation. Never route by delayed start time; when occurrence/date is uncertain stop without writes or wrong branch. No dependency on successful earlier task: Morning reads prior Daily history/Ledger; Evening reads today's Morning snapshot if available; missing snapshot means use current evidence, not invent it. Extra and Watch run independently of either. Never run an automatic catch-up that overwrites a saved date.
+After reporting verified readiness, obtain separate explicit task activation approval. Inspect existing tasks and reuse correct matches with same private destination/entrypoint. Do not duplicate, enable paused tasks, or claim enabled equals working. Recommended four tasks: Morning at confirmed time; Evening at confirmed time; Daily Companion Extra daily 19:00 local condition-watch; Daily Companion Update Watch daily 06:00 local condition-watch. Confirm actual time zones and schedules. Never combine Evening and Extra: each task has one fixed workflow identity. If slots are limited, ask the user which independent tasks to activate and report partial activation. Resolve the target local date from the scheduled occurrence, not delayed start time; do not write on an uncertain date. No dependency on successful earlier task: Morning reads prior Daily history/Ledger; Evening reads today's Morning snapshot if available; missing snapshot means use current evidence, not invent it. Extra and Watch run independently of either. Never run an automatic catch-up that overwrites a saved date.
 
 For Notion, only with persisted autosave consent, initial Morning Briefing and Evening provisional Memory autosave are authorized scheduled writes; no Ledger or Calendar/Gmail writes. Verify first actual runs and page read-back; report scheduled persistence not yet verified until observed. For GitHub all scheduled runs remain read-only. For either backend, Extra and Update Watch never write. No fabricated pre-activation scheduled write test. If an intended scheduled capability is denied, stop that affected task and report; unrelated tasks may proceed after approval.
 
@@ -81,19 +81,15 @@ Run Morning Companion from the configured private workflows/morning.md. Follow i
 
 ### Evening Companion task instruction
 
-Run Evening Companion from the configured private workflows/evening.md. Follow its current artifact and storage rules; end with all three required capture questions and invite reply. After answers, follow independent approval protocol, including fresh-read before interactive writes. If the occurrence is known but required private instructions cannot be fetched, no writes; explain briefly, ask these three questions and invite reply here; keep answers as a conversational draft until rules are accessible:
+Run Evening Companion only from the configured private workflows/evening.md. Follow its current artifact and storage rules; end with all three required capture questions and invite reply. After answers, follow independent approval protocol, including fresh-read before interactive writes. If the target date cannot be verified or required private instructions cannot be fetched, no writes; explain briefly, ask these three questions and invite reply here; keep answers as a conversational draft until date and rules are verified:
 1. What got done today that may not be visible in Calendar, Gmail or your saved notes?
 2. Did anything new open, close, get cancelled, get scheduled, or otherwise change today that I may not know about?
 3. Anything else from today worth capturing?
-Translate to configured output language if known. If occurrence is uncertain, stop without choosing a branch.
+Translate to configured output language if known. Never execute Extra from this task.
 
 ### Daily Companion Extra task instruction
 
 Fetch private daily_companion_extra.md and profile only; follow shared read-only Auto Mode. If Auto Mode stops silently, do not notify the user.
-
-### Combined Evening + Extra task instruction (optional)
-
-Embed confirmed distinct local occurrence times, timezone and exact private entrypoint links. Route only by the actual scheduled occurrence, not when execution starts. On Extra occurrence use only the Extra prompt above; on Evening occurrence use the Evening prompt above, including its three-question fallback. If occurrence is unknown or matches neither/both, report the material routing failure without reads beyond routing or writes. Never run both workflows at one occurrence. The combined task shares one notification setting; confirm that trade-off before activation.
 
 ### Daily Companion Update Watch task instruction
 

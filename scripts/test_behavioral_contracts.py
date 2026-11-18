@@ -13,7 +13,8 @@ class BehavioralContracts(unittest.TestCase):
 
     def test_recovery_requires_positive_coverage(self):
         self.require('System/workflows/morning.md', 'positive evidence',
-                     'candidate reconciliation', 'each examined date', 'cap at 7')
+                     'candidate reconciliation', 'each examined date', 'cap at 7',
+                     'A newer complete date cannot hide an older gap')
 
     def test_runtime_notion_mapping(self):
         self.require('System/storage/notion.md', 'File name', 'As of',

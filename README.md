@@ -29,7 +29,7 @@ Answer the questions about name, location, work schedule, personal planning hour
 | Evening | Auto-save provisional Memory; approve revision of same page | Approve full Memory before any save |
 | Ledger | Status board, unfiltered audit incl. Closed | Kanban Markdown board |
 | Surprise | Read-only weekly pattern | Same read-only weekly pattern |
-| Setup | Connect Notion and allow required read/create/update/query/schema/view operations on private suite | Use this template → Create a new repository → Private; never use public fork |
+| Setup | [Sign up with Google](https://app.notion.com/signup) if needed; connect Notion and allow required operations on private suite | Use this template → Create a new repository → Private; never use public fork |
 
 No personal GitHub repository is needed for Notion, but setup and update checks need read access to the public template. The setup creates and verifies private data sources and views where supported, or shows the missing connector operation and guides you through it. No cross-store failover. Calendar and Gmail are optional read-only sources; select one or multiple verified accounts where supported. Cross-chat context is incomplete and opt-in.
 

@@ -6,6 +6,15 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 class RuntimeContracts(unittest.TestCase):
+    def test_notion_signup_at_storage_choice(self):
+        setup = (ROOT / 'System/setup.md').read_text()
+        choice = next(line for line in setup.splitlines() if line.startswith('7. Storage choice:'))
+        for phrase in ('no Notion account', 'Google account', 'setup/notion.md'):
+            self.assertIn(phrase, choice)
+        notion = (ROOT / 'System/setup/notion.md').read_text()
+        for phrase in ('https://app.notion.com/signup', 'Continue with Google', 'Never ask for credentials or verification codes', 'harmless scoped read'):
+            self.assertIn(phrase, notion)
+
     def test_saved_checkpoint_is_not_confirmation(self):
         morning = (ROOT / 'System/workflows/morning.md').read_text()
         self.assertIn('first successfully saved Daily Memory', morning)

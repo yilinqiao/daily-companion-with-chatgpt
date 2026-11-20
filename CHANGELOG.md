@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.5.5 — 2026-11-20
+
+- Stage source verification: complete current setup and consistent version metadata are enough for the closed, conversation-only questionnaire if only the commit SHA is unavailable. Require a verified immutable release before connector preflight or private installation writes; retain confirmed answers and revalidate changed questions on resume. Missing or inconsistent setup/version still blocks onboarding. Task activation and upgrade verification remain strict.
+- Align `System/setup.md`, README, both getting-started guides, BC-01 and static regressions. No runtime, schema, schedule, task prompt or private state migration; completed installations need not rerun onboarding.
+- BC-01/03/14/15 review: consistent source without SHA permits questions but neither backend can install; missing/conflicting setup or metadata stops; restored verification reuses valid answers, then normal permission and approval checks apply. Existing private upgrades retain immutable candidate/baseline checks. Static release and regression checks cover explicit contracts; live ChatGPT onboarding and connector/task execution require separate observation.
+
 ## 0.5.4 — 2026-11-18
 
 - Require independent Evening and Extra Scheduled Tasks, removing the optional combined occurrence router. If task capacity is limited, explicitly choose and report partial activation. Evening with an uncertain target date still reports the issue and asks all three capture questions, without writes; Extra retains its independent read-only engine.

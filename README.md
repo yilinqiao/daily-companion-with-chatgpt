@@ -17,10 +17,10 @@ Current version: [VERSION](VERSION) · [Changes](CHANGELOG.md) · [Upgrade](Syst
 Paste into ChatGPT:
 
 ```text
-Read the current System/setup.md from https://github.com/yilinqiao/daily-companion-with-chatgpt/blob/main/System/setup.md, verify its release, and guide me through exactly its onboarding questions, one at a time. Do not invent questions; stop if you cannot verify the current source. Do not write personal data or activate tasks until I approve the respective summary.
+Read the current System/setup.md from https://github.com/yilinqiao/daily-companion-with-chatgpt/blob/main/System/setup.md and guide me through exactly its onboarding questions, one at a time. Do not invent questions; stop if the current setup text or version cannot be verified. Immutable commit SHA verification may wait until after the questionnaire. Do not write personal data or activate tasks until full release verification and my respective summary approval.
 ```
 
-Answer the questions about name, location, work schedule, the daily planning window (e.g. 07:00–21:00, including work), language, style, storage, optional sources and scheduled times. Setup will guide connector access, summarize and request approval before creating the private installation.
+Answer the questions about name, location, work schedule, the daily planning window (e.g. 07:00–21:00, including work), language, style, storage, optional sources and scheduled times. A missing commit SHA alone does not block the questionnaire if the complete current setup and release version are consistent. Full immutable release verification is required before connector preflight or private installation; setup then summarizes and requests approval before writing.
 
 | | Notion (recommended) | Private GitHub + optional Obsidian |
 | --- | --- | --- |

@@ -4,7 +4,7 @@ Maintenance-only regression baseline, not a runtime dependency. A shorter rule m
 
 | ID | Canonical owner | Scenario and required outcome |
 | --- | --- | --- |
-| BC-01 | `System/setup.md` | New user starts onboarding: verify pinned release, ask only the fixed questions, one at a time; resume confirmed answers without inventing questions. |
+| BC-01 | `System/setup.md` | New user starts onboarding: verify complete current setup and matching version metadata; missing SHA alone permits conversation-only fixed questions, one at a time. Missing/inconsistent setup or version blocks questions. Require pinned release before connector preflight/private writes; preserve confirmed answers on resume and revalidate changed questions without inventing questions; no task activation without verified installation and approval. |
 | BC-02 | `System/setup.md`, `System/workflows/morning.md` | Work 09:00–17:00, plan 07:00–21:00: work occupied, before/after work available subject to Calendar; show events outside window; never silently default null. |
 | BC-03 | `System/setup/notion.md`, `System/setup/github.md` | No Notion account: offer Google signup and scoped connection; verify actual data sources/views/read-write readiness. GitHub alternative private template only; no duplicate or false success. |
 | BC-04 | `System/policies/rules.md`, `System/workflows/morning.md` | Two approved accounts, one unavailable: report incomplete coverage; retain provenance, dedupe, never use an unapproved account or claim empty. |

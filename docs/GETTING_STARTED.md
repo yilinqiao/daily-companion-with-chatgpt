@@ -2,7 +2,7 @@
 
 ## 1. Start onboarding
 
-Use the public repository's System/setup.md, not a private copy of someone else's notes. Copy the prompt from the [README](../README.md). Setup follows a closed questionnaire, one question at a time, including the full daily planning window (e.g. 07:00–21:00) separately from work hours, then language, communication style and storage.
+Use the public repository's System/setup.md, not a private copy of someone else's notes. Copy the prompt from the [README](../README.md). Setup follows a closed questionnaire, one question at a time, including the full daily planning window (e.g. 07:00–21:00) separately from work hours, then language, communication style and storage. Complete the questionnaire if the current setup text and release version agree but commit SHA verification is unavailable. If the setup text or version cannot be verified, stop. Full immutable release verification is mandatory before connector preflight or private installation; answers remain in the conversation if verification is pending.
 
 ## 2. Choose storage
 

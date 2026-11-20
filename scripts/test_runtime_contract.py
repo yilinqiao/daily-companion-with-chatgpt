@@ -10,11 +10,25 @@ class RuntimeContracts(unittest.TestCase):
         setup = (ROOT / 'System/setup.md').read_text()
         prompt = setup.split('```text\n', 1)[1].split('\n```', 1)[0]
         self.assertIn('Do not invent questions', prompt)
-        self.assertIn('stop if you cannot verify the current source', prompt)
+        self.assertIn('stop if the current setup text or version cannot be verified', prompt)
+        self.assertIn('commit SHA verification may wait until after the questionnaire', prompt)
         for name in ('README.md', 'docs/setup-guide.html'):
             self.assertIn(prompt, (ROOT / name).read_text())
         self.assertIn('closed questionnaire', setup)
         self.assertIn('preserve valid confirmed answers', setup)
+
+    def test_onboarding_source_verification_is_staged(self):
+        setup = (ROOT / 'System/setup.md').read_text()
+        questionnaire = setup.split('## 1. Onboarding', 1)[0]
+        gate = setup.split('## 2. Check connectors and approve setup', 1)[1].split('### Google Calendar', 1)[0]
+        self.assertIn('matching VERSION and CHANGELOG.md', questionnaire)
+        self.assertIn('SHA unavailable', questionnaire)
+        self.assertIn('conversation-only', questionnaire)
+        self.assertIn('no private writes', questionnaire)
+        self.assertIn('one verified immutable default-branch commit', gate)
+        self.assertIn('before any private installation write', gate)
+        self.assertIn('preserve valid confirmed answers', gate)
+        self.assertIn('no writes or task activation', gate.lower())
 
     def test_day_planning_question_keeps_existing_fields(self):
         setup = (ROOT / 'System/setup.md').read_text()

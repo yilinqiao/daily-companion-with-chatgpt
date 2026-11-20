@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.5.7 — 2026-11-20
+
+- Try the canonical Raw URL or available GitHub connector when a public file page cannot be read. Load all required selected-backend installation files and verify access before asking for installation approval; after approval, reuse verified contents, proceed directly and retain approval for the unchanged plan if source retrieval is interrupted.
+- Align `System/setup.md`, README, both getting-started guides, BC-01 and regression sentinels. No new metadata checks, schema/runtime/task changes or private state migration; completed installations need not rerun setup.
+- BC-01/03 review: incomplete source still stops writes, fallback success preserves confirmed answers, approval follows complete preflight for both backends, and unchanged approved initialization does not repeat source reads or approval. Private read-back and separate task activation remain mandatory; live client retrieval and connector behavior require a real account test.
+
 ## 0.5.6 — 2026-11-20
 
 - Simplify onboarding to one complete canonical setup file and the original closed questionnaire. Version checks are not required; installation checks actual required source content, scoped access, explicit approval and read-back. Missing or inconsistent version metadata alone never blocks readiness; record reliably attributable installed markers or leave them null.

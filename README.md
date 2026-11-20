@@ -17,10 +17,10 @@ Current version: [VERSION](VERSION) · [Changes](CHANGELOG.md) · [Upgrade](Syst
 Paste into ChatGPT:
 
 ```text
-Read System/setup.md from https://github.com/yilinqiao/daily-companion-with-chatgpt/blob/main/System/setup.md and guide me through its onboarding questions, one at a time. Do not invent questions. If the setup text cannot be read, stop. Ask for my approval before installation or scheduled task activation.
+Read System/setup.md from https://github.com/yilinqiao/daily-companion-with-chatgpt/blob/main/System/setup.md and guide me through its onboarding questions, one at a time. Do not invent questions. If the page fails, try its Raw URL or an available GitHub connector. If the setup text cannot be read, stop. Ask for my approval before installation or scheduled task activation.
 ```
 
-Answer the questions about name, location, work schedule, the daily planning window (e.g. 07:00–21:00, including work), language, style, storage, optional sources and scheduled times. Only the setup instructions are needed to start; the assistant checks the required installation files and access, then summarizes and requests approval before writing.
+Answer the questions about name, location, work schedule, the daily planning window (e.g. 07:00–21:00, including work), language, style, storage, optional sources and scheduled times. Only the setup instructions are needed to start; the assistant reads all required installation files and verifies access before requesting approval. After approval it installs directly using the retrieved files.
 
 | | Notion (recommended) | Private GitHub + optional Obsidian |
 | --- | --- | --- |

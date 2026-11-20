@@ -10,7 +10,7 @@ class RuntimeContracts(unittest.TestCase):
         setup = (ROOT / 'System/setup.md').read_text()
         prompt = setup.split('```text\n', 1)[1].split('\n```', 1)[0]
         self.assertIn('Do not invent questions', prompt)
-        self.assertIn('If the setup text cannot be read, stop', prompt)
+        self.assertIn('If the setup text still cannot be read, stop', prompt)
         self.assertIn('Ask for my approval before installation or scheduled task activation', prompt)
         for metadata in ('VERSION', 'CHANGELOG', 'SHA'):
             self.assertNotIn(metadata, prompt)
@@ -48,6 +48,21 @@ class RuntimeContracts(unittest.TestCase):
         initialization = setup.split('## 3. Initialize selected storage and verify readiness', 1)[1].split('## 4.', 1)[0]
         for phrase in ('reuse the verified source contents', 'without repeating approval', 'unless the approved plan changes'):
             self.assertIn(phrase, initialization)
+
+    def test_onboarding_zip_fallback_and_user_questions(self):
+        setup = (ROOT / 'System/setup.md').read_text()
+        prompt = setup.split('```text\n', 1)[1].split('\n```', 1)[0]
+        self.assertIn('https://github.com/yilinqiao/daily-companion-with-chatgpt/archive/refs/heads/main.zip', prompt)
+        self.assertIn('upload', prompt)
+        for phrase in ('High', 'if available', 'uploaded public ZIP', 'do not execute', 'user may ask questions at any point', 'pending unanswered question'):
+            self.assertIn(phrase, setup)
+        preflight = setup.split('## 2. Check connectors and approve setup', 1)[1].split('### Google Calendar', 1)[0]
+        self.assertIn('uploaded public ZIP', preflight)
+
+    def test_notion_persistent_tool_permission_is_optional_and_scoped(self):
+        guide = (ROOT / 'System/setup/notion.md').read_text()
+        for phrase in ('Allow ChatGPT to use Notion', 'Always allow', 'if offered', 'does not replace explicit installation approval', 'scheduled task activation'):
+            self.assertIn(phrase, guide)
 
     def test_day_planning_question_keeps_existing_fields(self):
         setup = (ROOT / 'System/setup.md').read_text()

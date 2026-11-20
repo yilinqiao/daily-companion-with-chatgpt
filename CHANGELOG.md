@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.5.8 — 2026-11-20
+
+- Recommend High thinking at the start of onboarding, if available. When direct public file retrieval fails, guide the user to download and upload the canonical public repository ZIP and read required files from it. Answer user-initiated questions and resume the pending setup stage, preserving confirmed answers.
+- In Notion onboarding, recommend Always allow if the tool permission prompt offers it and the user consents; installation, auto-save and task activation approvals remain independent. Align setup, Notion guide, README, getting-started guides, BC-01/03 and static regressions.
+- No schema, runtime workflow, task prompt, metadata requirement or private state migration. BC-01/03 review: ZIP fallback preserves completeness and source safety; missing files still block installation, user questions do not imply approval, and one-time/declined tool permissions remain respected. These are onboarding instructions; UI availability and actual connector execution require client verification.
+
 ## 0.5.7 — 2026-11-20
 
 - Try the canonical Raw URL or available GitHub connector when a public file page cannot be read. Load all required selected-backend installation files and verify access before asking for installation approval; after approval, reuse verified contents, proceed directly and retain approval for the unchanged plan if source retrieval is interrupted.

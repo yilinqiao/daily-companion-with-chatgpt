@@ -50,7 +50,7 @@ class BehavioralContracts(unittest.TestCase):
         self.require('System/upgrade.md', 'same immutable candidate SHA',
                      'stop on downgrade', 'installed_template_version to the verified candidate semver',
                      'leave suspended tasks suspended')
-        self.require('System/setup/github.md', 'match the pinned upstream')
+        self.require('System/setup/github.md', 'match the retrieved upstream source files')
 
     def test_maintenance_registry(self):
         self.require('System/maintenance.md', 'docs/BEHAVIORAL_CONTRACTS.md')

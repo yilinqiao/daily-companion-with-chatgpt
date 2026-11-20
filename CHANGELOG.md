@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.5.6 — 2026-11-20
+
+- Simplify onboarding to one complete canonical setup file and the original closed questionnaire. Version checks are not required; installation checks actual required source content, scoped access, explicit approval and read-back. Missing or inconsistent version metadata alone never blocks readiness; record reliably attributable installed markers or leave them null.
+- Align setup, both installation guides, README and both getting-started guides; clarify unknown-baseline handling in upgrade/watch, update BC-01/14 and regression sentinels. Strict immutable upgrade candidate verification and publication CI remain unchanged. No schema, runtime workflow, task prompt or private state migration; existing installations need not rerun setup.
+- BC-01/03/14/15 review: missing setup text stops questions; stale/missing metadata alone permits both installs after actual file/permission/approval checks; missing/conflicting required content or failed read-back stops; unknown version does not justify a newer-release claim or automatic upgrade. Static checks cover contracts, not actual client onboarding or scheduled execution.
+
 ## 0.5.5 — 2026-11-20
 
 - Stage source verification: complete current setup and consistent version metadata are enough for the closed, conversation-only questionnaire if only the commit SHA is unavailable. Require a verified immutable release before connector preflight or private installation writes; retain confirmed answers and revalidate changed questions on resume. Missing or inconsistent setup/version still blocks onboarding. Task activation and upgrade verification remain strict.

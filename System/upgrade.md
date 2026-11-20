@@ -9,11 +9,11 @@ Private interactive upgrade only; canonical source is `yilinqiao/daily-companion
 
 ## 0. Scheduled update watch (read-only)
 
-Read installed markers from the verified private profile and public VERSION + matching CHANGELOG at one immutable default-branch commit. The watch must never modify any source or task. Compare semver; notify only verified newer release or material read/metadata failure; unknown baseline requires verification, unchanged means silent. Invite interactive review of a concrete diff, not approval to apply. No persistent notification state; platform completion alerts may still occur.
+Read installed markers from the verified private profile and public VERSION + matching CHANGELOG at one immutable default-branch commit. The watch must never modify any source or task. Compare semver; notify only verified newer release or material read/metadata failure; unknown installed version means no newer-release claim, invite interactive file comparison; unchanged means silent. Invite interactive review of a concrete diff, not approval to apply. No persistent notification state; platform completion alerts may still occur.
 
 ## 1. Compare
 
-Confirm private backend, scope, identity and access. GitHub verify private visibility/path and profile's configured folders; Notion verify mapped pages/source identities against profile. Read all candidate files, VERSION and matching notes at the same immutable candidate SHA from canonical upstream; verify known installed baseline SHA against its recorded semver. For unknown/unversioned baseline compare files conservatively; no reset. Before proposing an upgrade, stop on downgrade, incompatible release or uncertain downgrade; rollback needs a separate specific proposal. Check for updates stops here. Labels alone don't prove content.
+Confirm private backend, scope, identity and access. GitHub verify private visibility/path and profile's configured folders; Notion verify mapped pages/source identities against profile. Read all candidate files, VERSION and matching notes at the same immutable candidate SHA from canonical upstream; verify known installed baseline SHA against its recorded semver. For unknown/unversioned baseline (including null installation markers) compare files conservatively; no reset or inferred version. Before proposing an upgrade, stop on downgrade, incompatible release or uncertain downgrade; rollback needs a separate specific proposal. Check for updates stops here. Labels alone don't prove content.
 
 ## 2. Propose specific changes
 

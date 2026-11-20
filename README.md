@@ -14,13 +14,15 @@ Current version: [VERSION](VERSION) · [Changes](CHANGELOG.md) · [Upgrade](Syst
 
 ## Quick start
 
-Paste into ChatGPT:
+Open a new ChatGPT chat and select **High** thinking if available (otherwise use the strongest available thinking setting). Paste:
 
 ```text
-Read System/setup.md from https://github.com/yilinqiao/daily-companion-with-chatgpt/blob/main/System/setup.md and guide me through its onboarding questions, one at a time. Do not invent questions. If the page fails, try its Raw URL or an available GitHub connector. If the setup text cannot be read, stop. Ask for my approval before installation or scheduled task activation.
+Remind me to select High thinking if available. Read System/setup.md from https://github.com/yilinqiao/daily-companion-with-chatgpt/blob/main/System/setup.md and guide me through its onboarding questions, one at a time. Do not invent questions. If the page fails, try its Raw URL and any available GitHub connector. If those fail, ask me to download https://github.com/yilinqiao/daily-companion-with-chatgpt/archive/refs/heads/main.zip and upload it here, then read setup.md from the ZIP. If the setup text still cannot be read, stop. Ask for my approval before installation or scheduled task activation.
 ```
 
 Answer the questions about name, location, work schedule, the daily planning window (e.g. 07:00–21:00, including work), language, style, storage, optional sources and scheduled times. Only the setup instructions are needed to start; the assistant reads all required installation files and verifies access before requesting approval. After approval it installs directly using the retrieved files.
+
+You can ask questions at any point during setup and resume where you left off. If GitHub cannot be read, download the [public repository ZIP](https://github.com/yilinqiao/daily-companion-with-chatgpt/archive/refs/heads/main.zip) and upload it in the same chat.
 
 | | Notion (recommended) | Private GitHub + optional Obsidian |
 | --- | --- | --- |
@@ -31,7 +33,7 @@ Answer the questions about name, location, work schedule, the daily planning win
 | Surprise | Read-only weekly pattern | Same read-only weekly pattern |
 | Setup | [Sign up with Google](https://app.notion.com/signup) if needed; connect Notion and allow required operations on private suite | Use this template → Create a new repository → Private; never use public fork |
 
-No personal GitHub repository is needed for Notion, but setup and update checks need read access to the public template. The setup creates and verifies private data sources and views where supported, or shows the missing connector operation and guides you through it. No cross-store failover. Calendar and Gmail are optional read-only sources; select one or multiple verified accounts where supported. Cross-chat context is incomplete and opt-in.
+No personal GitHub repository is needed for Notion, but setup and update checks need read access to the public template (setup can use the public ZIP). When ChatGPT requests permission to use Notion, **Always allow** is recommended if offered and you agree to ongoing access; installation, auto-save and task approvals remain separate. The setup creates and verifies private data sources and views where supported, or shows the missing connector operation and guides you through it. No cross-store failover. Calendar and Gmail are optional read-only sources; select one or multiple verified accounts where supported. Cross-chat context is incomplete and opt-in.
 
 After verified setup, separately approve Scheduled Task activation. Recommended tasks: Morning, Evening, Extra and Update Watch. Confirm notification switches (Settings > Notifications, Notify when complete); silent Extra/Watch checks may still trigger platform alerts. First real scheduled run and persistence must be verified separately. If the connector or client lacks required capabilities, don't assume they work. See [Getting started](docs/GETTING_STARTED.md) or [setup guide](docs/setup-guide.html).
 

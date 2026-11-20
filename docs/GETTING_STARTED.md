@@ -2,7 +2,7 @@
 
 ## 1. Start onboarding
 
-Use the public repository's System/setup.md, not a private copy of someone else's notes. Copy the prompt from the [README](../README.md). Setup follows a closed questionnaire, one question at a time, including the full daily planning window (e.g. 07:00–21:00) separately from work hours, then language, communication style and storage. Only the complete setup instructions are needed to start. Before installation, read the required files, verify access and obtain approval; missing version information alone does not block setup.
+Use the public repository's System/setup.md, not a private copy of someone else's notes. Copy the prompt from the [README](../README.md). Setup follows a closed questionnaire, one question at a time, including the full daily planning window (e.g. 07:00–21:00) separately from work hours, then language, communication style and storage. Only the complete setup instructions are needed to start. If GitHub page retrieval fails, try the Raw URL or an available GitHub connector. Read all required selected-backend files and verify access before requesting installation approval, then install using those contents without repeating approval for an unchanged plan; missing version information alone does not block setup.
 
 ## 2. Choose storage
 

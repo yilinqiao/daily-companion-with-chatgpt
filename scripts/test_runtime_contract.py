@@ -35,6 +35,20 @@ class RuntimeContracts(unittest.TestCase):
             guide = (ROOT / f'System/setup/{backend}.md').read_text()
             self.assertIn('unknown installed markers may remain null', guide)
 
+    def test_installation_sources_are_ready_before_approval(self):
+        setup = (ROOT / 'System/setup.md').read_text()
+        prompt = setup.split('```text\n', 1)[1].split('\n```', 1)[0]
+        self.assertIn('Raw URL', prompt)
+        self.assertIn('GitHub connector', prompt)
+        for name in ('README.md', 'docs/setup-guide.html'):
+            self.assertIn(prompt, (ROOT / name).read_text())
+        preflight = setup.split('## 2. Check connectors and approve setup', 1)[1].split('### Google Calendar', 1)[0]
+        for phrase in ('before requesting installation approval', 'complete contents', 'Raw URL', 'GitHub connector'):
+            self.assertIn(phrase, preflight)
+        initialization = setup.split('## 3. Initialize selected storage and verify readiness', 1)[1].split('## 4.', 1)[0]
+        for phrase in ('reuse the verified source contents', 'without repeating approval', 'unless the approved plan changes'):
+            self.assertIn(phrase, initialization)
+
     def test_day_planning_question_keeps_existing_fields(self):
         setup = (ROOT / 'System/setup.md').read_text()
         question = next(line for line in setup.splitlines() if line.startswith('4. '))

@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.5.12 — 2026-11-22
+
+- Notion Evening now displays the same complete provisional Daily Memory body as the verified auto-saved page in ordinary chat, then status/link and all three capture questions. No separate recap or editable approval preview until answers; on save failure/denial show the full safe draft with honest status.
+- Align Evening workflow, Notion adapter, artifact policy, BC-08, README, getting-started and regression checks. No schema, state, permission, schedule or task changes; no data migration. Existing private copies need a separately approved rules upgrade. GitHub backend remains interactive-only for saves.
+- BC-08/09/10 review: full initial body and section order, failure/denied save, three-question handoff, no duplicate writes, and separately approved same-page revision/Ledger delta. Static checks do not establish actual scheduled rendering or connector behavior; verify the next real occurrence.
+
 ## 0.5.11 — 2026-11-22
 
 - Add an experimental GitHub Pages mirror generated from a validated public `main` checkout: version, setup, changelog, upgrade, complete System bundle and individual exact Markdown/HTML files. An explicit allowlist excludes Daily, Archives, personal configuration and repository metadata. GitHub retains canonical source and historical versions.

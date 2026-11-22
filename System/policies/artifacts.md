@@ -10,7 +10,7 @@ Canonical owner of saved Daily Briefing / Daily Memory representation, approval 
 
 ## 1. Artifact Boundary
 
-Select the private storage adapter before any save. Notion initial automatic records are explicitly authorized at setup, provisional Evening is not user-confirmed, and initial chat is ordinary text rather than a full Markdown approval preview. GitHub follows the interactive-only protocol below. The following approval requirements apply to revisions and inferred Ledger changes on both backends.
+Select the private storage adapter before any save. Notion initial automatic records are explicitly authorized at setup; provisional Evening is not user-confirmed. Display the same complete user-visible body as the verified Notion Memory in ordinary chat, without a separate summary or editable approval preview; keep link/status/questions outside the body. If not saved, show the full safe draft and report the failure. GitHub follows the interactive-only protocol below. The following approval requirements apply to revisions and inferred Ledger changes on both backends.
 
 The artifact shown for approval is one clean Markdown block containing exactly the **user-visible content** that will be saved if approved. Hidden machine metadata explicitly defined in this file is excluded from the approval preview and may be inserted only at save time under its own contract; apart from that narrow exception, saved user-visible Markdown must match the approved artifact exactly. Keep citations/UI markers, approval prompts, tool commentary, machine IDs and status text outside the user-facing artifact. Requested visible-content edits require the complete revised artifact to be shown again; refresh live sources only when explicitly requested.
 

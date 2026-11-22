@@ -4,6 +4,8 @@ An open starter kit for a personal daily companion built with ChatGPT. **Notion 
 
 Current version: [VERSION](VERSION) · [Changes](CHANGELOG.md) · [Upgrade](System/upgrade.md).
 
+Experimental [public Pages mirror](https://yilinqiao.github.io/daily-companion-with-chatgpt/) (after repository Pages activation): provides HTML and exact Markdown copies of public installation files, a version page and a setup bundle. Generated from validated `main` releases, not a second source of truth. Existing Setup and Update Watch routes remain unchanged until real client access is tested. Maintainers enable Settings → Pages → Source: GitHub Actions once; the public-template integrity workflow then builds/deploys after successful checks on `main` or a manual run.
+
 | Feature | What it does |
 | --- | --- |
 | Morning | Calendar, email, follow-ups, weather, Sunday recap and grounded observations |

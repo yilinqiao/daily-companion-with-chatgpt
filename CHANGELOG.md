@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.5.13 — 2026-11-22
+
+- Make the validated public GitHub Pages mirror the default reading route for Setup, required installation files, Update Watch, release notes and interactive upgrade guidance. Retain GitHub page/Raw/connector and applicable public ZIP fallbacks. GitHub remains canonical source and history; automatic deployment is unchanged.
+- Align README, setup, upgrade, both getting-started guides, Obsidian guide, BC-01/14 and static regression checks. Existing private copies require an approved upgrade or selective watch-rule/prompt repair; preserve all state, permissions, task times and pause status. No schema or data migration; no new task or automatic private upgrade.
+- BC-01/14/15 review: successful Pages reads allow onboarding/watch without GitHub connector; unavailable/incomplete content uses fallbacks and existing stop/approval gates; optional notes and missing watch SHA do not block valid version alerts. Interactive candidate bodies must match version/source commit, with pinned-source fallback if inconsistent, and existing baseline verification remains mandatory when known. Prior fresh-account version/setup reads, automatic deployment and a one-time scheduled version read succeeded on 0.5.12; full private installation/upgrade and ongoing Watch notifications from the new route remain unverified.
+
 ## 0.5.12 — 2026-11-22
 
 - Notion Evening now displays the same complete provisional Daily Memory body as the verified auto-saved page in ordinary chat, then status/link and all three capture questions. No separate recap or editable approval preview until answers; on save failure/denial show the full safe draft with honest status.

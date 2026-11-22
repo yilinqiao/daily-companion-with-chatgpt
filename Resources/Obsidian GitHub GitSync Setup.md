@@ -120,8 +120,8 @@ Use [System/upgrade.md](../System/upgrade.md) for a pinned version comparison an
 Older installations can start from the canonical public entrypoint:
 
 ```text
-Read the latest System/upgrade.md from the public repository
-yilinqiao/daily-companion-with-chatgpt and help upgrade my private
+Read the latest System/upgrade.md from
+https://yilinqiao.github.io/daily-companion-with-chatgpt/upgrade.html and help upgrade my private
 Daily Companion repository <OWNER>/<PRIVATE_REPO>.
 First show the pinned source version/commit, proposed file changes and migrations.
 Preserve my completed setup, configuration, notes, Ledger/history and custom rules.

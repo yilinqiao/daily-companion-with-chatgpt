@@ -4,7 +4,7 @@ An open starter kit for a personal daily companion built with ChatGPT. **Notion 
 
 Current version: [VERSION](VERSION) · [Changes](CHANGELOG.md) · [Upgrade](System/upgrade.md).
 
-Experimental [public Pages mirror](https://yilinqiao.github.io/daily-companion-with-chatgpt/) (after repository Pages activation): provides HTML and exact Markdown copies of public installation files, a version page and a setup bundle. Generated from validated `main` releases, not a second source of truth. Existing Setup and Update Watch routes remain unchanged until real client access is tested. Maintainers enable Settings → Pages → Source: GitHub Actions once; the public-template integrity workflow then builds/deploys after successful checks on `main` or a manual run.
+The [public Pages mirror](https://yilinqiao.github.io/daily-companion-with-chatgpt/) is the default public reading entry: [Setup](https://yilinqiao.github.io/daily-companion-with-chatgpt/setup.html), [latest version](https://yilinqiao.github.io/daily-companion-with-chatgpt/version.html), [release notes](https://yilinqiao.github.io/daily-companion-with-chatgpt/changelog.html), [upgrade](https://yilinqiao.github.io/daily-companion-with-chatgpt/upgrade.html) and complete public System files. It is generated automatically from validated `main` releases; GitHub remains the canonical source and version history. GitHub file/Raw/connector and public ZIP retrieval remain fallbacks. No private data is hosted on Pages.
 
 | Feature | What it does |
 | --- | --- |
@@ -19,12 +19,12 @@ Experimental [public Pages mirror](https://yilinqiao.github.io/daily-companion-w
 Open a new ChatGPT chat and select **High** thinking if available (otherwise use the strongest available thinking setting). Paste:
 
 ```text
-Remind me to select High thinking if available. Read System/setup.md from https://github.com/yilinqiao/daily-companion-with-chatgpt/blob/main/System/setup.md and guide me through its onboarding questions, one at a time. Do not invent questions. If the page fails, try its Raw URL and any available GitHub connector. If those fail, ask me to download https://github.com/yilinqiao/daily-companion-with-chatgpt/archive/refs/heads/main.zip and upload it here, then read setup.md from the ZIP. If the setup text still cannot be read, stop. Ask for my approval before installation or scheduled task activation.
+Remind me to select High thinking if available. Read System/setup.md from https://yilinqiao.github.io/daily-companion-with-chatgpt/setup.html and guide me through its onboarding questions, one at a time. Do not invent questions. If the page fails, try https://github.com/yilinqiao/daily-companion-with-chatgpt/blob/main/System/setup.md, its Raw URL and any available GitHub connector. If those fail, ask me to download https://github.com/yilinqiao/daily-companion-with-chatgpt/archive/refs/heads/main.zip and upload it here, then read setup.md from the ZIP. If the setup text still cannot be read, stop. Ask for my approval before installation or scheduled task activation.
 ```
 
 Answer the questions about name, location, work schedule, the daily planning window (e.g. 07:00–21:00, including work), language, style, storage, optional sources and scheduled times. Only the setup instructions are needed to start; the assistant reads all required installation files and verifies access before requesting approval. After approval it installs directly using the retrieved files.
 
-You can ask questions at any point during setup and resume where you left off. If GitHub cannot be read, download the [public repository ZIP](https://github.com/yilinqiao/daily-companion-with-chatgpt/archive/refs/heads/main.zip) and upload it in the same chat.
+You can ask questions at any point during setup and resume where you left off. If Pages and GitHub cannot be read, download the [public repository ZIP](https://github.com/yilinqiao/daily-companion-with-chatgpt/archive/refs/heads/main.zip) and upload it in the same chat.
 
 | | Notion (recommended) | Private GitHub + optional Obsidian |
 | --- | --- | --- |
@@ -57,7 +57,7 @@ The Action Ledger is authoritative for operational state; daily notes are histor
 
 ## Maintain or customize
 
-Say “Check for updates” for a read-only comparison, or “Upgrade Daily Companion” for an approved private upgrade. Preserve your profile, notes, Ledger, history and custom rules; publication never updates private copies automatically.
+Say “Check for updates” for a read-only comparison, or “Upgrade Daily Companion” for an approved private upgrade. Older copies can start by reading the [latest public upgrade guide](https://yilinqiao.github.io/daily-companion-with-chatgpt/upgrade.html). Preserve your profile, notes, Ledger, history and custom rules; publication never updates private copies automatically.
 
 Public maintainers must read [AGENTS.md](AGENTS.md) and [System/maintenance.md](System/maintenance.md) before editing. Use a versioned PR and verified CI, never publish private state.
 

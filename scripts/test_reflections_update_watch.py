@@ -61,6 +61,18 @@ class ReflectionAndWatchTests(unittest.TestCase):
         self.assertNotIn("Only verified newer releases or material failure warrant output", self.setup)
         self.assertIn("same immutable candidate SHA", self.upgrade.split("## 1. Compare", 1)[1])
 
+    def test_pages_first_watch_and_upgrade_keep_fallbacks(self):
+        base = "https://yilinqiao.github.io/daily-companion-with-chatgpt/"
+        watch = self.upgrade.split("## 0. Scheduled update watch (read-only)", 1)[1].split("## 1. Compare", 1)[0]
+        self.assertIn(base + "version.html", watch)
+        self.assertLess(watch.index(base), watch.index("Raw VERSION"))
+        self.assertIn(base + "changelog.html", watch)
+        self.assertIn(base + "upgrade.html", self.upgrade)
+        compare = self.upgrade.split("## 1. Compare", 1)[1].split("## 2. Propose", 1)[0]
+        self.assertIn("same immutable candidate SHA", compare)
+        self.assertIn("pinned GitHub", compare)
+        self.assertIn("source commit", compare)
+
 
 if __name__ == "__main__":
     unittest.main()

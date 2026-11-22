@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.5.10 — 2026-11-22
+
+- Simplify scheduled Update Watch to compare the installed version with the canonical public VERSION; try Raw, GitHub page and available connector. CHANGELOG is optional and no SHA is required to notify. Equal/older versions and public read failures are silent; alert once only if three consecutive daily failures can be verified from available history. No persistent counters, scheduled writes or automatic upgrade. Interactive upgrade verification and approval remain unchanged.
+- Align upgrade, setup task entrypoint, README, getting-started guides, BC-14 and static regression sentinels. Existing installations need an approved private watch-rule/prompt repair or upgrade; no schema, schedule, data or profile-marker migration for a selective repair.
+- BC-14/15 review: a missing changelog or installed SHA does not block a known newer-version alert; unknown installed version never implies a new release; malformed/unreadable public VERSION retries, and unavailable run history does not fabricate a streak. Both backends remain read-only; immutable candidate and approved diff still required for actual upgrades. Static checks do not establish live task history visibility, public retrieval or notification delivery.
+
 ## 0.5.9 — 2026-11-22
 
 - Require `This Week` in every Sunday Morning Briefing, with all six preceding Monday–Saturday dates accounted for, available saved Memory bodies read, and confirmed, provisional and missing/inaccessible coverage distinguished. Even zero readable Memories requires an honest gap statement. The personal observation remains optional and weekdays omit both weekly slots.

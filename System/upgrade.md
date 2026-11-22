@@ -9,7 +9,9 @@ Private interactive upgrade only; canonical source is `yilinqiao/daily-companion
 
 ## 0. Scheduled update watch (read-only)
 
-Read installed markers from the verified private profile and public VERSION + matching CHANGELOG at one immutable default-branch commit. The watch must never modify any source or task. Compare semver; notify only verified newer release or material read/metadata failure; unknown installed version means no newer-release claim, invite interactive file comparison; unchanged means silent. Invite interactive review of a concrete diff, not approval to apply. No persistent notification state; platform completion alerts may still occur.
+Read the installed version from the verified private profile and the canonical public default-branch VERSION alone (try [Raw VERSION](https://raw.githubusercontent.com/yilinqiao/daily-companion-with-chatgpt/main/VERSION), the [GitHub file](https://github.com/yilinqiao/daily-companion-with-chatgpt/blob/main/VERSION), then an available GitHub connector). Require a valid semver from the actual file, no commit SHA required. Compare numerically; if newer, notify with installed/latest version and invite interactive review of a concrete diff, not approval to apply. CHANGELOG is optional: include matching notes if readable; inability to read them never blocks a notification. Equal or older version: silent. Unknown installed version: no newer-release claim; invite interactive file comparison if the profile is readable.
+
+If public VERSION is inaccessible or invalid after fallbacks, retry next scheduled day; notify only on three consecutive daily failures confirmed by reliably available run history (once per failure streak); otherwise remain silent. Never invent history, infer failure from missing runs or add persistent counters. Report a private profile/access failure briefly without guessing version. The watch must never modify any source or task, never write state or auto-upgrade. Platform completion alerts may still occur. Interactive upgrades retain the full verification below.
 
 ## 1. Compare
 
@@ -18,6 +20,10 @@ Confirm private backend, scope, identity and access. GitHub verify private visib
 ## 2. Propose specific changes
 
 Three-way compare where baseline is verified. Source-owned rules, setup, selected adapter and docs may be merged; preserve customizations, profile settings/consents, Daily history and original Calendar linkage, all Ledger cards/rows/IDs/order/metadata and schemas/views. Preserve Extra history and state except explicit approved migration. Don't overwrite same-named personal files or delete upstream-removed private content without specific approval. Review actual existing task prompts against current minimal templates, including all three Evening fallback questions; propose only necessary changes, separately approved, preserve title/times/timezone/paused state/notification preferences. Existing installations are **not** silently given a new task; offer new tasks separately with explicit task-activation approval. Never rerun setup.
+
+### v0.5.10 migration
+
+- For existing Update Watch, propose replacing §0 in the private upgrade rules and any stale task prompt that requires CHANGELOG/SHA or routine failure alerts. Preserve other rules, installed markers, data, schedule, paused state and notification preferences. No schema or failure-counter migration; no new task. A selective watch-rule repair alone does not stamp a new installed template version; a full upgrade follows §1–3.
 
 ### v0.5.4 migration
 

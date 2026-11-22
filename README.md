@@ -10,7 +10,7 @@ Current version: [VERSION](VERSION) · [Changes](CHANGELOG.md) · [Upgrade](Syst
 | Evening | Conversational check-in, Diary-first memory, three questions and user-approved revisions |
 | Action Ledger | Action, Waiting, Upcoming, Closed; durable handling history |
 | Extra | Weekly surprise, no weekly approval, pause anytime |
-| Update Watch | Read-only public release check, optional interactive upgrade |
+| Update Watch | Read-only VERSION check; optional release notes, separate interactive upgrade |
 
 ## Quick start
 

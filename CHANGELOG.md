@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.5.9 — 2026-11-22
+
+- Require `This Week` in every Sunday Morning Briefing, with all six preceding Monday–Saturday dates accounted for, available saved Memory bodies read, and confirmed, provisional and missing/inaccessible coverage distinguished. Even zero readable Memories requires an honest gap statement. The personal observation remains optional and weekdays omit both weekly slots.
+- Align Morning, artifact schema, BC-16 and static regressions for Notion and GitHub. No schema, task prompt, schedule, authorization or private state migration; no historical Briefing rewrite.
+- BC-16 review: complete, partial and empty/inaccessible weeks require a recap; unsupported observations are omitted, provisional records do not prove completion, and ordinary weekday output and backend-specific save permissions remain unchanged. Static validation does not establish actual scheduled execution.
+
 ## 0.5.8 — 2026-11-20
 
 - Recommend High thinking at the start of onboarding, if available. When direct public file retrieval fails, guide the user to download and upload the canonical public repository ZIP and read required files from it. Answer user-initiated questions and resume the pending setup stage, preserving confirmed answers.

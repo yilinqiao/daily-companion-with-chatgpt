@@ -20,6 +20,15 @@ class ReflectionAndWatchTests(unittest.TestCase):
             self.assertIn(slot, self.artifacts)
         self.assertIn("never invent an insight", self.morning)
 
+    def test_sunday_recap_required_even_with_missing_memories(self):
+        for phrase in ("fetch every available Daily Memory body", "all six dates",
+                       "before display or auto-save"):
+            self.assertIn(phrase, self.morning)
+        for phrase in ("required every Sunday", "even if no saved Memory is available",
+                       "missing or inaccessible dates", "omit both weekly slots on other days"):
+            self.assertIn(phrase, self.artifacts)
+        self.assertIn("Sunday only and conditional", self.artifacts)
+
     def test_reflections_need_approval_and_reliable_date(self):
         for phrase in ("## Reflections", "reliably dated cross-chat context",
                        "user approval"):

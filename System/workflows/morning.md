@@ -79,7 +79,7 @@ Every Visible Now issue appears substantively exactly once, allocated below.
 
 Compose one concise Daily Briefing using the exact schema and required-slot/cardinality rules in `policies/artifacts.md`; do not restate those artifact constraints here.
 
-On Sundays, also recap the preceding local Monday–Saturday from saved Daily Memories (identify provisional Auto-Saved versus user-approved Edited records) in the conditional weekly slots. Show the date range and material coverage gaps. Offer only grounded, tentative personal patterns; never invent an insight, turn one into an Action Ledger item, or let the recap repeat routine reminders. ChatGPT native Memory may add long-term context when surfaced, but cannot independently date or verify this week's events.
+On Sundays, fetch every available Daily Memory body for the preceding local Monday–Saturday via the selected adapter, checking each date even if other retrieval paths stop early. Distinguish confirmed, provisional (including Notion Auto-Saved), missing and inaccessible records; never infer completion from provisional evidence. Render the weekly slots per `artifacts.md`; before display or auto-save verify all six dates are accounted for and the required recap is present. Offer only grounded, tentative personal patterns; never invent an insight, turn one into an Action Ledger item, or let the recap repeat routine reminders. ChatGPT native Memory may add long-term context when surfaced, but cannot independently date or verify this week's events.
 
 ### 4.1 Briefing-level issue allocation and de-duplication
 

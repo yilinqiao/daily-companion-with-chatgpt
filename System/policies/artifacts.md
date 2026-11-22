@@ -43,7 +43,7 @@ generated_at: "<local ISO-8601 datetime>"
 <optional; only when useful and approved>
 
 ## This Week
-<Sunday only: completed Monday–Saturday recap from saved Daily Memories, distinguish provisional and confirmed; show covered dates/gaps>
+<Required every Sunday: preceding Monday–Saturday recap from saved Daily Memories; show range, confirmed/provisional coverage and missing or inaccessible dates; even if no saved Memory is available, state the gap>
 
 ## Something You May Not Have Noticed
 <Sunday only and conditional: specific evidence-grounded tentative observation; omit if unsupported>
@@ -55,7 +55,7 @@ generated_at: "<local ISO-8601 datetime>"
 <optional; only material limitations/uncertainty>
 ```
 
-GitHub includes YAML and H1; Notion uses native properties and body without duplicate H1/YAML. Required: date; configured-timezone generation time; available Calendar events/conflicts; max 3 priorities; explicit Email result whenever Gmail is approved; complete coverage of Visible Now active Ledger items; one non-weather Daily Flavour item each Morning when enabled; weather is independently permission-gated. Eligibility/classification criteria come from Morning + `rules.md`, not this schema.
+GitHub includes YAML and H1; Notion uses native properties and body without duplicate H1/YAML. Required: date; configured-timezone generation time; available Calendar events/conflicts; max 3 priorities; explicit Email result whenever Gmail is approved; complete coverage of Visible Now active Ledger items; `This Week` required every Sunday even with no readable Memories; one non-weather Daily Flavour item each Morning when enabled; weather is independently permission-gated. `Something You May Not Have Noticed` remains optional; omit both weekly slots on other days. Eligibility/classification criteria come from Morning + `rules.md`, not this schema.
 
 ### Slot observability
 

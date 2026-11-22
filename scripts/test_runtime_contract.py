@@ -42,7 +42,12 @@ class RuntimeContracts(unittest.TestCase):
         self.assertIn('GitHub connector', prompt)
         for name in ('README.md', 'docs/setup-guide.html'):
             self.assertIn(prompt, (ROOT / name).read_text())
+        pages = 'https://yilinqiao.github.io/daily-companion-with-chatgpt/'
+        self.assertIn(pages + 'setup.html', prompt)
+        self.assertLess(prompt.index(pages), prompt.index('Raw URL'))
         preflight = setup.split('## 2. Check connectors and approve setup', 1)[1].split('### Google Calendar', 1)[0]
+        self.assertIn(pages, preflight)
+        self.assertLess(preflight.index(pages), preflight.index('Raw URL'))
         for phrase in ('before requesting installation approval', 'complete contents', 'Raw URL', 'GitHub connector'):
             self.assertIn(phrase, preflight)
         initialization = setup.split('## 3. Initialize selected storage and verify readiness', 1)[1].split('## 4.', 1)[0]

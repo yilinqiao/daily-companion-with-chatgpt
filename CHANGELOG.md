@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.5.11 — 2026-11-22
+
+- Add an experimental GitHub Pages mirror generated from a validated public `main` checkout: version, setup, changelog, upgrade, complete System bundle and individual exact Markdown/HTML files. An explicit allowlist excludes Daily, Archives, personal configuration and repository metadata. GitHub retains canonical source and historical versions.
+- Add the mirror builder, regression tests, README and automatic deployment job. Repository Pages must first use GitHub Actions as its source. No changes to default Setup/Update Watch routes, private state, schemas, schedules or upgrade verification; no private migration required.
+- BC-01/14/15 review: mirror is read-only; existing completeness and approval boundaries remain unchanged. Static build verifies source parity and excluded paths; actual public deployment and fresh-account/scheduled retrieval remain to be tested before changing the default routes.
+
 ## 0.5.10 — 2026-11-22
 
 - Simplify scheduled Update Watch to compare the installed version with the canonical public VERSION; try Raw, GitHub page and available connector. CHANGELOG is optional and no SHA is required to notify. Equal/older versions and public read failures are silent; alert once only if three consecutive daily failures can be verified from available history. No persistent counters, scheduled writes or automatic upgrade. Interactive upgrade verification and approval remain unchanged.

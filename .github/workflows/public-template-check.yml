@@ -4,6 +4,7 @@ on:
     branches: [main]
   pull_request:
     branches: [main]
+  workflow_dispatch:
 permissions:
   contents: read
 jobs:
@@ -26,3 +27,60 @@ jobs:
       - name: Regression checks
         if: ${{ !cancelled() }}
         run: python3 -B -m unittest discover -s scripts -p 'test_*.py'
+
+  publish-pages:
+    # Only the canonical public starter may publish, and only after validation.
+    if: ${{ github.repository == 'yilinqiao/daily-companion-with-chatgpt' && github.ref == 'refs/heads/main' && github.event_name != 'pull_request' }}
+    needs: static-check
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    concurrency:
+      group: public-template-pages
+      cancel-in-progress: true
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check mirror is enabled and source is current
+        id: ready
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          latest=$(git ls-remote origin refs/heads/main | cut -f1)
+          test -n "$latest"
+          if [ "$latest" != "$GITHUB_SHA" ]; then
+            echo '::notice::A newer main commit exists; skip outdated mirror.'
+            exit 0
+          fi
+          status=$(curl --silent --show-error --output "$RUNNER_TEMP/pages-config.json" --write-out '%{http_code}' \
+            -H "Authorization: Bearer $GH_TOKEN" -H 'Accept: application/vnd.github+json' \
+            "$GITHUB_API_URL/repos/$GITHUB_REPOSITORY/pages")
+          if [ "$status" = 404 ]; then
+            echo '::notice::Pages not enabled; select GitHub Actions in repository Settings > Pages.'
+            exit 0
+          fi
+          test "$status" = 200
+          if [ "$(jq -r '.build_type' "$RUNNER_TEMP/pages-config.json")" != workflow ]; then
+            echo '::notice::Pages source is not GitHub Actions; mirror not deployed.'
+            exit 0
+          fi
+          echo 'ready=true' >> "$GITHUB_OUTPUT"
+      - name: Configure GitHub Pages
+        if: steps.ready.outputs.ready == 'true'
+        uses: actions/configure-pages@v5
+      - name: Generate public mirror
+        if: steps.ready.outputs.ready == 'true'
+        run: python3 -B scripts/build_public_pages.py "$RUNNER_TEMP/public-pages" --commit "$GITHUB_SHA"
+      - name: Upload GitHub Pages artifact
+        if: steps.ready.outputs.ready == 'true'
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: ${{ runner.temp }}/public-pages
+      - name: Deploy public mirror
+        if: steps.ready.outputs.ready == 'true'
+        id: deployment
+        uses: actions/deploy-pages@v4

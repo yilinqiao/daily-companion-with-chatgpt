@@ -11,6 +11,20 @@ class EveningHandoffTests(unittest.TestCase):
         cls.evening = (ROOT / "System/workflows/evening.md").read_text(encoding="utf-8")
         cls.setup = (ROOT / "System/setup.md").read_text(encoding="utf-8")
         cls.upgrade = (ROOT / "System/upgrade.md").read_text(encoding="utf-8")
+        cls.notion = (ROOT / "System/storage/notion.md").read_text(encoding="utf-8")
+        cls.artifacts = (ROOT / "System/policies/artifacts.md").read_text(encoding="utf-8")
+
+    def test_notion_initial_display_matches_verified_full_body_without_approval_preview(self):
+        section = self.evening.split("## 4. Output Composition", 1)[1].split("## 5. Approval Handoff", 1)[0]
+        for rule in (section, self.notion, self.artifacts):
+            self.assertIn("complete user-visible body", rule)
+            self.assertIn("ordinary chat", rule)
+            self.assertIn("editable approval preview", rule)
+        self.assertIn("no separate summary", section)
+        self.assertIn("outside the body", section)
+        self.assertIn("full safe draft", section)
+        self.assertIn("GitHub is read-only", section)
+        self.assertNotIn("no full Markdown draft yet", section)
 
     def test_scheduled_check_in_cannot_sign_off_before_questions(self):
         section = self.evening.split("Then ask these three general questions:", 1)[1]

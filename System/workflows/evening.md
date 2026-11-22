@@ -84,7 +84,7 @@ Manual status/property or Kanban list position is authoritative.
 
 ## 4. Output Composition
 
-Present a short conversational **Evening Check-in**:
+Use these inputs to compose the provisional Diary-first Memory for Notion, or a short conversational **Evening Check-in** for GitHub:
 
 - **Since Morning** — material changes/candidates once each;
 - **Saved Today — Slurped Pages** — omit if none;
@@ -96,7 +96,7 @@ Present a short conversational **Evening Check-in**:
 
 Keep evidence bookkeeping internal. Calendar alone: ask if it happened when material; supporting evidence: state likely outcome and confirm if needed; exact-ID reschedule: state the move; contradiction: briefly explain and ask. Ask the smallest useful clarification. Do not narrate internal evidence thresholds.
 
-For Notion, with verified autosave consent, auto-save the provisional Diary-first Memory now using only current supported evidence and verify under storage/notion.md; no full Markdown draft yet. If auto-save fails or is unauthorized, report that before the questions and continue the ordinary check-in; defer interactive save preview until answers. GitHub is read-only. Then show the ordinary conversation and end with these questions.
+For Notion, prepare one complete provisional Diary-first Memory using only supported evidence and the artifact schema. With verified autosave consent, auto-save and verify it under storage/notion.md. Display the same complete user-visible body in ordinary chat, in the same order, without omissions or regeneration; no separate summary or editable approval preview. Put verified URL/status outside the body. If auto-save fails or is unauthorized, show the full safe draft with an honest unsaved notice outside the body. Defer the editable approval preview until after answers. GitHub is read-only and retains its conversational check-in and interactive save after answers.
 
 Then ask these three general questions:
 

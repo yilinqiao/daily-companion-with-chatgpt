@@ -99,7 +99,7 @@ Fetch private daily_companion_extra.md and profile only; follow shared read-only
 
 ### Daily Companion Update Watch task instruction
 
-Fetch private upgrade.md; run §0 Scheduled update watch (read-only). Only verified newer releases or material failure warrant output; invite interactive concrete diff review, never scheduled upgrade.
+Fetch private upgrade.md and profile; follow §0 Scheduled update watch (read-only). Never upgrade on schedule.
 
 ### Task verification and notification handoff
 

@@ -51,6 +51,16 @@ class ReflectionAndWatchTests(unittest.TestCase):
         self.assertIn("Existing installations are **not** silently given a new task", self.upgrade)
         self.assertIn("separately with explicit task-activation approval", self.upgrade)
 
+    def test_watch_version_only_and_failure_threshold(self):
+        watch = self.upgrade.split("## 0. Scheduled update watch (read-only)", 1)[1].split("## 1. Compare", 1)[0]
+        for phrase in ("VERSION alone", "CHANGELOG is optional", "no commit SHA required",
+                       "three consecutive daily failures", "reliably available run history",
+                       "otherwise remain silent", "never write"):
+            self.assertIn(phrase, watch)
+        self.assertNotIn("one immutable default-branch commit", watch)
+        self.assertNotIn("Only verified newer releases or material failure warrant output", self.setup)
+        self.assertIn("same immutable candidate SHA", self.upgrade.split("## 1. Compare", 1)[1])
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -21,6 +21,12 @@ Confirm private backend, scope, identity and access. GitHub verify private visib
 
 Three-way compare where baseline is verified. Source-owned rules, setup, selected adapter and docs may be merged; preserve customizations, profile settings/consents, Daily history and original Calendar linkage, all Ledger cards/rows/IDs/order/metadata and schemas/views. Preserve Extra history and state except explicit approved migration. Don't overwrite same-named personal files or delete upstream-removed private content without specific approval. Review actual existing task prompts against current minimal templates, including all three Evening fallback questions; propose only necessary changes, separately approved, preserve title/times/timezone/paused state/notification preferences. Existing installations are **not** silently given a new task; offer new tasks separately with explicit task-activation approval. Never rerun setup.
 
+### v0.5.18 Evening task final-question repair
+
+- The public Evening task template now explicitly requires three numbered capture questions at the very end of EVERY scheduled response, including a successfully verified Notion Auto-Saved full-body display. A generic invitation is insufficient; link, save status and other commentary precede the questions.
+- On existing private installations, inspect the actual Evening task prompt. Where the questions appear only in a failure/fallback branch, propose a separately approved targeted task-prompt repair. Preserve task identity, conversation, time, timezone, enabled/paused state, notifications, historical Diary/Ledger content and private System customizations. Correct prompts need no change. This public release performs no private task or data migration.
+- Verify a real subsequent Evening run; static checks do not establish client rendering.
+
 ### v0.5.17 Public web-only installation retrieval
 
 - The new-user installation entry and selected-backend preflight now use public Pages bundle/individual documents, public GitHub HTML/Raw URLs, and independent public CDN endpoints. Remove user ZIP download/upload fallback and do not require a GitHub connector for Notion onboarding. Full source bodies and private installation consent are still mandatory: on total public browsing failure, retain answers and pause before writes.

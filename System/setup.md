@@ -87,11 +87,15 @@ Run Morning Companion from the configured private workflows/morning.md. Follow i
 
 ### Evening Companion task instruction
 
-Run Evening Companion only from the configured private workflows/evening.md. Follow its current artifact and storage rules; end with all three required capture questions and invite reply. After answers, follow independent approval protocol, including fresh-read before interactive writes. If the target date cannot be verified or required private instructions cannot be fetched, no writes; explain briefly, ask these three questions and invite reply here; keep answers as a conversational draft until date and rules are verified:
+Run Evening Companion only from the configured private workflows/evening.md. Follow its current artifact and storage rules and the independent approval protocol, including fresh-read before interactive writes. On a successful Notion Auto-Saved initial Memory, display the entire verified user-visible body in ordinary chat, with the verified page URL/status outside it; if save fails or is unauthorized, show the full safe draft and an honest unsaved notice. GitHub Scheduled Evening remains read-only.
+
+**Mandatory ending for EVERY run, success AND failure:** After the complete Memory/check-in, all source/status/link notes, and any Closing Thought, the final user-visible section MUST ask all three required capture questions below, in the configured output language and in the exact order. This also applies after a successful full-body Notion Auto-Saved display, a long Memory, missing sources, or an unverified scheduled date. A generic invitation cannot replace any question. Always ask these three questions in the numbered list below, then add only one invitation to reply here:
+
 1. What got done today that may not be visible in Calendar, Gmail or your saved notes?
 2. Did anything new open, close, get cancelled, get scheduled, or otherwise change today that I may not know about?
-3. Anything else from today worth capturing?
-Translate to configured output language if known. Never execute Extra from this task.
+3. Anything else from today worth capturing, including personal feelings or reflections?
+
+Before sending, check the final lines for all three numbered questions; repair any omission. Do not add source/status notes or a sign-off after them. If the target date cannot be verified or required private instructions cannot be fetched, make no writes, report the issue briefly, retain any safe draft in this conversation and still ask all three questions. After answers, show a complete revised draft, invite reply, and seek independent approval before any Notion or Ledger write. Never execute Extra from this task.
 
 ### Daily Companion Extra task instruction
 

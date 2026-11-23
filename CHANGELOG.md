@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.5.18 — 2026-11-23
+
+- Fix a live-observed Evening omission: the complete provisional Notion Memory appeared, but the three standard capture questions did not. The setup-created Scheduled Task prompt now explicitly demands all three numbered questions at the end after **successful** autosave as well as failed/blocked runs, with no generic-invitation substitute.
+- Strengthen Evening workflow, BC-08, regression tests and private-upgrade guidance; affected files: setup, evening, upgrade, behavioral contracts, test_evening_handoff, VERSION and CHANGELOG. No changes to data models, user permissions, private notes, status, Ledger, backend write boundaries or task cadence.
+- Existing private tasks require a separately approved prompt repair only if their current prompt can omit the questions on the success path. No automatic task or data migration. BC-08/09/10/13 review: full initial Notion body and question handoff on success/failure; approval of revisions/Ledger remains independent; GitHub scheduled writes remain forbidden and Extra independent. Static/CI checks cannot guarantee actual model output, so verify a real scheduled occurrence.
+
 ## 0.5.17 — 2026-11-23
 
 - Remove the new-user ZIP download/upload fallback: ChatGPT must fetch complete Setup and selected Notion/GitHub installation rules directly over public web routes. Try the GitHub Pages Setup and bundle/individual HTML/MD files, then public GitHub Raw/HTML and independently served jsDelivr CDN; an existing GitHub connector is optional, not a prerequisite. Explicitly keep confirmed onboarding answers and stop before private writes if every public source is blocked/truncated.

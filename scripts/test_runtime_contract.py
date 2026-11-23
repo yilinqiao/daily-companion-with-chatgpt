@@ -39,7 +39,8 @@ class RuntimeContracts(unittest.TestCase):
         setup = (ROOT / 'System/setup.md').read_text()
         prompt = setup.split('```text\n', 1)[1].split('\n```', 1)[0]
         self.assertIn('Raw URL', prompt)
-        self.assertIn('GitHub connector', prompt)
+        self.assertIn('cdn.jsdelivr.net', prompt)
+        self.assertIn('No GitHub connection', prompt)
         for name in ('README.md', 'docs/setup-guide.html'):
             self.assertIn(prompt, (ROOT / name).read_text())
         pages = 'https://yilinqiao.github.io/daily-companion-with-chatgpt/'
@@ -48,21 +49,31 @@ class RuntimeContracts(unittest.TestCase):
         preflight = setup.split('## 2. Check connectors and approve setup', 1)[1].split('### Google Calendar', 1)[0]
         self.assertIn(pages, preflight)
         self.assertLess(preflight.index(pages), preflight.index('Raw URL'))
-        for phrase in ('before requesting installation approval', 'complete contents', 'Raw URL', 'GitHub connector'):
+        for phrase in ('before requesting installation approval', 'complete contents', 'Raw URL', 'GitHub connector', 'jsdelivr.net', 'bundle.html'):
             self.assertIn(phrase, preflight)
         initialization = setup.split('## 3. Initialize selected storage and verify readiness', 1)[1].split('## 4.', 1)[0]
         for phrase in ('reuse the verified source contents', 'without repeating approval', 'unless the approved plan changes'):
             self.assertIn(phrase, initialization)
 
-    def test_onboarding_zip_fallback_and_user_questions(self):
+    def test_public_web_only_fallback_and_user_questions(self):
         setup = (ROOT / 'System/setup.md').read_text()
         prompt = setup.split('```text\n', 1)[1].split('\n```', 1)[0]
-        self.assertIn('https://github.com/yilinqiao/daily-companion-with-chatgpt/archive/refs/heads/main.zip', prompt)
-        self.assertIn('upload', prompt)
-        for phrase in ('High', 'if available', 'uploaded public ZIP', 'do not execute', 'user may ask questions at any point', 'pending unanswered question'):
+        for phrase in ('High', 'if available', 'cdn.jsdelivr.net', 'No GitHub connection',
+                       'do not ask me to upload files'):
+            self.assertIn(phrase, prompt)
+        for phrase in ('user may ask questions at any point', 'pending unanswered question'):
             self.assertIn(phrase, setup)
         preflight = setup.split('## 2. Check connectors and approve setup', 1)[1].split('### Google Calendar', 1)[0]
-        self.assertIn('uploaded public ZIP', preflight)
+        for phrase in ('bundle.html', 'System/setup/notion.md', 'System/storage/notion.md',
+                       'raw.githubusercontent.com', 'cdn.jsdelivr.net', 'missing path',
+                       'no writes or task activation'):
+            self.assertIn(phrase, preflight)
+        for name in ('System/setup.md', 'README.md', 'docs/GETTING_STARTED.md',
+                     'docs/setup-guide.html'):
+            public_text = (ROOT / name).read_text()
+            self.assertNotIn('archive/refs/heads/main.zip', public_text)
+            self.assertNotIn('uploaded public ZIP', public_text)
+        self.assertNotIn('upload it here', prompt)
 
     def test_notion_persistent_tool_permission_is_optional_and_scoped(self):
         guide = (ROOT / 'System/setup/notion.md').read_text()

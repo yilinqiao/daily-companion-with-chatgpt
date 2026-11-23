@@ -4,8 +4,8 @@ Use only the configured private suite, System index and source IDs. Never switch
 
 ## Runtime field mapping
 
-- Daily: `File name` = title, `As of` = local artifact date, `Category` = exactly one of `Morning briefing` / `Evening memory`, `Status` = Auto-Saved / Edited / Imported. Native Created and Last edited are storage timestamps; do not substitute them for an original generation date/time.
-- Ledger: `Name` = title, `Task ID` = immutable id, `Details` = next step/context, `Status` = lifecycle list, `Opened` = opened, `Closed On` = closed, `Due` = due, `Revisit` = revisit, `Resolution` = resolution, `Scope` = scope, `Standing Until` = standing_until, `Source` = source, `Category` / `Tag` = user-defined classification. Responsibility belongs in Details where useful.
+- Daily: ONE shared `Daily Companion` source contains both Morning Briefing and Evening Memory; never split them into separate databases or data sources. `File name` = title, `As of` = local artifact date, `Category` = single-select exactly one of `Morning briefing` / `Evening memory`, `Status` = Auto-Saved / Edited / Imported. Native `Created time` and `Last edited time` are storage timestamps; `Day` / `Month` / `Year` are formulas and `Legacy Drive URL` is optional for imports. Do not substitute timestamps for an original generation date/time.
+- Ledger: `Name` = title, `Task ID` = immutable id, `Details` = next step/context, `Status` = lifecycle list, `Opened` = opened, `Closed On` = closed, `Due` = due, `Revisit` = revisit, `Resolution` = resolution, `Scope` = text scope, `Source` = source text, `Category` / `Tag` = user-defined multi-select classifications; `Standing Until` is optional only if present in the real private schema. Responsibility belongs in Details where useful.
 - System: `System file name` = logical path, `version` = numeric page revision. Use verified private mappings for customized properties; never guess missing mappings or change schema during runtime.
 
 ## Read and identity

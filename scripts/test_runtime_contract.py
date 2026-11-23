@@ -75,6 +75,19 @@ class RuntimeContracts(unittest.TestCase):
         for phrase in ('Daily planning window', 'help you plan your day', '07:00–21:00', 'planning_window_start', 'planning_window_end', 'never default either to null', 'Fixed working hours'):
             self.assertIn(phrase, question)
 
+    def test_live_notion_daily_source_combined(self):
+        guide = (ROOT / 'System/setup/notion.md').read_text()
+        runtime = (ROOT / 'System/storage/notion.md').read_text()
+        setup = (ROOT / 'System/setup.md').read_text()
+        for phrase in ('MUST share one Daily Companion data source', 'single-select Category',
+                       'Category (**select**', 'Created time', 'Last edited time',
+                       'Legacy Drive URL', 'Daily Briefing & Memory',
+                       'Last 7 days', 'Ledger Audit (All)', '**Plan** database'):
+            self.assertIn(phrase, guide)
+        self.assertIn('ONE shared `Daily Companion` source', runtime)
+        self.assertIn('ONE shared Daily Companion source', setup)
+        self.assertNotIn('Category (multi-select: Morning briefing, Evening memory', guide)
+
     def test_notion_signup_at_storage_choice(self):
         setup = (ROOT / 'System/setup.md').read_text()
         choice = next(line for line in setup.splitlines() if line.startswith('7. Storage choice:'))

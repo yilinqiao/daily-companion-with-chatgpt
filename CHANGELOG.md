@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.5.14 — 2026-11-23
+
+- Align new Notion onboarding with the observed Live Suite: System, one combined Daily Companion source for both Morning Briefing and Evening Memory (Category single-select), and separate Action Ledger. Correct the live Daily properties, source naming and saved views, plus Ledger baseline fields. Plan is an optional separate private database requiring its own approval, not a Daily category or scheduled destination.
+- Update Notion setup/adapter, shared setup, README/guides, behavioral contracts, upgrade notes and regression tests. No new mandatory profile fields, private writes, historical rewrites, automatic new Plan database, schema migration or task changes. Existing private sources with working custom types remain intact until explicitly approved repair.
+- BC-01/03/11/12 reviewed: date + Category unique identity, paginated unfiltered searches, scoped Daily writes and independently approved Ledger updates preserved. Live Suite schema inspected, but no private identifiers or data copied into public release; CI cannot prove actual new-client setup or scheduled persistence.
+
+
 ## 0.5.13 — 2026-11-22
 
 - Make the validated public GitHub Pages mirror the default reading route for Setup, required installation files, Update Watch, release notes and interactive upgrade guidance. Retain GitHub page/Raw/connector and applicable public ZIP fallbacks. GitHub remains canonical source and history; automatic deployment is unchanged.

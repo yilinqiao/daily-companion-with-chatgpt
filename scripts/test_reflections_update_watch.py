@@ -59,19 +59,27 @@ class ReflectionAndWatchTests(unittest.TestCase):
             self.assertIn(phrase, watch)
         self.assertNotIn("one immutable default-branch commit", watch)
         self.assertNotIn("Only verified newer releases or material failure warrant output", self.setup)
-        self.assertIn("same immutable candidate SHA", self.upgrade.split("## 1. Compare", 1)[1])
+        self.assertIn("Do not require an immutable candidate SHA", self.upgrade.split("## 1. Compare", 1)[1])
 
-    def test_pages_first_watch_and_upgrade_keep_fallbacks(self):
-        base = "https://yilinqiao.github.io/daily-companion-with-chatgpt/"
+    def test_connector_first_watch_and_simple_actual_file_upgrade(self):
         watch = self.upgrade.split("## 0. Scheduled update watch (read-only)", 1)[1].split("## 1. Compare", 1)[0]
-        self.assertIn(base + "version.html", watch)
-        self.assertLess(watch.index(base), watch.index("Raw VERSION"))
-        self.assertIn(base + "changelog.html", watch)
-        self.assertIn(base + "upgrade.html", self.upgrade)
+        self.assertIn("Use the GitHub connector first", watch)
+        self.assertLess(watch.index("GitHub connector"), watch.index("Raw VERSION"))
+        self.assertIn("https://yilinqiao.github.io/daily-companion-with-chatgpt/version.html", watch)
+        self.assertIn("CHANGELOG is optional", watch)
         compare = self.upgrade.split("## 1. Compare", 1)[1].split("## 2. Propose", 1)[0]
-        self.assertIn("same immutable candidate SHA", compare)
-        self.assertIn("pinned GitHub", compare)
-        self.assertIn("source commit", compare)
+        for phrase in ("Compare actual contents", "Do not require an immutable candidate SHA",
+                       "installed baseline SHA", "no full-file diff", "missing paths", "no writes"):
+            if phrase == "no full-file diff":
+                self.assertIn("no mandatory full-file diff", compare)
+            else:
+                self.assertIn(phrase, compare)
+        self.assertNotIn("same immutable candidate SHA", compare)
+        self.assertIn("user may still approve the concrete rule changes without a known version", compare)
+        apply = self.upgrade.split("## 3. Apply approved changes", 1)[1]
+        self.assertIn("installed_template_commit is optional", apply)
+        self.assertIn("fresh SHA for each approved file", apply)
+        self.assertIn("Missing metadata alone is not a failed upgrade", apply)
 
 
 if __name__ == "__main__":

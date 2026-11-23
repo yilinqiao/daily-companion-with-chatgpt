@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.5.19 — 2026-11-24
+
+- Make the GitHub connector the default public-source read path for both Notion and GitHub onboarding, update checks and interactive upgrades. Guide free GitHub signup (Google if available) and connection before reading Setup; Notion users need no private repository. Read exact current default-branch files directly, reuse complete bodies and keep public GitHub/Raw/Pages as simple fallbacks. No manual file uploads.
+- Simplify version handling: Watch and interactive check compare installed version to public VERSION alone; CHANGELOG is optional. Manual upgrades compare actual latest public and existing private file bodies, with no mandatory immutable candidate or baseline SHA, tags, history, manifest, three-way merge or repeated version verification. Unknown metadata does not block reviewed rule changes; installed version/optional commit recorded only if known. Preserve known downgrade/incompatibility checks, independent approvals, actual read completeness and private conflict-safe write/read-back protections.
+- Update Setup/task template, upgrade, README, getting-started/HTML/Obsidian guides, privacy and BC-01/14/15 with regression tests. No private schema, history, profile state, task identity/cadence or permission changes; selective repairs require user approval and do not stamp a full installation version. Older Pages-first notes are historical. New-account connector access and actual scheduled read/notification behavior still require live observation; CI is not proof of those capabilities.
+
+
 ## 0.5.18 — 2026-11-23
 
 - Fix a live-observed Evening omission: the complete provisional Notion Memory appeared, but the three standard capture questions did not. The setup-created Scheduled Task prompt now explicitly demands all three numbered questions at the end after **successful** autosave as well as failed/blocked runs, with no generic-invitation substitute.

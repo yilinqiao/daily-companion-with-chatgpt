@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.5.20 — 2026-11-24
+
+- Simplify new Notion setup: one Daily Companion Suite database containing exactly three data sources (System, shared Daily Companion, Action Ledger). Remove the alternative separate-database setup. If multi-source creation is unavailable, guide manual completion of the same structure and verify it before marking ready or activating tasks.
+- Remove Legacy Drive URL from the new Daily Companion schema and current runtime field requirements. Preserve existing private properties, historical links, database layouts and mappings; no automatic deletion or schema migration. No changes to GitHub private setup, daily workflows, task schedules or version-check requirements.
+- Align setup, Notion storage adapter, upgrade, README, Getting Started, HTML setup guide, BC-03 and regression assertions. Static checks cover the new structure and field removal; actual new-account multi-data-source creation and verification still need a live test.
+
+
 ## 0.5.19 — 2026-11-24
 
 - Make the GitHub connector the default public-source read path for both Notion and GitHub onboarding, update checks and interactive upgrades. Guide free GitHub signup (Google if available) and connection before reading Setup; Notion users need no private repository. Read exact current default-branch files directly, reuse complete bodies and keep public GitHub/Raw/Pages as simple fallbacks. No manual file uploads.

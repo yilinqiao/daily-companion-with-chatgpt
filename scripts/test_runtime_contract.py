@@ -29,7 +29,7 @@ class RuntimeContracts(unittest.TestCase):
         self.assertIn('missing or inconsistent release metadata alone does not block setup', gate)
         self.assertIn('required files', gate)
         self.assertIn('before any private installation write', gate)
-        self.assertIn('preserve valid confirmed answers', gate)
+        self.assertIn('preserve valid confirmed answers', gate.lower())
         self.assertIn('no writes or task activation', gate.lower())
         for backend in ('notion', 'github'):
             guide = (ROOT / f'System/setup/{backend}.md').read_text()

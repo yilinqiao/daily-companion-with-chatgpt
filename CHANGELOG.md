@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.5.17 — 2026-11-23
+
+- Remove the new-user ZIP download/upload fallback: ChatGPT must fetch complete Setup and selected Notion/GitHub installation rules directly over public web routes. Try the GitHub Pages Setup and bundle/individual HTML/MD files, then public GitHub Raw/HTML and independently served jsDelivr CDN; an existing GitHub connector is optional, not a prerequisite. Explicitly keep confirmed onboarding answers and stop before private writes if every public source is blocked/truncated.
+- Update the copy-paste prompt in README, Setup and HTML setup guide, the Getting Started guide, BC-01, upgrade retrieval fallback and regression tests. User should never have to download/upload repository files for onboarding or interactive template upgrade.
+- No changes to private storage schemas, Daily/Memory/Action Ledger behavior, approval gates, scheduled times or user's Live Notion. BC-01/03/14 reviewed: source completeness and consent still gate writes; users are not asked to manually replace inaccessible source text. GitHub CI verifies rules, not a live ChatGPT browser; public website access remains browser/provider-dependent and is not guaranteed for every new account.
+
+
 ## 0.5.16 — 2026-11-23
 
 - Clarify the intended Notion terminology: **Plan means Action Ledger**, the existing task/project planning source, not an optional fourth database. A standard private Daily Companion Suite has just three data sources: System, combined Daily Companion (Morning + Evening) and Action Ledger. Scheduled Ledger writes remain prohibited.

@@ -89,6 +89,9 @@ class RuntimeContracts(unittest.TestCase):
         self.assertIn('**Plan** means the existing **Action Ledger**', guide)
         self.assertIn('not a fourth database', guide.lower())
         self.assertIn('do not create a fourth Plan database', setup)
+        self.assertIn('Plan / tasks / projects', (ROOT / 'README.md').read_text())
+        self.assertIn('No additional Plan database is created.', (ROOT / 'docs/GETTING_STARTED.md').read_text())
+        self.assertIn('there is no fourth Plan database', (ROOT / 'docs/setup-guide.html').read_text())
         self.assertNotIn('Category (multi-select: Morning briefing, Evening memory', guide)
 
     def test_notion_signup_at_storage_choice(self):

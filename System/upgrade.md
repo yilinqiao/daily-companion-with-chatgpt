@@ -23,6 +23,11 @@ For "Upgrade Daily Companion", confirm private backend, scope, identity and acce
 
 Compare current private and latest public rules directly; use a historical baseline only if already available and genuinely useful, never as a prerequisite. Source-owned rules, setup, selected adapter and docs may be merged; preserve customizations, profile settings/consents, Daily history and original Calendar linkage, all Ledger cards/rows/IDs/order/metadata and schemas/views. Preserve Extra history and state except explicit approved migration. Don't overwrite same-named personal files or delete upstream-removed private content without specific approval. Review actual existing task prompts against current minimal templates, including all three Evening fallback questions; propose only necessary changes, separately approved, preserve title/times/timezone/paused state/notification preferences. Existing installations are **not** silently given a new task; offer new tasks separately with explicit task-activation approval. Never rerun setup.
 
+### v0.5.20 Notion starter schema simplification
+
+- New Notion installations use one Daily Companion Suite database containing exactly three data sources: System, Daily Companion and Action Ledger. Separate databases are not a new-setup fallback; guide the user to complete the same structure in Notion if needed, then verify before activation.
+- Remove the legacy Google Drive URL field from the new Daily Companion schema and runtime requirements. Existing installations need no migration: preserve existing properties, historical links and working mappings, even if they have a different previously approved database layout. Never delete a private property or restructure live databases as part of an ordinary upgrade. Any such change requires a separate data-preserving proposal and approval.
+
 ### v0.5.19 Connector-first, simple version checks and upgrades
 
 - Use GitHub connector first for both storage choices; a free GitHub account is sufficient for reading the canonical public repository when supported. No private GitHub repository is needed for Notion. Public web files remain an optional fallback; never require file uploads.

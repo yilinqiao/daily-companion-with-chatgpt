@@ -28,7 +28,7 @@ You can ask questions at any point during setup and resume where you left off. I
 
 | | Notion (recommended) | Private GitHub + optional Obsidian |
 | --- | --- | --- |
-| Storage | Private Daily Companion Suite with System, one shared Daily Companion source (Morning and Evening), and Ledger; optional separate Plan database | Private repository containing Markdown |
+| Storage | Private Daily Companion Suite with System, one shared Daily Companion source (Morning and Evening), and Ledger (Plan / tasks / projects) | Private repository containing Markdown |
 | Morning | Auto-save with protected Notion-only Calendar ID section | Approve save; hidden Calendar metadata |
 | Evening | Auto-save and show full provisional Memory in chat; approve revision of same page | Approve full Memory before any save |
 | Ledger | Status board, unfiltered audit incl. Closed | Kanban Markdown board |

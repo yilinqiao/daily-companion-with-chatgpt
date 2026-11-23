@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.5.16 — 2026-11-23
+
+- Clarify the intended Notion terminology: **Plan means Action Ledger**, the existing task/project planning source, not an optional fourth database. A standard private Daily Companion Suite has just three data sources: System, combined Daily Companion (Morning + Evening) and Action Ledger. Scheduled Ledger writes remain prohibited.
+- Correct the public Notion setup, common setup, user guides, behavioral contract, upgrade guidance and regression assertions. No change to Live Notion, private profiles, schemas, views, notes, task state, approvals, schedules or GitHub alternative. Existing proper three-source private installations need no migration; never delete a separate custom source someone already created automatically.
+- BC-01/03/11/12 reviewed: setup requires verified source mappings, one Daily date+Category identity and independent Ledger approval. CI checks are static; live new-account installation and scheduled persistence are not claimed.
+
+
 ## 0.5.15 — 2026-11-23
 
 - Improve GitHub Pages deployment reliability by allowing artifact metadata indexing to settle between a successful upload and the deploy-pages API lookup. A short indexing race caused initial 0.5.14 Pages deployment failure; re-running the same job created duplicate named artifacts in the same run and was not a viable repair. A fresh release run is required.

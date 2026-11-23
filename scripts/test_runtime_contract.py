@@ -82,10 +82,13 @@ class RuntimeContracts(unittest.TestCase):
         for phrase in ('MUST share one Daily Companion data source', 'single-select Category',
                        'Category (**select**', 'Created time', 'Last edited time',
                        'Legacy Drive URL', 'Daily Briefing & Memory',
-                       'Last 7 days', 'Ledger Audit (All)', '**Plan** database'):
+                       'Last 7 days', 'Ledger Audit (All)', '**Action Ledger**'):
             self.assertIn(phrase, guide)
         self.assertIn('ONE shared `Daily Companion` source', runtime)
         self.assertIn('ONE shared Daily Companion source', setup)
+        self.assertIn('**Plan** means the existing **Action Ledger**', guide)
+        self.assertIn('not a fourth database', guide.lower())
+        self.assertIn('do not create a fourth Plan database', setup)
         self.assertNotIn('Category (multi-select: Morning briefing, Evening memory', guide)
 
     def test_notion_signup_at_storage_choice(self):

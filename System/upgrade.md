@@ -21,9 +21,14 @@ Confirm private backend, scope, identity and access. GitHub verify private visib
 
 Three-way compare where baseline is verified. Source-owned rules, setup, selected adapter and docs may be merged; preserve customizations, profile settings/consents, Daily history and original Calendar linkage, all Ledger cards/rows/IDs/order/metadata and schemas/views. Preserve Extra history and state except explicit approved migration. Don't overwrite same-named personal files or delete upstream-removed private content without specific approval. Review actual existing task prompts against current minimal templates, including all three Evening fallback questions; propose only necessary changes, separately approved, preserve title/times/timezone/paused state/notification preferences. Existing installations are **not** silently given a new task; offer new tasks separately with explicit task-activation approval. Never rerun setup.
 
+### v0.5.16 Plan / Action Ledger clarification
+
+- Correct the public Notion setup wording: "Plan" refers to the existing Action Ledger task and project planning source; do not create a fourth Plan database for standard installation. New Notion installs retain exactly three data sources: System, one combined Daily Companion for Morning and Evening, and Action Ledger.
+- No migration is required for correct existing three-source installations. Do not create, split, rename, delete or merge any private source automatically. If a user already has a distinct custom Plan database, preserve it and review its use only after a separately approved concrete proposal. Existing task state, notes, permissions, schemas/views, IDs and schedules remain unchanged.
+
 ### v0.5.14 Notion setup alignment
 
-- New installs must use a single shared Daily Companion data source for Morning and Evening, single-select Category, and the Live-style fields/views. Plan is an optional, separately approved private database, not a Daily category or scheduled write target.
+- New installs must use a single shared Daily Companion data source for Morning and Evening, single-select Category, and the Live-style fields/views. The 0.5.14 'separate Plan' description was an interpretation error corrected in 0.5.16: Plan here means Action Ledger, the separate task/planning source, not a fourth database.
 - Existing private installations are not split, merged or retyped automatically. Inspect real mappings and preserve all Daily pages, Ledger cards/IDs, System revisions, saved views, history and scheduled task destinations. If an existing multi-select Category works with exactly one value per Daily record, preserve it until an explicitly approved data-preserving repair. No automatic Plan creation, new tasks or schema migration.
 
 ### v0.5.13 migration

@@ -54,6 +54,21 @@ class EveningHandoffTests(unittest.TestCase):
         for phrase in ("What got done today", "Did anything new open", "Anything else from today"):
             self.assertIn(phrase, task)
 
+    def test_task_prompt_questions_are_unconditional_after_successful_save(self):
+        prompt = self.setup.split("### Evening Companion task instruction", 1)[1]
+        prompt = prompt.split("### Daily Companion Extra task instruction", 1)[0]
+        for text in ("EVERY run", "success AND failure", "successful full-body Notion Auto-Saved",
+                     "generic invitation", "check the final lines", "all source/status/link notes"):
+            self.assertIn(text.lower(), prompt.lower())
+        questions = ("1. What got done today", "2. Did anything new open",
+                     "3. Anything else from today")
+        positions = [prompt.index(q) for q in questions]
+        self.assertEqual(positions, sorted(positions))
+        for q in questions:
+            self.assertEqual(prompt.count(q), 1)
+        self.assertIn("independent approval", prompt)
+        self.assertIn("GitHub Scheduled Evening remains read-only", prompt)
+
     def test_missing_source_does_not_remove_three_question_handoff(self):
         section = self.evening.split("**Scheduled handoff (mandatory on every run):**", 1)[1]
         section = section.split("## 5. Approval Handoff", 1)[0]

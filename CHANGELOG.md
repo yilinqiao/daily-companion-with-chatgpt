@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.5.15 — 2026-11-23
+
+- Improve GitHub Pages deployment reliability by allowing artifact metadata indexing to settle between a successful upload and the deploy-pages API lookup. A short indexing race caused initial 0.5.14 Pages deployment failure; re-running the same job created duplicate named artifacts in the same run and was not a viable repair. A fresh release run is required.
+- Deployment workflow, VERSION and CHANGELOG only. The 0.5.14 Notion shared-Daily-source onboarding instructions remain unchanged. No private data/schema/task or user migration; a scheduled run or real-account setup still needs independent observation. Standard CI is used to verify the complete release.
+
+
 ## 0.5.14 — 2026-11-23
 
 - Align new Notion onboarding with the observed Live Suite: System, one combined Daily Companion source for both Morning Briefing and Evening Memory (Category single-select), and separate Action Ledger. Correct the live Daily properties, source naming and saved views, plus Ledger baseline fields. Plan is an optional separate private database requiring its own approval, not a Daily category or scheduled destination.

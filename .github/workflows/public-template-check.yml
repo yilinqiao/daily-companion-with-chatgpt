@@ -80,6 +80,11 @@ jobs:
         uses: actions/upload-pages-artifact@v4
         with:
           path: ${{ runner.temp }}/public-pages
+      # Give GitHub Actions artifact indexing time to become visible to deploy-pages.
+      # The preceding upload can succeed while the metadata endpoint briefly returns 0.
+      - name: Wait for Pages artifact indexing
+        if: steps.ready.outputs.ready == 'true'
+        run: sleep 12
       - name: Deploy public mirror
         if: steps.ready.outputs.ready == 'true'
         id: deployment

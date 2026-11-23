@@ -46,9 +46,10 @@ class BehavioralContracts(unittest.TestCase):
         self.require('System/upgrade.md', 'existing combined Evening + Extra',
                      'explicit task-activation approval', 'preserve Extra state')
 
-    def test_upgrade_pins_and_labels(self):
-        self.require('System/upgrade.md', 'same immutable candidate SHA',
+    def test_upgrade_actual_contents_and_optional_labels(self):
+        self.require('System/upgrade.md', 'Do not require an immutable candidate SHA',
                      'stop on downgrade', 'installed_template_version to the verified candidate semver',
+                     'installed_template_commit is optional', 'fresh SHA for each approved file',
                      'leave suspended tasks suspended')
         self.require('System/setup/github.md', 'match the retrieved upstream source files')
 

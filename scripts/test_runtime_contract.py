@@ -29,7 +29,7 @@ class RuntimeContracts(unittest.TestCase):
         self.assertIn('missing or inconsistent release metadata alone does not block setup', gate)
         self.assertIn('required files', gate)
         self.assertIn('before any private installation write', gate)
-        self.assertIn('preserve valid confirmed answers', gate)
+        self.assertIn('preserve valid confirmed answers', gate.lower())
         self.assertIn('no writes or task activation', gate.lower())
         for backend in ('notion', 'github'):
             guide = (ROOT / f'System/setup/{backend}.md').read_text()
@@ -38,42 +38,36 @@ class RuntimeContracts(unittest.TestCase):
     def test_installation_sources_are_ready_before_approval(self):
         setup = (ROOT / 'System/setup.md').read_text()
         prompt = setup.split('```text\n', 1)[1].split('\n```', 1)[0]
-        self.assertIn('Raw URL', prompt)
-        self.assertIn('cdn.jsdelivr.net', prompt)
-        self.assertIn('No GitHub connection', prompt)
+        self.assertIn('Use the GitHub connector', prompt)
+        self.assertIn('sign up with Google', prompt)
+        self.assertIn('yilinqiao/daily-companion-with-chatgpt', prompt)
         for name in ('README.md', 'docs/setup-guide.html'):
             self.assertIn(prompt, (ROOT / name).read_text())
-        pages = 'https://yilinqiao.github.io/daily-companion-with-chatgpt/'
-        self.assertIn(pages + 'setup.html', prompt)
-        self.assertLess(prompt.index(pages), prompt.index('Raw URL'))
         preflight = setup.split('## 2. Check connectors and approve setup', 1)[1].split('### Google Calendar', 1)[0]
-        self.assertIn(pages, preflight)
-        self.assertLess(preflight.index(pages), preflight.index('Raw URL'))
-        for phrase in ('before requesting installation approval', 'complete contents', 'Raw URL', 'GitHub connector', 'jsdelivr.net', 'bundle.html'):
+        for phrase in ('before requesting installation approval', 'complete contents', 'GitHub connector',
+                       'default branch (main)', 'Reuse complete bodies already read', 'No SHA'):
             self.assertIn(phrase, preflight)
         initialization = setup.split('## 3. Initialize selected storage and verify readiness', 1)[1].split('## 4.', 1)[0]
         for phrase in ('reuse the verified source contents', 'without repeating approval', 'unless the approved plan changes'):
             self.assertIn(phrase, initialization)
 
-    def test_public_web_only_fallback_and_user_questions(self):
+    def test_connector_first_and_no_manual_upload_or_metadata_gate(self):
         setup = (ROOT / 'System/setup.md').read_text()
         prompt = setup.split('```text\n', 1)[1].split('\n```', 1)[0]
-        for phrase in ('High', 'if available', 'cdn.jsdelivr.net', 'No GitHub connection',
+        for phrase in ('High', 'if available', 'GitHub connector', 'sign up with Google',
                        'do not ask me to upload files'):
             self.assertIn(phrase, prompt)
-        for phrase in ('user may ask questions at any point', 'pending unanswered question'):
+        for phrase in ('user may ask questions at any point', 'pending unanswered question',
+                       'Notion users need only read access', 'Do not look up or verify a SHA for installation'):
             self.assertIn(phrase, setup)
         preflight = setup.split('## 2. Check connectors and approve setup', 1)[1].split('### Google Calendar', 1)[0]
-        for phrase in ('bundle.html', 'System/setup/notion.md', 'System/storage/notion.md',
-                       'raw.githubusercontent.com', 'cdn.jsdelivr.net', 'missing path',
-                       'no writes or task activation'):
+        for phrase in ('System/setup/notion.md', 'System/storage/notion.md', 'GitHub connector',
+                       'missing path', 'No SHA', 'no writes or task activation'):
             self.assertIn(phrase, preflight)
-        for name in ('System/setup.md', 'README.md', 'docs/GETTING_STARTED.md',
-                     'docs/setup-guide.html'):
+        for name in ('System/setup.md', 'README.md', 'docs/GETTING_STARTED.md', 'docs/setup-guide.html'):
             public_text = (ROOT / name).read_text()
             self.assertNotIn('archive/refs/heads/main.zip', public_text)
             self.assertNotIn('uploaded public ZIP', public_text)
-        self.assertNotIn('upload it here', prompt)
 
     def test_notion_persistent_tool_permission_is_optional_and_scoped(self):
         guide = (ROOT / 'System/setup/notion.md').read_text()

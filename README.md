@@ -4,7 +4,7 @@ An open starter kit for a personal daily companion built with ChatGPT. **Notion 
 
 Current version: [VERSION](VERSION) · [Changes](CHANGELOG.md) · [Upgrade](System/upgrade.md).
 
-The [public Pages mirror](https://yilinqiao.github.io/daily-companion-with-chatgpt/) is the default public reading entry: [Setup](https://yilinqiao.github.io/daily-companion-with-chatgpt/setup.html), [latest version](https://yilinqiao.github.io/daily-companion-with-chatgpt/version.html), [release notes](https://yilinqiao.github.io/daily-companion-with-chatgpt/changelog.html), [upgrade](https://yilinqiao.github.io/daily-companion-with-chatgpt/upgrade.html) and complete public System files. It is generated automatically from validated `main` releases; GitHub remains the canonical source and version history. Public GitHub file/Raw URLs, independently served jsDelivr public URLs and an optional connected GitHub connector are retrieval fallbacks; no user file uploads are needed for normal onboarding. No private data is hosted on Pages.
+The public GitHub repository is the canonical source for all rules and version history. Connect GitHub in ChatGPT for setup, update checks and upgrades, whether you store your private companion in Notion or GitHub. A free account is sufficient when public repository read access is supported; [sign up](https://github.com/signup) using Google if offered. The [public Pages mirror](https://yilinqiao.github.io/daily-companion-with-chatgpt/) provides documentation and a fallback, not a required reading route. No public-template writes or private repository are needed for Notion.
 
 | Feature | What it does |
 | --- | --- |
@@ -19,12 +19,12 @@ The [public Pages mirror](https://yilinqiao.github.io/daily-companion-with-chatg
 Open a new ChatGPT chat and select **High** thinking if available (otherwise use the strongest available thinking setting). Paste:
 
 ```text
-Remind me to select High thinking if available. Use web access to read the complete public System/setup.md at https://yilinqiao.github.io/daily-companion-with-chatgpt/setup.html . If that fails, try the Raw URL https://raw.githubusercontent.com/yilinqiao/daily-companion-with-chatgpt/main/System/setup.md , the GitHub public file page, then https://cdn.jsdelivr.net/gh/yilinqiao/daily-companion-with-chatgpt@main/System/setup.md . Follow the closed onboarding one question at a time. Do not invent questions. For installation, fetch all required files from public Pages bundle.html, individual Pages/Raw URLs or public CDN; verify the full contents. No GitHub connection or manual file download/upload required. Never invent missing rules. If every public source fails, report the missing public URLs and pause with answers retained; do not ask me to upload files. If the setup text still cannot be read, stop. Ask for my approval before installation or scheduled task activation; obtain separate approval for each.
+Remind me to select High thinking if available. Help me connect GitHub in ChatGPT (if I have no account, help me sign up with Google). Use the GitHub connector to read System/setup.md from yilinqiao/daily-companion-with-chatgpt, then guide me through setup one question at a time. Do not invent questions. If the connector is unavailable, try the public repository files. If the setup text still cannot be read, stop and explain how to restore access; do not ask me to upload files. Ask for my approval before installation or scheduled task activation, separately.
 ```
 
 Answer the questions about name, location, work schedule, the daily planning window (e.g. 07:00–21:00, including work), language, style, storage, optional sources and scheduled times. Only the setup instructions are needed to start; the assistant reads all required installation files and verifies access before requesting approval. After approval it installs directly using the retrieved files.
 
-You can ask questions at any point during setup and resume where you left off. After the storage choice, ChatGPT should read the [public bundle](https://yilinqiao.github.io/daily-companion-with-chatgpt/bundle.html), relevant individual Pages files, or public GitHub Raw/CDN URLs itself. If browsing blocks every public route, the assistant must explain the missing source and pause; it must not ask you to download/upload repository files or invent missing rules.
+You can ask questions at any point during setup and resume where you left off. ChatGPT reads each required file with the GitHub connector and reuses complete content; public GitHub/Raw/Pages are fallback options. No user file upload, commit SHA, version-history check or manifest is required. If required rules cannot be read, pause before private writes and retain answers.
 
 | | Notion (recommended) | Private GitHub + optional Obsidian |
 | --- | --- | --- |
@@ -35,7 +35,7 @@ You can ask questions at any point during setup and resume where you left off. A
 | Surprise | Read-only weekly pattern | Same read-only weekly pattern |
 | Setup | [Sign up with Google](https://app.notion.com/signup) if needed; connect Notion and allow required operations on private suite | Use this template → Create a new repository → Private; never use public fork |
 
-No personal GitHub repository or connector is needed for Notion; setup and update checks require reliable public template read access. Browser restrictions may still block a particular ChatGPT session. When ChatGPT requests permission to use Notion, **Always allow** is recommended if offered and you agree to ongoing access; installation, auto-save and task approvals remain separate. The setup creates and verifies private data sources and views where supported, or shows the missing connector operation and guides you through it. No cross-store failover. Calendar and Gmail are optional read-only sources; select one or multiple verified accounts where supported. Cross-chat context is incomplete and opt-in.
+Notion users connect GitHub for public template reads only; no personal GitHub repository is needed. Connector availability and actual public read access must be tested. When ChatGPT requests permission to use Notion, **Always allow** is recommended if offered and you agree to ongoing access; installation, auto-save and task approvals remain separate. The setup creates and verifies private data sources and views where supported, or shows the missing connector operation and guides you through it. No cross-store failover. Calendar and Gmail are optional read-only sources; select one or multiple verified accounts where supported. Cross-chat context is incomplete and opt-in.
 
 After verified setup, separately approve Scheduled Task activation. Recommended tasks: Morning, Evening, Extra and Update Watch. Confirm notification switches (Settings > Notifications, Notify when complete); silent Extra/Watch checks may still trigger platform alerts. First real scheduled run and persistence must be verified separately. If the connector or client lacks required capabilities, don't assume they work. See [Getting started](docs/GETTING_STARTED.md) or [setup guide](docs/setup-guide.html).
 
@@ -57,7 +57,7 @@ The Action Ledger is authoritative for operational state; daily notes are histor
 
 ## Maintain or customize
 
-Say “Check for updates” for a read-only comparison, or “Upgrade Daily Companion” for an approved private upgrade. Older copies can start by reading the [latest public upgrade guide](https://yilinqiao.github.io/daily-companion-with-chatgpt/upgrade.html). Preserve your profile, notes, Ledger, history and custom rules; publication never updates private copies automatically.
+Say “Check for updates” for a read-only comparison, or “Upgrade Daily Companion” for an approved private upgrade. Read the latest public System/upgrade.md using the GitHub connector (or the [public upgrade guide](https://yilinqiao.github.io/daily-companion-with-chatgpt/upgrade.html) as fallback). Check updates with VERSION only; actual upgrades compare current file contents, without requiring historical commits or SHA verification. Preserve your profile, notes, Ledger, history and custom rules; publication never updates private copies automatically.
 
 Public maintainers must read [AGENTS.md](AGENTS.md) and [System/maintenance.md](System/maintenance.md) before editing. Use a versioned PR and verified CI, never publish private state.
 

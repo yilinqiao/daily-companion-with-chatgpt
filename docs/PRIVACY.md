@@ -4,11 +4,11 @@ Notion is now the recommended private store. Keep the Daily Companion Suite, its
 
 ## Public template and private personal vault
 
-The public repository must contain only generic instructions, empty folders and unconfigured state. Each user should click **Use this template**, create a separate **Private** GitHub repository and keep the actual profile, Ledger, Daily Memory, calendars and other personal content only there. **Forking a public repository is not a private alternative.**
+The public repository must contain only generic instructions, empty folders and unconfigured state. Users choosing GitHub as private storage should click **Use this template**, create a separate **Private** GitHub repository and keep the actual profile, Ledger, Daily Memory, calendars and other personal content only there. Notion users only need public-template read access through GitHub, not a private repository. **Forking a public repository is not a private alternative.**
 
 ## Source permissions
 
-GitHub access is required for repository-backed operation. Calendar, Gmail, web/weather and surfaced ChatGPT conversation context must be individually approved and used only when available. A user's permission and a successful technical connector check are different. Never infer consent from an already connected account.
+GitHub connector access is recommended for public template reads, version checks and upgrades for both backends; private GitHub read/write access is needed only for repository-backed operation. Calendar, Gmail, web/weather and surfaced ChatGPT conversation context must be individually approved and used only when available. A user's permission and a successful technical connector check are different. Never infer consent from an already connected account.
 
 ## Write and injection controls
 

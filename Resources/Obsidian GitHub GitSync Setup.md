@@ -115,15 +115,15 @@ For normal use:
 
 GitSync synchronizes your private repository with its devices. It does **not** synchronize that repo with newer public-template releases.
 
-Use [System/upgrade.md](../System/upgrade.md) for a pinned version comparison and a concrete proposed upgrade. Preserve profile/setup, note folders, Ledger/history, custom rules, pause status and live Extra state. Review any migration and task-prompt change before applying it. Never replace your vault with another blank template copy or merge public template history into it.
+Use [System/upgrade.md](../System/upgrade.md) for a direct current-file comparison and a concrete proposed upgrade. Preserve profile/setup, note folders, Ledger/history, custom rules, pause status and live Extra state. Review any migration and task-prompt change before applying it. Never replace your vault with another blank template copy or merge public template history into it.
 
 Older installations can start from the canonical public entrypoint:
 
 ```text
-Read the latest System/upgrade.md from
-https://yilinqiao.github.io/daily-companion-with-chatgpt/upgrade.html and help upgrade my private
+Use the GitHub connector to read the latest System/upgrade.md from
+yilinqiao/daily-companion-with-chatgpt and help upgrade my private
 Daily Companion repository <OWNER>/<PRIVATE_REPO>.
-First show the pinned source version/commit, proposed file changes and migrations.
+First show the version if known, proposed file changes and migrations. Do not require a commit SHA or historical baseline.
 Preserve my completed setup, configuration, notes, Ledger/history and custom rules.
 Preserve existing task timing and paused status; do not recreate working
 Morning/Evening tasks. Apply the specific changes only after I approve them.

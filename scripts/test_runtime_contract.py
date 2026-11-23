@@ -88,7 +88,7 @@ class RuntimeContracts(unittest.TestCase):
         self.assertIn('ONE shared Daily Companion source', setup)
         self.assertIn('**Plan** means the existing **Action Ledger**', guide)
         self.assertIn('not a fourth database', guide.lower())
-        self.assertIn('do not create a fourth Plan database', setup)
+        self.assertIn('do not create a fourth plan database', setup.lower())
         self.assertIn('Plan / tasks / projects', (ROOT / 'README.md').read_text())
         self.assertIn('No additional Plan database is created.', (ROOT / 'docs/GETTING_STARTED.md').read_text())
         self.assertIn('there is no fourth Plan database', (ROOT / 'docs/setup-guide.html').read_text())

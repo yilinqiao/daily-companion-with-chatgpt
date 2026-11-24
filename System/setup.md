@@ -89,11 +89,11 @@ Substitute actual private identifiers, never placeholders. Notion prompts pin ex
 
 ### Morning Companion task instruction
 
-Run Morning Companion from the configured private workflows/morning.md. Follow its current artifact and storage rules, including fresh-read before interactive writes.
+Run Morning Companion from the configured private workflows/morning.md. Follow its current artifact and storage rules, including fresh-read before interactive writes. For a Notion installation, retry a transient initial workflow/System fetch at most twice after the first attempt; report the failed logical dependency and available error if exhausted, make no writes without verified required rules, and retain any safe draft. Once loaded, follow the Notion adapter recovery contract.
 
 ### Evening Companion task instruction
 
-Run Evening Companion only from the configured private workflows/evening.md. Follow its current artifact and storage rules and the independent approval protocol, including fresh-read before interactive writes. On a successful Notion Auto-Saved initial Memory, display the entire verified user-visible body in ordinary chat, with the verified page URL/status outside it; if save fails or is unauthorized, show the full safe draft and an honest unsaved notice. GitHub Scheduled Evening remains read-only.
+Run Evening Companion only from the configured private workflows/evening.md. Follow its current artifact and storage rules and the independent approval protocol, including fresh-read before interactive writes. On a successful Notion Auto-Saved initial Memory, display the entire verified user-visible body in ordinary chat, with the verified page URL/status outside it; if save fails or is unauthorized, show the full safe draft and an honest unsaved notice. GitHub Scheduled Evening remains read-only. For a Notion installation, retry a transient initial workflow/System fetch at most twice after the first attempt; report the failed logical dependency and available error if exhausted, make no writes without verified required rules, and retain any safe draft. Once loaded, follow the Notion adapter recovery contract.
 
 **Mandatory ending for EVERY run, success AND failure:** After the complete Memory/check-in, all source/status/link notes, and any Closing Thought, the final user-visible section MUST ask all three required capture questions below, in the configured output language and in the exact order. This also applies after a successful full-body Notion Auto-Saved display, a long Memory, missing sources, or an unverified scheduled date. A generic invitation cannot replace any question. Always ask these three questions in the numbered list below, then add only one invitation to reply here:
 

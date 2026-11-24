@@ -60,6 +60,8 @@ Follow artifacts.md and the selected storage adapter. Notion Morning and Evening
 - Use names, people, projects, aliases and topics from current context to guide targeted retrieval.
 - If an expected source is unavailable and the missing evidence materially affects the result, say so.
 
+For Notion-backed Morning/Evening, if a required private System dependency has a transient fetch failure, retry that same fetch at most twice after the first attempt; do not bypass explicit permission denial or guess unavailable instructions. Follow the selected Notion adapter's bounded retry and recovery contract once available. An unresolved required dependency or uncertain occurrence still blocks writes. Keep the safe draft and Evening's three questions on failure. This does not change GitHub's scheduled read-only boundary.
+
 ## Global Reliability
 
 - Do not invent facts or continuity.

@@ -27,6 +27,16 @@ Evening: auto-save one provisional Diary-first Memory; display the same complete
 
 If initial auto-save was unauthorized, failed or absent, offer an interactive full preview and approved exact-date creation only after a fresh complete lookup can prove no existing row; if a row exists, reconcile and revise that row instead. Preserve any original Calendar identity. Verify body and metadata before marking Edited. Never duplicate on uncertain save results.
 
+## Bounded retry and safe Daily recovery
+
+During Morning/Evening, retry a transient Notion fetch, view query, pagination request or readback at most twice after the first attempt (three attempts total per failed request). Retry only that request with the same target/cursor; retain successful reads and the original local occurrence date. Respect rate-limit retry-after guidance when supported. Do not retry explicit permission denial, invalid schema/request or a confirmed missing canonical target as if transient. No permission bypass or indefinite waiting. Required instructions and full exact-date/category identity coverage must be verified before any write.
+
+Freeze the exact intended Daily body, date/category, status and protected Morning Calendar ID suffix before writing. On a timeout, ambiguous response or transient write error, never blindly repeat the operation: fresh-query the complete unfiltered Daily identity view and fetch any exact match. If its identity, status and normalized full intended body are verified, reuse that page without another write. Never overwrite an existing Auto-Saved page on replay, Edited/Imported records, conflicting content or duplicates. A failed readback is not proof that creation failed.
+
+Only if non-commit is conclusively established, no request remains pending, and a fresh identity check proves the original operation is safe, retry that same frozen operation at most once. Creation requires verified absence; interactive update requires the same page ID and unchanged authorized baseline. If commit status, absence, approval or identity is uncertain, stop. Verify every successful or ambiguous write. These rules do not expand standing consent or interactive approval scope.
+
+If recovery fails, report the failed stage (System dependency, identity query/pagination, write or readback), affected logical file/view or operation, available error code/message, attempt count and whether persistence is verified, failed or unverified. Do not invent a diagnosis or expose credentials/internal identifiers. Keep the full safe draft and, for Evening, all three capture questions; status/link/failure details precede them. Preserve Morning's approved-save fallback. No new schedules, background retries, automatic backfill, cross-store fallback or scheduled Ledger changes. Extra and Update Watch remain unchanged.
+
 ## Private System revisions
 
 Before changing any System page interactively (including Extra controls), fresh-read its body and numeric version; save and verify a complete prior-body snapshot under Versions (excluding the history container itself). Apply only approved changes, increment version, and read back body/version. The numeric page revision is independent of template semver. Stop/report any failure; no scheduled System writes.

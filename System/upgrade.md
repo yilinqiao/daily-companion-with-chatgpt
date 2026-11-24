@@ -23,6 +23,11 @@ For "Upgrade Daily Companion", confirm private backend, scope, identity and acce
 
 Compare current private and latest public rules directly; use a historical baseline only if already available and genuinely useful, never as a prerequisite. Source-owned rules, setup, selected adapter and docs may be merged; preserve customizations, profile settings/consents, Daily history and original Calendar linkage, all Ledger cards/rows/IDs/order/metadata and schemas/views. Preserve Extra history and state except explicit approved migration. Don't overwrite same-named personal files or delete upstream-removed private content without specific approval. Review actual existing task prompts against current minimal templates, including all three Evening fallback questions; propose only necessary changes, separately approved, preserve title/times/timezone/paused state/notification preferences. Existing installations are **not** silently given a new task; offer new tasks separately with explicit task-activation approval. Never rerun setup.
 
+### v0.5.21 Notion scheduled retry and recovery
+
+- Refresh the Notion storage adapter and shared instructions. Compare existing Morning/Evening task prompts with setup.md; propose a separately approved, targeted bootstrap retry addition only if absent. Preserve task identity, schedules, timezone, enabled/paused states, preferences, consent and all private history. No schema/state migration, new tasks, auto-backfill or GitHub scheduled write changes.
+- Verify the installed policy and any approved prompt updates by readback. Real transient-failure recovery remains unverified until observed in a scheduled run. A selective repair does not stamp a full installed version.
+
 ### v0.5.20 Notion starter schema simplification
 
 - New Notion installations use one Daily Companion Suite database containing exactly three data sources: System, Daily Companion and Action Ledger. Separate databases are not a new-setup fallback; guide the user to complete the same structure in Notion if needed, then verify before activation.

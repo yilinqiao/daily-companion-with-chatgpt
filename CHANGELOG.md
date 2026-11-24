@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.5.21 — 2026-11-24
+
+- Add bounded Notion read retries (two after the first attempt), initial System-fetch retry in both new task prompts, and safe exact-identity reconciliation before at most one conclusively uncommitted write retry. Report failed stage, available error, attempts and verified/failed/unverified persistence; preserve the full draft and Evening's mandatory three questions.
+- Affected rules: storage/notion, instructions, setup, upgrade and behavioral contracts. BC-08/10/11/13/17 scenario review preserves complete body, separate approval, no duplicate or overwrite, Calendar identity and independent scheduled tasks. GitHub scheduled writes remain forbidden; Extra and Update Watch unchanged. No private schema/state migration, consent changes or automatic backfill. Existing task prompts may need separately approved targeted repair.
+- Static contract review only; actual scheduled connector faults and recovery require observation. Release CI validates the candidate separately.
+
 ## 0.5.20 — 2026-11-24
 
 - Simplify new Notion setup: one Daily Companion Suite database containing exactly three data sources (System, shared Daily Companion, Action Ledger). Remove the alternative separate-database setup. If multi-source creation is unavailable, guide manual completion of the same structure and verify it before marking ready or activating tasks.

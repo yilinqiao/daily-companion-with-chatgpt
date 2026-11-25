@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.5.22 — 2026-11-26
+
+- Change new Notion installations to one private Daily Companion Suite parent page containing three independent databases (System, Daily Companion, Action Ledger). A fresh-account preflight reported the connector could create databases and views but did not expose adding sources to an existing database. Normal database creation now replaces the multi-source requirement; no manual multi-source construction. Morning and Evening still share one Daily database, no separate Plan database, no legacy Drive field.
+- Preserve existing completed single-database or separate-database installations and configured IDs, views, history and tasks. No schema/data migration or new task. Paused onboarding can resume using retained answers and the updated approved plan. Explicitly distinguish database and source IDs in the index and keep runtime resolution based on verified private mappings.
+- Align setup, Notion adapter, upgrade, README, getting-started/HTML guide, BC-03 and regression checks. Correct the generic setup date identity to the user's configured local timezone. GitHub-first reads, simple version checks, permissions, daily workflows and v0.5.21 retry rules remain unchanged. Static checks do not establish live database creation, query quota availability or scheduled persistence; verify a fresh-account install.
+
+
 ## 0.5.21 — 2026-11-24
 
 - Add bounded Notion read retries (two after the first attempt), initial System-fetch retry in both new task prompts, and safe exact-identity reconciliation before at most one conclusively uncommitted write retry. Report failed stage, available error, attempts and verified/failed/unverified persistence; preserve the full draft and Evening's mandatory three questions.

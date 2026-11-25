@@ -1,6 +1,6 @@
 # Notion storage (recommended)
 
-Use only the configured private suite, System index and source IDs. Never switch stores on failure. For installation see `System/setup/notion.md` (not a runtime dependency).
+Use only the configured private suite, System index and source IDs. New setups have three independent databases under a private Suite parent page; existing single-database multi-source suites remain supported. Resolve actual configured page/source identities; do not assume the suite ID is a database ID or the three sources share a database. Never switch stores on failure. For installation see `System/setup/notion.md` (not a runtime dependency).
 
 ## Runtime field mapping
 

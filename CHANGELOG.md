@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.5.24 — 2026-11-26
+
+- Remove the final .md suffix from newly created Notion System page display titles, preserving directory prefixes (for example, System/workflows/morning). Keep GitHub filenames and canonical .md paths in the System index unchanged, resolving by exact page IDs. This avoids misleading automatically linked titles.
+- Preserve existing installations and support explicitly approved in-place title-only cleanup without changing bodies, IDs, index keys, revision numbers, scheduled tasks or personal data. No compulsory migration, new schema or additional version-check gate.
+- Align setup, Notion storage, upgrade, BC-03 and regression tests. No change to the three-database layout or GitHub-first access. Actual Notion client rendering and scheduled execution remain to be verified.
+
+
 ## 0.5.23 — 2026-11-26
 
 - Proactively remind Notion users before the first connector call and again before approved writes if needed (including resumed onboarding) to select Always allow, usually the leftmost option, rather than Allow once when the permission popup appears, if offered and they agree to ongoing access. Keep tool permission distinct from explicit installation, initial auto-save and scheduled-task consent; respect user choice. Do not wait for a blocked tool call to show the reminder.

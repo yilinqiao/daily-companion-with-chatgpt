@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.5.26 — 2026-11-26
+
+- Add an optional ChatGPT mobile app suggestion to the final notification handoff for both storage choices: install the official iOS or Android app if desired, sign in to the same account, and allow mobile notifications according to preference. Skip if already installed or the user prefers web/email. No additional onboarding question, setup gate, or requirement for task activation.
+- Align setup, README, getting-started/HTML guide, BC-01 and notification regression tests. Existing notification preferences and scheduled tasks remain unchanged; no private migration, schema or permission changes. Actual notification delivery remains subject to first-run and device verification.
+
+
 ## 0.5.25 — 2026-11-26
 
 - Notion setup only: create all missing System pages with full approved bodies in one supported native batch create-pages call, reusing returned page IDs for the index. Use smaller calls only when the actual tool cannot accept the batch. Reconcile partial/ambiguous results before retrying missing items.

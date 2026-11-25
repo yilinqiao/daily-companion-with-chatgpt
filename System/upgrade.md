@@ -23,6 +23,11 @@ For "Upgrade Daily Companion", confirm private backend, scope, identity and acce
 
 Compare current private and latest public rules directly; use a historical baseline only if already available and genuinely useful, never as a prerequisite. Source-owned rules, setup, selected adapter and docs may be merged; preserve customizations, profile settings/consents, Daily history and original Calendar linkage, all Ledger cards/rows/IDs/order/metadata and schemas/views. Preserve Extra history and state except explicit approved migration. Don't overwrite same-named personal files or delete upstream-removed private content without specific approval. Review actual existing task prompts against current minimal templates, including all three Evening fallback questions; propose only necessary changes, separately approved, preserve title/times/timezone/paused state/notification preferences. Existing installations are **not** silently given a new task; offer new tasks separately with explicit task-activation approval. Never rerun setup.
 
+### v0.5.28 Full-resolution cover and database icons
+
+- New Notion setups use the original 2172 × 724 PNG artwork, without recompression, via a stable public URL. The legacy WebP URL remains available for existing installations; do not replace their custom covers automatically.
+- New databases use the optional native icons (⚙️/📖/📋) through a single targeted parent-page update of exact database tags when the connector supports it, retaining identities, schema, views and titles. No additional verification, retry loop or readiness requirement. Live test confirmed page cover URL and icon rendering, a database icon, and a combined update of two additional database icons; the full-resolution cover rendering should be checked in the client. No migration or bulk restyling.
+
 ### v0.5.27 Notion visual defaults
 
 - New Notion setups apply the public sunrise-lake Cover and native icons where supported, within existing creation calls. No new onboarding question or readiness gate; skip unsupported or failed decorative fields without additional verification or duplicate writes. New Morning/Evening pages use ☀️/🌙 respectively in their existing authorized create operation.

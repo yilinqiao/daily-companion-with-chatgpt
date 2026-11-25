@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.5.28 — 2026-11-26
+
+- Publish the original 2172 × 724 PNG sunrise-lake cover without recompression. New Notion setups use the PNG URL; keep the old WebP for existing covers. Allowlist both exact assets and mirror them in Pages; no other binary file types are allowed.
+- Use normal database creation and, when supported, one combined targeted parent-page Markdown update for the three new database icons. Preserve all existing custom appearance, database/source identities, titles, schemas and views. No extra onboarding question, readiness gate, decoration verification or retries. No migration, private state or task changes.
+- BC-03 scenario review: real Notion test confirmed external cover and native page icon rendered in the client, a native database icon persisted, and two additional database icon changes succeeded in one call. New full-resolution PNG bytes match the original; client rendering of the PNG is checked separately. Static tests cover asset publication and rule consistency, not other accounts' tool availability.
+
+
 ## 0.5.27 — 2026-11-26
 
 - Add the approved AI-generated sunrise-lake artwork as a 1500 × 500 optimized WebP public asset. New Notion Suite parent pages use 🌿 and the public Cover, System/Daily/Action Ledger database icons are ⚙️/📖/📋 where native fields exist, System pages use 📄 (Profile 👤, Index 🗂️), and new Morning/Evening pages use ☀️/🌙.

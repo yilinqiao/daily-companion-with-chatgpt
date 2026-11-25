@@ -86,17 +86,26 @@ class RuntimeContracts(unittest.TestCase):
         setup = (ROOT / 'System/setup.md').read_text()
         for phrase in ('MUST share one Daily Companion data source', 'single-select Category',
                        'Category (**select**', 'Created time', 'Last edited time',
-                       'exactly three data sources in that same database', 'Daily Briefing & Memory',
+                       'exactly three independent databases', 'Daily Briefing & Memory',
                        'Last 7 days', 'Ledger Audit (All)', '**Action Ledger**'):
             self.assertIn(phrase, guide)
         self.assertIn('ONE shared `Daily Companion` source', runtime)
         self.assertNotIn('Legacy Drive URL', guide)
         self.assertNotIn('Legacy Drive URL', runtime)
-        self.assertIn('Do not substitute separate databases', guide)
-        self.assertIn('pause setup until it can be verified', guide)
-        self.assertIn('Do not create separate databases as a fallback', setup)
+        self.assertIn('private Notion parent page', guide)
+        self.assertIn('Do not require the add-data-source capability', guide)
+        self.assertIn('Do not mark setup complete or activate tasks with an unverified required structure', guide)
+        self.assertIn('exactly three independent databases under it', setup)
+        self.assertIn('existing single-database multi-source suites remain supported', runtime)
+        self.assertIn('do not assume the suite ID is a database ID', runtime)
+        self.assertIn('database IDs distinct from data source IDs', guide)
         upgrade = (ROOT / 'System/upgrade.md').read_text()
         self.assertIn('preserve existing properties, historical links and working mappings', upgrade)
+        self.assertIn('Existing completed installations keep their working layouts', upgrade)
+        self.assertIn('For paused, incomplete onboarding, retain confirmed answers', upgrade)
+        self.assertIn('three independent databases', (ROOT / 'README.md').read_text())
+        self.assertIn('three independent databases', (ROOT / 'docs/GETTING_STARTED.md').read_text())
+        self.assertIn('three independent databases', (ROOT / 'docs/setup-guide.html').read_text())
         self.assertIn('ONE shared Daily Companion source', setup)
         self.assertIn('**Plan** means the existing **Action Ledger**', guide)
         self.assertIn('not a fourth database', guide.lower())

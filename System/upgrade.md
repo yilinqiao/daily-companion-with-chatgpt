@@ -23,6 +23,12 @@ For "Upgrade Daily Companion", confirm private backend, scope, identity and acce
 
 Compare current private and latest public rules directly; use a historical baseline only if already available and genuinely useful, never as a prerequisite. Source-owned rules, setup, selected adapter and docs may be merged; preserve customizations, profile settings/consents, Daily history and original Calendar linkage, all Ledger cards/rows/IDs/order/metadata and schemas/views. Preserve Extra history and state except explicit approved migration. Don't overwrite same-named personal files or delete upstream-removed private content without specific approval. Review actual existing task prompts against current minimal templates, including all three Evening fallback questions; propose only necessary changes, separately approved, preserve title/times/timezone/paused state/notification preferences. Existing installations are **not** silently given a new task; offer new tasks separately with explicit task-activation approval. Never rerun setup.
 
+### v0.5.22 Three independent Notion databases
+
+- New Notion installations create a private Daily Companion Suite parent page with exactly three independent child databases (System, Daily Companion, Action Ledger), each with its own source. No add-data-source operation or manual multi-source construction is required. This supersedes the single-database installation rule in v0.5.20.
+- For paused, incomplete onboarding, retain confirmed answers and verified connections, refresh the current setup guide and proposed structure, reuse unambiguous compatible partial objects if present, and obtain approval for the updated installation plan. Never duplicate or silently delete partial data.
+- Existing completed installations keep their working layouts (including a single database with three sources), IDs, properties, views, personal state, permissions and tasks. No schema or data migration and no compulsory restructure. The notion_suite_id refers to the actual configured parent page or legacy suite; query by verified source IDs. Any relocation requires a separate approved proposal. Legacy Drive URL stays absent from new installs.
+
 ### v0.5.21 Notion scheduled retry and recovery
 
 - Refresh the Notion storage adapter and shared instructions. Compare existing Morning/Evening task prompts with setup.md; propose a separately approved, targeted bootstrap retry addition only if absent. Preserve task identity, schedules, timezone, enabled/paused states, preferences, consent and all private history. No schema/state migration, new tasks, auto-backfill or GitHub scheduled write changes.
@@ -30,7 +36,7 @@ Compare current private and latest public rules directly; use a historical basel
 
 ### v0.5.20 Notion starter schema simplification
 
-- New Notion installations use one Daily Companion Suite database containing exactly three data sources: System, Daily Companion and Action Ledger. Separate databases are not a new-setup fallback; guide the user to complete the same structure in Notion if needed, then verify before activation.
+- Historical v0.5.20 layout (superseded for new installations by v0.5.22): one Daily Companion Suite database containing exactly three data sources: System, Daily Companion and Action Ledger. Preserve this layout for existing completed installations; do not require it for new setups.
 - Remove the legacy Google Drive URL field from the new Daily Companion schema and runtime requirements. Existing installations need no migration: preserve existing properties, historical links and working mappings, even if they have a different previously approved database layout. Never delete a private property or restructure live databases as part of an ordinary upgrade. Any such change requires a separate data-preserving proposal and approval.
 
 ### v0.5.19 Connector-first, simple version checks and upgrades

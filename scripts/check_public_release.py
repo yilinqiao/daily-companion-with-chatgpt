@@ -15,7 +15,7 @@ required = [
     "System/maintenance.md", "scripts/check_release_version.py",
     "System/storage/notion.md", "System/storage/github.md",
     "System/setup/notion.md", "System/setup/github.md", "docs/BEHAVIORAL_CONTRACTS.md",
-    "assets/daily-companion-cover.webp",
+    "assets/daily-companion-cover.png", "assets/daily-companion-cover.webp",
 ]
 problems = []
 for name in required:
@@ -41,6 +41,11 @@ for p in root.rglob("*"):
     if p.name.endswith((".env", ".bak", ".pem", ".key", ".p12", ".pfx")):
         problems.append("Forbidden secret/backup filename: " + path)
     # Exact public artwork allowlist; other binaries remain forbidden.
+    if path == "assets/daily-companion-cover.png":
+        data = p.read_bytes()
+        if not (24 <= len(data) <= 2 * 1024 * 1024 and data[:8] == b"\x89PNG\r\n\x1a\n" and data[12:16] == b"IHDR" and int.from_bytes(data[16:20], "big") == 2172 and int.from_bytes(data[20:24], "big") == 724):
+            problems.append("Invalid full-resolution public cover: " + path)
+        continue
     if path == "assets/daily-companion-cover.webp":
         data = p.read_bytes()
         if not (12 <= len(data) <= 1024 * 1024 and data[:4] == b"RIFF" and data[8:12] == b"WEBP"):

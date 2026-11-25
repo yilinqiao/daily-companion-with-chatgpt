@@ -60,9 +60,9 @@ def build(output, commit=""):
     for name, data in contents.items():
         write(name, data)
         write(str(Path(name).with_suffix(".html")), document(name))
-    # Only the explicitly approved public cover; do not mirror arbitrary assets.
-    cover = "assets/daily-companion-cover.webp"
-    write(cover, (ROOT / cover).read_bytes())
+    # Only the explicitly approved public artwork and its legacy variant.
+    for cover in ("assets/daily-companion-cover.png", "assets/daily-companion-cover.webp"):
+        write(cover, (ROOT / cover).read_bytes())
     for alias, name in (("setup.html", "System/setup.md"), ("changelog.html", "CHANGELOG.md"),
                         ("upgrade.html", "System/upgrade.md")):
         write(alias, document(name))

@@ -19,7 +19,7 @@ Create or reuse a private Notion parent page named "Daily Companion Suite". Unde
 For newly created Notion objects, apply these visual defaults in the same authorized create operation wherever the connector exposes the native fields. No extra onboarding question, separate verification, or extra tool calls just for decoration.
 
 - Daily Companion Suite parent page: native `icon` = 🌿, native `cover` = https://raw.githubusercontent.com/yilinqiao/daily-companion-with-chatgpt/main/assets/daily-companion-cover.webp (the public template's approved sunrise-lake artwork). If that external image URL is unavailable, use https://yilinqiao.github.io/daily-companion-with-chatgpt/assets/daily-companion-cover.webp when supported, otherwise omit the cover. Do not download/upload the image or require users to do so.
-- System database: ⚙️; Daily Companion database: 📖; Action Ledger database: 📋. Use a native database icon only if the available database operation supports it; otherwise skip it. Do not prefix titles with emoji or substitute fake database properties.
+- Databases: leave System, Daily Companion and Action Ledger icons at their existing or default appearance. Do not attempt to set database icons or covers, prefix titles with emoji, or substitute decorative properties.
 - System pages: 📄 by default; `System/profile.md` gets 👤 and System Index gets 🗂️. Include native page icons in the existing batch create-pages request (Index icon in its existing creation call).
 - Daily records use the Morning/Evening icons defined in storage/notion.md.
 

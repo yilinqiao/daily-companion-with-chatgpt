@@ -74,10 +74,10 @@ class RuntimeContracts(unittest.TestCase):
         runtime = (ROOT / 'System/storage/notion.md').read_text()
         setup = (ROOT / 'System/setup.md').read_text()
         for phrase in ('native `icon` = 🌿', 'assets/daily-companion-cover.webp',
-                       'System database: ⚙️', 'Daily Companion database: 📖', 'Action Ledger database: 📋',
+                       'Do not attempt to set database icons or covers',
                        '📄 by default', 'gets 👤', 'System Index gets 🗂️',
                        'existing batch create-pages request', 'never a readiness or activation gate',
-                       'Keep existing custom icons and covers', 'otherwise skip it'):
+                       'Keep existing custom icons and covers', 'existing or default appearance'):
             self.assertIn(phrase, guide)
         for phrase in ('native `icon` = ☀️ for Morning Briefing or 🌙 for Evening Memory',
                        'Preserve existing icons on revisions or replay', 'no extra retries',

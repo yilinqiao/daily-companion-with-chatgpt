@@ -23,6 +23,10 @@ For "Upgrade Daily Companion", confirm private backend, scope, identity and acce
 
 Compare current private and latest public rules directly; use a historical baseline only if already available and genuinely useful, never as a prerequisite. Source-owned rules, setup, selected adapter and docs may be merged; preserve customizations, profile settings/consents, Daily history and original Calendar linkage, all Ledger cards/rows/IDs/order/metadata and schemas/views. Preserve Extra history and state except explicit approved migration. Don't overwrite same-named personal files or delete upstream-removed private content without specific approval. Review actual existing task prompts against current minimal templates, including all three Evening fallback questions; propose only necessary changes, separately approved, preserve title/times/timezone/paused state/notification preferences. Existing installations are **not** silently given a new task; offer new tasks separately with explicit task-activation approval. Never rerun setup.
 
+### v0.5.28 Skip database decoration
+
+- Notion setup applies visual defaults only to ordinary pages, not databases. Do not attempt database icon or cover writes. Keep the Suite cover/icon, System/Profile/Index icons, and new Daily record icons unchanged. Existing database appearance is preserved; no migration or extra calls.
+
 ### v0.5.27 Notion visual defaults
 
 - New Notion setups apply the public sunrise-lake Cover and native icons where supported, within existing creation calls. No new onboarding question or readiness gate; skip unsupported or failed decorative fields without additional verification or duplicate writes. New Morning/Evening pages use ☀️/🌙 respectively in their existing authorized create operation.

@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.5.28 — 2026-11-26
+
+- Skip database icon and cover configuration entirely in Notion setup. Retain the Suite sunrise-lake cover and all ordinary page icons, including Morning/Evening. Preserve existing database appearance. No new calls, setup gate, migration, schema or task changes.
+- Align setup, upgrade, user guides, BC-03 and regression checks. Live ordinary page cover rendering remains unverified.
+
+
 ## 0.5.27 — 2026-11-26
 
 - Add the approved AI-generated sunrise-lake artwork as a 1500 × 500 optimized WebP public asset. New Notion Suite parent pages use 🌿 and the public Cover, System/Daily/Action Ledger database icons are ⚙️/📖/📋 where native fields exist, System pages use 📄 (Profile 👤, Index 🗂️), and new Morning/Evening pages use ☀️/🌙.

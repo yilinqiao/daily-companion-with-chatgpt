@@ -53,6 +53,13 @@ class BehavioralContracts(unittest.TestCase):
                      'leave suspended tasks suspended')
         self.require('System/setup/github.md', 'match the retrieved upstream source files')
 
+    def test_setup_prefers_native_intelligent_ui(self):
+        for path in ('System/setup.md', 'README.md', 'docs/setup-guide.html'):
+            self.require(path, "Prefer ChatGPT's native Intelligent UI throughout onboarding whenever it improves the user experience. Use interactive choices, time selectors and confirmation controls where appropriate.")
+        self.require('System/setup.md', 'Ask exactly one question per turn',
+                     'obtain separate explicit task activation approval')
+        self.require('docs/BEHAVIORAL_CONTRACTS.md', 'Prefer native Intelligent UI when useful')
+
     def test_maintenance_registry(self):
         self.require('System/maintenance.md', 'docs/BEHAVIORAL_CONTRACTS.md')
         registry = (ROOT / 'docs/BEHAVIORAL_CONTRACTS.md').read_text()

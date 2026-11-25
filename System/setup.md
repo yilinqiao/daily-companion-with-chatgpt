@@ -16,10 +16,12 @@ Start by reading the complete System/setup.md only. Do not require or check rele
 A new user can start with:
 
 ```text
-Remind me to select High thinking if available. Help me connect GitHub in ChatGPT (if I have no account, help me sign up with Google). Use the GitHub connector to read System/setup.md from yilinqiao/daily-companion-with-chatgpt, then guide me through setup one question at a time. Do not invent questions. If the connector is unavailable, try the public repository files. If the setup text still cannot be read, stop and explain how to restore access; do not ask me to upload files. Ask for my approval before installation or scheduled task activation, separately.
+Remind me to select High thinking if available. Help me connect GitHub in ChatGPT (if I have no account, help me sign up with Google). Use the GitHub connector to read System/setup.md from yilinqiao/daily-companion-with-chatgpt, then guide me through setup one question at a time. Do not invent questions. If the connector is unavailable, try the public repository files. If the setup text still cannot be read, stop and explain how to restore access; do not ask me to upload files. Ask for my approval before installation or scheduled task activation, separately. Prefer ChatGPT's native Intelligent UI throughout onboarding whenever it improves the user experience. Use interactive choices, time selectors and confirmation controls where appropriate.
 ```
 
 ## 1. Onboarding
+
+Prefer ChatGPT's native Intelligent UI throughout onboarding whenever it improves the user experience. Use interactive choices, time selectors and confirmation controls where appropriate.
 
 This is a closed questionnaire: ask only the listed onboarding questions in order, the specified connector/setup/approval questions, and necessary clarifications of those fields. Adapt wording, not meaning. Do not add preference surveys (weekend activities, briefing topics, news, learning, fitness or long-term goals); do not turn defaults into questions. User-requested customization is separate from setup. Ask exactly one question per turn and wait for the answer. On resume or drift, use the verified setup (re-read if no longer available or known changed), preserve valid confirmed answers, ignore unrequested extra fields and continue with the next unanswered required question. Do not infer answers from connected sources. Explain defaults and obtain confirmation. If an existing installation is detected, preserve it and use upgrade.md; never reset or duplicate state. Do not preview surprise dates. Collect in this order:
 

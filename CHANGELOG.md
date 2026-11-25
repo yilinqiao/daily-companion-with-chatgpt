@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.5.29 — 2026-11-26
+
+- Prefer ChatGPT's native Intelligent UI throughout onboarding whenever useful, including interactive choices, time selectors and confirmation controls. Keep the fixed questionnaire, one question per turn and separate installation/task approvals unchanged. UI availability is not a prerequisite.
+- Align the initial prompt in README, setup and HTML guide, the onboarding rule, getting-started documentation, BC-01 and a static regression sentinel. Both storage choices use the same onboarding rule; no migration, private state, permission or scheduled task changes.
+- BC-01 scenario review: fixed question order and approval boundaries remain unchanged for Notion and GitHub; where interactive UI is unavailable ordinary questions still work. Static regression checks do not prove actual UI rendering or selection handling in a new client; live onboarding remains unverified.
+
+
 ## 0.5.28 — 2026-11-26
 
 - Publish the original 2172 × 724 PNG sunrise-lake cover without recompression. New Notion setups use the PNG URL; keep the old WebP for existing covers. Allowlist both exact assets and mirror them in Pages; no other binary file types are allowed.

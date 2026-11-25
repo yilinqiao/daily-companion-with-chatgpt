@@ -23,6 +23,11 @@ For "Upgrade Daily Companion", confirm private backend, scope, identity and acce
 
 Compare current private and latest public rules directly; use a historical baseline only if already available and genuinely useful, never as a prerequisite. Source-owned rules, setup, selected adapter and docs may be merged; preserve customizations, profile settings/consents, Daily history and original Calendar linkage, all Ledger cards/rows/IDs/order/metadata and schemas/views. Preserve Extra history and state except explicit approved migration. Don't overwrite same-named personal files or delete upstream-removed private content without specific approval. Review actual existing task prompts against current minimal templates, including all three Evening fallback questions; propose only necessary changes, separately approved, preserve title/times/timezone/paused state/notification preferences. Existing installations are **not** silently given a new task; offer new tasks separately with explicit task-activation approval. Never rerun setup.
 
+### v0.5.25 Notion setup efficiency
+
+- New or paused Notion onboarding uses one supported batch create-pages call for missing System pages, and reuses confirmed operation results rather than requiring repeated per-page full-body comparisons. Read back essential configuration and resolve any uncertain or failed operations; reconcile partial batches before retrying missing pages only. Continue an incomplete installation without repeating approved successful work.
+- No migration or task changes for completed installations. This is a setup-only optimization, not a relaxation of normal runtime saves or approved private upgrade read-back and conflict protections.
+
 ### v0.5.24 Notion System display titles
 
 - New Notion System page titles use the full canonical logical path without its final `.md` suffix to avoid misleading automatic links. GitHub filenames and the System index's canonical paths (including `.md`) remain unchanged. Both existing and new title formats resolve through the verified index/page IDs.

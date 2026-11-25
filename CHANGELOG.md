@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.5.25 — 2026-11-26
+
+- Notion setup only: create all missing System pages with full approved bodies in one supported native batch create-pages call, reusing returned page IDs for the index. Use smaller calls only when the actual tool cannot accept the batch. Reconcile partial/ambiguous results before retrying missing items.
+- Reduce repeated verification: reuse successful creation/configuration results, avoid routine full-body read-back of every confirmed System page, and check essential Profile/Index/runtime readability, final setup status and unresolved evidence. Do not claim an independent full-body comparison from creation receipts. Preserve completed work across tool limits.
+- Align setup, Notion onboarding, user-facing guides, upgrade guidance and BC-03 regression checks. No schema, permissions, task prompts, runtime verification, GitHub backend or version-check changes. No migration for completed installations. Actual batch payload support and new-account installation remain to be verified; CI cannot prove live connector behavior.
+
+
 ## 0.5.24 — 2026-11-26
 
 - Remove the final .md suffix from newly created Notion System page display titles, preserving directory prefixes (for example, System/workflows/morning). Keep GitHub filenames and canonical .md paths in the System index unchanged, resolving by exact page IDs. This avoids misleading automatically linked titles.

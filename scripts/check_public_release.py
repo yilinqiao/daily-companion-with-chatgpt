@@ -15,6 +15,7 @@ required = [
     "System/maintenance.md", "scripts/check_release_version.py",
     "System/storage/notion.md", "System/storage/github.md",
     "System/setup/notion.md", "System/setup/github.md", "docs/BEHAVIORAL_CONTRACTS.md",
+    "assets/daily-companion-cover.webp",
 ]
 problems = []
 for name in required:
@@ -39,6 +40,12 @@ for p in root.rglob("*"):
         problems.append("Forbidden directory: " + path)
     if p.name.endswith((".env", ".bak", ".pem", ".key", ".p12", ".pfx")):
         problems.append("Forbidden secret/backup filename: " + path)
+    # Exact public artwork allowlist; other binaries remain forbidden.
+    if path == "assets/daily-companion-cover.webp":
+        data = p.read_bytes()
+        if not (12 <= len(data) <= 1024 * 1024 and data[:4] == b"RIFF" and data[8:12] == b"WEBP"):
+            problems.append("Invalid public cover: " + path)
+        continue
     if p.suffix not in {".md", ".txt", ".yml", ".yaml", ".py", ".html", "", ".gitkeep"} and p.name != ".gitignore":
         problems.append("Unexpected file type: " + path)
     text = p.read_text(encoding="utf-8")

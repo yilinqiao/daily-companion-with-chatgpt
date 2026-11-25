@@ -17,6 +17,8 @@ Use only the configured private suite, System index and source IDs. New setups h
 
 ## Daily persistence
 
+For newly created Daily pages, pass native `icon` = ☀️ for Morning Briefing or 🌙 for Evening Memory in the existing approved create operation when supported, including interactive initial creation. This is cosmetic page metadata only; do not prefix titles, modify body content, require extra verification, or make a separate icon write. Preserve existing icons on revisions or replay. If an unsupported cosmetic parameter rejects creation, omit it only within the existing safe exact-identity and bounded recovery rules; no extra retries, duplicate or uncertain writes. Missing icon is not a save failure; actual body and identity verification remain required.
+
 With persisted notion_daily_autosave_authorized:true, create only the run's initial Daily page (Status Auto-Saved, date, category, title and body). No overwrite on replay, including existing Auto-Saved, Edited or Imported pages. Verify exact row identity, date, category, status and body before claiming saved. If missing consent, use approved interactive save only. Never scheduled Ledger mutations. Report actual partial failure and offer interactive recovery; never cross-store backup.
 
 Notion uses native title/date/category/status properties; omit GitHub YAML and duplicate H1 from its body. For new Morning Briefings retain the configured-timezone generation timestamp as a short visible line in the body; preserve original timestamps on revisions, never invent missing historical values. Preview the exact visible body for interactive approval.

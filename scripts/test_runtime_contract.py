@@ -69,6 +69,22 @@ class RuntimeContracts(unittest.TestCase):
             self.assertNotIn('archive/refs/heads/main.zip', public_text)
             self.assertNotIn('uploaded public ZIP', public_text)
 
+    def test_notion_system_titles_are_suffix_free_but_index_preserves_paths(self):
+        guide = (ROOT / 'System/setup/notion.md').read_text()
+        runtime = (ROOT / 'System/storage/notion.md').read_text()
+        setup = (ROOT / 'System/setup.md').read_text()
+        upgrade = (ROOT / 'System/upgrade.md').read_text()
+        for phrase in ('only the final `.md` suffix removed', 'System/workflows/morning',
+                       'stable canonical logical path including `.md`', 'exact page ID',
+                       'rather than creating duplicates'):
+            self.assertIn(phrase, guide)
+        self.assertIn('remove the final `.md` suffix', setup)
+        self.assertIn('both legacy `.md` titles and suffix-free titles are supported', runtime)
+        self.assertIn('Do not rename pages during scheduled runtime', runtime)
+        self.assertIn('rename the same pages in place', upgrade)
+        self.assertIn('unchanged IDs, bodies, index mappings and task destinations', upgrade)
+        self.assertIn('not an upgrade blocker', upgrade)
+
     def test_notion_permission_reminder_is_proactive(self):
         guide = (ROOT / 'System/setup/notion.md').read_text()
         setup = (ROOT / 'System/setup.md').read_text()

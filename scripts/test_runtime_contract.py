@@ -69,6 +69,15 @@ class RuntimeContracts(unittest.TestCase):
             self.assertNotIn('archive/refs/heads/main.zip', public_text)
             self.assertNotIn('uploaded public ZIP', public_text)
 
+    def test_notion_permission_reminder_is_proactive(self):
+        guide = (ROOT / 'System/setup/notion.md').read_text()
+        setup = (ROOT / 'System/setup.md').read_text()
+        for phrase in ('Before the first Notion connector call', 'before the first approved Notion write', 'resumed installation', 'rather than Allow once', 'before invoking the tool'):
+            self.assertIn(phrase, guide)
+        self.assertIn('before the first Notion connector call', setup)
+        self.assertIn('including resumed setup', setup)
+        self.assertIn('Respect a declined or one-time permission', guide)
+
     def test_notion_persistent_tool_permission_is_optional_and_scoped(self):
         guide = (ROOT / 'System/setup/notion.md').read_text()
         for phrase in ('Allow ChatGPT to use Notion', 'Always allow', 'if offered', 'does not replace explicit installation approval', 'scheduled task activation'):

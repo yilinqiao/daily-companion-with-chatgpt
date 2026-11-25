@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.5.23 — 2026-11-26
+
+- Proactively remind Notion users before the first connector call and again before approved writes if needed (including resumed onboarding) to select Always allow, usually the leftmost option, rather than Allow once when the permission popup appears, if offered and they agree to ongoing access. Keep tool permission distinct from explicit installation, initial auto-save and scheduled-task consent; respect user choice. Do not wait for a blocked tool call to show the reminder.
+- Align setup, Notion onboarding, README, getting-started/HTML guide, BC-03 and regression checks. No change to database layout, private state, task prompts, permissions already granted or upgrade migrations. Actual client permission UI and persistence remain to be observed.
+
+
 ## 0.5.22 — 2026-11-26
 
 - Change new Notion installations to one private Daily Companion Suite parent page containing three independent databases (System, Daily Companion, Action Ledger). A fresh-account preflight reported the connector could create databases and views but did not expose adding sources to an existing database. Normal database creation now replaces the multi-source requirement; no manual multi-source construction. Morning and Evening still share one Daily database, no separate Plan database, no legacy Drive field.

@@ -69,6 +69,24 @@ class RuntimeContracts(unittest.TestCase):
             self.assertNotIn('archive/refs/heads/main.zip', public_text)
             self.assertNotIn('uploaded public ZIP', public_text)
 
+    def test_notion_setup_batches_and_avoids_redundant_verification(self):
+        guide = (ROOT / 'System/setup/notion.md').read_text()
+        setup = (ROOT / 'System/setup.md').read_text()
+        upgrade = (ROOT / 'System/upgrade.md').read_text()
+        for phrase in ('ONE native batch create-pages call', 'not twelve consecutive calls',
+                       'Never truncate or summarize source bodies', 'retrying only genuinely missing pages',
+                       'do not fetch it again merely to repeat verification',
+                       'do not require a separate full-body fetch and comparison of every page',
+                       'Profile, System index and a representative runtime System page',
+                       'not independently compared full stored text',
+                       'final separate update sets setup_complete:true and is read back',
+                       'Do not repeat successful reads or writes on resume'):
+            self.assertIn(phrase, guide)
+        self.assertNotIn('Verify every System page body', guide)
+        self.assertIn('create all missing System pages in one supported batch', setup)
+        self.assertIn('GitHub retains its own existing read-back requirements', setup)
+        self.assertIn('not a relaxation of normal runtime saves', upgrade)
+
     def test_notion_system_titles_are_suffix_free_but_index_preserves_paths(self):
         guide = (ROOT / 'System/setup/notion.md').read_text()
         runtime = (ROOT / 'System/storage/notion.md').read_text()

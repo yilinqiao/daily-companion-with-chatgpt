@@ -23,6 +23,16 @@ class SetupNotificationTests(unittest.TestCase):
             self.assertIn(phrase, handoff)
         self.assertIn("Never infer this switch is enabled", handoff)
 
+    def test_mobile_app_is_optional_at_notification_handoff(self):
+        handoff = self.setup.split("**First-run completion-notification handoff", 1)[1]
+        for phrase in ("Optional: ChatGPT mobile app", "iOS or Android",
+                       "same ChatGPT account", "not a setup completion or task activation requirement",
+                       "no separate onboarding question"):
+            self.assertIn(phrase, handoff)
+        for document in (self.getting_started, self.guide, self.readme):
+            self.assertIn("official ChatGPT mobile app", document)
+            self.assertIn("not required for setup or task activation", document)
+
     def test_extra_default_notify_and_unverified_platform_noop_alerts(self):
         handoff = self.setup.split("**First-run completion-notification handoff", 1)[1]
         for phrase in ("Daily Companion Extra", "recommend turning it on for all three",

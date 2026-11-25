@@ -23,6 +23,11 @@ For "Upgrade Daily Companion", confirm private backend, scope, identity and acce
 
 Compare current private and latest public rules directly; use a historical baseline only if already available and genuinely useful, never as a prerequisite. Source-owned rules, setup, selected adapter and docs may be merged; preserve customizations, profile settings/consents, Daily history and original Calendar linkage, all Ledger cards/rows/IDs/order/metadata and schemas/views. Preserve Extra history and state except explicit approved migration. Don't overwrite same-named personal files or delete upstream-removed private content without specific approval. Review actual existing task prompts against current minimal templates, including all three Evening fallback questions; propose only necessary changes, separately approved, preserve title/times/timezone/paused state/notification preferences. Existing installations are **not** silently given a new task; offer new tasks separately with explicit task-activation approval. Never rerun setup.
 
+### v0.5.27 Notion visual defaults
+
+- New Notion setups apply the public sunrise-lake Cover and native icons where supported, within existing creation calls. No new onboarding question or readiness gate; skip unsupported or failed decorative fields without additional verification or duplicate writes. New Morning/Evening pages use ☀️/🌙 respectively in their existing authorized create operation.
+- Existing installations retain all custom appearance, title/ID mappings, state, history, schedules and consent. No migration or bulk restyling. After an approved rule upgrade, newly created Daily pages can use the defaults; any restyling of existing pages is a separate user-approved cosmetic operation. GitHub storage unchanged.
+
 ### v0.5.25 Notion setup efficiency
 
 - New or paused Notion onboarding uses one supported batch create-pages call for missing System pages, and reuses confirmed operation results rather than requiring repeated per-page full-body comparisons. Read back essential configuration and resolve any uncertain or failed operations; reconcile partial batches before retrying missing pages only. Continue an incomplete installation without repeating approved successful work.

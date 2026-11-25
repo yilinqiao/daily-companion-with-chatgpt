@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.5.27 — 2026-11-26
+
+- Add the approved AI-generated sunrise-lake artwork as a 1500 × 500 optimized WebP public asset. New Notion Suite parent pages use 🌿 and the public Cover, System/Daily/Action Ledger database icons are ⚙️/📖/📋 where native fields exist, System pages use 📄 (Profile 👤, Index 🗂️), and new Morning/Evening pages use ☀️/🌙.
+- Apply optional decoration within existing approved create operations, including batch creation. No extra onboarding question, repeated verification, readiness gate, schema changes or duplicate retries. Preserve existing custom appearance, titles, IDs, history and schedules; no migration or bulk restyling. GitHub storage unchanged.
+- Update setup, Notion adapter, upgrade, docs, BC-03/11, and regression checks; explicitly allowlist only the approved public binary cover and mirror it in Pages. Static tests verify the asset and defaults; actual Notion cover rendering and database icon support remain unverified.
+
+
 ## 0.5.26 — 2026-11-26
 
 - Add an optional ChatGPT mobile app suggestion to the final notification handoff for both storage choices: install the official iOS or Android app if desired, sign in to the same account, and allow mobile notifications according to preference. Skip if already installed or the user prefers web/email. No additional onboarding question, setup gate, or requirement for task activation.

@@ -69,6 +69,22 @@ class RuntimeContracts(unittest.TestCase):
             self.assertNotIn('archive/refs/heads/main.zip', public_text)
             self.assertNotIn('uploaded public ZIP', public_text)
 
+    def test_notion_visual_defaults_are_optional_and_native(self):
+        guide = (ROOT / 'System/setup/notion.md').read_text()
+        runtime = (ROOT / 'System/storage/notion.md').read_text()
+        setup = (ROOT / 'System/setup.md').read_text()
+        for phrase in ('native `icon` = 🌿', 'assets/daily-companion-cover.webp',
+                       'System database: ⚙️', 'Daily Companion database: 📖', 'Action Ledger database: 📋',
+                       '📄 by default', 'gets 👤', 'System Index gets 🗂️',
+                       'existing batch create-pages request', 'never a readiness or activation gate',
+                       'Keep existing custom icons and covers', 'otherwise skip it'):
+            self.assertIn(phrase, guide)
+        for phrase in ('native `icon` = ☀️ for Morning Briefing or 🌙 for Evening Memory',
+                       'Preserve existing icons on revisions or replay', 'no extra retries',
+                       'actual body and identity verification remain required'):
+            self.assertIn(phrase, runtime)
+        self.assertIn('appearance is not a readiness gate', setup)
+
     def test_notion_setup_batches_and_avoids_redundant_verification(self):
         guide = (ROOT / 'System/setup/notion.md').read_text()
         setup = (ROOT / 'System/setup.md').read_text()

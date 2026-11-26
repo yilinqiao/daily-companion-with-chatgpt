@@ -35,6 +35,7 @@ Tell the user they may interrupt: the user may ask questions at any point. Answe
 4. Daily planning window: From what time to what time would you like Daily Companion to help you plan your day? For example, 07:00–21:00. This covers the whole day, including work and before/after work, not just free time. Obtain an explicit local HH:MM start/end (start before end); store `planning_window_start` and `planning_window_end`, never default either to null. Only if the user explicitly declines planning suggestions, save both null. Fixed working hours and Calendar commitments still occupy time; all actual Calendar events are shown regardless of window. For variable/unknown shifts don't assume availability.
 5. Output language: Which language should I normally use?
 6. Communication style: How would you like the Companion to sound?
+
 ### Step 2 of 5 · Your Data Sources
 
 Ask about each source separately, in the order below. Complete the approved source's connection, account selection and read-only checks immediately before asking about the next source. Declined sources need no account questions or reads.
@@ -73,7 +74,7 @@ Ask for permission to use reliably dated/current surfaced conversation context, 
 
 #### Optional capture source and other connected sources
 
-If the user wants captured pages included, identify and approve the exact private capture source and reliable capture-date field, then verify read access in this stage. Otherwise skip it and leave it unconfigured; do not add a mandatory capture-source question or create a new capture database. The capture source is independent of the later live storage choice.
+If the user wants captured pages included, identify and approve the exact private capture source and reliable capture-date field, then verify read access in this stage. Otherwise skip it and leave it unconfigured; do not add a mandatory capture-source question or create a new capture database. If the capture source requires a Notion connector call before Step 3, give the Always allow reminder from setup/notion.md first (read that public guidance if needed). In Step 3 confirm the approved capture mapping is supported by the selected runtime adapter; revisit only an actual incompatibility, never silently broaden access.
 
 When the user approves another connected source that Morning/Evening will rely on, use the least-invasive available read to verify it before treating it as available. Sources such as web/weather that do not require a user account connector do not need account-access verification, though their use still requires whatever permission/configuration the runtime defines.
 

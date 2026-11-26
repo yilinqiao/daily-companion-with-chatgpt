@@ -23,6 +23,11 @@ For "Upgrade Daily Companion", confirm private backend, scope, identity and acce
 
 Compare current private and latest public rules directly; use a historical baseline only if already available and genuinely useful, never as a prerequisite. Source-owned rules, setup, selected adapter and docs may be merged; preserve customizations, profile settings/consents, Daily history and original Calendar linkage, all Ledger cards/rows/IDs/order/metadata and schemas/views. Preserve Extra history and state except explicit approved migration. Don't overwrite same-named personal files or delete upstream-removed private content without specific approval. Review actual existing task prompts against current minimal templates, including all three Evening fallback questions; propose only necessary changes, separately approved, preserve title/times/timezone/paused state/notification preferences. Existing installations are **not** silently given a new task; offer new tasks separately with explicit task-activation approval. Never rerun setup.
 
+### v0.5.30 Five-stage onboarding
+
+- For new or incomplete setups, follow About You → Your Data Sources → Your Storage → Your Daily Routine → Review & Launch. Preserve confirmed answers and verified connections; finish only pending checks in their corresponding stages. Retain any previously approved capture source; no new mandatory capture question. Use compact stage progress when supported.
+- No migration, task changes or rerun for completed installations. The same independent installation and activation approvals, write boundaries and state preservation apply.
+
 ### v0.5.28 Full-resolution cover and database icons
 
 - New Notion setups use the original 2172 × 724 PNG artwork, without recompression, via a stable public URL. The legacy WebP URL remains available for existing installations; do not replace their custom covers automatically.

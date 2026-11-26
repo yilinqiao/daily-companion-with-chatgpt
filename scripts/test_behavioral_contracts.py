@@ -59,6 +59,8 @@ class BehavioralContracts(unittest.TestCase):
         self.require('System/setup.md', 'Ask exactly one question per turn',
                      'obtain separate explicit task activation approval')
         self.require('docs/BEHAVIORAL_CONTRACTS.md', 'Prefer native Intelligent UI when useful')
+        for path in ('System/setup.md', 'README.md', 'docs/setup-guide.html'):
+            self.require(path, 'compact current-stage header', 'thin five-segment progress bar')
 
     def test_maintenance_registry(self):
         self.require('System/maintenance.md', 'docs/BEHAVIORAL_CONTRACTS.md')

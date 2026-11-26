@@ -22,7 +22,7 @@ class RuntimeContracts(unittest.TestCase):
     def test_onboarding_and_installation_do_not_require_release_metadata(self):
         setup = (ROOT / 'System/setup.md').read_text()
         questionnaire = setup.split('## 1. Onboarding', 1)[0]
-        gate = setup.split('## 2. Check connectors and approve setup', 1)[1].split('### Google Calendar', 1)[0]
+        gate = setup.split('### Step 3 of 5 · Your Storage', 1)[1].split('### Step 4 of 5', 1)[0]
         self.assertIn('System/setup.md only', questionnaire)
         self.assertIn('conversation-only', questionnaire)
         self.assertIn('no private writes', questionnaire)
@@ -43,7 +43,7 @@ class RuntimeContracts(unittest.TestCase):
         self.assertIn('yilinqiao/daily-companion-with-chatgpt', prompt)
         for name in ('README.md', 'docs/setup-guide.html'):
             self.assertIn(prompt, (ROOT / name).read_text())
-        preflight = setup.split('## 2. Check connectors and approve setup', 1)[1].split('### Google Calendar', 1)[0]
+        preflight = setup.split('### Step 3 of 5 · Your Storage', 1)[1].split('### Step 4 of 5', 1)[0]
         for phrase in ('before requesting installation approval', 'complete contents', 'GitHub connector',
                        'default branch (main)', 'Reuse complete bodies already read', 'No SHA'):
             self.assertIn(phrase, preflight)
@@ -60,7 +60,7 @@ class RuntimeContracts(unittest.TestCase):
         for phrase in ('user may ask questions at any point', 'pending unanswered question',
                        'Notion users need only read access', 'Do not look up or verify a SHA for installation'):
             self.assertIn(phrase, setup)
-        preflight = setup.split('## 2. Check connectors and approve setup', 1)[1].split('### Google Calendar', 1)[0]
+        preflight = setup.split('### Step 3 of 5 · Your Storage', 1)[1].split('### Step 4 of 5', 1)[0]
         for phrase in ('System/setup/notion.md', 'System/storage/notion.md', 'GitHub connector',
                        'missing path', 'No SHA', 'no writes or task activation'):
             self.assertIn(phrase, preflight)
@@ -177,12 +177,30 @@ class RuntimeContracts(unittest.TestCase):
 
     def test_notion_signup_at_storage_choice(self):
         setup = (ROOT / 'System/setup.md').read_text()
-        choice = next(line for line in setup.splitlines() if line.startswith('7. Storage choice:'))
+        choice = next(line for line in setup.splitlines() if line.startswith('Storage choice:'))
         for phrase in ('no Notion account', 'Google account', 'setup/notion.md'):
             self.assertIn(phrase, choice)
         notion = (ROOT / 'System/setup/notion.md').read_text()
         for phrase in ('https://app.notion.com/signup', 'Continue with Google', 'Never ask for credentials or verification codes', 'harmless scoped read'):
             self.assertIn(phrase, notion)
+
+    def test_onboarding_finishes_each_topic_in_stage_order(self):
+        setup = (ROOT / 'System/setup.md').read_text()
+        stages = ('### Step 1 of 5 · About You', '### Step 2 of 5 · Your Data Sources',
+                  '### Step 3 of 5 · Your Storage', '### Step 4 of 5 · Your Daily Routine',
+                  '## 2. Review & Launch (Step 5 of 5)')
+        self.assertEqual([setup.index(s) for s in stages], sorted(setup.index(s) for s in stages))
+        data = setup.split(stages[1], 1)[1].split(stages[2], 1)[0]
+        self.assertLess(data.index('#### Google Calendar'), data.index('#### Gmail'))
+        self.assertLess(data.index('#### Gmail'), data.index('#### Web and weather'))
+        self.assertIn('complete its account selection', data)
+        self.assertIn('do not add a mandatory capture-source question', data)
+        storage = setup.split(stages[2], 1)[1].split(stages[3], 1)[0]
+        self.assertIn('private destination selection and harmless access checks', storage)
+        self.assertIn('before explicit installation approval', storage)
+        review = setup.split(stages[4], 1)[1].split('## 3.', 1)[0]
+        self.assertIn('do not re-ask confirmed account/destination questions', review)
+        self.assertIn('Ask for explicit approval of actual setup writes', review)
 
     def test_saved_checkpoint_is_not_confirmation(self):
         morning = (ROOT / 'System/workflows/morning.md').read_text()

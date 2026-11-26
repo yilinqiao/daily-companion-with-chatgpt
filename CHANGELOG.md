@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.5.30 — 2026-11-26
+
+- Reorder new setup into About You, Your Data Sources, Your Storage, Your Daily Routine, Review & Launch. Finish Calendar (including exclusions), Gmail and other optional sources in their own topics; then finish storage account/destination selection and scoped checks before schedules. Preserve the existing optional capture source only when requested; no new mandatory question or database.
+- Add a compact current-stage header and thin five-segment progress bar to the Intelligent UI preference, initial prompts and user guides. One question per turn; progress represents stage position, not successful completion. Preserve separate installation and activation approvals; no assistant installation writes during preflight.
+- Align setup, README, guides, upgrade, BC-01 and regressions. No migration, private state, schema or task changes. BC-01/02/03 review: both backends, declined/failed optional sources, resume and missing source bodies retain existing safety boundaries; no repeated successful checks or reopened confirmed choices. Actual fresh-account UI and connector execution remain unverified.
+
+
 ## 0.5.29 — 2026-11-26
 
 - Prefer ChatGPT's native Intelligent UI throughout onboarding whenever useful, including interactive choices, time selectors and confirmation controls. Keep the fixed questionnaire, one question per turn and separate installation/task approvals unchanged. UI availability is not a prerequisite.

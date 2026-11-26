@@ -15,8 +15,7 @@ Morning Scheduled Task entry point. Read `System/instructions.md`, `System/profi
 3. Attempt each of the previous 7 local Daily Memory dates for context/history. Evaluate **standard Calendar recovery dates** independently, from yesterday backward, cap at 7. Skip Calendar re-reading a date only when a saved Daily Memory with positive evidence of complete Calendar coverage for the approved scope and candidate reconciliation for that date exists (use saved Briefing and current Ledger as evidence). A saved page or Auto-Saved status alone is not evidence of confirmation or closure. A newer complete date cannot hide an older gap. Read saved Briefings for each examined date when available; recover only unresolved-capable signals on uncertain dates.
 4. If Calendar is approved, apply account/calendar scope per `rules.md` and read today's full local day across every included calendar with calendar identity retained. Read standard recovery dates for unresolved-capable signals. Independently perform the narrow 7-day financial safety look-back for the financial-action class in `rules.md`, regardless of Daily Memory checkpoints. Reuse retrieved dates and dedupe recovery paths.
 5. If Gmail is approved, apply account scope per `rules.md` and review relevant mail from the previous 7 days, excluding Spam/Trash; prefer targeted reads.
-6. Use PARA only when live context materially needs background. Normally retrieve at most 3 long-term vault files.
-7. Use weather when useful and tied to actual plans.
+6. Use weather when useful and tied to actual plans.
 
 Use only approved sources.
 
@@ -47,7 +46,7 @@ Only signals that remain genuinely new after that reconciliation proceed to new-
 
 ### 2.4 Supporting Context
 
-Daily Memory is historical context, not current state. PARA is pull-only. Weather is optional and plan-linked.
+Daily Memory is historical context, not current state. Weather is optional and plan-linked.
 
 ## 3. Operational State
 

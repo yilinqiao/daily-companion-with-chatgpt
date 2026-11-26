@@ -2,7 +2,7 @@
 
 Read only in setup or approved schema repair, not scheduled workflow runs.
 
-Before finalizing, verify all applicable approved profile values and capture mapping, no unresolved required placeholders, and every approved connected source's preflight. If a new incomplete installation crosses the local week boundary during finalization, restore incomplete flag/new markers, align only provisional anchor, verify and retry before activation. Never redraw live state.
+Before finalizing, verify all applicable approved profile values, no unresolved required placeholders, and every approved connected source's preflight. If a new incomplete installation crosses the local week boundary during finalization, restore incomplete flag/new markers, align only provisional anchor, verify and retry before activation. Never redraw live state.
 
 ## Setup and permission proof
 

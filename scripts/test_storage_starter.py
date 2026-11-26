@@ -37,7 +37,7 @@ class StorageStarterTests(unittest.TestCase):
     def test_configured_capture_source_fails_release(self):
         def mutate(root):
             p = root / 'System/profile.md'
-            p.write_text(p.read_text().replace('capture_source: null', 'capture_source: private-source'))
+            p.write_text(p.read_text().replace('approved_data_sources: []', 'approved_data_sources: []\ncapture_source: private-source'))
         self.assertEqual(self.check(mutate).returncode, 1)
 
     def test_initialized_account_scope_fails_release(self):

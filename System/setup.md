@@ -72,9 +72,7 @@ Ask for permission to use reliably dated/current surfaced conversation context, 
 - Lack of surfaced cross-chat context during setup is not an access failure. Runtime availability is opportunistic: Evening may use only conversation context actually surfaced to that run and must follow its strict same-day timestamp/confirmation rules.
 - Do not infer this permission from the user's ChatGPT Memory setting, project membership, account plan, or the mere fact that some conversation context happens to be available.
 
-#### Optional capture source and other connected sources
-
-If the user wants captured pages included, identify and approve the exact private capture source and reliable capture-date field, then verify read access in this stage. Otherwise skip it and leave it unconfigured; do not add a mandatory capture-source question or create a new capture database. If the capture source requires a Notion connector call before Step 3, give the Always allow reminder from setup/notion.md first (read that public guidance if needed). In Step 3 confirm the approved capture mapping is supported by the selected runtime adapter; revisit only an actual incompatibility, never silently broaden access.
+#### Other connected sources
 
 When the user approves another connected source that Morning/Evening will rely on, use the least-invasive available read to verify it before treating it as available. Sources such as web/weather that do not require a user account connector do not need account-access verification, though their use still requires whatever permission/configuration the runtime defines.
 
@@ -98,7 +96,7 @@ Defaults (no questions): occasional name usage, all Daily Flavour categories ena
 
 ## 2. Review & Launch (Step 5 of 5)
 
-Reuse the verified source and storage checks from Steps 2 and 3; do not re-ask confirmed account/destination questions or repeat successful checks unless something changed or remains uncertain. Confirm all required complete source files are available before installation approval. Show all configuration, selected private destination, required data sources/views or repository paths, source status, and planning window. Ask for explicit approval of actual setup writes including standing permission (record notion_daily_autosave_authorized true only after explicit consent) for Notion Morning/Evening initial auto-saves (only their own Daily pages); if declined, offer GitHub/manual flow or pause setup. In private profile persist the approved capture_source as backend, exact locator and reliable capture-date field; use null if declined/unconfigured. Keep optional Calendar/Gmail read-only. No public private data.
+Reuse the verified source and storage checks from Steps 2 and 3; do not re-ask confirmed account/destination questions or repeat successful checks unless something changed or remains uncertain. Confirm all required complete source files are available before installation approval. Show all configuration, selected private destination, required data sources/views or repository paths, source status, and planning window. Ask for explicit approval of actual setup writes including standing permission (record notion_daily_autosave_authorized true only after explicit consent) for Notion Morning/Evening initial auto-saves (only their own Daily pages); if declined, offer GitHub/manual flow or pause setup. Keep optional Calendar/Gmail read-only. No public private data.
 
 The following installation, activation and notification handoff sections all belong to Step 5 of 5 · Review & Launch. Separate approvals remain mandatory; reaching the fifth stage is not a claim that setup is complete.
 

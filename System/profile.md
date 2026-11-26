@@ -27,7 +27,6 @@ daily_flavour: [weather, weather_tied_to_plans, humour, fun_fact, inspiration, t
 approved_data_sources: []
 gmail_account_ids: []
 calendar_account_ids: []
-capture_source: null
 calendar_scope:
   mode: include_all
   excluded_calendar_ids: []

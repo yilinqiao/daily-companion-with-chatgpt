@@ -13,7 +13,6 @@ Use only the configured private suite, System index and source IDs. New setups h
 - Prefer verified saved views and paginate every page using has_more / next_cursor or the equivalent connector mechanism. Read recent Daily records via Last 7 days when available; ensure all seven previous local dates are covered. For exact identity use the unfiltered Daily Briefing & Memory view sorted newest first, query the specific dates/category or scan until past the target; never infer absence from a truncated or filtered view. Use targeted SQL only if necessary and supported.
 - Daily unique key = local date + Category (exactly one category, not title); read all matches, stop on ambiguity or incomplete coverage. Treat Auto-Saved as provisional, Edited as user-approved; Imported only as confirmed if provenance establishes approval.
 - Ledger: query all rows of unfiltered Ledger Audit (All), including Closed and standing precedents; paginate. Use fresh schema and existing property options on every authorized write. Fill applicable reliably known properties, ask if uncertain, leave nonapplicable blank, never invent options, dates or IDs. Match immutable Task ID and exact row identity. Verify changed properties/values and preserve unrelated data.
-- Approved capture sources only: use original reliable capture metadata or genuine native Created time; imported/archive creation timestamps are not evidence of capture today. Keep source links. If no configured capture source, skip.
 
 ## Daily persistence
 

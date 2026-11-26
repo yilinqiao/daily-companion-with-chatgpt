@@ -8,7 +8,7 @@ Setup prefers native Intelligent UI when useful (interactive choices, time selec
 
 ## 2. Your Data Sources
 
-Calendar, Gmail, web/weather and surfaced conversation context are optional and separately approved. Connect and verify each Gmail/Calendar account you want included; additional accounts require your approval. Connector read access must be tested before use. Finish Calendar (including exclusions), then Gmail, then web/weather and surfaced conversation context. If you want to include an existing capture source, configure it here; otherwise skip it. Complete each source before moving on.
+Calendar, Gmail, web/weather and surfaced conversation context are optional and separately approved. Connect and verify each Gmail/Calendar account you want included; additional accounts require your approval. Connector read access must be tested before use. Finish Calendar (including exclusions), then Gmail, then web/weather and surfaced conversation context. Complete each source before moving on.
 
 ## 3. Your Storage
 

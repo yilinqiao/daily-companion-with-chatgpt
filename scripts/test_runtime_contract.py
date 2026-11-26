@@ -194,7 +194,7 @@ class RuntimeContracts(unittest.TestCase):
         self.assertLess(data.index('#### Google Calendar'), data.index('#### Gmail'))
         self.assertLess(data.index('#### Gmail'), data.index('#### Web and weather'))
         self.assertIn('complete its account selection', data)
-        self.assertIn('do not add a mandatory capture-source question', data)
+        self.assertNotIn('Optional capture source', data)
         storage = setup.split(stages[2], 1)[1].split(stages[3], 1)[0]
         self.assertIn('private destination selection and harmless access checks', storage)
         self.assertIn('before explicit installation approval', storage)
@@ -213,12 +213,12 @@ class RuntimeContracts(unittest.TestCase):
         self.assertIn("today's saved Daily Briefing", evening)
         self.assertNotIn("today's approved Daily Briefing", evening)
 
-    def test_diary_has_six_slots(self):
+    def test_diary_has_five_slots(self):
         artifacts = (ROOT / 'System/policies/artifacts.md').read_text()
         memory = artifacts.split('## 3. Daily Memory Schema')[1].split('## 4.')[0]
         headings = [line for line in memory.splitlines() if line.startswith('## ')]
         self.assertEqual(headings, ["## Today's Journal", '## Other Updates & Explorations',
-                                   '## Carry Forward from Today', '## Saved Today — Slurped Pages',
+                                   '## Carry Forward from Today',
                                    '## Reflections', '## Tomorrow — Gentle Heads-up'])
 
     def test_installation_not_runtime(self):
@@ -259,11 +259,32 @@ class RuntimeContracts(unittest.TestCase):
         self.assertIn('suspend affected enabled tasks', upgrade)
         self.assertIn('changed since preview', upgrade)
 
-    def test_capture_mapping_and_extra_readiness(self):
+    def test_retired_para_preserves_daily_history(self):
+        morning = (ROOT / 'System/workflows/morning.md').read_text()
+        evening = (ROOT / 'System/workflows/evening.md').read_text()
+        rules = (ROOT / 'System/policies/rules.md').read_text()
+        for text in (morning, evening, rules):
+            self.assertNotIn('PARA', text)
+        self.assertIn('previous 7 local Daily Memory dates', morning)
+        self.assertIn('fetch every available Daily Memory body', morning)
+        self.assertIn('Use recent Daily Memory only when materially useful', evening)
+        self.assertIn('ChatGPT surfaced conversation context', evening)
+        self.assertIn('Action Ledger', rules)
+        for folder in ('Projects', 'Area', 'Archives'):
+            self.assertFalse((ROOT / folder / '.gitkeep').exists())
+        self.assertTrue((ROOT / 'Daily/.gitkeep').is_file())
+        self.assertTrue((ROOT / 'Resources/Obsidian GitHub GitSync Setup.md').is_file())
+
+    def test_retired_capture_source_and_extra_readiness(self):
         profile = (ROOT / 'System/profile.md').read_text()
-        self.assertIn('capture_source: null', profile)
+        self.assertNotIn('capture_source:', profile)
         setup = (ROOT / 'System/setup.md').read_text()
-        self.assertIn('persist the approved capture_source', setup)
+        self.assertNotIn('persist the approved capture_source', setup)
+        evening = (ROOT / 'System/workflows/evening.md').read_text()
+        artifacts = (ROOT / 'System/policies/artifacts.md').read_text()
+        self.assertIn('Ignore any legacy `capture_source` configuration', evening)
+        self.assertNotIn('Saved Today — Slurped Pages', evening)
+        self.assertNotIn('Saved Today — Slurped Pages', artifacts)
         engine = (ROOT / 'System/daily_companion_extra.md').read_text()
         self.assertIn('setup_complete:true', engine)
         self.assertIn('quoted string', engine)

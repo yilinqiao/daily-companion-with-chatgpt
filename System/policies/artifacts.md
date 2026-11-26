@@ -87,9 +87,6 @@ date: YYYY-MM-DD
 ## Carry Forward from Today
 <today-scoped unresolved matters and next steps>
 
-## Saved Today — Slurped Pages
-<all surfaced approved captured pages, original links and one short context line per page>
-
 ## Reflections
 <optional emotions, concerns, joys, personal questions; reliably dated cross-chat context>
 
@@ -98,7 +95,7 @@ _As things stand tonight:_
 <material preparation advice>
 ```
 
-Journal first; include only applicable additional sections. Preserve each meaningful, reliably dated highlight exactly once, including all surfaced capture links and distinct explorations, with user corrections taking priority. No separate Done Today, Things I Explored Today, Day Summary or Good Night. Do not import untouched Ledger cards. Keep retrieval diagnostics outside Memory. Reflections preserve the user's meaning, do not diagnose or invent motives, and are subject to user approval of the full revised Memory. Native Memory or undated recall cannot date a highlight. Sunday uses saved records and labels provisional coverage.
+Journal first; include only applicable additional sections. Preserve each meaningful, reliably dated highlight exactly once, including user-shared links and distinct explorations, with user corrections taking priority. No separate Done Today, Things I Explored Today, Day Summary or Good Night. Do not import untouched Ledger cards. Keep retrieval diagnostics outside Memory. Reflections preserve the user's meaning, do not diagnose or invent motives, and are subject to user approval of the full revised Memory. Native Memory or undated recall cannot date a highlight. Preserve historical records; when revising a Memory with legacy saved-page content, retain its meaningful user-approved details and links in the appropriate current section instead of dropping them. Sunday uses saved records and labels provisional coverage.
 
 ## 4. Scheduled Run Write Boundary
 

@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.5.31 — 2026-11-26
+
+- Retire the optional saved-page capture source from new onboarding, profile, Evening retrieval and both storage adapters. Remove the dedicated Saved Today / Slurped Pages slot from new Daily Memories; retain five Diary-first sections, the three evening questions and user-shared links within ordinary content.
+- Align setup guides, runtime policies, upgrade, BC-01/09 and static regressions. Existing private capture settings are ignored by upgraded rules, not deleted; preserve historical Daily records and external collections. No required data migration, new source permission or Scheduled Task changes.
+- BC-01/09 scenario review: both backends skip the retired source, including legacy configured profiles; no additional setup question or source reads; user-provided links and meaningful links in revised legacy Memories remain preserved. Fresh-account and scheduled client execution remain unverified.
+
+
 ## 0.5.30 — 2026-11-26
 
 - Reorder new setup into About You, Your Data Sources, Your Storage, Your Daily Routine, Review & Launch. Finish Calendar (including exclusions), Gmail and other optional sources in their own topics; then finish storage account/destination selection and scoped checks before schedules. Preserve the existing optional capture source only when requested; no new mandatory question or database.

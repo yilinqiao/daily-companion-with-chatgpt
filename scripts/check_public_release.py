@@ -74,9 +74,11 @@ for key in set(profile_keys):
 for field in ("installed_template_version", "installed_template_commit"):
     if not re.search(r"(?m)^" + field + r": null\s*$", profile):
         problems.append("Public profile has initialized " + field)
-for field in ("notion_suite_id", "notion_system_index_id", "notion_daily_source_id", "notion_ledger_source_id", "capture_source"):
+for field in ("notion_suite_id", "notion_system_index_id", "notion_daily_source_id", "notion_ledger_source_id"):
     if not re.search(r"(?m)^" + field + r": null\s*$", profile):
         problems.append("Public profile has initialized " + field)
+if "capture_source" in profile_keys:
+    problems.append("Public profile still contains retired capture_source")
 for field in ("gmail_account_ids", "calendar_account_ids"):
     if not re.search(r"(?m)^" + field + r": \[\]\s*$", profile_state):
         problems.append("Public profile has initialized or missing " + field)

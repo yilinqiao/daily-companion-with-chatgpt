@@ -44,6 +44,23 @@ class SetupNotificationTests(unittest.TestCase):
         self.assertNotIn("do not recommend turning on", handoff)
         self.assertNotIn("should not produce alerts for routine silent checks", self.readme)
 
+    def test_final_tips_are_optional_and_three_parts(self):
+        tips = self.setup.split("### Final tips", 1)[1].split("## 5. Setup safety", 1)[0]
+        self.assertIn("exactly the three short parts", tips)
+        self.assertIn("not additional setup questions", tips)
+        self.assertIn("Do not claim setup is ready", tips)
+        for heading in ("Getting started", "Make it your own", "Good to know"):
+            for document in (tips, self.getting_started, self.guide, self.readme):
+                self.assertIn(heading, document)
+        for phrase in ("approved Gmail access", "approved changes to your private System rules",
+                       "delete the optional 06:00 Daily Companion Update Watch",
+                       "Check for updates", "other three tasks are independent", "editable Markdown preview"):
+            self.assertIn(phrase, tips)
+        closing = "You don't need to get everything perfect during setup. Your Daily Companion can evolve with you."
+        self.assertTrue(tips.strip().endswith("**" + closing + "**"))
+        for document in (self.getting_started, self.guide, self.readme):
+            self.assertIn(closing, document)
+
     def test_user_facing_guides_and_upgrade_keep_notifications_manual(self):
         for document in (self.getting_started, self.guide, self.readme):
             self.assertIn("Notify when complete", document)

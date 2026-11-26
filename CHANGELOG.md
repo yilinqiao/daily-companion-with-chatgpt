@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.5.34 — 2026-11-26
+
+- End onboarding with three concise optional tips: Getting started, Make it your own, and Good to know. Include first-run verification, approved private customization (newsletter example, historical queries, reflections and Surprise feedback), optional Update Watch deletion to free a slot with manual update checks, and editable Markdown guidance. End with the emphasized reassurance that Daily Companion can evolve with the user.
+- Align setup, README, user guides, BC-01 and static regressions. No new questionnaire, default newsletter feature, task changes, runtime changes, private state changes or migration.
+- BC-01/13/14 scenario review: preserve actual installation and activation status, existing notification handoff, optional advice, independent tasks and manual update/approved upgrade. Both backends retain their save boundaries. Actual closing rendering and first-run behavior remain unverified.
+
+
 ## 0.5.33 — 2026-11-26
 
 - Fresh Notion setup defaults to automatic creation of a private workspace-level Daily Companion Suite after installation approval. Do not require a pre-existing parent page, page link or extra location question; ask only if workspace is ambiguous, the user requests a parent, or the connector actually requires one. Read-only discovery may return no existing Suite; verify writes during approved installation, not before. Use supported native private creation and the returned ID for child databases.

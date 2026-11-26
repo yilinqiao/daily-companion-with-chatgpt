@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.5.32 — 2026-11-26
+
+- Calendar onboarding asks which calendars to include rather than exclude. Prefer a checked-means-included multi-select with all current calendars initially checked, explicit submission and text fallback; group by approved account. Show the confirmed inclusion selection in the setup summary.
+- Preserve the existing include_all / excluded_calendar_ids representation, account authorization and runtime scope: record unselected stable IDs as exclusions, explain newly visible calendars within approved accounts are automatically included. No schema migration, existing scope change or Scheduled Task changes. Align setup, user guides, BC-01 and static regression tests.
+- BC-01/04 scenario review: all, subset and no current calendars selected map to the corresponding complement of visible IDs; declining Calendar remains distinct, no unapproved account is added, and failed enumeration retains existing handling. Actual Intelligent UI rendering and submission in a fresh setup remain unverified.
+
+
 ## 0.5.31 — 2026-11-26
 
 - Retire the optional saved-page capture source from new onboarding, profile, Evening retrieval and both storage adapters. Remove the dedicated Saved Today / Slurped Pages slot from new Daily Memories; retain five Diary-first sections, the three evening questions and user-shared links within ordinary content.

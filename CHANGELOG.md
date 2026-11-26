@@ -3,8 +3,9 @@
 ## 0.5.31 — 2026-11-26
 
 - Retire the optional saved-page capture source from new onboarding, profile, Evening retrieval and both storage adapters. Remove the dedicated Saved Today / Slurped Pages slot from new Daily Memories; retain five Diary-first sections, the three evening questions and user-shared links within ordinary content.
-- Align setup guides, runtime policies, upgrade, BC-01/09 and static regressions. Existing private capture settings are ignored by upgraded rules, not deleted; preserve historical Daily records and external collections. No required data migration, new source permission or Scheduled Task changes.
-- BC-01/09 scenario review: both backends skip the retired source, including legacy configured profiles; no additional setup question or source reads; user-provided links and meaningful links in revised legacy Memories remain preserved. Fresh-account and scheduled client execution remain unverified.
+- Remove legacy PARA retrieval from Morning, Evening and shared source rules. Remove only the empty public Projects, Area and Archives placeholders; retain System, Daily, Action Ledger tasks/projects and the Resources Obsidian guide. Preserve existing private folders and notes, approved conversation context, Daily history and the Sunday recap.
+- Align setup guides, runtime policies, upgrade, BC-01/05/09 and static regressions. Existing private capture settings are ignored by upgraded rules, not deleted; preserve historical Daily records and external collections. No required data migration, new source permission or Scheduled Task changes.
+- BC-01/05/09 scenario review: both backends skip retired saved-page and PARA retrieval, including legacy configured profiles; Daily history recovery, Sunday recap and Ledger reconciliation are unchanged; no additional setup question or source reads; user-provided links and meaningful links in revised legacy Memories remain preserved. Fresh-account and scheduled client execution remain unverified.
 
 
 ## 0.5.30 — 2026-11-26

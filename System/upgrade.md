@@ -23,10 +23,11 @@ For "Upgrade Daily Companion", confirm private backend, scope, identity and acce
 
 Compare current private and latest public rules directly; use a historical baseline only if already available and genuinely useful, never as a prerequisite. Source-owned rules, setup, selected adapter and docs may be merged; preserve customizations, profile settings/consents, Daily history and original Calendar linkage, all Ledger cards/rows/IDs/order/metadata and schemas/views. Preserve Extra history and state except explicit approved migration. Don't overwrite same-named personal files or delete upstream-removed private content without specific approval. Review actual existing task prompts against current minimal templates, including all three Evening fallback questions; propose only necessary changes, separately approved, preserve title/times/timezone/paused state/notification preferences. Existing installations are **not** silently given a new task; offer new tasks separately with explicit task-activation approval. Never rerun setup.
 
-### v0.5.31 Retire optional saved-page capture source
+### v0.5.31 Retire optional saved-page capture source and PARA
 
 - New installations omit `capture_source`; Evening no longer reads that separate source or generates its dedicated Saved Today section. The five Diary-first sections and the three evening questions remain; user-shared links can still be included naturally.
 - For existing installations, apply the updated setup, workflow, artifact/rules and adapter guidance together under the normal approved upgrade. Legacy `capture_source` values and any related source labels are inert; do not access them or require reauthorization. Preserve private profile values, historical Daily records and external collections; removal of legacy configuration or external data requires separate approval. Preserve meaningful user-approved legacy saved-page links if revising a Memory. No required data migration or Scheduled Task changes.
+- Morning and Evening no longer retrieve PARA or separate long-term project notes as a routine source. New public template copies omit the empty Projects, Area and Archives directories; System, Daily, Action Ledger tasks/projects and the Resources installation guide remain. Existing private folders, databases, notes and customizations are preserved; never delete or relocate private content during upgrade. Daily history and approved conversation context remain available under their existing rules.
 
 ### v0.5.30 Five-stage onboarding
 

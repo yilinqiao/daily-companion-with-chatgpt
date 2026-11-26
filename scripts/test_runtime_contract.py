@@ -213,7 +213,7 @@ class RuntimeContracts(unittest.TestCase):
         self.assertIn("today's saved Daily Briefing", evening)
         self.assertNotIn("today's approved Daily Briefing", evening)
 
-    def test_diary_has_six_slots(self):
+    def test_diary_has_five_slots(self):
         artifacts = (ROOT / 'System/policies/artifacts.md').read_text()
         memory = artifacts.split('## 3. Daily Memory Schema')[1].split('## 4.')[0]
         headings = [line for line in memory.splitlines() if line.startswith('## ')]
@@ -258,6 +258,22 @@ class RuntimeContracts(unittest.TestCase):
         upgrade = (ROOT / 'System/upgrade.md').read_text()
         self.assertIn('suspend affected enabled tasks', upgrade)
         self.assertIn('changed since preview', upgrade)
+
+    def test_retired_para_preserves_daily_history(self):
+        morning = (ROOT / 'System/workflows/morning.md').read_text()
+        evening = (ROOT / 'System/workflows/evening.md').read_text()
+        rules = (ROOT / 'System/policies/rules.md').read_text()
+        for text in (morning, evening, rules):
+            self.assertNotIn('PARA', text)
+        self.assertIn('previous 7 local Daily Memory dates', morning)
+        self.assertIn('fetch every available Daily Memory body', morning)
+        self.assertIn('Use recent Daily Memory only when materially useful', evening)
+        self.assertIn('ChatGPT surfaced conversation context', evening)
+        self.assertIn('Action Ledger', rules)
+        for folder in ('Projects', 'Area', 'Archives'):
+            self.assertFalse((ROOT / folder / '.gitkeep').exists())
+        self.assertTrue((ROOT / 'Daily/.gitkeep').is_file())
+        self.assertTrue((ROOT / 'Resources/Obsidian GitHub GitSync Setup.md').is_file())
 
     def test_retired_capture_source_and_extra_readiness(self):
         profile = (ROOT / 'System/profile.md').read_text()

@@ -15,7 +15,7 @@ Evening Scheduled Task entry point. Read `System/instructions.md`, `System/profi
 3. Read today's saved Daily Briefing when available. If absent, continue from current evidence and say the baseline is missing only when that limitation materially matters.
 4. If Calendar is approved, apply account/calendar scope per `rules.md` and read today across all included calendars with calendar identity retained; always read tomorrow across the same included calendars for the preparation scan in **2.5 Tomorrow Preparation**. Enumeration failure means incomplete coverage.
 5. If Gmail is approved, apply account scope per `rules.md` and read relevant current Gmail independently of Calendar.
-6. Use recent Daily Memory and PARA only when materially useful; PARA remains pull-only.
+6. Use recent Daily Memory only when materially useful.
 7. If `approved_data_sources` includes `ChatGPT surfaced conversation context`, actively attempt a date-scoped cross-chat retrieval when a supported ChatGPT conversation-context lookup is available in this run; also examine relevant context already surfaced by the runtime. Follow the date, coverage and failure rules in **2.4 Cross-chat Today Pass**. This is not guaranteed account-wide history access. If this source is not approved, do not retrieve or use cross-chat context for Daily Memory.
 8. If web/weather information is approved and available, read both today's and tomorrow's local forecast for the preparation scan in **2.5 Tomorrow Preparation**. A material weather change may independently justify a tomorrow heads-up even when Calendar plans are mostly indoors or routine.
 

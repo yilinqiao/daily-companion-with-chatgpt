@@ -23,6 +23,10 @@ For "Upgrade Daily Companion", confirm private backend, scope, identity and acce
 
 Compare current private and latest public rules directly; use a historical baseline only if already available and genuinely useful, never as a prerequisite. Source-owned rules, setup, selected adapter and docs may be merged; preserve customizations, profile settings/consents, Daily history and original Calendar linkage, all Ledger cards/rows/IDs/order/metadata and schemas/views. Preserve Extra history and state except explicit approved migration. Don't overwrite same-named personal files or delete upstream-removed private content without specific approval. Review actual existing task prompts against current minimal templates, including all three Evening fallback questions; propose only necessary changes, separately approved, preserve title/times/timezone/paused state/notification preferences. Existing installations are **not** silently given a new task; offer new tasks separately with explicit task-activation approval. Never rerun setup.
 
+### v0.5.33 Default private Notion Suite creation
+
+- Fresh Notion setup creates the private workspace-level Suite after installation approval without asking for an existing parent page. Resume incomplete setup with confirmed answers and any verified existing Suite; no duplicate creation, relocation or change to private permissions without approval. No migration, schema or task changes for existing installations.
+
 ### v0.5.31 Retire optional saved-page capture source and PARA
 
 - New installations omit `capture_source`; Evening no longer reads that separate source or generates its dedicated Saved Today section. The five Diary-first sections and the three evening questions remain; user-shared links can still be included naturally.

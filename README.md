@@ -57,6 +57,14 @@ The Action Ledger is authoritative for operational state; daily notes are histor
 
 ## Maintain or customize
 
+**Getting started.** Try your first Morning and Evening runs, reply to Evening's questions and check notifications and actual saved records according to your storage choice.
+
+**Make it your own.** Tell ChatGPT what to add, remove or change over time. For example, ask it to summarize relevant newsletters in your Morning Briefing (with approved Gmail access), adjust the length or tone, reflect on patterns in saved Daily Memories, look up past records or give Surprise style feedback. ChatGPT can propose and apply approved changes to your private System rules; no need to edit code.
+
+**Good to know.** Once Daily Companion is running reliably, you may delete the optional 06:00 Daily Companion Update Watch in Scheduled to free a task slot; the other three tasks are independent. You can still say “Check for updates” anytime and approve an upgrade separately while preserving your customizations. When an editable Markdown preview is available, double-click text to make small edits, then review and approve the final version before saving.
+
+**You don't need to get everything perfect during setup. Your Daily Companion can evolve with you.**
+
 Say “Check for updates” for a read-only comparison, or “Upgrade Daily Companion” for an approved private upgrade. Read the latest public System/upgrade.md using the GitHub connector (or the [public upgrade guide](https://yilinqiao.github.io/daily-companion-with-chatgpt/upgrade.html) as fallback). Check updates with VERSION only; actual upgrades compare current file contents, without requiring historical commits or SHA verification. Preserve your profile, notes, Ledger, history and custom rules; publication never updates private copies automatically.
 
 Public maintainers must read [AGENTS.md](AGENTS.md) and [System/maintenance.md](System/maintenance.md) before editing. Use a versioned PR and verified CI, never publish private state.

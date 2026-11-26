@@ -152,6 +152,18 @@ Verify identifiers, schedule, enabled state, exact prompt and destination; list 
 If a task cannot be created or verified, report installation separately from **each task's** activation status. Update Watch must never be counted active based on a planned schedule alone. Its condition-watch targeting 06:00 may not execute at the exact minute, and platform notifications/no-op suppression must be verified in use. Verified Morning/Evening tasks may be reported active while Extra remains inactive; do not claim full activation or label an unverified task active. If Scheduled Task creation is unavailable, provide the exact titles/schedules and stable prompts for another supported environment; do not pretend tasks were created. Preserve the scheduled write boundaries and pending-persistence guidance.
 
 
+### Final tips
+
+After the existing notification handoff, report the actual installation and per-task activation status, including pending first-run verification. Use a brief closing with exactly the three short parts below, in the user's language, ending with the emphasized reassurance (translate faithfully when appropriate). These are optional usage tips, not additional setup questions, approval gates, new default features or automatic changes. Do not claim setup is ready if required steps remain blocked.
+
+**Getting started.** Try your first Morning and Evening runs, reply to Evening's questions and check notifications and actual saved records according to your storage choice.
+
+**Make it your own.** Tell ChatGPT what to add, remove or change over time. For example, ask it to summarize relevant newsletters in your Morning Briefing (with approved Gmail access), adjust the length or tone, reflect on patterns in saved Daily Memories, look up past records or give Surprise style feedback. ChatGPT can propose and apply approved changes to your private System rules; no need to edit code.
+
+**Good to know.** Once Daily Companion is running reliably, you may delete the optional 06:00 Daily Companion Update Watch in Scheduled to free a task slot; the other three tasks are independent. You can still say “Check for updates” anytime and approve an upgrade separately while preserving your customizations. When an editable Markdown preview is available, double-click text to make small edits, then review and approve the final version before saving.
+
+**You don't need to get everything perfect during setup. Your Daily Companion can evolve with you.**
+
 ## 5. Setup safety
 
 No personal data in the public template, no duplicate live stores, no automatic Ledger changes, no bypass of permission blocks. Do not re-run completed setup to update rules; follow upgrade.md. Preserve all historical Daily records, ledger cards and custom preferences.

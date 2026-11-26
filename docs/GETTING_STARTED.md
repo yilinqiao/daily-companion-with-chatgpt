@@ -26,6 +26,16 @@ Review the full setup summary and separately approve writes and Scheduled Tasks.
 
 Optional: install the official ChatGPT mobile app (iOS or Android) if you want mobile access and push notifications. Sign in to the same account and allow mobile notifications if desired; skip if you prefer web/email or already have the app. The app is not required for setup or task activation. For all three Morning/Evening/Extra, check **Notify when complete** under Scheduled or Settings > Notifications. Check device notification permissions. Watch uses the GitHub connector to check VERSION without requiring release notes or a commit SHA; failed public reads retry silently unless three consecutive daily failures are verifiable. A silent workflow does not guarantee no platform notification. Verify the first real run and actual saved record; an enabled task does not prove persistence. If access or task capacity is missing, report it and resolve before claiming full setup.
 
+## After setup
+
+**Getting started.** Try your first Morning and Evening runs, reply to Evening's questions and check notifications and actual saved records according to your storage choice.
+
+**Make it your own.** Tell ChatGPT what to add, remove or change over time. For example, ask it to summarize relevant newsletters in your Morning Briefing (with approved Gmail access), adjust the length or tone, reflect on patterns in saved Daily Memories, look up past records or give Surprise style feedback. ChatGPT can propose and apply approved changes to your private System rules; no need to edit code.
+
+**Good to know.** Once Daily Companion is running reliably, you may delete the optional 06:00 Daily Companion Update Watch in Scheduled to free a task slot; the other three tasks are independent. You can still say “Check for updates” anytime and approve an upgrade separately while preserving your customizations. When an editable Markdown preview is available, double-click text to make small edits, then review and approve the final version before saving.
+
+**You don't need to get everything perfect during setup. Your Daily Companion can evolve with you.**
+
 ## Daily use
 
 Notion: Morning creates an initial briefing containing a final protected Calendar ID section only in Notion; Evening auto-saves a provisional Memory and displays the same full body in ordinary chat, followed by the three questions. Answer them, inspect the complete editable revised Memory, and approve it to update the same page. GitHub: inspect and approve Morning and Evening Markdown to save. Independent Ledger approval and text fallback are always available. Do not use provisional notes as confirmation.

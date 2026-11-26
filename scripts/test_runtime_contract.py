@@ -259,6 +259,20 @@ class RuntimeContracts(unittest.TestCase):
         self.assertIn('suspend affected enabled tasks', upgrade)
         self.assertIn('changed since preview', upgrade)
 
+    def test_calendar_positive_inclusion_selection(self):
+        setup = (ROOT / 'System/setup.md').read_text()
+        profile = (ROOT / 'System/profile.md').read_text()
+        rules = (ROOT / 'System/policies/rules.md').read_text()
+        for phrase in ('Which calendars would you like Daily Companion to include?',
+                       'all calendars initially checked', 'Checked means included; unchecked means excluded',
+                       'Only a submitted selection or explicit text answer confirms',
+                       'stable IDs of unselected calendars in `excluded_calendar_ids`',
+                       'Do not alter existing account scope or ask a separate exclusions question'):
+            self.assertIn(phrase, setup)
+        self.assertNotIn('Which calendars, if any, would you like Daily Companion to exclude?', setup)
+        self.assertIn('mode: include_all', profile)
+        self.assertIn('Newly visible calendars within approved accounts are included automatically', rules)
+
     def test_retired_para_preserves_daily_history(self):
         morning = (ROOT / 'System/workflows/morning.md').read_text()
         evening = (ROOT / 'System/workflows/evening.md').read_text()

@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.5.33 — 2026-11-26
+
+- Fresh Notion setup defaults to automatic creation of a private workspace-level Daily Companion Suite after installation approval. Do not require a pre-existing parent page, page link or extra location question; ask only if workspace is ambiguous, the user requests a parent, or the connector actually requires one. Read-only discovery may return no existing Suite; verify writes during approved installation, not before. Use supported native private creation and the returned ID for child databases.
+- Align setup, Notion guide, README, user guides, upgrade, BC-01/03 and static regressions. Preserve separate approvals, three databases, existing layouts and resume rules. No migration, relocation, private state or task changes; GitHub alternative unchanged.
+- BC-01/03 scenario review: fresh empty workspace, existing verified Suite, ambiguous workspace, requested parent and unavailable private creation retain privacy and approval boundaries. Connector schema supports private workspace-level creation; actual new-account creation and scheduled execution remain unverified.
+
+
 ## 0.5.32 — 2026-11-26
 
 - Calendar onboarding asks which calendars to include rather than exclude. Prefer a checked-means-included multi-select with all current calendars initially checked, explicit submission and text fallback; group by approved account. Show the confirmed inclusion selection in the setup summary.

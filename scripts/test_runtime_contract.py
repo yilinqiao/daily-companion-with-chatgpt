@@ -196,7 +196,8 @@ class RuntimeContracts(unittest.TestCase):
         self.assertIn('complete its account selection', data)
         self.assertNotIn('Optional capture source', data)
         storage = setup.split(stages[2], 1)[1].split(stages[3], 1)[0]
-        self.assertIn('private destination selection and harmless access checks', storage)
+        self.assertIn('connection and harmless access checks', storage)
+        self.assertIn('GitHub retains its private destination selection', storage)
         self.assertIn('before explicit installation approval', storage)
         review = setup.split(stages[4], 1)[1].split('## 3.', 1)[0]
         self.assertIn('do not re-ask confirmed account/destination questions', review)
@@ -258,6 +259,14 @@ class RuntimeContracts(unittest.TestCase):
         upgrade = (ROOT / 'System/upgrade.md').read_text()
         self.assertIn('suspend affected enabled tasks', upgrade)
         self.assertIn('changed since preview', upgrade)
+
+    def test_notion_default_private_top_level_creation(self):
+        setup = (ROOT / 'System/setup.md').read_text()
+        notion = (ROOT / 'System/setup/notion.md').read_text()
+        for phrase in ('create a new private top-level Notion page', 'Do not ask the user to select or create an existing parent page', 'after installation approval'):
+            self.assertIn(phrase, setup)
+        for phrase in ('After explicit installation approval', 'creation_mode: draft', 'An empty successful search is not a connection failure', 'do not ask for a page link', 'returned page ID', 'do not move or share it automatically'):
+            self.assertIn(phrase, notion)
 
     def test_calendar_positive_inclusion_selection(self):
         setup = (ROOT / 'System/setup.md').read_text()

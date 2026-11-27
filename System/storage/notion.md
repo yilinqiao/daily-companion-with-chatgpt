@@ -32,7 +32,7 @@ If initial auto-save was unauthorized, failed or absent, offer an interactive fu
 
 Follow the shared read-failure rule in instructions.md. Before repeating an uncertain write, reconcile the exact date/category and page identity in the complete unfiltered Daily view. Reuse a verified matching page; retry only if confirmed not committed, no request is pending and original authorization and safety checks still hold. Preserve intended body/status and Morning Calendar IDs. Never duplicate or overwrite a record on replay; failed readback alone does not establish non-commit.
 
-Keep the full safe draft, Evening's three questions and Morning's approved-save fallback. No cross-store fallback, automatic backfill, new schedules or scheduled Ledger writes. Extra and Update Watch are unchanged.
+Follow workflow failure handoff: full safe draft, Evening's three questions and Morning's approved-save fallback. No cross-store fallback, automatic backfill, new schedules or scheduled Ledger writes.
 
 ## Private System revisions
 

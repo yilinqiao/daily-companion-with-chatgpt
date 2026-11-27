@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.5.37 — 2026-11-27
+
+- Shorten Morning/Evening target-date and failure-handling instructions without changing their behavior. Workflows and task prompts reference the shared date rule; Notion write reconciliation stays in its adapter. Preserve individual System retrieval, same-day/manual/backfill date handling, genuine ambiguity protection, exact identity, consent, readback and full Evening check-in.
+- BC-08/10/11/13/17 reviewed against 0.5.36: no change to retry safety, duplicate prevention, approved source access or scheduled write boundaries. Setup batch creation, Extra and Watch are unchanged. No data/schema migration or required task replacement; optional prompt cleanup through approved upgrade. Actual scheduled reliability remains unverified.
+
 ## 0.5.36 — 2026-11-27
 
 - Simplify Morning/Evening runtime failure handling: retry only the failed transient read if useful, retain successful results, continue available steps and report real unresolved blockers and save status. Reconcile uncertain writes before any repeat; preserve exact identity, deduplication, readback, consent, original Calendar IDs and all three Evening questions.

@@ -30,11 +30,9 @@ If initial auto-save was unauthorized, failed or absent, offer an interactive fu
 
 ## Simple failure handling and safe recovery
 
-If a read fails transiently, retry only the failed request if useful; retain successful results and continue with available sources. Do not bypass permissions or treat incomplete required rules or unresolved identity as verified. Avoid repeated recovery loops.
+Follow the shared read-failure rule in instructions.md. Before repeating an uncertain write, reconcile the exact date/category and page identity in the complete unfiltered Daily view. Reuse a verified matching page; retry only if confirmed not committed, no request is pending and original authorization and safety checks still hold. Preserve intended body/status and Morning Calendar IDs. Never duplicate or overwrite a record on replay; failed readback alone does not establish non-commit.
 
-Before repeating an uncertain write, recheck the exact date/category and page identity in the complete unfiltered Daily view. Reuse a verified matching page without another write. Retry only if the previous write is confirmed not to have occurred, no request remains pending, and the original authorization and identity checks still hold; preserve the intended body/status and protected Morning Calendar IDs. Never overwrite an existing record on replay or duplicate a record. An uncertain readback is not proof that creation failed.
-
-Report a concrete unresolved blocker and actual save status; keep the full safe draft and all three Evening questions. Preserve Morning's approved-save fallback. No cross-store fallback, automatic backfill, new schedules or scheduled Ledger writes. Extra and Update Watch remain unchanged.
+Keep the full safe draft, Evening's three questions and Morning's approved-save fallback. No cross-store fallback, automatic backfill, new schedules or scheduled Ledger writes. Extra and Update Watch are unchanged.
 
 ## Private System revisions
 

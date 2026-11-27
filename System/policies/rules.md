@@ -6,16 +6,16 @@ scope: shared-rules
 
 # Daily Companion Rules
 
-Canonical owner of shared meaning, evidence, Action Ledger state and continuity semantics. Workflows own retrieval order, run sequence, filtering and conversational actions; `artifacts.md` owns saved schemas, approval and persistence. Non-owner files may invoke these semantics but must not redefine their qualification/evidence criteria.
+Own shared evidence, Ledger semantics and continuity. Workflows own retrieval and composition; `artifacts.md` owns schemas and approval; adapters own storage. Other documents reference these criteria rather than redefine them.
 
 ## 1. Information Model and Source Authority
 
 - **Daily Briefing**: saved Morning snapshot; historical once saved.
 - **Daily Memory**: saved end-of-day record (Notion Auto-Saved is provisional; only Edited/user-approved is confirmation); historical once saved; not current operational state.
-- **Action Ledger** (selected private backend): single source of truth for unresolved and historical operational items. Fixed statuses: `Action`, `Waiting`, `Upcoming`, `Closed`.
+- **Action Ledger** (selected private backend): sole operational authority, including Closed history and standing precedents; fixed statuses below.
 - Stable user configuration belongs in `profile.md`; durable operational handling knowledge belongs in the Action Ledger. Do not create a separate global long-term-memory state file. A feature-owned delivery/state file such as `daily_companion_extra.md` is not a long-term-memory store and does not violate this rule.
 
-Source authority: Calendar → current event details; Gmail → current email state; `profile.md` → configuration/location/region; Action Ledger → current/historical operational state and standing handling precedents; Daily artifacts → historical snapshots. Report material conflicts. Morning and Evening use their defined sources; do not search unrelated project notes or folders as a routine context source.
+Calendar owns event facts; Gmail owns mail facts; `profile.md` owns configuration/location/region. Report material conflicts. Do not retrieve unrelated project notes or folders routinely.
 
 For approved Gmail and Calendar reads, use every account explicitly listed in the respective private `gmail_account_ids` or `calendar_account_ids`, matching current connections by stable authenticated profile ID. Never silently select a default, add another account or fall back to an unapproved account. Missing/empty scope for an approved service or unavailable account means incomplete coverage; continue with other approved accessible accounts and report material gaps, not a falsely clear inbox/calendar. Resolve missing scope interactively using `upgrade.md`. Combine results before existing reconciliation: retain source account and original IDs/links, deduplicate proven copies of the same email/event occurrence or underlying obligation without merging unrelated messages or recurring occurrences. Use an approved account with verified access to the original calendar for exact-ID recovery.
 

@@ -43,9 +43,25 @@ class ReflectionAndWatchTests(unittest.TestCase):
         self.assertIn("06:00", self.setup)
         self.assertIn("## 0. Scheduled update watch (read-only)", self.upgrade)
         self.assertIn("must never modify", self.upgrade)
-        self.assertIn("concrete diff", self.upgrade)
+        self.assertIn("version-specific Update now click", self.upgrade)
+        self.assertIn("adequate summary", self.upgrade)
+        self.assertIn("routine, compatible, non-conflicting source-owned rule updates", self.upgrade)
+        self.assertIn("do not ask the user to perform the comparison", self.upgrade)
+        self.assertIn("Schema changes, task changes and any migration require their existing specific approval", self.upgrade)
         self.assertIn("condition-watch", self.setup)
         self.assertIn("no-change checks", self.setup)
+
+    def test_new_version_notification_is_concise_and_actionable(self):
+        watch = self.upgrade.split("## 0. Scheduled update watch (read-only)", 1)[1].split("## 1. Compare", 1)[0]
+        for phrase in ("Only if newer, read CHANGELOG.md", "releases newer than installed",
+                       "2–4 concise user-facing points", "installed → available version",
+                       "functional **Update now** button", "version-specific request",
+                       "text fallback", "Not now without writes", "never invent features"):
+            self.assertIn(phrase, watch)
+        self.assertLess(watch.index("Compare numerically"), watch.index("Only if newer, read CHANGELOG.md"))
+        self.assertIn("Equal or older version: silent", watch)
+        self.assertIn("no newer-release claim", watch)
+        self.assertIn("If the release changed, notes were inadequate, a customization conflict or migration is found", self.upgrade)
 
     def test_current_users_do_not_get_silent_new_task(self):
         self.assertIn("Existing installations are **not** silently given a new task", self.upgrade)

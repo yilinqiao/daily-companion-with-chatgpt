@@ -6,7 +6,7 @@ scope: artifacts
 
 # Daily Companion Artifact Rules
 
-Canonical owner of saved Daily Briefing / Daily Memory representation, approval and persistence safety. State/evidence/Action Ledger meaning belongs to `policies/rules.md`; Morning/Evening own content retrieval, sequence, filtering and conversational selection.
+Own saved Daily schemas, approval and shared persistence safety. Rules owns state/evidence; workflows own retrieval and composition; adapters own storage.
 
 ## 1. Artifact Boundary
 
@@ -137,4 +137,4 @@ Initial Notion snapshots follow storage/notion.md; after a successful Morning au
 
 ## 6. Interactive Action Ledger Persistence
 
-Fresh-read configured Ledger and current schema/state; never reconstruct from Daily Memory. Use rules.md for operation meaning and selected adapter for verified persistence. Preserve unrelated rows/cards/history, apply only approved or direct first-party changes, and do not silently rewrite Daily artifacts.
+Apply §5 to the configured Ledger, never reconstructing it from Daily Memory. Follow rules.md for operation meaning and the adapter for current schema/state and verified persistence. Do not silently rewrite Daily artifacts.

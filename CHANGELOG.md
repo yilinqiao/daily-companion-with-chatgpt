@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.5.39 — 2026-11-27
+
+- Reduce repeated source-authority, workflow reconciliation, output-composition and approval guidance; simplify procedural wording in shared instructions, rules, artifacts, Morning/Evening and storage adapters. Keep existing document paths, module ownership, required inputs, setup, upgrade and task entrypoints. No new features, schema/data migration, backend switch or required task change. Existing installations use the normal approved compatible rule upgrade, preserving personal customizations and state.
+- BC-02/04/05/06/07/08/09/10/11/12/13/16/17 reviewed against 0.5.38: independent seven-day Calendar recovery and financial look-back, approved account scope, proactive date-scoped cross-chat lookup, weather preparation, Sunday coverage, complete visible reminders, three Evening questions, exact Calendar linkage and independent save/Ledger consent remain. Notion authorized initial save and GitHub interactive-only persistence remain distinct. Static scenario review; actual scheduled execution and interactive upgrades remain unverified. Public release CI required before merge.
+
 ## 0.5.38 — 2026-11-27
 
 - When a newer version is found, Update Watch reads available release notes for the skipped versions and summarizes the most relevant changes in 2–4 short, user-facing points. Offer an actionable Update now button and a text-reply equivalent; no manual comparison or raw diff required. Version checks stay read-only, silent on no change, and do not require release notes to detect a new version.

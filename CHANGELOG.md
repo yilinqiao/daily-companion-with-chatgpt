@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.5.35 — 2026-11-27
+
+- For Notion Morning/Evening, read the private instructions alone first, then the Notion storage adapter alone, then each remaining required System document individually. When supported, extract one complete active body from the connector response, avoiding duplicated payloads, archived version references and unrelated metadata while retaining verified source identity and dependency links. Accept readable single-body responses without assuming a fixed wrapper. Recover incomplete reads within the existing bounded retry contract; never treat truncated instructions as verified.
+- Align shared instructions, new-task bootstrap patterns, approved upgrade guidance and BC-17. Preserve all existing consent, exact-date identity, save/readback and failure safeguards, including the three Evening questions. Notion setup batch creation, GitHub runtime, Extra and Update Watch are unchanged. No schema or data migration; existing task prompt changes require separate approval.
+- BC-03/08/10/11/13/14/17 scenario review: individual complete reads preserve the existing workflow and approvals; duplicate wrappers and metadata are not required runtime inputs; incomplete or inaccessible required rules still block writes; setup batch creation and other task contracts are unaffected. Actual scheduled execution and improvement in reliability are not yet verified.
+
+
 ## 0.5.34 — 2026-11-26
 
 - End onboarding with three concise optional tips: Getting started, Make it your own, and Good to know. Include first-run verification, approved private customization (newsletter example, historical queries, reflections and Surprise feedback), optional Update Watch deletion to free a slot with manual update checks, and editable Markdown guidance. End with the emphasized reassurance that Daily Companion can evolve with the user.

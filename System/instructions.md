@@ -62,6 +62,14 @@ Follow artifacts.md and the selected storage adapter. Notion Morning and Evening
 
 For Notion-backed Morning/Evening, if a required private System dependency has a transient fetch failure, retry that same fetch at most twice after the first attempt; do not bypass explicit permission denial or guess unavailable instructions. Follow the selected Notion adapter's bounded retry and recovery contract once available. An unresolved required dependency or uncertain occurrence still blocks writes. Keep the safe draft and Evening's three questions on failure. This does not change GitHub's scheduled read-only boundary.
 
+## Notion System document retrieval
+
+For normal Notion-backed Morning and Evening runs, fetch the verified private `System/instructions.md` first, alone, then `System/storage/notion.md` alone. Resolve the remaining required private pages through the verified System index or pinned page IDs. Fetch the selected workflow, profile, rules and artifacts individually, one System document per tool execution and tool output. Do not batch System document reads or re-fetch already verified complete bodies merely for repetition.
+
+When the connector response wrapper is available for processing, prefer `structuredContent.text`; otherwise use the equivalent text payload in `text` or `content`. Use only one copy of the response. Extract the complete active page body within the outer `<content>` and `</content>` delimiters when present; omit archived version references, parent database schema and unrelated response metadata. Retain the page identity needed to verify the source. If the connector already returns a single readable body or does not expose the wrapper, use that response directly; do not require a particular wrapper or new tool capability.
+
+Preserve all active instructions, formatting and dependency links without summarizing or shortening. If a body is incomplete or truncated, retrieve that document separately under the existing bounded read-retry rules; do not treat an incomplete required policy as verified. Proceed with the complete workflow after the required System reads; existing identity, consent, readback and failure safeguards remain unchanged. This is runtime reading guidance only: Notion setup may still batch-create System pages, and GitHub storage, Extra and Update Watch retain their own retrieval contracts.
+
 ## Global Reliability
 
 - Do not invent facts or continuity.

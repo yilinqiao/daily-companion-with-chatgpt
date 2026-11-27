@@ -27,7 +27,7 @@ Keep internal bookkeeping, evidence thresholds and state-machine reasoning inter
 
 ## Storage and Path Convention
 
-Read the configured private profile and selected `System/storage/notion.md` or `System/storage/github.md`. Notion is recommended, GitHub private plus optional Obsidian is alternative. Logical System paths resolve only through the verified private index or configured repository path; never silently switch storage or use the public template as live data. Missing required destination or unclear occurrence stops writes.
+Read the configured private profile and selected `System/storage/notion.md` or `System/storage/github.md`. Notion is recommended, GitHub private plus optional Obsidian is alternative. Logical System paths resolve only through the verified private index or configured repository path; never silently switch storage or use the public template as live data. Missing required destination or genuinely ambiguous target date stops writes.
 
 ## Required Context
 
@@ -48,6 +48,10 @@ Extra reads its own engine, profile and only narrow approved context; it does no
 
 Do not duplicate detailed workflow or policy rules in this file.
 
+## Target date resolution (Morning and Evening)
+
+Use one target date in the configured local timezone for all date-scoped retrieval and persistence. An explicit backfill request uses the user's specified date; a manual Run now defaults to the current local date. For normal scheduled runs, prefer the original scheduled occurrence's local date when available. If the timestamp is missing but the run context and configured schedule reliably indicate today's occurrence, with no evidence of an earlier delayed occurrence or cross-day ambiguity, use the current local date and continue. Missing timestamp alone is not a blocker. If the target date is genuinely ambiguous (including a possible overnight delay), do not guess or auto-save: ask which date to use and offer a safe check-in. Preserve exact-date identity, deduplication and all existing approval/write boundaries. Extra and Update Watch retain their own rules.
+
 ## Scheduled Task Write Boundary
 
 Follow artifacts.md and the selected storage adapter. Notion Morning and Evening may create only their own initial Daily pages with verified notion_daily_autosave_authorized consent; GitHub Morning/Evening remain read/output only. Extra and Update Watch are read-only on both backends. No scheduled Ledger, Gmail or Calendar mutations. All revisions and other writes require interactive authorization.
@@ -60,7 +64,7 @@ Follow artifacts.md and the selected storage adapter. Notion Morning and Evening
 - Use names, people, projects, aliases and topics from current context to guide targeted retrieval.
 - If an expected source is unavailable and the missing evidence materially affects the result, say so.
 
-For Notion-backed Morning/Evening, if a required private System dependency has a transient fetch failure, retry that same fetch at most twice after the first attempt; do not bypass explicit permission denial or guess unavailable instructions. Follow the selected Notion adapter's bounded retry and recovery contract once available. An unresolved required dependency or uncertain occurrence still blocks writes. Keep the safe draft and Evening's three questions on failure. This does not change GitHub's scheduled read-only boundary.
+If a required System read fails transiently, retry only that request if useful; do not bypass permissions or guess unavailable instructions. Follow the selected storage adapter's safety rules. Continue available steps and report concrete unresolved blockers; keep safe drafts and Evening's three questions. Unverified required rules or ambiguous identity still block writes.
 
 ## Notion System document retrieval
 
@@ -68,7 +72,7 @@ For normal Notion-backed Morning and Evening runs, fetch the verified private `S
 
 When the connector response wrapper is available for processing, prefer `structuredContent.text`; otherwise use the equivalent text payload in `text` or `content`. Use only one copy of the response. Extract the complete active page body within the outer `<content>` and `</content>` delimiters when present; omit archived version references, parent database schema and unrelated response metadata. Retain the page identity needed to verify the source. If the connector already returns a single readable body or does not expose the wrapper, use that response directly; do not require a particular wrapper or new tool capability.
 
-Preserve all active instructions, formatting and dependency links without summarizing or shortening. If a body is incomplete or truncated, retrieve that document separately under the existing bounded read-retry rules; do not treat an incomplete required policy as verified. Proceed with the complete workflow after the required System reads; existing identity, consent, readback and failure safeguards remain unchanged. This is runtime reading guidance only: Notion setup may still batch-create System pages, and GitHub storage, Extra and Update Watch retain their own retrieval contracts.
+Preserve all active instructions, formatting and dependency links without summarizing or shortening. If a body is incomplete or truncated, retrieve that document separately if useful; do not treat an incomplete required policy as verified. Proceed with the complete workflow after the required System reads; existing identity, consent, readback and failure safeguards remain unchanged. This is runtime reading guidance only: Notion setup may still batch-create System pages, and GitHub storage, Extra and Update Watch retain their own retrieval contracts.
 
 ## Global Reliability
 

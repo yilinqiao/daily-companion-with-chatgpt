@@ -57,7 +57,7 @@ The Action Ledger is authoritative for operational state; daily notes are histor
 
 ## Maintain or customize
 
-**Getting started.** Try your first Morning and Evening runs, reply to Evening's questions and check notifications and actual saved records according to your storage choice.
+**Getting started.** Try your first Morning and Evening runs, reply to Evening's questions and check notifications and actual saved records according to your storage choice. If a Scheduled Task repeatedly skips required tool calls while the connectors and the same workflow work in regular chat, try pausing the affected task and recreating it with the same verified prompt, schedule and timezone. Check notification settings and observe a real run. This is an optional troubleshooting step, not a proven fix; preserve the old task/history and avoid two active copies. Never recreate tasks automatically or without approval.
 
 **Make it your own.** Tell ChatGPT what to add, remove or change over time. For example, ask it to summarize relevant newsletters in your Morning Briefing (with approved Gmail access), adjust the length or tone, reflect on patterns in saved Daily Memories, look up past records or give Surprise style feedback. ChatGPT can propose and apply approved changes to your private System rules; no need to edit code.
 

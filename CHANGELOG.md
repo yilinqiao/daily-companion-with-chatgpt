@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.5.36 — 2026-11-27
+
+- Simplify Morning/Evening runtime failure handling: retry only the failed transient read if useful, retain successful results, continue available steps and report real unresolved blockers and save status. Reconcile uncertain writes before any repeat; preserve exact identity, deduplication, readback, consent, original Calendar IDs and all three Evening questions.
+- Resolve the local target date flexibly: original scheduled occurrence when known; reliable same-day context when timestamp is unavailable; current local date for manual Run now; explicitly requested date for backfill. Genuine cross-day ambiguity still prevents auto-save and requires clarification. Align instructions, workflows, setup prompts, Notion adapter and upgrade guidance; no required schema/data migration or automatic backfill.
+- Add an optional troubleshooting tip for repeated skipped tool calls when ordinary chat works: pause and recreate only the affected task with the same verified prompt and schedule, avoid duplicate active tasks, and verify the next real run. Never automatically recreate a task. Update README and setup tips. Extra, Watch, setup batch creation and GitHub scheduled read-only boundaries remain unchanged.
+- BC-01/08/10/11/13/14/17 reviewed: missing timestamp with reliable same-day context does not stop the workflow; manual and explicit-date runs remain scoped; ambiguous delayed runs do not auto-save; failed and uncertain writes cannot create duplicates; user approvals and separate tasks remain intact. Actual scheduled reliability is not established by static checks.
+
+
 ## 0.5.35 — 2026-11-27
 
 - For Notion Morning/Evening, read the private instructions alone first, then the Notion storage adapter alone, then each remaining required System document individually. When supported, extract one complete active body from the connector response, avoiding duplicated payloads, archived version references and unrelated metadata while retaining verified source identity and dependency links. Accept readable single-body responses without assuming a fixed wrapper. Recover incomplete reads within the existing bounded retry contract; never treat truncated instructions as verified.

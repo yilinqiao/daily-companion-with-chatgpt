@@ -50,7 +50,7 @@ Do not duplicate detailed workflow or policy rules in this file.
 
 ## Target date resolution (Morning and Evening)
 
-Use one target date in the configured local timezone for all date-scoped retrieval and persistence. An explicit backfill request uses the user's specified date; a manual Run now defaults to the current local date. For normal scheduled runs, prefer the original scheduled occurrence's local date when available. If the timestamp is missing but the run context and configured schedule reliably indicate today's occurrence, with no evidence of an earlier delayed occurrence or cross-day ambiguity, use the current local date and continue. Missing timestamp alone is not a blocker. If the target date is genuinely ambiguous (including a possible overnight delay), do not guess or auto-save: ask which date to use and offer a safe check-in. Preserve exact-date identity, deduplication and all existing approval/write boundaries. Extra and Update Watch retain their own rules.
+Use one date in the configured timezone for all date-scoped sources and writes. Honor an explicit backfill date; otherwise use the original scheduled occurrence's local date when available, or the current local date for manual Run now or reliably same-day scheduled runs. Missing timestamp alone is not a blocker. If the date is genuinely ambiguous, ask for clarification, do not auto-save and offer a safe check-in. Extra and Update Watch follow their own rules.
 
 ## Scheduled Task Write Boundary
 
@@ -64,7 +64,7 @@ Follow artifacts.md and the selected storage adapter. Notion Morning and Evening
 - Use names, people, projects, aliases and topics from current context to guide targeted retrieval.
 - If an expected source is unavailable and the missing evidence materially affects the result, say so.
 
-If a required System read fails transiently, retry only that request if useful; do not bypass permissions or guess unavailable instructions. Follow the selected storage adapter's safety rules. Continue available steps and report concrete unresolved blockers; keep safe drafts and Evening's three questions. Unverified required rules or ambiguous identity still block writes.
+Retry transient reads only when useful; retain successful results and continue authorized steps. Missing required rules or unresolved identity blocks writes. Follow the storage adapter for write recovery. Report concrete blockers and actual save status; retain safe drafts and Evening's three questions.
 
 ## Notion System document retrieval
 

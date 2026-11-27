@@ -80,7 +80,7 @@ On Sundays, fetch every available Daily Memory body for the preceding local Mond
 
 ### 4.1 Briefing-level issue allocation and de-duplication
 
-Consolidate evidence by Ledger ID or distinct obligation; give each issue one substantive home:
+Consolidate evidence by Ledger ID or distinct obligation. Give each substantive issue one primary home:
 
 1. `What Matters Today`: up to 3 highest-value issues.
 2. `Email`: material Gmail changes/new Gmail candidates not consumed above.
@@ -88,7 +88,7 @@ Consolidate evidence by Ledger ID or distinct obligation; give each issue one su
 
 Keep required Calendar event lines and Gmail status minimal when an issue already has a home. Continued silence is not Email news; a still-visible Waiting card gets its ordinary reminder. If material emails are already covered in priorities, acknowledge that, not a falsely clear inbox.
 
-Verify every Visible Now card appears once; apply yesterday's confirmed-decision exclusions and stale FYI/email suppression under rules.md across **the entire Briefing**, including opening, Calendar, Weather and Flavour. No “no action needed” repetition or routine Snoozed reminders. Prior Briefings never suppress ordinary unresolved-card coverage; preserve exceptions. Use Weather / Source Status only when useful; patterns require rules.md evidence.
+Before finalizing, verify every Visible Now card appears once; scan **the entire Briefing**, including opening, Calendar, Weather and Flavour, for unchanged decisions/information from yesterday's approved Memory or earlier saved Briefings. Never use a priority, recap, or “no action needed” paragraph to repeat a suppressed item. Prior Briefings suppress stale FYI/email replays, not the ordinary daily reminder of an unresolved Ledger card. Follow rules.md exceptions; no routine Snoozed reminders. Use Weather / Source Status only when useful; patterns require rules.md evidence.
 - Include **exactly one non-weather Daily Flavour item in every Morning Briefing** if any non-weather flavour category remains enabled in `profile.md`. Choose from `humour`, `fun_fact`, `inspiration` and `tiny_challenge`; do not interpret “all enabled” as including all four each day. Add a short `## Daily Flavour` section (normally 1–2 lines) after practical content. Never disguise operational follow-ups as a tiny challenge.
 - Rotate categories, preferably one not used in the last three Briefings when known; do not claim novelty without history. Use verifiable facts, considerate humour, concrete inspiration without fabricated quotes, or strictly optional tiny challenges requiring no saved follow-up.
 - Weather is **separate** from the one daily non-weather flavour slot: include weather only when the user approved web/weather and it is useful or plan-linked. Do not count weather toward the daily flavour slot. If all non-weather categories are explicitly disabled, omit the section and honor that preference.

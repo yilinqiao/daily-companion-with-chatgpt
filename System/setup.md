@@ -136,7 +136,7 @@ Fetch private daily_companion_extra.md and profile only; follow shared read-only
 
 ### Daily Companion Update Watch task instruction
 
-Fetch private upgrade.md and profile; follow §0 Scheduled update watch (read-only). Use the GitHub connector to read the canonical public VERSION on the default branch; no commit SHA or CHANGELOG is required. Never upgrade on schedule.
+Fetch private upgrade.md and profile; follow §0 Scheduled update watch (read-only). Check public VERSION using the GitHub connector; if newer, summarize available release notes and offer a functional Update now control or text reply. No SHA required; missing notes do not block notification. Never upgrade on schedule.
 
 ### Task verification and notification handoff
 
@@ -160,7 +160,7 @@ After the existing notification handoff, report the actual installation and per-
 
 **Make it your own.** Tell ChatGPT what to add, remove or change over time. For example, ask it to summarize relevant newsletters in your Morning Briefing (with approved Gmail access), adjust the length or tone, reflect on patterns in saved Daily Memories, look up past records or give Surprise style feedback. ChatGPT can propose and apply approved changes to your private System rules; no need to edit code.
 
-**Good to know.** Once Daily Companion is running reliably, you may delete the optional 06:00 Daily Companion Update Watch in Scheduled to free a task slot; the other three tasks are independent. You can still say “Check for updates” anytime and approve an upgrade separately while preserving your customizations. When an editable Markdown preview is available, double-click text to make small edits, then review and approve the final version before saving.
+**Good to know.** Once Daily Companion is running reliably, you may delete the optional 06:00 Daily Companion Update Watch in Scheduled to free a task slot; the other three tasks are independent. You can still say “Check for updates” anytime, read a short summary and choose Update now while preserving your customizations. When an editable Markdown preview is available, double-click text to make small edits, then review and approve the final version before saving.
 
 **You don't need to get everything perfect during setup. Your Daily Companion can evolve with you.**
 

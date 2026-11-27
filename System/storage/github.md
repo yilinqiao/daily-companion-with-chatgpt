@@ -43,6 +43,4 @@ Do not add empty optional fields. Do not expose machine fields in the visible ti
 
 If a manually moved Closed card has no reliable historical closure date, do not invent one merely to complete metadata; its column remains authoritative and `closed` may stay `null` until reliable evidence exists.
 
-
-
 Apply only authorized changes against fresh file SHA; verify exact card ID, status/list, metadata, and content; never invent absent dates. Stamp updated_at only on authorized interactive writes. Extra uses the common read-only cadence; interactive edits preserve state/body and use fresh SHA/read-back.

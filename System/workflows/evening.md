@@ -11,7 +11,7 @@ Evening Scheduled Task entry point. Read `System/instructions.md`, `System/profi
 ## 1. Required Inputs
 
 1. Read `profile.md` and the configured Ledger via selected storage adapter. If unavailable, report it and do not produce an authoritative inferred Ledger change set.
-2. Resolve actual scheduled occurrence local date/time; stop without writes if uncertain.
+2. Resolve the target local date using System/instructions.md's target date rule; use the same date for every source and artifact. Missing occurrence timestamp alone is not a blocker. Do not write if the date remains genuinely ambiguous.
 3. Read today's saved Daily Briefing when available. If absent, continue from current evidence and say the baseline is missing only when that limitation materially matters.
 4. If Calendar is approved, apply account/calendar scope per `rules.md` and read today across all included calendars with calendar identity retained; always read tomorrow across the same included calendars for the preparation scan in **2.5 Tomorrow Preparation**. Enumeration failure means incomplete coverage.
 5. If Gmail is approved, apply account scope per `rules.md` and read relevant current Gmail independently of Calendar.

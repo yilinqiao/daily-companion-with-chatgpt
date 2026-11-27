@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.5.38 — 2026-11-27
+
+- When a newer version is found, Update Watch reads available release notes for the skipped versions and summarizes the most relevant changes in 2–4 short, user-facing points. Offer an actionable Update now button and a text-reply equivalent; no manual comparison or raw diff required. Version checks stay read-only, silent on no change, and do not require release notes to detect a new version.
+- A version-specific Update now confirmation authorizes compatible, non-conflicting source-owned rule updates within the disclosed scope. The assistant compares files and verifies the private installation internally; only actual conflicts, material scope changes, missing adequate release notes, migrations or separately approved task/schema changes require further confirmation. No automatic scheduled upgrade, new tasks or state migration.
+- BC-14 reviewed: newer/multiple skipped releases, missing notes, equal/older or unknown version, explicit click/text consent, changed release, customization conflict and both storage backends. Existing write verification, preserved state and approval boundaries remain. Actual scheduled notification rendering and interactive upgrades remain unverified.
+
 ## 0.5.37 — 2026-11-27
 
 - Shorten Morning/Evening target-date and failure-handling instructions without changing their behavior. Workflows and task prompts reference the shared date rule; Notion write reconciliation stays in its adapter. Preserve individual System retrieval, same-day/manual/backfill date handling, genuine ambiguity protection, exact identity, consent, readback and full Evening check-in.

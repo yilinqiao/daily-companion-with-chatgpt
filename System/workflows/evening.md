@@ -16,8 +16,8 @@ Evening Scheduled Task entry point. Read `System/instructions.md`, `System/profi
 4. If Calendar is approved, apply account/calendar scope per `rules.md` and read today across all included calendars with calendar identity retained; always read tomorrow across the same included calendars for the preparation scan in **2.5 Tomorrow Preparation**. Enumeration failure means incomplete coverage.
 5. If Gmail is approved, apply account scope per `rules.md` and read relevant current Gmail independently of Calendar.
 6. Use recent Daily Memory only when materially useful.
-7. If `approved_data_sources` includes `ChatGPT surfaced conversation context`, actively attempt a date-scoped cross-chat retrieval when a supported ChatGPT conversation-context lookup is available in this run; also examine relevant context already surfaced by the runtime. Follow the date, coverage and failure rules in **2.4 Cross-chat Today Pass**. This is not guaranteed account-wide history access. If this source is not approved, do not retrieve or use cross-chat context for Daily Memory.
-8. If web/weather information is approved and available, read both today's and tomorrow's local forecast for the preparation scan in **2.5 Tomorrow Preparation**. A material weather change may independently justify a tomorrow heads-up even when Calendar plans are mostly indoors or routine.
+7. Apply the approved date-scoped cross-chat retrieval in **2.4 Cross-chat Today Pass**.
+8. Apply the approved today/tomorrow forecast and preparation scan in **2.5 Tomorrow Preparation**.
 
 ## 2. Source Processing
 
@@ -40,7 +40,7 @@ Use current Gmail to update evidence for existing issues and Morning candidates.
 
 ### 2.3 Ledger-first reconciliation
 
-For each Calendar/Gmail/Morning-Briefing signal, apply the complete Ledger reconciliation precedence and standing-precedent semantics from `policies/rules.md` before treating anything as new. This workflow owns **when** reconciliation runs; Rules owns the precedence and meaning.
+Before classifying new candidates, reconcile Calendar/Gmail/Morning-Briefing signals under the complete precedence and standing-precedent rules in `policies/rules.md`.
 
 ### 2.4 Cross-chat Today Pass
 
@@ -52,7 +52,7 @@ Include meaningful distinct same-day cross-chat ideas, conclusions, experiments,
 
 Scan tomorrow's included Calendar and compare today's and tomorrow's approved/available local forecast. For outdoor or weather-sensitive plans (gardening, plant work, hiking, exercise, outdoor events), retrieving tomorrow's weather is mandatory when approved/available; check rain, temperature, wind/gusts and UV. Surface only material impacts.
 
-Preparation signals: early starts, long/offsite events, travel, unfamiliar locations, gear/clothing changes, tight transitions or packing/charging/documents/food. A weather delta alone can qualify: roughly 6°C daytime change, smaller shift with rain/wind, dry/wet transition, storm, warnings, severe temperatures, high/extreme UV or poor air quality. Use practical judgement rather than a rigid threshold.
+Consider preparation for early starts, long/offsite events, travel, unfamiliar locations, tight transitions and gear/clothing or other packing needs. A weather delta alone can qualify (roughly 6°C daytime change, meaningful rain/wind, warnings, severe temperatures, high/extreme UV or poor air quality), even for indoor/routine plans. Use practical judgement rather than a rigid threshold.
 
 If preparation tonight helps, include `Tomorrow — Gentle Heads-up` (As things stand tonight) and carry into Memory unless corrected. Otherwise omit. No agenda/forecast dump, invented weather or future-task admission.
 
@@ -69,7 +69,7 @@ Possible outcomes under `rules.md`:
 - unresolved → proposed/authorized open `ADD`;
 - ambiguous → ask the minimum clarification.
 
-Do not treat Daily Memory existence, source disappearance, silence or passage of time as resolution.
+Apply shared closure evidence; a Daily Memory alone is not resolution.
 
 ### 3.2 Existing Card Changes
 
@@ -82,9 +82,9 @@ Manual status/property or Kanban list position is authoritative.
 Use these inputs to compose the provisional Diary-first Memory for Notion, or a short conversational **Evening Check-in** for GitHub:
 
 - **Since Morning** — material changes/candidates once each;
-- **Other Updates & Explorations** — include when one or more reliably same-day meaningful highlights are available under 2.4; consolidate related topics, omit only when none qualifies, and never present it as a complete chat log. If cross-chat retrieval is unavailable/incomplete and no highlights can be grounded, note the limitation briefly in the check-in rather than silently implying a quiet day;
+- **Other Updates & Explorations** — meaningful reliably same-day highlights and honest coverage under 2.4; omit when none qualifies;
 - **Items Needing Attention** — items changed materially today, due today or at their `revisit` date today, ambiguous items, and untracked candidates needing status; never dump the full Ledger and never list a future-`revisit` Snoozed card merely because it carries a revisit date;
-- **Tomorrow — Gentle Heads-up** — include when the 2.5 preparation scan finds that preparation tonight materially helps; keep it concise and omit it otherwise.
+- **Tomorrow — Gentle Heads-up** — follow 2.5.
 
 ### Conversation rendering rule
 
